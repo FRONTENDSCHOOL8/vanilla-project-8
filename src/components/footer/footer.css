@@ -1,8 +1,5 @@
 .footer{
-  display: flex;
-  justify-content: space-around;
   margin: 0 auto;
-  padding: 28px 32px 0 0;
   line-height: 1.5; 
   border-top: 1px solid var(--gray-200, #C8C8C8);
   white-space: nowrap;
@@ -17,6 +14,11 @@
   color:#333333;
 }
 
+.footer-section1{
+  display: flex;
+  justify-content: space-around;
+  padding: 28px 0 32px 0;
+}
 
   .happy{
     font-size: 21px
@@ -33,6 +35,7 @@
 
 .question{
   margin-top: 30px;
+  color: var(--content, #333);
 }
 
   .question, .question-one, .question-order{
@@ -40,7 +43,7 @@
   }
 
   .question-p, .question-one-p, .question-order-p {
-    color: #999;
+    color: var(--content, #333);
     letter-spacing: -0.5px;
     line-height: 17px;
   }
@@ -49,6 +52,7 @@
   .question-ect{
     display: flex;
     flex-direction: column;
+    font-size: 12px;
   }
   
   .question-ect a{
@@ -56,6 +60,9 @@
   }
 
 
+  .footer-wrapper2 {
+    color: var(--content, #333);
+  }
   .footer-wrapper2 ul{
     display: flex;
     justify-content: space-between;
@@ -75,14 +82,54 @@
     
   }
 
-  .footer-wrapper2 address{
+  .address{
     margin: 28px 0;
-
+    font-size: 12px;
+    padding-right: 70px;
   }
   
-  .footer-wrapper2 address a{
+  .address a{
     color: #5F0080;
   }
 
+.footer-sns{
+  display: flex;
+  align-items: flex-start;
+  gap:20px;
+}
 
+.footer-wrapper3{
+  display: flex;
+  margin: 0 auto;
+  padding: 24px 0 32px 0;
+  line-height: 1.5; 
+  font-size: 10px;
+  color: var(--content, #333);
+  gap: 20px;
+}
 
+.footer-section2{
+  border-top: 1px solid var(--gray-200, #C8C8C8);
+  width: 1050px;
+  display: flex;
+}
+
+.footer-wrapper3 a{
+  display: flex;
+}
+
+.footer-section3{
+  background: var(--gray-50, #F9F9F9);
+  display: flex;
+  padding: 20px 4px 32px 4px;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+}
+
+.footer-section3 p{
+  text-align: center;
+  color: var(--gray-400, #898989);
+  font-size: 10px;
+}
