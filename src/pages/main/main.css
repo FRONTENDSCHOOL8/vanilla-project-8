@@ -1,0 +1,139 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+
+.header-bar {
+  background: purple;
+  text-align: center;
+  color: white;
+}
+
+.main-box{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* 메인 swiper 스타일 */
+
+.swiper1 {
+  width: auto;
+  height: auto;
+}
+
+
+.swiper2 {
+  /* width: auto; */
+  transition: all 0.2s;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+}
+
+.swiper1 .swiper-slide img {
+  /* width: 120; */
+  height: 370px;
+  /* object-fit: contain; */
+
+}
+
+.swiper2 swiper-wrapper .swiper-slide {
+}
+
+.swiper2 .swiper-slide img {
+  /* width: 120rem; */
+  width: 250px;
+  height: 320px;
+  /* object-fit: contain; */
+}
+
+
+
+
+
+.swiper-button-prev {
+  padding: 20px;
+  background-color: gray;
+  border-radius: 50px ;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.5;
+  color: white;
+  
+}
+
+
+.swiper-button-next {
+  padding: 20px;
+  background-color: gray;
+  border-radius: 50px;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.5;
+  color: white;
+}
+
+.swiper-pagination {
+  background-color: gray;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.7;
+  color: white;
+  width: 58px;
+  left: 70%;
+
+}
+
+
+
+/* today-product 부분 */
+
+
+
+.today-products {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: skyblue;
+  padding-top: 2.5rem;
+  padding-bottom: 60px;
+}
+
+
+.today-products-title {
+  color: var(--content, #333);
+  margin-top: 52px;
+  margin-bottom: 40px;
+  /* Heading/XL */
+  font-family: Pretendard;
+  font-size: 28.43px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%; /* 39.802px */
+}
+
+
+/* Swiper 이전 버튼의 화살표 크기 조절 */
+.swiper2 .swiper-button-prev::before {
+  font-size: 4px; /* 화살표의 크기를 조절하세요 */
+}
+
+
+/* banner 스타일 */
+
+.line-banner {
+  display: block;
+  /* padding: 40px 0; */
+  justify-content: center;
+  align-items: center;
+  background-image: url("/public/images/main/line-banner.jpg");
+  width: 1050px;
+  height: 140px;
+  margin: 40px auto;
+}
