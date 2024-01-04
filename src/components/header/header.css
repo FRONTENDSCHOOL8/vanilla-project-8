@@ -123,3 +123,7 @@
 .nav-menu button{
   display: inline-block;
 }
+
+.search input{
+  appearance: none;
+}
