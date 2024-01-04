@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <title>Vite</title>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https://res.kurly.com/favicon.ico"
+    />
+    <link rel="stylesheet" href="/src/assets/product-list/reset.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="/src/pages/product/product.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>
+        <a href="/">Market Karly</a>
+      </h1>
+      <nav>
+        <ul>
+          <li><a href="/">HOME</a></li>
+          <li><a href="/src/pages/product/">PRODUCT</a></li>
+          <li><a href="/src/pages/detail/">DETAIL</a></li>
+          <li><a href="/src/pages/login/">LOGIN</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <h2 class="best">베스트</h2>
+      <div class="section-container">
+        <section class="filter">
+          <ul>
+            <li class="filter-list">
+              필터
+              <span>초기화</span>
+            </li>
+            <li class="filter-category">
+              카테고리
+              <img src="/src/assets/product-list/filter-arrow.png" alt="" />
+            </li>
+            <li class="filter-brand">
+              브랜드
+              <img src="/src/assets/product-list/filter-arrow.png" alt="" />
+            </li>
+            <li class="filter-price">
+              가격
+              <img src="/src/assets/product-list/filter-arrow.png" alt="" />
+            </li>
+            <li class="filter-benefit">
+              혜택
+              <img src="/src/assets/product-list/filter-arrow.png" alt="" />
+            </li>
+            <li class="filter-type">
+              유형
+              <img src="/src/assets/product-list/filter-arrow.png" alt="" />
+            </li>
+            <li class="filter-exeption">
+              특정상품 제외
+              <img src="/src/assets/product-list/filter-arrow.png" alt="" />
+            </li>
+          </ul>
+        </section>
+        <section class="product">
+          <nav class="sort">
+            <span>총 284건</span>
+            <ul>
+              <li><a>추천순</a></li>
+              <span
+                ><img src="/src/assets/product-list/info.png" alt="추천순 설명"
+              /></span>
+              <li><a>신상품순</a></li>
+              <li><a>판매량순</a></li>
+              <li><a>혜택순</a></li>
+              <li><a>낮은 가격순</a></li>
+              <li><a>높은 가격순</a></li>
+            </ul>
+          </nav>
+          <ul class="product-list">
+            <li class="product-each">
+              <a href="/">
+                <figure>
+                  <img
+                    class="product-img"
+                    src="/src/assets/product-list/product-img.jpg"
+                    alt=""
+                  />
+                  <img
+                    class="cart-img"
+                    src="/src/assets/product-list/cart-img.png"
+                    alt=""
+                  />
+                </figure>
+                <div class="product-info">
+                  <span class="delivery">샛별배송</span><br />
+                  <span class="desc-1">[풀무원] 탱탱쫄면 (4개입)</span><br />
+                  <span class="discount">10%</span>
+                  <span class="real-price">9,000원</span> <br />
+                  <span class="price">10,000 원</span><br />
+                  <span class="desc-2">튀기지 않아 부담없는 매콤함</span><br />
+                </div>
+                <div class="label-container">
+                  <span class="karly-only">Karly Only</span>
+                  <span class="limited">한정수량</span>
+                </div>
+              </a>
+            </li>
+            <li class="product-each">
+              <a href="/">
+                <figure>
+                  <img
+                    class="product-img"
+                    src="/src/assets/product-list/product-img.jpg"
+                    alt=""
+                  />
+                  <img
+                    class="cart-img"
+                    src="/src/assets/product-list/cart-img.png"
+                    alt=""
+                  />
+                </figure>
+                <div class="product-info">
+                  <span class="delivery">샛별배송</span><br />
+                  <span class="desc-1">[풀무원] 탱탱쫄면 (4개입)</span><br />
+                  <span class="discount">10%</span>
+                  <span class="real-price">9,000원</span> <br />
+                  <span class="price">10,000 원</span><br />
+                  <span class="desc-2">튀기지 않아 부담없는 매콤함</span><br />
+                </div>
+                <div class="label-container">
+                  <span class="karly-only">Karly Only</span>
+                  <span class="limited">한정수량</span>
+                </div>
+              </a>
+            </li>
+            <li class="product-each">
+              <a href="/">
+                <figure>
+                  <img
+                    class="product-img"
+                    src="/src/assets/product-list/product-img.jpg"
+                    alt=""
+                  />
+                  <img
+                    class="cart-img"
+                    src="/src/assets/product-list/cart-img.png"
+                    alt=""
+                  />
+                </figure>
+                <div class="product-info">
+                  <span class="delivery">샛별배송</span><br />
+                  <span class="desc-1">[풀무원] 탱탱쫄면 (4개입)</span><br />
+                  <span class="discount">10%</span>
+                  <span class="real-price">9,000원</span> <br />
+                  <span class="price">10,000 원</span><br />
+                  <span class="desc-2">튀기지 않아 부담없는 매콤함</span><br />
+                </div>
+                <div class="label-container">
+                  <span class="karly-only">Karly Only</span>
+                  <span class="limited">한정수량</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+          <div class="page-controller">
+            <a href="/"><img src="/src/assets/product-list/<<.png" alt="" /></a>
+            <a href="/"><img src="/src/assets/product-list/<.png" alt="" /></a>
+            <a href="/">1</a>
+            <a href="/">2</a>
+            <a href="/">3</a>
+            <a href="/"><img src="/src/assets/product-list/>.png" alt="" /></a>
+            <a href="/"><img src="/src/assets/product-list/>>.png" alt="" /></a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
