@@ -3,6 +3,17 @@
 @tailwind utilities; */
 
 
+/* 투명 처리 */
+
+.hidden-button {
+  background-color: transparent; /* 버튼 배경색을 투명하게 만듭니다 */
+  border: none; /* 테두리를 제거합니다 */
+  cursor: pointer; /* 마우스 커서가 버튼 위에 올라갔을 때 포인터 모양으로 보이게 합니다 */
+  overflow: hidden; /* 이미지가 버튼의 크기를 넘어갈 경우 숨깁니다 */
+  padding: 0; /* 버튼 내부의 공간을 제거합니다 */
+}
+
+
 .header-bar {
   background: purple;
   text-align: center;
@@ -15,6 +26,10 @@
   text-align: center;
 }
 
+
+figure {
+  margin: 0;
+}
 /* 메인 swiper 스타일 */
 
 .swiper1 {
@@ -29,10 +44,11 @@
 }
 
 .swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 250px;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* text-align: flex-start; */
+  /* width: 250px; */
 }
 
 .swiper1 .swiper-slide img {
@@ -91,6 +107,8 @@
 
 
 .today-products {
+  display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -99,6 +117,12 @@
   padding-bottom: 60px;
 }
 
+.today-products-list {
+  
+  width: 1024px;
+  top: 0;
+  left: 0;
+}
 
 .today-products-title {
   color: var(--content, #333);
@@ -116,11 +140,7 @@
 
 
 
-
-swiper-button-prev{
-  background-image: url("/public/images/main/swiper-button2.svg");
-  
-}
+/* swiper 기본 스타일 제거 */
 
 .swiper-button-next::after,
 .swiper-button-prev::after {
@@ -144,13 +164,15 @@ swiper-button-prev{
 /* 상품 card 스타일 */
 
 
-/* .today-card {
+.today-card {
   display: flex;
   width: 250px;
   flex-direction: column;
-  align-items: start;
-  gap: 16px;
-} */
+  justify-content: center;
+
+  align-items: flex-start;
+  gap: 10px;
+}
 
 .brnad {
   color: var(--content, #333);
@@ -212,4 +234,12 @@ font-style: normal;
 font-weight: 600;
 line-height: 150%;
 
+}
+
+/* 장바구니 버튼 스타일 */
+
+.shop-button {
+  /* display: hidden; */
+  /* width: 45px;
+  height: 100px; */
 }
