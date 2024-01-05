@@ -34,26 +34,41 @@
 
 .header-ad{
   background-color: var(--primary, #5F0080);
-  display: flex;
   padding: 0 52px;
 }
+
+.header-ad-width{
+  width: 1050px;
+  display: flex;
+  justify-content: space-around;
+}
+
 
 .header-ad a{
   padding: 14px;
   color: #fff;
   text-decoration-line: none;
   text-align: center;
-  display: flex;
-  justify-content: center;
   margin: 0 auto;
   position: relative;
 }
 
+.header-ad button{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 42px;
+  height: 42px;
+}
 
+.header-wrapper{
+  width: 1250px;
+}
 
 .header-ad-btn, .search-wrapper button{
   border:0;
   background-color: transparent;
+  cursor: pointer;
 }
 
 .header-right, .header-center{
@@ -157,18 +172,17 @@
 .search {
   margin-right: 100px;
   width: 400px;
+  height: 50px;
   border-radius: 4px;
   border: 1px solid var(--primary, #5F0080);
   display: flex;
-
-}
-
-.search form{
-  display: inline;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .search button{
-  padding: 16px;
+  padding: 0;
+  margin: 10px;
 }
 
 .ect-menu{
@@ -185,7 +199,6 @@
   align-items: center;
   flex-flow: row nowrap;
   justify-content: center;
-  /* width: 1050px; */
   margin: 0 auto;
 }
 
@@ -217,10 +230,13 @@
   position: relative;
 }
 
-.nav-menu ul li{
+.nav-btn-ul{
   padding: 24px 16px;
   cursor: pointer;
   font-size: 16px;
+}
+
+.nav-btn-ul li{
   display: flex;
   align-items: center;
 }
@@ -236,16 +252,26 @@
 }
 
 .nav-menu-hide{
-  padding: 15px 20px;
   position: absolute;
   opacity: 0;
   transition: all ease 0.5s;
   z-index: 10;
   background: var(--white,#fff);
+  border: 1px solid var(--content, #333);
   flex-flow: column nowrap;
   font-size: 14px;
   top: 66px;
   width: 250px;
+  
+}
+
+.nav-menu-hide li{
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 8px 12px;
 }
 
 .nav-menu button img{
