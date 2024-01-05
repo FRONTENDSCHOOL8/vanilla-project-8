@@ -27,6 +27,9 @@
   --info-error: #f03f40;
 }
 
+.header{
+  box-shadow: 0 5px 20px #D9D9D9;
+}
 
 .divider{
   color: #D9D9D9;
@@ -253,7 +256,7 @@
 
 .nav-menu-hide{
   position: absolute;
-  opacity: 0;
+  /* opacity: 0; */
   transition: all ease 0.5s;
   z-index: 10;
   background: var(--white,#fff);
