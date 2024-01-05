@@ -3,9 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/styles/reset.css" />
+    <link rel="stylesheet" href="login.css" />
     <!-- 헤더 푸터 css 연결주소 설정 -->
-    <!-- <link rel="stylesheet" href="style.css" /> -->
-    <title>Document</title>
+    <title>login page</title>
   </head>
-  <body></body>
+  <body>
+    <main>
+      <div class="login">
+        <span>로그인</span>
+        <form action="">
+          <label for="email"></label>
+          <input type="email" placeholder="아이디를 입력해주세요" />
+          <label for="password"></label>
+          <input type="password" placeholder="비밀번호를 입력해주세요" />
+        </form>
+        <div class="find">
+          <a href="">아이디 찾기</a>
+          <span class="divider" aria-hidden="true">|</span>
+          <a href="">비밀번호 찾기</a>
+        </div>
+        <div class="login-register">
+          <button class="btn-login">로그인</button>
+          <a href="/"><button class="btn-register">회원가입</button></a>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
