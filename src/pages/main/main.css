@@ -57,24 +57,18 @@
 
 
 .swiper-button-prev {
-  padding: 20px;
-  background-color: gray;
-  border-radius: 50px ;
   justify-content: center;
   align-items: center;
-  opacity: 0.5;
+  opacity: 1;
   color: white;
   
 }
 
 
 .swiper-button-next {
-  padding: 20px;
-  background-color: gray;
-  border-radius: 50px;
   justify-content: center;
   align-items: center;
-  opacity: 0.5;
+  opacity: 1;
   color: white;
 }
 
@@ -100,7 +94,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: skyblue;
+  /* background: skyblue; */
   padding-top: 2.5rem;
   padding-bottom: 60px;
 }
@@ -115,15 +109,23 @@
   font-size: 28.43px;
   font-style: normal;
   font-weight: 700;
-  line-height: 140%; /* 39.802px */
+  line-height: 140%; 
+  /* 39.802px */
 }
 
 
-/* Swiper 이전 버튼의 화살표 크기 조절 */
-.swiper2 .swiper-button-prev::before {
-  font-size: 4px; /* 화살표의 크기를 조절하세요 */
+
+
+
+swiper-button-prev{
+  background-image: url("/public/images/main/swiper-button2.svg");
+  
 }
 
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
+}
 
 /* banner 스타일 */
 
@@ -136,4 +138,78 @@
   width: 1050px;
   height: 140px;
   margin: 40px auto;
+}
+
+
+/* 상품 card 스타일 */
+
+
+/* .today-card {
+  display: flex;
+  width: 250px;
+  flex-direction: column;
+  align-items: start;
+  gap: 16px;
+} */
+
+.brnad {
+  color: var(--content, #333);
+
+/* Paragraph/Medium */
+font-family: Pretendard;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 160%; /* 25.6px */
+}
+
+.desc {
+  color: var(--content, #333);
+
+/* Paragraph/Medium */
+font-family: Pretendard;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 160%; /* 25.6px */
+}
+
+.discount {
+  color: var(--accent-yellow, #FA622F);
+
+/* Label/Large */
+font-family: Pretendard;
+font-size: 21.328px;
+font-style: normal;
+font-weight: 600;
+line-height: 150%; /* 31.992px */
+}
+
+.price {
+  color: var(--content, #333);
+
+/* Label/Large */
+font-family: Pretendard;
+font-size: 21.328px;
+font-style: normal;
+font-weight: 600;
+line-height: 150%; /* 31.992px */
+}
+
+.real-price {
+  /* color: var(--gray-400, #898989);
+
+font-family: Pretendard;
+font-size: 12.003px;
+font-style: normal;
+font-weight: 400;
+line-height: 160%; */
+
+color: var(--content, #333);
+
+font-size: 21.328px;
+font-style: normal;
+font-weight: 600;
+line-height: 150%;
+
 }
