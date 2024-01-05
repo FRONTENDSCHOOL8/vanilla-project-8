@@ -8,7 +8,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         product: resolve(__dirname, 'src/pages/product/index.html'),
-        register: resolve(__dirname, 'src/pages/register/index.html'),
+        // register: resolve(__dirname, 'src/pages/register/index.html'),
         login: resolve(__dirname, 'src/pages/login/index.html'),
       },
     },
