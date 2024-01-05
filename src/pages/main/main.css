@@ -49,6 +49,7 @@ figure {
   /* align-items: center; */
   /* text-align: flex-start; */
   /* width: 250px; */
+  
 }
 
 .swiper1 .swiper-slide img {
@@ -130,7 +131,7 @@ figure {
   margin-bottom: 40px;
   /* Heading/XL */
   font-family: Pretendard;
-  font-size: 28.43px;
+  font-size: 23px;
   font-style: normal;
   font-weight: 700;
   line-height: 140%; 
@@ -227,13 +228,13 @@ font-style: normal;
 font-weight: 400;
 line-height: 160%; */
 
-color: var(--content, #333);
+color: var(--content, #898989);
 
-font-size: 21.328px;
+font-size: 0.875rem;
 font-style: normal;
-font-weight: 600;
+font-weight: 300;
 line-height: 150%;
-
+text-decoration: line-through;
 }
 
 /* 장바구니 버튼 스타일 */
@@ -243,3 +244,21 @@ line-height: 150%;
   /* width: 45px;
   height: 100px; */
 }
+
+.swiper-slide .shop-button2 {
+  
+}
+
+.card-shop {
+  position: relative;
+
+  & .shop-button2{
+    position: absolute;
+  background-image: url("/public/images/main/shop.svg");
+  width: 45px;
+  height: 45px;
+  bottom: 25px;
+  right: 15px;
+  }
+}
+
