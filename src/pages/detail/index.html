@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <title>Vite</title>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https://res.kurly.com/favicon.ico"
+    />
+    <link rel="stylesheet" href="/src/styles/reset.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="/src/pages/detail/detail.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>
+        <a href="/">Market Karly</a>
+      </h1>
+      <nav>
+        <ul>
+          <li><a href="/">HOME</a></li>
+          <li><a href="/src/pages/product/">PRODUCT</a></li>
+          <li><a href="/src/pages/detail/">DETAIL</a></li>
+          <li><a href="/src/pages/login/">LOGIN</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- 메인 -->
+    <div class="container">
+      <section class="product-info-container">
+        <img src="/public/images/detail/db/product-img.jpg" alt="상품 이미지" />
+        <div class="product-info">
+          <span class="delivery">샛별배송</span><br />
+          <span class="desc-1">[풀무원] 탱탱쫄면 (4개입)</span><br />
+          <span class="desc-2">튀기지 않아 부담없는 매콤함</span><br />
+          <span class="discount">10%</span>
+          <span class="real-price">9,000원</span> <br />
+          <span class="price">10,000 원</span><br />
+          <span class="accumulate">로그인 후, 적립 혜택이 제공됩니다.</span>
+
+          <div class="detail-info-container">
+            <p class="delivery-type">
+              <span>배송</span>
+              <span
+                >샛별배송<br />
+                <span class="detail">
+                  23시 전 주문 시 내일 아침 7시 전 도착<br />
+                  (대구･부산･울산 샛별배송 운영시간 별도 확인)</span
+                >
+              </span>
+            </p>
+            <p class="seller">
+              <span>판매자</span>
+              <span>칼리</span>
+            </p>
+            <p class="packing-type">
+              <span>포장타입</span>
+              <span
+                >상온(종이포장)<br />
+                <span class="detail">
+                  택배배송은 에코 포장이 스티로폼으로 대체됩니다.</span
+                >
+              </span>
+            </p>
+            <p class="sales-unit">
+              <span>판매단위</span>
+              <span>1봉</span>
+            </p>
+            <p class="weight">
+              <span>중량/용량</span>
+              <span>123g*4봉</span>
+            </p>
+            <p class="country-of-origin">
+              <span>원산지</span>
+              <span>상세페이지 별도표기</span>
+            </p>
+            <p class="allergy-info">
+              <span>알레르기정보</span>
+              <span class="detail">
+                -대두, 밀, 쇠고기 함유<br />
+                -계란, 우유, 메밀, 땅콩, 고등어, 게, 돼지고기, 새우, 복숭아,
+                토마토, 아황산류, 호두, 잣, 닭고기, 오징어, 조개류(굴, 전복,
+                홍합 포함)를 사용한 제품과 같은 제조시설에서 제조</span
+              >
+            </p>
+            <p class="select-product">
+              <span>상품선택</span>
+              <span class="amount-box">
+                [풀무원]탱탱쫄면 (4개입)<br />
+                <span class="count-box">
+                  <button class="minus">
+                    <img
+                      src="/public/images/detail/minus.svg"
+                      alt="수량내리기"
+                    />
+                  </button>
+                  <span>1</span>
+                  <button class="plus">
+                    <img
+                      src="/public/images/detail/plus.svg"
+                      alt="수량올리기"
+                    />
+                  </button>
+                </span>
+                <span class="total-price">4,980원</span>
+              </span>
+            </p>
+          </div>
+
+          <div class="total-container">
+            <div class="total-price">총 상품금액: <b>4,980원</b></div>
+            <div class="total-accumulate">
+              <b class="label">적립</b>로그인 후, 적립 혜택 제공
+            </div>
+          </div>
+          <div class="button-container">
+            <button class="like">
+              <img src="/public/images/detail/heart.svg" alt="찜하기 버튼" />
+            </button>
+            <button class="restock-alarm">
+              <img
+                src="/public/images/detail/alarm.svg"
+                alt="재입고 알림 버튼"
+              />
+            </button>
+            <button class="cart">장바구니 담기</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 상품 상세 설명 -->
+      <section class="product-explain-container">
+        <nav class="board-navigation">
+          <button class="explain is-active">상품설명</button>
+          <button class="detail-info">상세정보</button>
+          <button class="review">후기 <span>(1,000)</span></button>
+          <button class="contact">문의</button>
+        </nav>
+
+        <img
+          src="/public/images/detail/db/product-img-large.png"
+          alt="상품설명"
+        />
+        <div class="explain-description">
+          <small>튀기지 않아 부담없는 매콤함</small>
+          <h3>[풀무원] 탱탱쫄면</h3>
+          <p>
+            쫄면의 진가는 매콤새콤한 양념과 탱탱한 면발에서 찾을 수 있지요.
+            풀무원은 이 맛을 더 부담 없이 즐길 수 있도록 튀기지 않고 만든
+            탱탱쫄면을 선보입니다. 밀가루와 감자 전분을 적절히 배합해 탄력이
+            좋고, 입에 넣었을 때는 찰지게 씹히죠. 고추장을 넣어 숙성한 비빔장은
+            자연스럽고 깊은 맛을 냅니다. 간단하게 조리해 마지막 한 가닥까지
+            탱탱한 식감을 즐겨보세요. 취향에 따라 다양한 고명을 올려 드셔도
+            좋아요.
+          </p>
+        </div>
+
+        <div class="product-point">
+          <h3>
+            <span>Karly's Check Point</span>
+          </h3>
+          <img
+            src="/public/images/detail/db/product-point-img.png"
+            alt="체크포인트"
+          />
+        </div>
+
+        <div class="nutritional-info">
+          <img
+            src="/public/images/detail/db/product-nutritional-img.png"
+            alt="영양정보"
+          />
+        </div>
+
+        <div class="why-karly">
+          <span>WHY KARLY</span>
+        </div>
+
+        <div class="why-karly-container">
+          <dl>
+            <dt>
+              <img src="/public/images/detail/why-karly1.svg" alt="" />
+              깐깐한 상품위원회
+            </dt>
+            <dd>
+              나와 내 가족이 먹고 쓸 상품을 고르는 <br />
+              마음으로 매주 상품을 직접 먹어보고, <br />
+              경험해보고 성분, 맛 안정성 등 다각도의 <br />
+              기준을 통과한 상품만을 판매합니다.
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <img src="/public/images/detail/why-karly2.svg" alt="" />
+              차별화된 Karly Only 상품
+            </dt>
+            <dd>
+              전국 각지와 해외의 훌륭한 생산자가 <br />
+              믿고 선택하는 파트너, 마켓 칼리. <br />
+              3천여 개가 넘는 칼리 단독 브랜드, 스펙의 <br />
+              Karly Only 상품을 믿고 만나보세요.
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <img src="/public/images/detail/why-karly3.svg" alt="" />
+              신선한 풀콜드체인 배송
+            </dt>
+            <dd>
+              온라인 업계 최초로 산지에서 문 앞까지 <br />
+              상온, 냉장, 냉동 상품을 분리 포장 후 <br />
+              최적의 온도를 유지하는 냉장 배송 시스템, <br />
+              풀콜드체인으로 상품을 신선하게 전해드립니다.
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <img src="/public/images/detail/why-karly4.svg" alt="" />
+              고객, 생산자를 위한 최선의 가격
+            </dt>
+            <dd>
+              매주 대형 마트와 주요 온라인 마트의 가격 <br />
+              변동 상황을 확인해 신선식품은 품질을 <br />
+              타협하지 않는 선에서 최선의 가격으로, <br />
+              가공식품은 언제나 합리적인 가격으로 <br />
+              정기 조정합니다.
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <img src="/public/images/detail/why-karly5.svg" alt="" />
+              환경을 생각하는 지속 가능한 유통
+            </dt>
+            <dd>
+              친환경 포장재부터 생산자가 상품에만 <br />
+              집중할 수 있는 직매입 유통구조까지, <br />
+              지속 가능한 유통을 고민하며 컬리를 있게 <br />
+              하는 모든 환경(생산자,커뮤니티,직원)이 <br />
+              더 나아질 수 있도록 노력합니다.
+            </dd>
+          </dl>
+        </div>
+
+        <!-- 상품 후기 게시판 -->
+        <section class="review-board board">
+          <div class="board-container-left">
+            <h3>상품후기</h3>
+            <ul>
+              <span>글후기 50원 적립금 혜택이 있어요.</span>
+              <li>
+                퍼플, 더퍼플은 2배 적립 (100원) / 주간 베스트 후기로 선정 시
+                5,000원 추가 적립
+              </li>
+              <li>후기 작성은 배송완료일로부터 30일 이내 가능합니다.</li>
+              <li>
+                작성하신 후기는 확인 후 적립금이 지급됩니다. (영업일 기준 평균
+                1~2일 소요)
+              </li>
+            </ul>
+          </div>
+          <div class="board-container-right">
+            <a href="/">후기 작성하기</a>
+          </div>
+        </section>
+
+        <nav class="sort">
+          <span>총 2개</span>
+          <ul>
+            <li><a>추천순</a></li>
+            <li><a>최근 등록순</a></li>
+          </ul>
+        </nav>
+
+        <div class="notice">
+          <span>공지</span>
+          <p>금주의 베스트 후기 안내</p>
+        </div>
+        <div class="notice">
+          <span>공지</span>
+          <p>상품 후기 적립금 정책 안내</p>
+        </div>
+
+        <div class="registered-review">
+          <div class="review-left">
+            <span>베스트</span>
+            <span>퍼플</span>
+            <span>김*진</span>
+          </div>
+          <div class="review-right">
+            <span>[풀무원] 탱탱쫄면 (4개입)</span>
+            <span
+              >너무 맛있어여~ <br />
+              면이 쫄깃하고 양념도 짱맛나요!!</span
+            >
+            <span>2022.11.10</span>
+          </div>
+        </div>
+
+        <div class="registered-review">
+          <div class="review-left">
+            <span>베스트</span>
+            <span>퍼플</span>
+            <span>김*식</span>
+          </div>
+          <div class="review-right">
+            <span>[풀무원] 탱탱쫄면 (4개입)</span>
+            <span
+              >또 주문할 것 같습니다. <br />
+              너무 맛있어요 내 스타일이야~!</span
+            >
+            <span>2022.11.10</span>
+          </div>
+        </div>
+
+        <div class="registered-review">
+          <div class="review-left">
+            <span>베스트</span>
+            <span>퍼플</span>
+            <span>김*범</span>
+          </div>
+          <div class="review-right">
+            <span>[풀무원] 탱탱쫄면 (4개입)</span>
+            <span
+              >너무 맛있어여~ <br />
+              면이 쫄깃하고 양념도 짱맛나요!!</span
+            >
+            <span>2022.11.10</span>
+          </div>
+        </div>
+
+        <div class="arrow-button-container">
+          <button class="previous">
+            <img src="/public/images/detail/left-arrow.svg" alt="이전 페이지" />
+          </button>
+          <button class="next">
+            <img
+              src="/public/images/detail/right-arrow.svg"
+              alt="다음 페이지"
+            />
+          </button>
+        </div>
+
+        <section class="qa-board board">
+          <div class="board-container-left">
+            <h3>상품문의</h3>
+            <ul>
+              <li>
+                상품에 대한 문의를 남기는 공간입니다. 해당 게시판의 성격과 다른
+                글은 사전동의 없이 담당 게시판으로 이동될 수 있습니다.
+              </li>
+              <li>
+                배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 마이컬리
+                내 1:1 문의에 남겨주세요.
+              </li>
+            </ul>
+          </div>
+          <div class="board-container-right">
+            <a href="/">문의하기</a>
+          </div>
+        </section>
+
+        <div class="qa-title">
+          <span>제목</span>
+          <span>작성자</span>
+          <span>작성일</span>
+          <span>답변상태</span>
+        </div>
+
+        <div class="notice qa">
+          <div class="post-container-left">
+            <span>공지</span>
+            <p>판매 (일시) 중단 제품 안내 (22.11.10 업데이트)</p>
+          </div>
+          <div class="post-container-right">
+            <p>칼리</p>
+            <p>2017.02.01</p>
+            <p>-</p>
+          </div>
+        </div>
+
+        <div class="qa-post qa">
+          <div class="post-container-left">
+            <p>팩이 터져서 왔어요</p>
+          </div>
+          <div class="post-container-right">
+            <p>김*식</p>
+            <p>2022.11.11</p>
+            <p>답변대기</p>
+          </div>
+        </div>
+
+        <div class="qa-post qa">
+          <div class="post-container-left">
+            <p class="secret">비밀글입니다.</p>
+            <img src="/public/images/detail/lock.svg" alt="비밀글" />
+          </div>
+          <div class="post-container-right">
+            <p>김*진</p>
+            <p>2022.10.09</p>
+            <p>답변대기</p>
+          </div>
+        </div>
+
+        <div class="qa-post qa">
+          <div class="post-container-left">
+            <p class="secret">비밀글입니다.</p>
+            <img src="/public/images/detail/lock.svg" alt="비밀글" />
+          </div>
+          <div class="post-container-right">
+            <p>김*범</p>
+            <p>2022.09.13</p>
+            <p class="complete">답변완료</p>
+          </div>
+        </div>
+
+        <div class="qa-post qa">
+          <div class="post-container-left">
+            <p class="secret">비밀글입니다.</p>
+            <img src="/public/images/detail/lock.svg" alt="비밀글" />
+          </div>
+          <div class="post-container-right">
+            <p>심*범</p>
+            <p>2022.08.30</p>
+            <p class="complete">답변완료</p>
+          </div>
+        </div>
+
+        <div class="arrow-button-container">
+          <button class="previous">
+            <img src="/public/images/detail/left-arrow.svg" alt="이전 페이지" />
+          </button>
+          <button class="next">
+            <img
+              src="/public/images/detail/right-arrow.svg"
+              alt="다음 페이지"
+            />
+          </button>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

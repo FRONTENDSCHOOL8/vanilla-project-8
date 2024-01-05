@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
@@ -9,7 +9,6 @@
   <body>
     <header class="header">
       <div class="header-ad">
-        <!-- 쿠폰 광고 -->
         <a href="/">
           <span>
             지금 가입하고 인기상품
@@ -18,10 +17,13 @@
           </span>
         </a>
         <button class="header-ad-btn" type="button">
-          <svg>엑스 이미지 넣기</svg>
+          <img
+            src="../../../public/images/header/ico_close_fff_84x84 1.png"
+            alt="창닫기"
+          />
         </button>
       </div>
-      <ul>
+      <ul class="header-right">
         <li><a class="register" href="/">회원가입</a></li>
         <li>
           <span class="divider" aria-hidden="true">|</span>
@@ -31,7 +33,10 @@
           <span class="divider" aria-hidden="true">|</span>
           <a class="information" href="/"
             >고객센터
-            <!-- 아래로 표시하는 그림 어떻게 넣지?  -->
+            <img
+              src="../../../public/images/header/Icon_down 1.png"
+              alt=""
+            /><!-- 아래로 표시하는 그림 어떻게 넣지?  -->
           </a>
         </li>
       </ul>
@@ -41,45 +46,58 @@
           <a href="/">
             <picture>
               <!-- 로고 이미지 넣기 -->
-              <img src="./images/Logo.png" alt="마켓칼리" />
+              <img
+                src="../../../public/images/header/logo.svg"
+                alt="마켓칼리"
+              />
             </picture>
           </a>
         </h1>
         <button>마켓칼리</button>
         <span class="divider" aria-hidden="true">|</span>
-        <button>뷰티칼리</button>
-        <button>N</button>
+        <button>뷰티칼리<sup>N</sup></button>
 
         <div class="search">
-          <input type="button" placeholder="검색어를 입력해주세요" value="" />
-          <button type="submit"></button>
+          <input type="search" placeholder="검색어를 입력해주세요" value="" />
+          <button type="submit">
+            <img src="../../../public/images/header/glass.svg" alt="돋보기" />
+          </button>
         </div>
         <div class="ect-menu">
-          <button>지도 그림</button>
-          <button>하트 그림</button>
-          <button>장바구니 그림</button>
+          <a href=""
+            ><img src="../../../public/images/header/Group.svg" alt="지도"
+          /></a>
+          <a href=""
+            ><img src="../../../public/images/header/Heart.png" alt="하트"
+          /></a>
+          <a href=""
+            ><img src="../../../public/images/header/cart.svg" alt="장바구니"
+          /></a>
         </div>
       </div>
+      <div class="navigation">
+        <nav>
+          <div class="nav-menu">
+            <button>
+              <img
+                src="../../../public/images/header/Hamburger.svg"
+                alt="햄버거 메뉴바"
+              />
+              카테고리
+            </button>
 
-      <nav>
-        <div class="menu">
-          <div class="hamberger">
-            <!-- 햄버거 메뉴 이미지 -->
-            <img src="/" alt="" />
-            <span>카테고리</span>
+            <ul>
+              <li><a href="">신상품</a></li>
+              <li><a href="">베스트</a></li>
+              <li><a href="">알뜰쇼핑</a></li>
+              <li><a href="">특가/혜택</a></li>
+            </ul>
           </div>
-          <ul>
-            <li><a href="">신상품</a></li>
-            <li><a href="">베스트</a></li>
-            <li><a href="">알뜰쇼핑</a></li>
-            <li><a href="">특가/혜택</a></li>
-          </ul>
-        </div>
-      </nav>
-
-      <div class="package-info">
-        <span>샛별･낮</span>
-        배송안내
+        </nav>
+        <button>
+          <span>샛별･낮</span>
+          배송안내
+        </button>
       </div>
     </header>
   </body>
