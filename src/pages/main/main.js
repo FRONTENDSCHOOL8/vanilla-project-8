@@ -34,6 +34,8 @@ const todaySwiper = new Swiper('.swiper2', {
 
   slidesPerView: 4,
 
+  slidesPerGroup: 4,
+
   pagination: {
     el: '.swiper-pagination2',
     // type: "fraction",
