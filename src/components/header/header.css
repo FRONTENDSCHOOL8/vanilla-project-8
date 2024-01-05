@@ -28,6 +28,9 @@
 }
 
 
+.divider{
+  color: #D9D9D9;
+}
 
 .header-ad{
   background-color: var(--primary, #5F0080);
@@ -53,28 +56,49 @@
   background-color: transparent;
 }
 
-.header ul{
+.header-right, .header-center{
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 10px;
-  margin: 12px 0;
+  margin: 12px 70px;
 }
 
 .header ul a img {
   padding: 0 0 0 10px;
 }
 
-.header-right a{
+
+.register{
+  color: var(--primary, #5F0080);
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%; 
+}
+
+.login-btn, .information{
   color: var(--content, #333);
   font-family: Pretendard;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: 160%; 
-  text-decoration-line: none;
-  padding: 8px;
 }
+
+
+.header-right a{
+  text-decoration-line: none;
+  padding: 8px 0 8px 8px;
+}
+
+.header-right li{
+  display: flex;
+  align-items: center;
+  color: var(--content, #333);
+}
+
 
 .information{
   display: flex;
@@ -100,10 +124,6 @@
 
 .search-main button{
   font-size: 18px;
-}
-
-.search-main span{
-  color: #D9D9D9;
 }
 
 .market{
@@ -143,6 +163,10 @@
 
 }
 
+.search form{
+  display: inline;
+}
+
 .search button{
   padding: 16px;
 }
@@ -169,12 +193,12 @@
   display: flex;
 }
 
-.nav-menu ul{
+.header-center{
   display: flex;
   flex-grow: 1;
   gap: 80px;
   justify-content: center;
-  width: 850px;
+  width: 720px;
 }
 
 .nav-menu ul li a{
@@ -188,14 +212,42 @@
 }
 
 .nav-menu button{
+  border: 0;
+  background-color: transparent;
+  position: relative;
+}
+
+.nav-menu ul li{
   padding: 24px 16px;
   cursor: pointer;
   font-size: 16px;
-  border: 0;
-  background-color: transparent;
   display: flex;
   align-items: center;
 }
+
+.nav-menu button:hover{
+  color: var(--primary, #5F0080);
+}
+
+
+.nav-menu button:hover, .nav-menu-hide {
+  opacity: 1;
+
+}
+
+.nav-menu-hide{
+  padding: 15px 20px;
+  position: absolute;
+  opacity: 0;
+  transition: all ease 0.5s;
+  z-index: 10;
+  background: var(--white,#fff);
+  flex-flow: column nowrap;
+  font-size: 14px;
+  top: 66px;
+  width: 250px;
+}
+
 .nav-menu button img{
   margin: 0 8px 3px 0;
 }
