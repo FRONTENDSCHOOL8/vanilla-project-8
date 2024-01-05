@@ -1,0 +1,531 @@
+/* .container {
+  width: 100vw;
+  height: 100vh;
+} */
+
+.product-info-container {
+  display: flex;
+  width: 1050px;
+  height: 1055px;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding-top: 40px;
+
+  & img {
+    width: 400px;
+    height: 514px;
+  }
+}
+
+/* 상품 메인 정보  */
+.product-info {
+  width: 570px;
+  height: 1021px;
+
+  & span {
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+
+  & .delivery {
+    font-size: 18px;
+    color: #6B6B6B;
+  }
+
+  & .desc-1 {
+    font-size: 28px;
+  }
+
+  & .desc-2 {
+    color: #898989;
+    margin-bottom: 25px;
+  }
+
+  & .discount {
+    font-size: 28px;
+    color: #FA622F;
+    padding-right: 7px;
+  }
+
+  & .real-price {
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  & .price {
+    color: #898989;
+    text-decoration: line-through;
+  }
+
+  & .accumulate {
+    color: #5F0080;
+    margin: 20px 0px;
+  }
+}
+
+/* 상품 메인 정보 디테일 */
+.detail-info-container {
+  height: auto;
+  color: #6B6B6B;
+  font-size: 15px;
+
+  & p {
+    display: flex;
+    border-top: 1px solid #E1E1E1;
+    padding: 16px 0px;
+
+    & span {
+      margin-bottom: 0;
+    }
+
+    & span:first-child {
+      width: 128px;
+    }
+
+    & .detail {
+      font-size: 14px;
+      margin-top: 5px;
+      line-height: 1.4;
+    }
+  }
+
+  & .allergy-info {
+
+    & span:first-child {
+      width: 250px;
+    }
+
+    & .detail {
+      font-size: 13px;
+      margin: 0;
+    }
+  }
+
+  /* 수량 박스 */
+  & .select-product {
+    display: flex;
+    border-bottom: 1px solid #E1E1E1;
+
+    & .amount-box {
+      position: relative;
+      width: 432px;
+      border: 1px solid #E1E1E1;
+      padding: 16px;
+
+      & .total-price {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        margin: 12px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      & .count-box {
+        width: 90px;
+        border: 1px solid #E1E1E1;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 12px;
+        font-weight: 600;
+
+        & span {
+          padding: 0px 3px;
+        }
+
+        & button {
+          border: none;
+          background: transparent;
+
+          & img {
+            width: 28px;
+            height: 28px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.total-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 28px 0px;
+
+  & .total-price {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+
+    & b {
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.5;
+      margin-left: 17px;
+    }
+  }
+
+  & .total-accumulate {
+    display: flex;
+    align-items: center;
+
+    & .label {
+      background: #FA622F;
+      color: white;
+      font-size: 10px;
+      padding: 7px 8px;
+      border-radius: 15px;
+      margin: 0px 6px 2px 0px;
+    }
+  }
+}
+
+.button-container {
+  display: flex;
+  height: 54px;
+  padding-bottom: 48px;
+
+  & button {
+    width: 48px;
+    height: 48px;
+    background-color: transparent;
+    border: 1px solid #E1E1E1;
+    border-radius: 4px;
+    padding: 4px;
+  }
+
+  & button:first-child {
+
+    & img {
+      width: 36px;
+      height: 36px;
+      padding-top: 2px;
+    }
+  }
+
+  & button:nth-child(2) {
+    margin: 0px 10px;
+
+    & img {
+      width: 24.5px;
+      height: 26px;
+      padding: 7px;
+    }
+  }
+
+  & button:last-child {
+    width: 455px;
+    background: #5F0080;
+    border: 1px solid #5F0080;
+    color: #FFFFFF;
+    font-size: 16px;
+  }
+}
+
+
+/* 상품 상세 설명 */
+.product-explain-container {
+  width: 1050px;
+  height: 5000px;
+  margin: 0 auto;
+}
+
+.board-navigation {
+  width: 100%;
+  height: 54px;
+  display: flex;
+  margin-bottom: 40px;
+
+  & button {
+    width: 100%;
+    border: none;
+    background: #F9F9F9;
+    color: #333333;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0;
+    border: 1px solid #E1E1E1;
+
+    & span {
+      font-size: 13px;
+      font-weight: 400;
+    }
+  }
+}
+
+.explain-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 76px 0px 96px;
+  line-height: 1.4;
+
+  & small {
+    font-size: 28px;
+    font-weight: 500;
+  }
+
+  & h3 {
+    font-size: 50px;
+    font-weight: 600;
+    margin-bottom: 36px;
+  }
+
+  & p {
+    border-top: 1px solid #E1E1E1;
+    padding-top: 28px;
+  }
+}
+
+.product-point {
+  text-align: center;
+
+  & span {
+    display: inline-block;
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 68px;
+    background: #fff;
+  }
+
+  & img {
+    margin-left: 34px;
+  }
+}
+
+.nutritional-info {
+  margin-top: 96px;
+
+  & img {
+    margin-left: 25px;
+  }
+}
+
+.why-karly {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.why-karly-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 945px;
+  height: 570px;
+  margin: 0 auto;
+  margin-bottom: 84px;
+
+  & dl {
+    width: 315px;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+  }
+
+  & dt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 22px;
+    color: #5F0080;
+    font-weight: 600;
+    margin-bottom: 24px;
+
+    & img {
+      width: 40px;
+      height: 40px;
+      margin-top: 56px;
+      margin-bottom: 16px;
+    }
+  }
+
+  & dd {
+    color: #333333;
+    font-weight: 400;
+    line-height: 1.6;
+    text-align: center;
+  }
+}
+
+.board {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 52px;
+
+  & h3 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    font-weight: 700;
+  }
+
+  & span {
+    font-weight: 600;
+  }
+
+  & li {
+    list-style: inside;
+    font-size: 12px;
+    margin-top: 8px;
+    color: #6B6B6B;
+  }
+
+  & .board-container-right {
+    width: 155px;
+    height: 44px;
+    background: #5F0080;
+    border-radius: 4px;
+
+    & a {
+      height: 100%;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+
+.sort {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  padding: 56px 0px 16px 0px;
+  border-bottom: 1px solid black;
+
+  & ul {
+    display: flex;
+    align-items: center;
+    color: #A6A6A6;
+
+    & li {
+      padding: 0px 8px;
+      border-left: 1px solid #A6A6A6;
+      font-size: 16px;
+    }
+
+    & li:first-child {
+      border: none;
+      color: #000
+    }
+  }
+}
+
+.notice,
+.qa {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #E1E1E1;
+
+  & span {
+    background: #E1E1E1;
+    padding: 6px 8px 4px;
+    margin-right: 20px;
+    font-size: 12px;
+  }
+}
+
+.registered-review {
+  display: flex;
+  padding: 20px;
+  border-bottom: 1px solid #E1E1E1;
+
+  & .review-left {
+    margin-right: 82px;
+    font-size: 12px;
+
+    & span:first-child {
+      padding: 2px 8px;
+      background: #BD76FF;
+      color: #fff;
+    }
+
+    & span:nth-child(2) {
+      padding: 2px 8px;
+      color: #5F0080;
+      border: 1px solid #5F0080;
+      margin: 0px 5px;
+    }
+  }
+
+
+  & .review-right {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    color: #898989;
+
+    & span:nth-child(2) {
+      color: #000;
+      margin: 20px 0px;
+      line-height: 1.5;
+    }
+  }
+}
+
+.arrow-button-container {
+  display: flex;
+  justify-content: center;
+  margin: 16px 0px 72px;
+  gap: 16px;
+
+  & button {
+    width: 48px;
+    height: 48px;
+    background-color: transparent;
+    border: 1px solid #E1E1E1;
+    border-radius: 4px;
+  }
+}
+
+.qa-title {
+  display: flex;
+  margin-top: 56px;
+  padding: 20px;
+  border-top: 2px solid #000;
+  border-bottom: 1px solid #000;
+
+  & span {
+    display: flex;
+    justify-content: center;
+    width: 100px;
+  }
+
+  & span:first-child {
+    width: 742px;
+  }
+}
+
+.post-container-left {
+  width: 742px;
+  display: flex;
+  align-items: center;
+
+  & .secret {
+    color: #898989;
+  }
+
+  & img {
+    margin: 0px 0px 3px 13px;
+  }
+}
+
+.post-container-right {
+  display: flex;
+  color: #898989;
+
+  & p {
+    width: 98px;
+    display: flex;
+    justify-content: center;
+  }
+
+  & .complete {
+    color: #5F0080;
+  }
+}
