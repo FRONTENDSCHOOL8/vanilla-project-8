@@ -41,9 +41,8 @@
 }
 
 .header-ad-width{
-  width: 100%;
+  width: 88%;
   display: flex;
-  justify-content: space-around;
 }
 
 
@@ -56,8 +55,8 @@
 }
 
 .header-wrapper{
-  width: 100%;
-  height: 100%;
+  width: 1050px;
+  margin: 0 auto;
 }
 
 .header-ad-btn, .search-wrapper button{
@@ -71,7 +70,7 @@
   align-items: center;
   justify-content: flex-end;
   gap: 10px;
-  margin: 12px 90px 12px 60px;
+  margin: 12px 80px 12px 20px;
 
 }
 
@@ -79,7 +78,6 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  width: 87%;
   gap: 10px;
   }
 
@@ -204,6 +202,7 @@
   flex-flow: row nowrap;
   justify-content: center;
   margin: 0 auto;
+  width: 1050px;
 }
 
 .nav-menu{
@@ -259,7 +258,7 @@
   position: absolute;
   opacity: 0;
   transition: all ease 0.5s;
-  z-index: 10;
+  /* z-index: 10; */
   background: var(--white,#fff);
   border: 1px solid var(--content, #333);
   flex-flow: column nowrap;
