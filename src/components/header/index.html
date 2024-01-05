@@ -38,33 +38,38 @@
         </li>
       </ul>
       <div class="search-wrapper">
-        <h1 class="logo">
-          <!-- 메인페이지로 이동하는 주소 입력 -->
-          <a href="/">
-            <picture>
-              <img
-                src="../../../public/images/header/logo.svg"
-                alt="마켓칼리"
-              />
-            </picture>
-          </a>
-        </h1>
-        <button>마켓칼리</button>
-        <span class="divider" aria-hidden="true">|</span>
-        <button>뷰티칼리<sup>N</sup></button>
+        <div class="search-main">
+          <h1 class="logo">
+            <!-- 메인페이지로 이동하는 주소 입력 -->
+            <a href="/">
+              <picture>
+                <img
+                  src="../../../public/images/header/logo.svg"
+                  alt="마켓칼리"
+                />
+              </picture>
+            </a>
+          </h1>
+          <button class="market">마켓칼리</button>
+          <span class="divider" aria-hidden="true">|</span>
+          <button class="beauty">뷰티칼리<sup>N</sup></button>
+        </div>
 
         <div class="search">
-          <input type="search" placeholder="검색어를 입력해주세요" value="" />
-          <button type="submit">
-            <img src="../../../public/images/header/glass.svg" alt="돋보기" />
-          </button>
+          <form action="/" method="get">
+            <label for="search">검색어를 입력해주세요</label>
+            <input type="text" placeholder="검색어를 입력해주세요" />
+            <button type="submit">
+              <img src="../../../public/images/header/glass.svg" alt="돋보기" />
+            </button>
+          </form>
         </div>
         <div class="ect-menu">
           <a href=""
             ><img src="../../../public/images/header/Group.svg" alt="지도"
           /></a>
           <a href=""
-            ><img src="../../../public/images/header/Heart.png" alt="하트"
+            ><img src="../../../public/images/header/ic-heart.svg" alt="하트"
           /></a>
           <a href=""
             ><img src="../../../public/images/header/cart.svg" alt="장바구니"
@@ -76,8 +81,8 @@
           <div class="nav-menu">
             <button>
               <img
-                src="../../../public/images/header/Hamburger.svg"
-                alt="햄버거 메뉴바"
+                src="../../../public/images/header/hamberger.svg"
+                alt="카테고리 목록"
               />
               카테고리
             </button>
@@ -90,8 +95,8 @@
             </ul>
           </div>
         </nav>
-        <button>
-          <span>샛별･낮</span>
+        <button class="package">
+          <b>샛별･낮</b>
           배송안내
         </button>
       </div>
