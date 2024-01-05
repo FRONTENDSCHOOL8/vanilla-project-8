@@ -41,7 +41,7 @@
 }
 
 .header-ad-width{
-  width: 1050px;
+  width: 100%;
   display: flex;
   justify-content: space-around;
 }
@@ -53,19 +53,11 @@
   text-decoration-line: none;
   text-align: center;
   margin: 0 auto;
-  position: relative;
-}
-
-.header-ad button{
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  width: 42px;
-  height: 42px;
 }
 
 .header-wrapper{
-  width: 1250px;
+  width: 100%;
+  height: 100%;
 }
 
 .header-ad-btn, .search-wrapper button{
@@ -74,13 +66,22 @@
   cursor: pointer;
 }
 
-.header-right, .header-center{
+  .header-center{
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 10px;
-  margin: 12px 70px;
+  margin: 12px 90px 12px 60px;
+
 }
+
+  .header-right{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 87%;
+  gap: 10px;
+  }
 
 .header ul a img {
   padding: 0 0 0 10px;
@@ -256,7 +257,7 @@
 
 .nav-menu-hide{
   position: absolute;
-  /* opacity: 0; */
+  opacity: 0;
   transition: all ease 0.5s;
   z-index: 10;
   background: var(--white,#fff);
