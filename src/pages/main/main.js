@@ -39,9 +39,6 @@ const todaySwiper = new Swiper('.swiper2', {
     // type: "fraction",
   },
 
-  autoplay: {
-    delay: 7000,
-  },
   keyboard: {
     enabled: true, // 키보드 이벤트 활성화
   },
