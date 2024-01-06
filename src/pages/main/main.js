@@ -1,5 +1,6 @@
 import './main.css';
 import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs';
+import { getNode } from '/src/lib';
 
 const swiper = new Swiper('.swiper1', {
   // Optional parameters
@@ -66,3 +67,20 @@ const todaySwiper = new Swiper('.swiper2', {
 //     swiper2.keyboard.handleKeyboard(e);
 //   }
 // });
+let popupClose = getNode('.popup-button-close');
+const popup = getNode('.popup-modal');
+
+// 다이얼로그 버튼 이벤트 구현
+
+function hideDialog(e) {
+  const dialogBtn = e.target.value;
+  const dialog = e.currentTarget;
+
+  if (dialogBtn === 'cancel') {
+    // popup.style.display = 'none';
+    dialog.style.display = 'none';
+    console.log(dialog);
+  }
+}
+
+popup.addEventListener('click', hideDialog);
