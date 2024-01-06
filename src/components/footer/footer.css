@@ -129,6 +129,10 @@
   align-self: stretch;
 }
 
+.footer-wrapper3 img{
+  margin-right: 8px;
+}
+
 .footer-section3 p{
   text-align: center;
   color: var(--gray-400, #898989);
