@@ -232,29 +232,24 @@
   text-decoration-line: none;
 }
 
-.nav-menu button{
-  border: 0;
-  background-color: transparent;
-  position: relative;
-}
-
-.nav-btn-ul{
+.nav-menu-ul{
   padding: 24px 16px;
   cursor: pointer;
   font-size: 16px;
+  position: relative;
 }
 
-.nav-btn-ul li{
+.nav-menu-ul li{
   display: flex;
   align-items: center;
 }
 
-.nav-menu button:hover{
+.nav-menu-ul img:hover{
   color: var(--primary, #5F0080);
 }
 
 
-.nav-menu button:hover, .nav-menu-hide {
+.nav-menu-ul img:hover, .nav-menu-hide {
   opacity: 1;
 
 }
@@ -282,7 +277,7 @@
   padding: 8px 12px;
 }
 
-.nav-menu button img{
+.nav-menu-ul img{
   margin: 0 8px 3px 0;
 }
 
