@@ -426,3 +426,47 @@ text-decoration: line-through;
       color: #FFF;
   }
 }
+
+
+/* 팝업 광고창 스타일 */
+
+.popup-modal {
+
+  width: 440px;
+
+  & .popup-modal-image {
+    display: block;
+    background-image: url("/public/images/main/popup-image.jpg");
+    width: 440px;
+    height: 500px;
+  }
+
+
+  
+
+  & .popup-modal-button {
+    display: flex;
+    flex-flow: row;
+    gap: 8px;
+
+    & button {
+
+      width: 220px;
+      height: 86px;
+
+      border-right: 1px solid var(--gray-100, gray);
+      justify-content: center;
+      align-items: center;
+      align-self: stretch;
+
+      color: var(--content, #333);
+
+      /* Paragraph/Medium */
+      font-family: Pretendard;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 160%; /* 25.6px */
+    }
+  }
+}
