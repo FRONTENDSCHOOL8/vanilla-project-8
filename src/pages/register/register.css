@@ -1,0 +1,348 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	box-sizing: border-box;
+}
+
+button, input{
+  display: block;
+  box-sizing: border-box;
+
+  margin: 0;
+	padding: 0;
+	border: 0;
+
+	font-size: 100%;
+	font: inherit;
+}
+
+/* ------------------------------------------------ */
+.register-wrapper{
+  margin-top: 50px;
+}
+
+.register-title{
+  margin-bottom: 50px;
+  font-size: 28px;
+  line-height: 35px;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: -1px;
+  color: #333;
+}
+
+.register-content{
+  width: 640px;
+  margin: 0px auto;
+}
+
+
+/* content 1 : must */
+.must{
+  font-size: 12px;
+  line-height: 17px;
+  text-align: right;
+  color: rgb(102, 102, 102);
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgb(51, 51, 51);
+}
+
+.register-content .left strong,
+.register-content .must strong{
+  color: rgb(238, 106, 123);
+}
+
+
+
+/* content 2 : info */
+
+.info .wrapper{
+  padding: 10px 20px;
+  
+  display: flex;
+}
+
+/* left */
+.info .wrapper .left{
+  width: 25%;
+  padding: 12px 0px 0px;
+}
+
+.info .wrapper .left span{
+  font-weight: 500;
+  color: rgb(51, 51, 51);
+  line-height: 20px;
+
+  font-size: 14px;
+}
+
+/* middle */
+.info .wrapper .middle{
+  width: 55%;
+  font-size: 16px;
+}
+
+.info .wrapper .middle input{
+  width: 100%;
+  height: 46px;
+
+  padding: 0px 11px 0px 15px;
+  border-radius: 4px;
+  border: 1px solid rgb(221, 221, 221);
+  font-weight: 400;
+  color: rgb(51, 51, 51);
+  outline: none;
+
+  background-color: transparent;
+}
+
+/* middle - address.wrapper */
+button.search-address{
+  width: 100%;
+  height: 46px;
+
+  background: transparent;
+  border: 1px solid #5F0080;
+  border-radius: 4px;
+
+  color: #5F0080;
+  font-weight: 500;
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.info .address.wrapper .middle p{
+  margin-top: 10px;
+
+  font-size: 12px;
+  line-height: 18px; 
+  color: rgb(102, 102, 102);
+}
+
+/* middle - gender.wrapper & additional.wrapper */
+.info .gender.wrapper .middle,
+.info .additional.wrapper .middle{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.info .gender.wrapper .middle label,
+.info .additional.wrapper .middle label{
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  padding: 12px 0px 9px;
+
+  color: rgb(51, 51, 51);
+}
+
+.info .gender.wrapper .middle label input,
+.info .additional.wrapper .middle label input{
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(0px, 0px, 0px, 0px);
+}
+
+.info .gender.wrapper .middle label .radio-outer,
+.info .additional.wrapper .middle label .radio-outer{
+  min-width: 24px;
+  min-height: 24px;
+  position: relative;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid rgb(221, 221, 221);
+}
+
+.info .gender.wrapper .middle label .radio-inner,
+.info .additional.wrapper .middle label .radio-inner{
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.info .gender.wrapper .middle label span,
+.info .additional.wrapper .middle label span{
+  font-size: 14px;
+  position: relative;
+  margin-left: 12px;
+}
+
+/* middle - birth.wrapper */
+.info .birth.wrapper .middle{
+  height: 46px;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 3px;
+  padding: 0px 15px;
+}
+
+.info .birth.wrapper .middle input{
+  text-align: center;
+  border: none;
+  font-size: 14px;
+}
+
+.info .birth.wrapper .middle span{
+  color: rgb(204, 204, 204);
+  /* 마켓컬리 원본에 여기 line-height 주어져있는 이유 궁금! */
+  font-size: 14px;
+}
+
+/* right */
+.info .wrapper .right{
+  width: 20%;
+}
+
+.info .wrapper .right button{
+  width: 100%;
+  height: 46px;
+
+  margin-left: 8px;
+
+  background: transparent;
+  border: 1px solid #5F0080;
+  border-radius: 4px;
+
+  color: #5F0080;
+  font-weight: 500;
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.info .phone.wrapper .right button{
+  border-color: rgb(221, 221, 221);
+  color: rgb(221, 221, 221);
+  border-radius: 4px;
+}
+
+/* content 3 : agree */
+
+.agree{
+  padding: 10px 20px;
+
+  display: flex;
+}
+
+.agree .left{
+  width: 25%;
+  padding: 12px 0px 0px;
+
+  font-weight: 500;
+  color: rgb(51, 51, 51);
+  line-height: 20px;
+
+  font-size: 14px;
+}
+
+.agree .right{
+  width: 75%;
+}
+
+/* agree-all.wrapper */
+.agree .right .agree-all.wrapper{
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 12px 0px 9px;
+}
+
+.agree .right .agree-all.wrapper label span{
+  color: rgb(51, 51, 51);
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.agree .right .agree-all.wrapper p{
+  font-size: 12px;
+  color: rgb(102, 102, 102);
+  padding-top: 4px;
+  padding-left: 36px;
+}
+
+/* 그외 wrapper들 */
+/* nth-child(n+2) : 2번째부터 그 이후의 모든 선택자 */
+.agree .right .wrapper:nth-child(n+2){
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0px 9px;
+
+  font-size: 14px;
+}
+
+.agree .right .wrapper:nth-child(n+2) label em{
+  color: rgb(153, 153, 153);
+}
+
+/* 모든 wrapper들의 label 공통 */
+.agree .right .wrapper label{
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+
+  color: rgb(51, 51, 51);
+}
+
+.agree .right .wrapper label input{
+  overflow: hidden;
+  position: absolute;
+  clip: rect(0px, 0px, 0px, 0px);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+}
+
+.agree .right .wrapper label .checkbox{
+  margin-right: 10px;
+}
+
+.agree .right .wrapper a{
+  padding-right: 22px;
+  color: rgb(95, 0, 128);
+}
+
+.agree .right .wrapper a::after{
+  content: '';
+  background: url(/public/images/register/greater-than.svg) no-repeat;
+  display: inline-block;
+  width: 6px;
+  height: 10px;
+}
+
+/* content 4 : register */
+
+button.register{
+  display: block;
+  width: 240px;
+  height: 56px;
+  
+  text-align: center;
+  
+  border-radius: 3px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(95, 0, 128);
+
+  margin: 40px auto;
+}
