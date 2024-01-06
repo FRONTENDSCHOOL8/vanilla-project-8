@@ -74,6 +74,11 @@
 
 }
 
+.header-center a:hover{
+  color: var(--primary, #5F0080);
+  text-decoration-line: underline;
+}
+
   .header-right{
   display: flex;
   align-items: center;
