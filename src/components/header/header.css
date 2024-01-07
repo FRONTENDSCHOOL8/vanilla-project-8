@@ -164,7 +164,13 @@
   font-style: normal;
   font-weight: 600;
   line-height: 150%; /* 31.992px */
-  padding-bottom: 7px;
+  position: relative;
+}
+
+.beauty img{
+  position: absolute;
+  right: -5px;
+  top: -3px;
 }
 
 .beauty sup{
