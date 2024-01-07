@@ -248,12 +248,6 @@
   color: var(--primary, #5F0080);
 }
 
-
-.nav-menu-ul img:hover, .nav-menu-hide {
-  opacity: 1;
-
-}
-
 .nav-menu-hide{
   position: absolute;
   opacity: 0;
@@ -263,9 +257,14 @@
   border: 1px solid var(--content, #333);
   flex-flow: column nowrap;
   font-size: 14px;
-  top: 66px;
+  top: 190px;
+  left: 220px;
   width: 250px;
   
+}
+
+.nav-menu-hide li:first-child:hover{
+  background-color: var(--gray-100, #E1E1E1);
 }
 
 .nav-menu-hide li{
