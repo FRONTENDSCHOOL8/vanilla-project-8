@@ -1,3 +1,4 @@
+import './login.css';
 import { setDocumentTitle, getNode } from '/src/lib/index.js';
 // import gsap from 'gsap';
 
@@ -25,7 +26,7 @@ function pwReg(text) {
 //이메일, 패스워드, 로그인 버튼에 각각 클래스와 아이디 찾아서 변수 선언
 const email = getNode('#email');
 const pw = getNode('#password');
-const login = getNode('.btn-login');
+const login = getNode('#btn-login');
 //모달창 변수들
 const closeBtn = getNode('.button-close');
 const modal = getNode('.modal-bg');
@@ -44,17 +45,19 @@ function userLogin() {
 }
 
 //모달창 함수
-function showModal() {
+function showModal(e) {
+  e.preventDefault();
   modal.classList.remove('hidden');
   modal.classList.add('visible');
 }
 
-function closeModal() {
+function closeModal(e) {
+  e.preventDefault();
   modal.classList.add('hidden');
   modal.classList.remove('visible');
 }
 
 // login.addEventListener('click', handleLogin);
 //모달창 나타나기, 없애기
-login.addEventListener('click', showModal);
-closeBtn.addEventListener('click', closeModal);
+// login.addEventListener('click', showModal);
+// closeBtn.addEventListener('click', closeModal);
