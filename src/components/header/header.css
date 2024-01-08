@@ -41,8 +41,9 @@
 }
 
 .header-ad-width{
-  width: 88%;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -53,6 +54,11 @@
   text-align: center;
   margin: 0 auto;
 }
+
+.header-ad-btn{
+  margin-right: 130px;
+}
+
 
 .header-wrapper{
   width: 1050px;
