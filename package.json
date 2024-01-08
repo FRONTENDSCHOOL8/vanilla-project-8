@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "eslint": "^8.56.0",
+    "pocketbase": "^0.20.1",
     "prettier": "^3.1.1",
     "vite": "^5.0.8"
   }
