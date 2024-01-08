@@ -1,6 +1,6 @@
 import './main.css';
 import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs';
-import { getNode } from '/src/lib';
+import { getNode, getNodes, comma } from '/src/lib';
 
 const swiper = new Swiper('.swiper1', {
   // Optional parameters
@@ -84,3 +84,57 @@ function hideDialog(e) {
 }
 
 popup.addEventListener('click', hideDialog);
+
+// shop 버튼 닫기 이벤트
+
+let dialogClose = getNode('.add-cart');
+
+dialogClose.addEventListener('click', hideDialog);
+
+let cartBtn = document.querySelectorAll('.shop-button2');
+
+function viewDialog(e) {
+  dialogClose.style.display = 'flex';
+  const dialogBtn = e.target.currentTarget;
+  console.log(dialogBtn);
+}
+
+cartBtn.forEach(function (cartBtn) {
+  cartBtn.addEventListener('click', viewDialog);
+});
+
+const plusButton = getNode('.plus-button');
+const minusButton = getNode('.minus-button');
+const count = getNode('.count');
+const sum = getNode('.sum-value');
+
+function plusCount() {
+  let number = count.innerText;
+  if (number <= 2) {
+    number = parseInt(number) + 1;
+    console.log(number);
+    let sumvalue = sum.innerText;
+    sumvalue = parseInt(sumvalue) + parseInt(sumvalue);
+    count.innerText = number;
+    sum.innerText = sumvalue + '원';
+  }
+}
+
+function minusCount() {
+  let number = count.innerText;
+  if (number > 1) {
+    number = parseInt(number) - 1;
+    console.log(number);
+    let sumvalue = sum.innerText;
+    if (number !== 1) {
+      sumvalue = parseInt(sumvalue) / number;
+    } else {
+      sumvalue = parseInt(sumvalue) - parseInt(sumvalue) / 2;
+    }
+    count.innerText = number;
+    sum.innerText = sumvalue + '원';
+  }
+}
+
+plusButton.addEventListener('click', plusCount);
+minusButton.addEventListener('click', minusCount);

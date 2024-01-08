@@ -7,11 +7,12 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
-    <lint rel=""></lint>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css"
     />
+    <!-- <link rel="stylesheet" href="../../components/css/style.css" /> -->
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script type="module" src="/src/pages/main/main.js"></script>
@@ -19,9 +20,9 @@
   </head>
   <body>
     <header>
-      <div class="header-bar w-auto">
+      <!-- <div class="header-bar w-auto">
         지금 가입하고, <b>1만원 할인 쿠폰</b> 받아가세요
-      </div>
+      </div> -->
     </header>
 
     <main class="main-box h-screen bg-emerald-200">
@@ -456,52 +457,55 @@
       <input type="button" class="shop-button2 hidden-button" />
       <img src="/public/images/main/shop.svg" alt="" />
       <a href="/home/index.html">서브 페이지</a>
+    </main>
 
-      <div class="shop-list">
-        <div role="dialog" class="add-cart">
-          <div>
-            <span class="add-cart-name"
-              >[홍대주꾸미] 주꾸미 볶음 300g (냉동)</span
-            >
+    <div class="shop-list">
+      <div role="dialog" class="add-cart" aria-label="장바구니 버튼 클릭">
+        <div>
+          <span class="add-cart-name"
+            >[홍대주꾸미] 주꾸미 볶음 300g (냉동)</span
+          >
+        </div>
+
+        <div class="add-cart-sum">
+          <div class="price-list">
+            <span class="cart-price">5244원</span>
+            <span class="cart-realprice">6900원</span>
           </div>
-
-          <div class="add-cart-sum">
-            <div class="price-list">
-              <span class="cart-price">5244원</span>
-              <span class="cart-realprice">6900원</span>
-            </div>
-            <div class="count-button-list">
-              <button
-                type="button"
-                aria-label="수량 감소"
-                class="minus-button hidden-button"
-              ></button>
-              <span class="count">1</span>
-              <button
-                type="button"
-                aria-label="수량 증가"
-                class="plus-button hidden-button"
-              ></button>
-            </div>
-          </div>
-
-          <div class="sum">
-            <span class="sum-name">합계</span>
-            <span class="sum-value">6800원</span>
-          </div>
-
-          <div class="point">
-            <div class="point-badge">적립</div>
-            <span class="point-text">구매 시 5원 적립</span>
-          </div>
-
-          <div class="cart-button-list">
-            <button type="button" class="cart-button-cancel">취소</button>
-            <button type="button" class="cart-button-add">장바구니 담기</button>
+          <div class="count-button-list">
+            <button
+              type="button"
+              aria-label="수량 감소"
+              class="minus-button hidden-button"
+            ></button>
+            <span class="count">1</span>
+            <button
+              type="button"
+              aria-label="수량 증가"
+              class="plus-button hidden-button"
+            ></button>
           </div>
         </div>
+
+        <div class="sum">
+          <span class="sum-name">합계</span>
+          <span class="sum-value">6800원</span>
+        </div>
+
+        <div class="point">
+          <div class="point-badge">적립</div>
+          <span class="point-text">구매 시 5원 적립</span>
+        </div>
+
+        <div class="cart-button-list">
+          <button type="button" class="cart-button-cancel" value="cancel">
+            취소
+          </button>
+          <button type="button" class="cart-button-add">장바구니 담기</button>
+        </div>
       </div>
-    </main>
+    </div>
+
     <div
       class="popup-modal"
       role="dialog"
@@ -509,7 +513,11 @@
     >
       <a href="/" aria-label="뷰티칼리로 이동" class="popup-modal-image"></a>
       <div class="popup-modal-button">
-        <button type="button" class="hidden-button" value="1">
+        <button
+          type="button"
+          class="popup-button-today hidden-button"
+          value="1"
+        >
           오늘 하루 안보기
         </button>
         <button
@@ -521,6 +529,21 @@
         </button>
       </div>
     </div>
-    <footer></footer>
+
+    <div class="recent">
+      <button type="button" class="recent-up hidden-button">
+        <img src="/public/images/main/resent/resent-up.png" alt="" />
+      </button>
+      <div class="recent-text">최근 본 상품</div>
+      <div class="recent-list">
+        <ul>
+          <li>1</li>
+          <li>2</li>
+        </ul>
+      </div>
+      <button type="button" class="recent-down hidden-button">
+        <img src="/public/images/main/resent/resent-down.png" alt="" />
+      </button>
+    </div>
   </body>
 </html>
