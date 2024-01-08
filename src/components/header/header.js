@@ -1,4 +1,4 @@
-import '/src/components/header/header.css';
+// import '/src/components/header/header.css';
 import { getNode } from '/src/lib/index.js';
 
 const category = getNode('.nav-category');
