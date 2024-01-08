@@ -74,10 +74,16 @@
   .header-center{
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 10px;
+  justify-content: center;
+  gap: 80px;
+  width: 720px;
   margin: 12px 80px 12px 20px;
+}
 
+
+.center {
+  margin: 0;
+  width: 570px;
 }
 
 .header-center a:hover{
@@ -213,14 +219,30 @@
   margin-left: 16px;
 }
 
-.fixed{
-  position: sticky;
+.drop {
+  position: fixed;
+
+  animation: dropHeader 0.3s;}
+  
+  @keyframes dropHeader {
+    0% {
+      top: 0px;
+    }
+    100% {
+      top: 150px;
+    }
+  }
+
+  .fixed{
   width: 100%;
-  z-index: 10;
   background: white;
-  top: 0;
-  box-shadow: 0px 5px 15px -10px #D9D9D9;
-}
+  box-shadow: 0px 5px 15px -10px #D9D9D9;}
+
+  .fixed2{
+    width: 100%;
+    background: white;
+    box-shadow: 0px 5px 15px -10px #D9D9D9;
+  }
 
 .navigation{
   display: flex;
@@ -234,14 +256,8 @@
 
 .nav-menu{
   display: flex;
-}
-
-.header-center{
-  display: flex;
-  flex-grow: 1;
-  gap: 80px;
+  align-items: center;
   justify-content: center;
-  width: 720px;
 }
 
 .nav-menu ul li a{
@@ -258,7 +274,6 @@
   padding: 24px 16px;
   cursor: pointer;
   font-size: 16px;
-  position: relative;
 }
 
 .nav-menu-ul li{
@@ -271,10 +286,9 @@
 }
 
 .nav-menu-hide{
-  position: absolute;
+  position: fixed;
   opacity: 0;
   transition: all ease 0.5s;
-  /* z-index: 10; */
   background: var(--white,#fff);
   border: 1px solid var(--content, #333);
   flex-flow: column nowrap;
@@ -282,10 +296,9 @@
   top: 190px;
   left: 220px;
   width: 250px;
-  
 }
 
-.nav-menu-hide li:first-child:hover{
+.nav-menu-hide li:hover{
   background-color: var(--gray-100, #E1E1E1);
 }
 
@@ -316,6 +329,31 @@
   color: var(--primary, #5F0080);
 }
 
-.line{
-  
+#submit{
+  border:0;
+  background: transparent;
+  padding: 0;
+}
+
+#submit img{
+  height: 100%;
+}
+
+.input-wrapper{
+  padding-left: 12px;
+  font-size: 11px;
+}
+
+.search2{
+  width: 194px;
+  height: 36px;
+  border-radius: 4px;
+  border: 1px solid var(--primary, #5F0080);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search2 input{
+  border:0
 }

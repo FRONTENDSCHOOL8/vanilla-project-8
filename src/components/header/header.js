@@ -18,8 +18,23 @@ function closeAd() {
   navMenu.style.top = '150px';
 }
 
-category.addEventListener('mouseover', showNavMenu);
-navMenu.addEventListener('mouseover', showNavMenu);
-category.addEventListener('mouseout', closeNavMenu);
-navMenu.addEventListener('mouseout', closeNavMenu);
+category.addEventListener('mouseenter', showNavMenu);
+navMenu.addEventListener('mouseenter', showNavMenu);
+category.addEventListener('mouseleave', closeNavMenu);
+navMenu.addEventListener('mouseleave', closeNavMenu);
 button.addEventListener('click', closeAd);
+
+const header = getNode('.header');
+let headerHeight = header.offsetHeight;
+
+window.onscroll = function () {
+  let windowTop = window.scrollY;
+  if (windowTop >= headerHeight) {
+    header.classList.add('drop');
+    header.classList.add('fixed2');
+  } else {
+    header.classList.remove('drop');
+    header.classList.remove('fixed2');
+  }
+};
+//
