@@ -12,6 +12,7 @@ export default defineConfig({
         register: resolve(__dirname, 'src/pages/register/index.html'),
         login: resolve(__dirname, 'src/pages/login/index.html'),
         cart: resolve(__dirname, 'src/pages/cart/index.html'),
+        detail: resolve(__dirname, 'src/pages/detail/index.html'),
       },
     },
   },
