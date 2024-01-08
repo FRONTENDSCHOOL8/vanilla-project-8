@@ -1,4 +1,5 @@
-import { getNode } from '../../lib/index.js';
+import '/src/components/header/header.css';
+import { getNode } from '/src/lib/index.js';
 
 const category = getNode('.nav-category');
 const navMenu = getNode('.nav-menu-hide1');
@@ -24,10 +25,10 @@ function closeAd() {
   ad.style.display = 'none';
 }
 
-category.addEventListener('mouseenter', showNavMenu);
-category.addEventListener('mouseleave', closeNavMenu);
-navMenu2.addEventListener('mouseenter', showNavMenu2);
-navMenu2.addEventListener('mouseleave', closeNavMenu2);
+category.addEventListener('mouseover', showNavMenu);
+category.addEventListener('mouseout', closeNavMenu);
+navMenu2.addEventListener('mouseover', showNavMenu2);
+navMenu2.addEventListener('mouseout', closeNavMenu2);
 button.addEventListener('click', closeAd);
 
 // 아래는 스크롤에 따라 내려가면 카테고리 변화하는 코드

@@ -1,321 +1,400 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-  <title>회원가입 페이지</title>
-  <meta charset="UTF-8" />
-  <link
+  <head>
+    <title>회원가입 페이지</title>
+    <meta charset="UTF-8" />
+    <link
       rel="icon"
       type="image/svg+xml"
       href="https://res.kurly.com/favicon.ico"
-  />
-  <link rel="stylesheet" href="/src/styles/reset.css" />
-  <link rel="stylesheet" href="/src/styles/base.css" />
-  <link rel="stylesheet" href="/src//pages/register/register.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script type="module" src="/src/pages/register/register.js"></script>
-  <!-- 헤더 푸터 css 연결주소 설정 -->
-</head>
+    />
+    <link rel="stylesheet" href="/src/styles/reset.css" />
+    <link rel="stylesheet" href="/src/styles/base.css" />
+    <link rel="stylesheet" href="/src//pages/register/register.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="/src/pages/register/register.js"></script>
+    <!-- 헤더 푸터 css 연결주소 설정 -->
+  </head>
 
-<body>
-  <div class="register-wrapper">
+  <body>
+    <div class="register-wrapper">
+      <h2 class="register-title">회원가입</h2>
 
-    <h2 class="register-title">회원가입</h2>
+      <div class="register-content">
+        <div class="must"><strong>*</strong><span>필수입력사항</span></div>
 
-    <div class="register-content">
+        <div class="wrapper info">
+          <div class="wrapper id">
+            <div class="left">
+              <label for="id"><span>아이디</span><strong>*</strong></label>
+            </div>
 
-      <div class="must">
-        <strong>*</strong><span>필수입력사항</span>
-      </div>
+            <div class="middle">
+              <input type="text" id="id" placeholder="아이디를 입력해주세요." />
+            </div>
 
-      <div class="wrapper info">
-
-        <div class="wrapper id">
-          <div class="left">
-            <label for="id"><span>아이디</span><strong>*</strong></label>
+            <div class="right">
+              <button class="check-availability">중복확인</button>
+            </div>
           </div>
 
-          <div class="middle">
-            <input type="text" id="id" placeholder="아이디를 입력해주세요."/>
+          <div class="wrapper pwd">
+            <div class="left">
+              <label for="pwd"><span>비밀번호</span><strong>*</strong></label>
+            </div>
+
+            <div class="middle">
+              <input
+                type="password"
+                id="pwd"
+                placeholder="비밀번호를 입력해주세요."
+              />
+            </div>
+
+            <div class="right"></div>
           </div>
+
+          <div class="wrapper pwd-again">
+            <div class="left">
+              <label for="pwd-again"
+                ><span>비밀번호 확인</span><strong>*</strong></label
+              >
+            </div>
+
+            <div class="middle">
+              <input
+                type="password"
+                id="pwd-again"
+                placeholder="비밀번호를 한 번 더 입력해주세요."
+              />
+            </div>
+
+            <div class="right"></div>
+          </div>
+
+          <div class="wrapper name">
+            <div class="left">
+              <label for="name"><span>이름</span><strong>*</strong></label>
+            </div>
+
+            <div class="middle">
+              <input type="text" id="name" placeholder="이름을 입력해주세요." />
+            </div>
+
+            <div class="right"></div>
+          </div>
+
+          <div class="wrapper email">
+            <div class="left">
+              <label for="email"><span>이메일</span><strong>*</strong></label>
+            </div>
+
+            <div class="middle">
+              <input
+                type="text"
+                id="email"
+                placeholder="예: marketkurly@kurly.com"
+              />
+            </div>
+
+            <div class="right">
+              <button class="check-availability">중복확인</button>
+            </div>
+          </div>
+
+          <div class="wrapper phone">
+            <div class="left">
+              <label for="phone"><span>휴대폰</span><strong>*</strong></label>
+            </div>
+
+            <div class="middle">
+              <input
+                type="number"
+                id="phone"
+                placeholder="숫자만 입력해주세요."
+              />
+            </div>
+
+            <div class="right">
+              <button class="get-code">인증번호 받기</button>
+            </div>
+          </div>
+
+          <div class="wrapper address">
+            <div class="left"><span>주소</span><strong>*</strong></div>
+
+            <div class="middle">
+              <button class="search-address">주소 검색</button>
+              <p>배송지에 따라 상품 정보가 달라질 수 있습니다.</p>
+            </div>
+
+            <div class="right"></div>
+          </div>
+
+          <div class="wrapper gender">
+            <div class="left">
+              <span>성별</span>
+            </div>
+
+            <div class="middle">
+              <label for="male" class="male">
+                <input type="radio" id="male" />
+                <div class="radio-outer"><div class="radio-inner"></div></div>
+                <span>남자</span>
+              </label>
+
+              <label for="female" class="female">
+                <input type="radio" id="female" />
+                <div class="radio-outer"><div class="radio-inner"></div></div>
+                <span>여자</span>
+              </label>
+
+              <label for="do-not-choose" class="do-not-choose">
+                <input type="radio" id="do-not-choose" />
+                <div class="radio-outer"><div class="radio-inner"></div></div>
+                <span>선택안함</span>
+              </label>
+            </div>
+
+            <div class="right"></div>
+          </div>
+
+          <div class="wrapper birth">
+            <div class="left">
+              <span>생년월일</span>
+            </div>
+
+            <div class="middle">
+              <input type="text" id="year" placeholder="YYYY" maxlength="4" />
+              <span>/</span>
+              <input type="text" id="month" placeholder="MM" maxlength="2" />
+              <span>/</span>
+              <input type="text" id="day" placeholder="DD" maxlength="2" />
+            </div>
+
+            <div class="right"></div>
+          </div>
+
+          <div class="wrapper additional">
+            <div class="left">
+              <span>추가입력 사항</span>
+            </div>
+
+            <div class="middle">
+              <label for="referral-id" class="referral-id">
+                <input type="radio" id="referral-id" />
+                <div class="radio-outer"><div class="radio-inner"></div></div>
+                <span>친구초대 추천인 아이디</span>
+              </label>
+
+              <label for="event-name" class="event-name">
+                <input type="radio" id="event-name" />
+                <div class="radio-outer"><div class="radio-inner"></div></div>
+                <span>참여 이벤트명</span>
+              </label>
+            </div>
+
+            <div class="right"></div>
+          </div>
+        </div>
+
+        <div class="wrapper agree">
+          <div class="left"><span>이용약관동의</span><strong>*</strong></div>
 
           <div class="right">
-            <button class="check-availability">중복확인</button>
+            <div class="wrapper agree-all">
+              <label for="agree-all">
+                <input type="checkbox" id="agree-all" />
+                <div class="checkbox">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    ;
+                    <g clip-path="url(#clip0_42_2299)">
+                      <path
+                        d="M12 23.5C18.3513 23.5 23.5 18.3513 23.5 12C23.5 5.64873 18.3513 0.5 12 0.5C5.64873 0.5 0.5 5.64873 0.5 12C0.5 18.3513 5.64873 23.5 12 23.5Z"
+                        stroke="#C4C4C4"
+                      />
+                      <path
+                        d="M7 12.667L10.385 16L18 8.5"
+                        stroke="#C4C4C4"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_42_2299">
+                        <rect width="24" height="24" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
+                <span>전체 동의합니다.</span>
+              </label>
+              <p>
+                선택항목에 등의하지 않은 경우도 회원가입 및 일반적인 서비스를
+                이용할 수 있습니다.
+              </p>
+            </div>
+
+            <div class="wrapper agree-use">
+              <label for="agree-use">
+                <input type="checkbox" id="agree-use" />
+                <div class="checkbox">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    ;
+                    <g clip-path="url(#clip0_42_2299)">
+                      <path
+                        d="M12 23.5C18.3513 23.5 23.5 18.3513 23.5 12C23.5 5.64873 18.3513 0.5 12 0.5C5.64873 0.5 0.5 5.64873 0.5 12C0.5 18.3513 5.64873 23.5 12 23.5Z"
+                        stroke="#C4C4C4"
+                      />
+                      <path
+                        d="M7 12.667L10.385 16L18 8.5"
+                        stroke="#C4C4C4"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_42_2299">
+                        <rect width="24" height="24" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
+                <span>이용약관 동의</span><em>&nbsp;(필수)</em>
+              </label>
+              <a class="view-terms"> 약관보기&nbsp; </a>
+            </div>
+
+            <div class="wrapper agree-personal">
+              <label for="agree-personal">
+                <input type="checkbox" id="agree-personal" />
+                <div class="checkbox">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    ;
+                    <g clip-path="url(#clip0_42_2299)">
+                      <path
+                        d="M12 23.5C18.3513 23.5 23.5 18.3513 23.5 12C23.5 5.64873 18.3513 0.5 12 0.5C5.64873 0.5 0.5 5.64873 0.5 12C0.5 18.3513 5.64873 23.5 12 23.5Z"
+                        stroke="#C4C4C4"
+                      />
+                      <path
+                        d="M7 12.667L10.385 16L18 8.5"
+                        stroke="#C4C4C4"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_42_2299">
+                        <rect width="24" height="24" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
+                <span>개인정보 수집 · 이용 동의</span><em>&nbsp;(필수)</em>
+              </label>
+              <a class="view-terms"> 약관보기&nbsp; </a>
+            </div>
+
+            <div class="wrapper agree-benefits">
+              <label for="agree-benefits">
+                <input type="checkbox" id="agree-benefits" />
+                <div class="checkbox">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    ;
+                    <g clip-path="url(#clip0_42_2299)">
+                      <path
+                        d="M12 23.5C18.3513 23.5 23.5 18.3513 23.5 12C23.5 5.64873 18.3513 0.5 12 0.5C5.64873 0.5 0.5 5.64873 0.5 12C0.5 18.3513 5.64873 23.5 12 23.5Z"
+                        stroke="#C4C4C4"
+                      />
+                      <path
+                        d="M7 12.667L10.385 16L18 8.5"
+                        stroke="#C4C4C4"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_42_2299">
+                        <rect width="24" height="24" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
+                <span>무료배송, 할인쿠폰 등 혜택/정보 수신 동의</span
+                ><em>&nbsp;(선택)</em>
+              </label>
+              <a class="view-terms"> 약관보기&nbsp; </a>
+            </div>
+
+            <div class="wrapper agree-age">
+              <label for="agree-age">
+                <input type="checkbox" id="agree-age" />
+                <div class="checkbox">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    ;
+                    <g clip-path="url(#clip0_42_2299)">
+                      <path
+                        d="M12 23.5C18.3513 23.5 23.5 18.3513 23.5 12C23.5 5.64873 18.3513 0.5 12 0.5C5.64873 0.5 0.5 5.64873 0.5 12C0.5 18.3513 5.64873 23.5 12 23.5Z"
+                        stroke="#C4C4C4"
+                      />
+                      <path
+                        d="M7 12.667L10.385 16L18 8.5"
+                        stroke="#C4C4C4"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_42_2299">
+                        <rect width="24" height="24" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
+                <span>본인은 만 14세 이상입니다.</span><em>&nbsp;(필수)</em>
+              </label>
+              <a class="view-terms"> 약관보기&nbsp; </a>
+            </div>
           </div>
         </div>
 
-        <div class="wrapper pwd">
-          <div class="left">
-            <label for="pwd"><span>비밀번호</span><strong>*</strong></label>
-          </div>
-
-          <div class="middle">
-            <input type="password" id="pwd" placeholder="비밀번호를 입력해주세요."/>
-          </div>
-
-          <div class="right"></div>
-        </div>
-
-        <div class="wrapper pwd-again">
-          <div class="left">
-            <label for="pwd-again"><span>비밀번호 확인</span><strong>*</strong></label>
-          </div>
-
-          <div class="middle">
-            <input type="password" id="pwd-again" placeholder="비밀번호를 한 번 더 입력해주세요."/>
-          </div>
-
-          <div class="right"></div>
-        </div>
-
-        <div class="wrapper name">
-          <div class="left">
-            <label for="name"><span>이름</span><strong>*</strong></label>
-          </div>
-
-          <div class="middle">
-            <input type="text" id="name" placeholder="이름을 입력해주세요."/>
-          </div>
-
-          <div class="right"></div>
-        </div>
-
-        <div class="wrapper email">
-          <div class="left">
-            <label for="email"><span>이메일</span><strong>*</strong></label>
-          </div>
-
-          <div class="middle">
-            <input type="text" id="email" placeholder="예: marketkurly@kurly.com" />
-          </div>
-
-          <div class="right">
-            <button class="check-availability">중복확인</button>
-          </div>
-        </div>
-
-        <div class="wrapper phone">
-          <div class="left">
-            <label for="phone"><span>휴대폰</span><strong>*</strong></label>
-          </div>
-
-          <div class="middle">
-            <input type="number" id="phone" placeholder="숫자만 입력해주세요."/>
-          </div>
-
-          <div class="right">
-            <button class="get-code">인증번호 받기</button>
-          </div>
-        </div>
-
-        <div class="wrapper address">
-          <div class="left">
-            <span>주소</span><strong>*</strong>
-          </div>
-
-          <div class="middle">
-            <button class="search-address">주소 검색</button>
-            <p>배송지에 따라 상품 정보가 달라질 수 있습니다.</p>
-          </div>
-
-          <div class="right"></div>
-        </div>
-
-        <div class="wrapper gender">
-          <div class="left">
-            <span>성별</span>
-          </div>
-
-          <div class="middle">
-            <label for="male" class="male">
-              <input type="radio" id="male"/>
-              <div class="radio-outer"><div class="radio-inner"></div></div>
-              <span>남자</span>
-            </label>
-
-            <label for="female" class="female">
-              <input type="radio" id="female"/>
-              <div class="radio-outer"><div class="radio-inner"></div></div>
-              <span>여자</span>
-            </label>
-
-            <label for="do-not-choose" class="do-not-choose">
-              <input type="radio" id="do-not-choose"/>
-              <div class="radio-outer"><div class="radio-inner"></div></div>
-              <span>선택안함</span>
-            </label>
-          </div>
-
-          <div class="right"></div>
-        </div>
-
-        <div class="wrapper birth">
-          <div class="left">
-            <span>생년월일</span>
-          </div>
-          
-          <div class="middle">
-            <input type="text" id="year" placeholder="YYYY" maxlength="4"/>
-            <span>/</span>
-            <input type="text" id="month" placeholder="MM" maxlength="2"/>
-            <span>/</span>
-            <input type="text" id="day" placeholder="DD" maxlength="2"/>
-          </div>
-
-          <div class="right"></div>
-        </div>
-
-        <div  class="wrapper additional">
-          <div class="left">
-            <span>추가입력 사항</span>
-          </div>
-
-          <div class="middle">
-            <label for="referral-id" class="referral-id">
-              <input type="radio" id="referral-id"/>
-              <div class="radio-outer"><div class="radio-inner"></div></div>
-              <span>친구초대 추천인 아이디</span>
-            </label>
-
-            <label for="event-name" class="event-name">
-              <input type="radio" id="event-name"/>
-              <div class="radio-outer"><div class="radio-inner"></div></div>
-              <span>참여 이벤트명</span>
-            </label>
-          </div>
-
-          <div class="right"></div>
-        </div>
-
+        <button class="register" type="submit">가입하기</button>
       </div>
-
-      <div class="wrapper agree">
-        <div class="left">
-          <span>이용약관동의</span><strong>*</strong>
-        </div>
-
-        <div class="right">
-          <div class="wrapper agree-all">
-            <label for="agree-all">
-              <input type="checkbox" id="agree-all"/>
-              <div class="checkbox">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">;
-                <g clip-path="url(#clip0_42_2299)">
-                <path d="M12 23.5C18.3513 23.5 23.5 18.3513 23.5 12C23.5 5.64873 18.3513 0.5 12 0.5C5.64873 0.5 0.5 5.64873 0.5 12C0.5 18.3513 5.64873 23.5 12 23.5Z" stroke="#C4C4C4"/>
-                <path d="M7 12.667L10.385 16L18 8.5" stroke="#C4C4C4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_42_2299">
-                <rect width="24" height="24" fill="white"/>
-                </clipPath>
-                </defs>
-                </svg>
-              </div>
-              <span>전체 동의합니다.</span>
-            </label>
-            <p>선택항목에 등의하지 않은 경우도 회원가입 및 일반적인 서비스를 이용할 수 있습니다.</p>
-          </div>
-
-          <div class="wrapper agree-use">
-            <label for="agree-use">
-              <input type="checkbox" id="agree-use" />
-              <div class="checkbox">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">;
-                <g clip-path="url(#clip0_42_2299)">
-                <path d="M12 23.5C18.3513 23.5 23.5 18.3513 23.5 12C23.5 5.64873 18.3513 0.5 12 0.5C5.64873 0.5 0.5 5.64873 0.5 12C0.5 18.3513 5.64873 23.5 12 23.5Z" stroke="#C4C4C4"/>
-                <path d="M7 12.667L10.385 16L18 8.5" stroke="#C4C4C4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_42_2299">
-                <rect width="24" height="24" fill="white"/>
-                </clipPath>
-                </defs>
-                </svg>
-              </div>
-              <span>이용약관 동의</span><em>&nbsp(필수)</em>
-            </label>
-            <a class="view-terms">
-              약관보기&nbsp
-            </a>
-          </div>
-
-          <div class="wrapper agree-personal">
-            <label for="agree-personal">
-              <input type="checkbox" id="agree-personal"/>
-              <div class="checkbox">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">;
-                <g clip-path="url(#clip0_42_2299)">
-                <path d="M12 23.5C18.3513 23.5 23.5 18.3513 23.5 12C23.5 5.64873 18.3513 0.5 12 0.5C5.64873 0.5 0.5 5.64873 0.5 12C0.5 18.3513 5.64873 23.5 12 23.5Z" stroke="#C4C4C4"/>
-                <path d="M7 12.667L10.385 16L18 8.5" stroke="#C4C4C4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_42_2299">
-                <rect width="24" height="24" fill="white"/>
-                </clipPath>
-                </defs>
-                </svg>
-              </div>
-              <span>개인정보 수집 · 이용 동의</span><em>&nbsp(필수)</em>
-            </label>
-            <a class="view-terms">
-              약관보기&nbsp
-            </a>
-          </div>
-
-          <div class="wrapper agree-benefits">
-            <label for="agree-benefits">
-              <input type="checkbox" id="agree-benefits"/>
-              <div class="checkbox">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">;
-                <g clip-path="url(#clip0_42_2299)">
-                <path d="M12 23.5C18.3513 23.5 23.5 18.3513 23.5 12C23.5 5.64873 18.3513 0.5 12 0.5C5.64873 0.5 0.5 5.64873 0.5 12C0.5 18.3513 5.64873 23.5 12 23.5Z" stroke="#C4C4C4"/>
-                <path d="M7 12.667L10.385 16L18 8.5" stroke="#C4C4C4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_42_2299">
-                <rect width="24" height="24" fill="white"/>
-                </clipPath>
-                </defs>
-                </svg>
-              </div>
-              <span>무료배송, 할인쿠폰 등 혜택/정보 수신 동의</span><em>&nbsp(선택)</em>
-            </label>
-            <a class="view-terms">
-              약관보기&nbsp
-            </a>
-          </div>
-
-          <div class="wrapper agree-age">
-            <label for="agree-age">
-              <input type="checkbox" id="agree-age"/>
-              <div class="checkbox">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">;
-                <g clip-path="url(#clip0_42_2299)">
-                <path d="M12 23.5C18.3513 23.5 23.5 18.3513 23.5 12C23.5 5.64873 18.3513 0.5 12 0.5C5.64873 0.5 0.5 5.64873 0.5 12C0.5 18.3513 5.64873 23.5 12 23.5Z" stroke="#C4C4C4"/>
-                <path d="M7 12.667L10.385 16L18 8.5" stroke="#C4C4C4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_42_2299">
-                <rect width="24" height="24" fill="white"/>
-                </clipPath>
-                </defs>
-                </svg>
-              </div>
-              <span>본인은 만 14세 이상입니다.</span><em>&nbsp(필수)</em>
-            </label>
-            <a class="view-terms">
-              약관보기&nbsp
-            </a>
-          </div>
-
-        </div>
-      </div>
-
-      <button class="register" type="submit">가입하기</button>
-
     </div>
-    
-  </div>
-
-</body>
-
+  </body>
 </html>

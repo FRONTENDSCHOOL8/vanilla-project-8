@@ -1,6 +1,6 @@
-import './main.css';
+import '/src/pages/main/main.css';
 import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs';
-import { getNode, getNodes, comma } from '/src/lib';
+import { getNode, getNodes, comma } from '/src/lib/index.js';
 
 const swiper = new Swiper('.swiper1', {
   // Optional parameters
