@@ -1,38 +1,39 @@
 import { getNode } from '../../lib/index.js';
 
-const category = getNode('.nav-menu-ul');
+const category = getNode('.nav-category');
 const navMenu = getNode('.nav-menu-hide1');
 const navMenu2 = getNode('.nav-menu-hide2');
 const button = getNode('.header-ad-btn');
 const ad = getNode('.header-ad');
 
 function showNavMenu() {
-  navMenu.style.opacity = 1;
-  navMenu2.style.opacity = 1;
+  navMenu.style.display = 'block';
+}
+function showNavMenu2() {
+  navMenu2.style.display = 'block';
 }
 
 function closeNavMenu() {
-  navMenu.style.opacity = 0;
-  navMenu2.style.opacity = 0;
+  navMenu.style.display = 'none';
+}
+function closeNavMenu2() {
+  navMenu2.style.opacity = 'none';
 }
 
 function closeAd() {
   ad.style.display = 'none';
-  navMenu.style.top = '150px';
-  navMenu2.style.top = '230px';
 }
 
-// category.addEventListener('mouseenter', showNavMenu);
-// navMenu.addEventListener('mouseenter', showNavMenu);
-// navMenu2.addEventListener('mouseenter', showNavMenu);
-// category.addEventListener('mouseleave', closeNavMenu);
-// navMenu.addEventListener('mouseleave', closeNavMenu);
-// navMenu2.addEventListener('mouseleave', closeNavMenu);
+category.addEventListener('mouseenter', showNavMenu);
+category.addEventListener('mouseleave', closeNavMenu);
+navMenu2.addEventListener('mouseenter', showNavMenu2);
+navMenu2.addEventListener('mouseleave', closeNavMenu2);
 button.addEventListener('click', closeAd);
+
+// 아래는 스크롤에 따라 내려가면 카테고리 변화하는 코드
 
 const header = getNode('.header');
 const category2 = getNode('.fixed2');
-const nav = getNode('.navigation');
 let headerHeight = header.offsetHeight;
 
 window.onscroll = function () {
@@ -45,4 +46,3 @@ window.onscroll = function () {
     category2.style.display = 'none';
   }
 };
-//

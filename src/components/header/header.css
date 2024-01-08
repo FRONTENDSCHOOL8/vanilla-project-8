@@ -27,10 +27,6 @@
   --info-error: #f03f40;
 }
 
-.header{
-  position: relative;
-}
-
 .divider{
   color: #D9D9D9;
 }
@@ -237,6 +233,7 @@
   }
 
 .navigation{
+  position: relative;
   display: flex;
   align-items: center;
   flex-flow: row nowrap;
@@ -278,14 +275,13 @@
 
 .nav-menu-hide1{
   position: absolute;
-  opacity: 0;
-  transition: all ease 0.5s;
+  display: none;
   background: var(--white,#fff);
   border: 1px solid var(--content, #333);
   flex-flow: column nowrap;
   font-size: 14px;
-  top: 190px;
-  left: 220px;
+  top: 50px;
+  left: 30px;
   width: 250px;
 }
 
@@ -310,8 +306,8 @@
   border: 1px solid var(--content, #333);
   flex-flow: column nowrap;
   font-size: 14px;
-  top: 270px;
-  left: 220px;
+  top: 50px;
+  left: 30px;
   width: 250px;
 }
 
