@@ -1,5 +1,5 @@
-import '/src/components/header/header.js';
-import { getNode } from '/src/lib';
+import '/src/components/header/header.css';
+import { getNode } from '/src/lib/index.js';
 
 const category = getNode('.nav-category');
 const navMenu = getNode('.nav-menu-hide1');

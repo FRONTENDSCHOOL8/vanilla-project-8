@@ -1,4 +1,4 @@
-import { setDocumentTitle, getNode } from '../../lib/index.js';
+import { setDocumentTitle, getNode } from '/src/lib/index.js';
 // import gsap from 'gsap';
 
 setDocumentTitle('로그인 - 컬리');
