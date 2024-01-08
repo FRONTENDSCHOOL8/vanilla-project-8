@@ -54,7 +54,7 @@ function closeModal() {
   modal.classList.remove('visible');
 }
 
-login.addEventListener('click', handleLogin);
+// login.addEventListener('click', handleLogin);
 //모달창 나타나기, 없애기
 login.addEventListener('click', showModal);
 closeBtn.addEventListener('click', closeModal);
