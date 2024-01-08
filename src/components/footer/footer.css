@@ -39,8 +39,21 @@
   color: var(--content, #333);
 }
 
+
   .question, .question-one, .question-order{
     display: flex;
+  }
+  
+  .question a, .question-one a, .question-order a{
+  width: 140px;
+  height: 40px;
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+  background-color: transparent;
+  line-height: 39px;
+  text-align: center;
+  margin-right: 16px;
+  margin-bottom: 16px;
   }
 
   .question-p, .question-one-p, .question-order-p {
@@ -127,6 +140,10 @@
   align-items: center;
   gap: 8px;
   align-self: stretch;
+}
+
+.footer-wrapper3 img{
+  margin-right: 8px;
 }
 
 .footer-section3 p{
