@@ -1,12 +1,7 @@
-/* .container {
-  width: 100vw;
-  height: 100vh;
-} */
-
 .product-info-container {
   display: flex;
   width: 1050px;
-  height: 1055px;
+  height: 1200px;
   justify-content: space-between;
   margin: 0 auto;
   padding-top: 40px;
@@ -228,7 +223,6 @@
 /* 상품 상세 설명 */
 .product-explain-container {
   width: 1050px;
-  height: 5000px;
   margin: 0 auto;
 }
 
@@ -473,6 +467,10 @@
   justify-content: center;
   margin: 16px 0px 72px;
   gap: 16px;
+
+  &.qa-button {
+    margin-bottom: 92px;
+  }
 
   & button {
     width: 48px;
