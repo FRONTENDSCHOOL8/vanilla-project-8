@@ -11,173 +11,866 @@
     <link rel="stylesheet" href="/src/styles/reset.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="/src/pages/product/product.js"></script>
+    <!-- 헤더 푸터 css js 추가 -->
+    <link rel="stylesheet" href="/src/styles/reset.css" />
+    <link rel="stylesheet" href="/src/components/css/style.css" />
+    <script type="module" src="/src/components/header/header.js"></script>
   </head>
   <body>
-    <header>
-      <h1>
-        <a href="/">Market Karly</a>
-      </h1>
-      <nav>
-        <ul>
-          <li><a href="/">HOME</a></li>
-          <li><a href="/src/pages/product/">PRODUCT</a></li>
-          <li><a href="/src/pages/detail/">DETAIL</a></li>
-          <li><a href="/src/pages/login/">LOGIN</a></li>
-        </ul>
-      </nav>
-    </header>
+    <header class="header">
+      <div class="fixed2">
+        <div class="navigation">
+          <nav>
+            <div class="nav-menu">
+              <ul class="nav-menu-ul">
+                <li class="nav-category">
+                  <img src="/images/header/hamberger.svg" alt="카테고리 목록" />
+                  카테고리
+                </li>
+              </ul>
+              <ul class="nav-menu-hide2">
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/present1.png"
+                    alt=""
+                  /><a href="">선물하기</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/plant2.png"
+                    alt=""
+                  /><a href="/">채소</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/apple3.png"
+                    alt=""
+                  /><a href="/">과일•견과•쌀</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/shrimp.png"
+                    alt=""
+                  /><a href="/">수산•해산•건어물</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/meat.png"
+                    alt=""
+                  /><a href="/">정육•계란</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/nabe.svg"
+                    alt=""
+                  /><a href="/">국•반찬•메인요리</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/leaves.png"
+                    alt=""
+                  /><a href="/">샐러드•간편식</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/sault.png"
+                    alt=""
+                  /><a href="/">면•양념•오일</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/coffee.png"
+                    alt=""
+                  /><a href="/">생수•음료•우유•커피</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/cookie.png"
+                    alt=""
+                  /><a href="/">간식•과자•떡</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/bread.png"
+                    alt=""
+                  /><a href="/">베이커리•치즈•델리</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/pill.png"
+                    alt=""
+                  /><a href="/">건강식품</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/alchol.png"
+                    alt=""
+                  /><a href="/">와인</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/Icon.png"
+                    alt=""
+                  /><a href="/">전통주</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/senzai.png"
+                    alt=""
+                  /><a href="/">생활용품•리빙•캠핑</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/makeup.png"
+                    alt=""
+                  /><a href="/">스킨케어•메이크업</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/shampoo.png"
+                    alt=""
+                  /><a href="/">헤어•바디•구강</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/fork.png"
+                    alt=""
+                  /><a href="/">주방용품</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/drum.png"
+                    alt=""
+                  /><a href="/">가전제품</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/dog.png"
+                    alt=""
+                  /><a href="/">반려동물</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/baby.png"
+                    alt=""
+                  /><a href="/">베이비•키즈•완구</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/plane.png"
+                    alt=""
+                  /><a href="/">여행•티켓</a>
+                </li>
+              </ul>
+              <ul class="header-center center">
+                <li><a href="">신상품</a></li>
+                <li><a href="">베스트</a></li>
+                <li><a href="">알뜰쇼핑</a></li>
+                <li><a href="">특가/혜택</a></li>
+              </ul>
 
-    <div class="container">
-      <h2 class="best">베스트</h2>
-      <div class="section-container">
-        <section class="filter">
-          <ul>
-            <li class="filter-list">
-              필터
-              <span>초기화</span>
-            </li>
-            <li class="filter-category">
-              카테고리
-              <img src="/images/product/filter-arrow.svg" alt="" />
-            </li>
-            <li class="filter-brand">
-              브랜드
-              <img src="/images/product/filter-arrow.svg" alt="" />
-            </li>
-            <li class="filter-price">
-              가격
-              <img src="/images/product/filter-arrow.svg" alt="" />
-            </li>
-            <li class="filter-benefit">
-              혜택
-              <img src="/images/product/filter-arrow.svg" alt="" />
-            </li>
-            <li class="filter-type">
-              유형
-              <img src="/images/product/filter-arrow.svg" alt="" />
-            </li>
-            <li class="filter-exeption">
-              특정상품 제외
-              <img src="/images/product/filter-arrow.svg" alt="" />
-            </li>
-          </ul>
-        </section>
-        <section class="product">
-          <nav class="sort">
-            <span>총 284건</span>
-            <ul>
-              <li><a>추천순</a></li>
-              <span
-                ><img src="/images/product/info.svg" alt="추천순 설명"
-              /></span>
-              <li><a>신상품순</a></li>
-              <li><a>판매량순</a></li>
-              <li><a>혜택순</a></li>
-              <li><a>낮은 가격순</a></li>
-              <li><a>높은 가격순</a></li>
-            </ul>
+              <div class="search2">
+                <form action="/" method="get">
+                  <label for="search"></label>
+                  <div class="input-wrapper">
+                    <input
+                      type="text"
+                      id="search2"
+                      placeholder="검색어를 입력해주세요"
+                    />
+                  </div>
+                </form>
+                <button id="submit" type="submit">
+                  <img src="/images/header/glass.svg" alt="돋보기" />
+                </button>
+              </div>
+
+              <div class="ect-menu">
+                <a href=""
+                  ><img src="/images/header/Group.svg" alt="배송지 등록"
+                /></a>
+                <a href=""
+                  ><img src="/images/header/ic-heart.svg" alt="찜하기"
+                /></a>
+                <a href=""
+                  ><img src="/images/header/cart.svg" alt="장바구니"
+                /></a>
+              </div>
+            </div>
           </nav>
-          <ul class="product-list">
-            <!-- <li class="product-each">
-              <a href="/">
-                <figure>
-                  <img
-                    class="product-img"
-                    src="/images/product/db/product-img.jpg"
-                    alt=""
-                  />
-                  <img
-                    class="cart-img"
-                    src="/images/product/cart-img.svg"
-                    alt=""
-                  />
-                </figure>
-                <div class="product-info">
-                  <span class="delivery">샛별배송</span><br />
-                  <span class="desc-1">[풀무원] 탱탱쫄면 (4개입)</span><br />
-                  <span class="discount">10%</span>
-                  <span class="real-price">9,000원</span> <br />
-                  <span class="price">10,000 원</span><br />
-                  <span class="desc-2">튀기지 않아 부담없는 매콤함</span><br />
-                </div>
-                <div class="label-container">
-                  <span class="karly-only">Karly Only</span>
-                  <span class="limited">한정수량</span>
-                </div>
+        </div>
+      </div>
+      <div class="header-ad">
+        <div class="header-ad-width">
+          <a href="/">
+            <span>
+              지금 가입하고 인기상품
+              <b>100원</b>
+              에 받아가세요!
+            </span>
+          </a>
+          <button class="header-ad-btn" type="button">
+            <img src="/images/header/ico_close_fff_84x84 1.png" alt="창닫기" />
+          </button>
+        </div>
+      </div>
+      <div class="header-wrapper">
+        <ul class="header-right">
+          <li>
+            <a class="register" href="/src/pages/register/index.html"
+              >회원가입</a
+            >
+          </li>
+          <li>
+            <span class="divider" aria-hidden="true">|</span>
+            <a class="login-btn" href="/src/pages/login/index.html">로그인</a>
+          </li>
+          <li>
+            <span class="divider" aria-hidden="true">|</span>
+            <a class="information" href="/"
+              >고객센터
+              <img src="/images/header/Icon_down 1.png" alt="" />
+            </a>
+          </li>
+        </ul>
+        <div class="search-wrapper">
+          <div class="search-main">
+            <h1 class="logo">
+              <!-- 메인페이지로 이동하는 주소 입력 -->
+              <a href="./index.html">
+                <picture>
+                  <img src="/images/header/logo.svg" alt="마켓칼리" />
+                </picture>
               </a>
-            </li>
-            <li class="product-each">
-              <a href="/">
-                <figure>
-                  <img
-                    class="product-img"
-                    src="/images/product/db/product-img.jpg"
-                    alt=""
-                  />
-                  <img
-                    class="cart-img"
-                    src="/images/product/cart-img.svg"
-                    alt=""
-                  />
-                </figure>
-                <div class="product-info">
-                  <span class="delivery">샛별배송</span><br />
-                  <span class="desc-1">[풀무원] 탱탱쫄면 (4개입)</span><br />
-                  <span class="discount">10%</span>
-                  <span class="real-price">9,000원</span> <br />
-                  <span class="price">10,000 원</span><br />
-                  <span class="desc-2">튀기지 않아 부담없는 매콤함</span><br />
-                </div>
-                <div class="label-container">
-                  <span class="karly-only">Karly Only</span>
-                  <span class="limited">한정수량</span>
-                </div>
-              </a>
-            </li>
-            <li class="product-each">
-              <a href="/">
-                <figure>
-                  <img
-                    class="product-img"
-                    src="/images/product/db/product-img.jpg"
-                    alt=""
-                  />
-                  <img
-                    class="cart-img"
-                    src="/images/product/cart-img.svg"
-                    alt=""
-                  />
-                </figure>
-                <div class="product-info">
-                  <span class="delivery">샛별배송</span><br />
-                  <span class="desc-1">[풀무원] 탱탱쫄면 (4개입)</span><br />
-                  <span class="discount">10%</span>
-                  <span class="real-price">9,000원</span> <br />
-                  <span class="price">10,000 원</span><br />
-                  <span class="desc-2">튀기지 않아 부담없는 매콤함</span><br />
-                </div>
-                <div class="label-container">
-                  <span class="karly-only">Karly Only</span>
-                  <span class="limited">한정수량</span>
-                </div>
-              </a>
-            </li> -->
-          </ul>
-          <div class="page-controller">
-            <a href="/"
-              ><img src="/images/product/double-left-arrow.png" alt=""
+            </h1>
+            <button class="market">마켓칼리</button>
+            <span class="divider" aria-hidden="true">|</span>
+            <button class="beauty">
+              뷰티칼리<img
+                src="/images/header/new 1.svg"
+                alt="new 뷰티칼리소식"
+              />
+            </button>
+          </div>
+          <div class="search">
+            <form action="/" method="get">
+              <label for="search"></label>
+              <input
+                type="text"
+                id="search"
+                placeholder="검색어를 입력해주세요"
+              />
+            </form>
+            <button type="submit">
+              <img src="/images/header/glass.svg" alt="돋보기" />
+            </button>
+          </div>
+          <div class="ect-menu">
+            <a href=""
+              ><img src="/images/header/Group.svg" alt="배송지 등록"
             /></a>
-            <a href="/"><img src="/images/product/left-arrow.png" alt="" /></a>
-            <a href="/">1</a>
-            <a href="/">2</a>
-            <a href="/">3</a>
-            <a href="/"><img src="/images/product/right-arrow.png" alt="" /></a>
-            <a href="/"
-              ><img src="/images/product/double-right-arrow.png" alt=""
+            <a href=""
+              ><img src="/images/header/ic-heart.svg" alt="찜하기"
+            /></a>
+            <a href="/src/pages/cart/index.html"
+              ><img src="/images/header/cart.svg" alt="장바구니"
             /></a>
           </div>
-        </section>
+        </div>
       </div>
-    </div>
+      <div class="fixed">
+        <div class="navigation">
+          <nav>
+            <div class="nav-menu">
+              <ul class="nav-menu-ul">
+                <li class="nav-category">
+                  <img src="/images/header/hamberger.svg" alt="카테고리 목록" />
+                  카테고리
+                </li>
+              </ul>
+              <ul class="nav-menu-hide1">
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/present1.png"
+                    alt=""
+                  /><a href="">선물하기</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/plant2.png"
+                    alt=""
+                  /><a href="/">채소</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/apple3.png"
+                    alt=""
+                  /><a href="/">과일•견과•쌀</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/shrimp.png"
+                    alt=""
+                  /><a href="/">수산•해산•건어물</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/meat.png"
+                    alt=""
+                  /><a href="/">정육•계란</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/nabe.svg"
+                    alt=""
+                  /><a href="/">국•반찬•메인요리</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/leaves.png"
+                    alt=""
+                  /><a href="/">샐러드•간편식</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/sault.png"
+                    alt=""
+                  /><a href="/">면•양념•오일</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/coffee.png"
+                    alt=""
+                  /><a href="/">생수•음료•우유•커피</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/cookie.png"
+                    alt=""
+                  /><a href="/">간식•과자•떡</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/bread.png"
+                    alt=""
+                  /><a href="/">베이커리•치즈•델리</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/pill.png"
+                    alt=""
+                  /><a href="/">건강식품</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/alchol.png"
+                    alt=""
+                  /><a href="/">와인</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/Icon.png"
+                    alt=""
+                  /><a href="/">전통주</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/senzai.png"
+                    alt=""
+                  /><a href="/">생활용품•리빙•캠핑</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/makeup.png"
+                    alt=""
+                  /><a href="/">스킨케어•메이크업</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/shampoo.png"
+                    alt=""
+                  /><a href="/">헤어•바디•구강</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/fork.png"
+                    alt=""
+                  /><a href="/">주방용품</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/drum.png"
+                    alt=""
+                  /><a href="/">가전제품</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/dog.png"
+                    alt=""
+                  /><a href="/">반려동물</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/baby.png"
+                    alt=""
+                  /><a href="/">베이비•키즈•완구</a>
+                </li>
+                <li>
+                  <img
+                    width="24"
+                    height="24"
+                    src="/images/header/nav-icon/plane.png"
+                    alt=""
+                  /><a href="/">여행•티켓</a>
+                </li>
+              </ul>
+              <ul class="header-center">
+                <li><a href="/src/pages/detail/index.html">신상품</a></li>
+                <li><a href="/src/pages/product/index.html">베스트</a></li>
+                <li><a href="/">알뜰쇼핑</a></li>
+                <li><a href="/">특가/혜택</a></li>
+              </ul>
+            </div>
+          </nav>
+          <button class="package">
+            <b>샛별･낮</b>
+            배송안내
+          </button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <h2 class="best">베스트</h2>
+        <div class="section-container">
+          <section class="filter">
+            <ul>
+              <li class="filter-list">
+                필터
+                <span>초기화</span>
+              </li>
+              <li class="filter-category">
+                카테고리
+                <img src="/images/product/filter-arrow.svg" alt="" />
+              </li>
+              <li class="filter-brand">
+                브랜드
+                <img src="/images/product/filter-arrow.svg" alt="" />
+              </li>
+              <li class="filter-price">
+                가격
+                <img src="/images/product/filter-arrow.svg" alt="" />
+              </li>
+              <li class="filter-benefit">
+                혜택
+                <img src="/images/product/filter-arrow.svg" alt="" />
+              </li>
+              <li class="filter-type">
+                유형
+                <img src="/images/product/filter-arrow.svg" alt="" />
+              </li>
+              <li class="filter-exeption">
+                특정상품 제외
+                <img src="/images/product/filter-arrow.svg" alt="" />
+              </li>
+            </ul>
+          </section>
+          <section class="product">
+            <nav class="sort">
+              <span>총 284건</span>
+              <ul>
+                <li><a>추천순</a></li>
+                <span
+                  ><img src="/images/product/info.svg" alt="추천순 설명"
+                /></span>
+                <li><a>신상품순</a></li>
+                <li><a>판매량순</a></li>
+                <li><a>혜택순</a></li>
+                <li><a>낮은 가격순</a></li>
+                <li><a>높은 가격순</a></li>
+              </ul>
+            </nav>
+            <ul class="product-list">
+              <!-- <li class="product-each">
+                <a href="/">
+                  <figure>
+                    <img
+                      class="product-img"
+                      src="/images/product/db/product-img.jpg"
+                      alt=""
+                    />
+                    <img
+                      class="cart-img"
+                      src="/images/product/cart-img.svg"
+                      alt=""
+                    />
+                  </figure>
+                  <div class="product-info">
+                    <span class="delivery">샛별배송</span><br />
+                    <span class="desc-1">[풀무원] 탱탱쫄면 (4개입)</span><br />
+                    <span class="discount">10%</span>
+                    <span class="real-price">9,000원</span> <br />
+                    <span class="price">10,000 원</span><br />
+                    <span class="desc-2">튀기지 않아 부담없는 매콤함</span><br />
+                  </div>
+                  <div class="label-container">
+                    <span class="karly-only">Karly Only</span>
+                    <span class="limited">한정수량</span>
+                  </div>
+                </a>
+              </li>
+              <li class="product-each">
+                <a href="/">
+                  <figure>
+                    <img
+                      class="product-img"
+                      src="/images/product/db/product-img.jpg"
+                      alt=""
+                    />
+                    <img
+                      class="cart-img"
+                      src="/images/product/cart-img.svg"
+                      alt=""
+                    />
+                  </figure>
+                  <div class="product-info">
+                    <span class="delivery">샛별배송</span><br />
+                    <span class="desc-1">[풀무원] 탱탱쫄면 (4개입)</span><br />
+                    <span class="discount">10%</span>
+                    <span class="real-price">9,000원</span> <br />
+                    <span class="price">10,000 원</span><br />
+                    <span class="desc-2">튀기지 않아 부담없는 매콤함</span><br />
+                  </div>
+                  <div class="label-container">
+                    <span class="karly-only">Karly Only</span>
+                    <span class="limited">한정수량</span>
+                  </div>
+                </a>
+              </li>
+              <li class="product-each">
+                <a href="/">
+                  <figure>
+                    <img
+                      class="product-img"
+                      src="/images/product/db/product-img.jpg"
+                      alt=""
+                    />
+                    <img
+                      class="cart-img"
+                      src="/images/product/cart-img.svg"
+                      alt=""
+                    />
+                  </figure>
+                  <div class="product-info">
+                    <span class="delivery">샛별배송</span><br />
+                    <span class="desc-1">[풀무원] 탱탱쫄면 (4개입)</span><br />
+                    <span class="discount">10%</span>
+                    <span class="real-price">9,000원</span> <br />
+                    <span class="price">10,000 원</span><br />
+                    <span class="desc-2">튀기지 않아 부담없는 매콤함</span><br />
+                  </div>
+                  <div class="label-container">
+                    <span class="karly-only">Karly Only</span>
+                    <span class="limited">한정수량</span>
+                  </div>
+                </a>
+              </li> -->
+            </ul>
+            <div class="page-controller">
+              <a href="/"
+                ><img src="/images/product/double-left-arrow.png" alt=""
+              /></a>
+              <a href="/"
+                ><img src="/images/product/left-arrow.png" alt=""
+              /></a>
+              <a href="/">1</a>
+              <a href="/">2</a>
+              <a href="/">3</a>
+              <a href="/"
+                ><img src="/images/product/right-arrow.png" alt=""
+              /></a>
+              <a href="/"
+                ><img src="/images/product/double-right-arrow.png" alt=""
+              /></a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <section class="footer-section1">
+        <div class="footer-wrapper1">
+          <span class="happy">고객행복센터</span>
+          <p><strong>1164-1107</strong>월~토요일 오전 7시 - 오후 6시</p>
+          <div class="question">
+            <a href="/">카카오톡 문의</a>
+            <div class="question-p">
+              <p>
+                월~토요일
+                <span class="divider" aria-hidden="true">|</span>
+                오전 7시 - 오후 6시
+                <br />
+                일/공휴일
+                <span class="divider" aria-hidden="true">|</span>
+                오전 7시 - 오후 1시
+              </p>
+            </div>
+          </div>
+          <div class="question-one">
+            <a href="/">1:1 문의</a>
+            <div class="question-one-p">
+              <p>
+                365일
+                <br />
+                고객센터 운영시간에 순차적으로 답변드리겠습니다.
+              </p>
+            </div>
+          </div>
+          <div class="question-order">
+            <a href="/">대량주문 문의</a>
+            <div class="question-order-p">
+              <p>
+                월~금요일
+                <span class="divider" aria-hidden="true">|</span>
+                오전 9시 - 오후 6시
+                <br />
+                점심시간
+                <span class="divider" aria-hidden="true">|</span>
+                낮 12시 - 오후 1시
+              </p>
+            </div>
+          </div>
+          <div class="question-ect">
+            <span>비회원 문의 : <a href="">help@karlycorp.com</a></span>
+            <span
+              >비회원 대량 주문 문의 : <a href="">help@karlycorp.com</a></span
+            >
+          </div>
+        </div>
+        <div class="footer-wrapper2">
+          <ul>
+            <li><a href="/">칼리소개</a></li>
+            <li><a href="/">칼리소개영상</a></li>
+            <li><a href="/">인재채용</a></li>
+            <li><a href="/">이용약관</a></li>
+            <li><a href="/">개인정보처리방침</a></li>
+            <li><a href="/">이용안내</a></li>
+          </ul>
+          <div class="address">
+            <address>
+              <p>
+                법인명 (상호) : 주식회사 칼리
+                <span class="divider" aria-hidden="true">|</span>
+                사업자등록번호 : 261-81-23567
+                <span class="divider" aria-hidden="true">|</span>
+                <a href="">사업자정보 확인</a>
+                <br />
+                통신판매업 : 제 2018-서울강남-01646 호
+                <span class="divider" aria-hidden="true">|</span>
+                개인정보보호책임자 : 이원준
+                <br />
+                주소 : 서울특별시 강남구 테헤란로 133, 18층(역삼동)
+                <span class="divider" aria-hidden="true">|</span>
+                대표이사 : 김슬아
+                <br />
+                입점문의 : 입정문의하기
+                <span class="divider" aria-hidden="true">|</span>
+                제휴문의 : <a href="/">business@karlycorp.com</a>
+                <br />
+                채용문의 : <a href="/">recruit@karlycorp.com</a>
+                <br />
+                팩스 : 070 - 7500 - 6098
+              </p>
+            </address>
+          </div>
+          <div class="footer-sns">
+            <a href="https://blog.naver.com/marketkurly">
+              <picture>
+                <!-- sns 이미지 넣기 -->
+                <img src="/images/footer/blog.png" alt="네이버 블로그" />
+              </picture>
+            </a>
+            <a href="https://www.facebook.com/Marketkurly/">
+              <picture>
+                <!-- sns 이미지 넣기 -->
+                <img src="/images/footer/facbook.jpg" alt="페이스북" />
+              </picture>
+            </a>
+            <a href="https://www.instagram.com/marketkurly/">
+              <picture>
+                <!-- sns 이미지 넣기 -->
+                <img src="/images/footer/instar.png" alt="인스타그램" />
+              </picture>
+            </a>
+            <a href="https://m.post.naver.com/marketkurly">
+              <picture>
+                <!-- sns 이미지 넣기 -->
+                <img src="/images/footer/naver-post.png" alt="네이버 포스트" />
+              </picture>
+            </a>
+            <a href="https://www.youtube.com/channel/UCfpdjL5pl-1qKT7Xp4UQzQg">
+              <picture>
+                <!-- sns 이미지 넣기 -->
+                <img src="/images/footer/youtube.png" alt="유투브" />
+              </picture>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section class="footer-section2">
+        <div class="footer-wrapper3">
+          <a href="/">
+            <picture>
+              <img
+                src="/images/footer/Vector.svg"
+                alt="정보 보호 관리 체계 인증서"
+              />
+            </picture>
+            <p>
+              [인증범위] 마켓칼리 쇼핑몰 서비스 개발 운영 <br />(심사받지 않은
+              물리적 인프라 제외) <br />[유효기간] 2022.01.19 ~ 2025.01.18
+            </p>
+          </a>
+          <a href="/">
+            <picture>
+              <!-- sns 이미지 넣기 -->
+              <img
+                src="/images/footer/logo_privacy.svg"
+                alt="우수 웹사이트 인증서"
+              />
+            </picture>
+            <p>
+              개인정보보호 우수 웹사이트 <br />개인정보처리시스템 인증 (ePRIVACY
+              PLUS)
+            </p>
+          </a>
+          <a href="/">
+            <picture>
+              <!-- sns 이미지 넣기 -->
+              <img
+                src="/images/footer/logo_tosspayments.svg"
+                alt="토스 페이먼츠 에스크로 서비스"
+              />
+            </picture>
+            <p>
+              토스페이먼츠 구매안전(에스크로) 서비스 <br />를 이용하실 수
+              있습니다.
+            </p>
+          </a>
+          <a href="/">
+            <picture>
+              <!-- sns 이미지 넣기 -->
+              <img
+                width="34"
+                height="34"
+                src="/images/footer/woori.png"
+                alt="우리은행 지급보증서"
+              />
+            </picture>
+            <p>
+              고객님이 현금으로 결제한 금액에 대해 우리은행과 채무지급보
+              <br />증 계약을 체결하여 안전거래를 보장하고 있습니다.
+            </p>
+          </a>
+        </div>
+      </section>
+      <section class="footer-section3">
+        <p>
+          마켓컬리에서 판매되는 상품 중에는 마켓컬리에 입점한 개별 판매자가
+          판매하는 마켓플레이스(오픈마켓) 상품이 포함되어 있습니다.
+          <br />마켓플레이스(오픈마켓) 상품의 경우 컬리는 통신판매중개자로서
+          통신판매의 당사자가 아닙니다. 컬리는 해당 상품의 주문, 품질, 교환/환불
+          등 의무와 책임을 부담하지 않습니다.
+        </p>
+        <p>© KURLY CORP. ALL RIGHTS RESERVED</p>
+      </section>
+    </footer>
   </body>
 </html>
