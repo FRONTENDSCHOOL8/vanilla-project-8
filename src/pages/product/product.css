@@ -1,9 +1,3 @@
-
-.container {
-  width: 100vw;
-  height: 100vh;
-}
-
 .best {
   text-align: center;
   font-size: 18px;
@@ -13,7 +7,7 @@
 .section-container {
   display: flex;
   width: 1050px;
-  height: 3004px;
+  height: auto;
   justify-content: center;
   margin: 0 auto;
 }
@@ -73,7 +67,6 @@
 
 .product-list {
   width: 783px;
-  height: 100%;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-template-rows: repeat(5, 1fr);
@@ -168,7 +161,7 @@
   height: 30px;
   display: flex;
   justify-content: center;
-  padding-bottom: 80px;
+  padding: 36px 0px 106px;
 
   & a {
     width: 26px;
