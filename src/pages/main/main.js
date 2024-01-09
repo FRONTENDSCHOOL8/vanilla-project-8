@@ -168,7 +168,7 @@ async function renderProduct(slicea, sliceb, insert) {
 }
 
 renderProduct(0, 12, '.swiper3 > .swiper-wrapper');
-renderProduct(13, 25, '.swiper2 > .swiper-wrapper');
+renderProduct(12, 25, '.swiper2 > .swiper-wrapper');
 
 // function showModal(item) {
 //   const ratio = item.price * (item.discount * 0.01);
@@ -266,14 +266,17 @@ dialogClose.addEventListener('click', hideDialog);
 let cartBtn = document.querySelectorAll('.shop-button2');
 
 function viewDialog(e) {
-  e.preventDefault();
-
   const addCart = getNode('.add-cart');
-
   if (e.target.matches('.shop-button2')) {
+    e.preventDefault();
+
     dialogClose.style.display = 'flex';
+
+    const buttonIndex = e.target.dataset.index;
+    const itemList = arr[buttonIndex];
+
+    console.log(buttonIndex, itemList);
     const dialogBtn = e.target.currentTarget;
-    const itemList = arr[0];
 
     const ratio = itemList.price * (itemList.discount * 0.01);
 
@@ -339,18 +342,22 @@ swiperBtntest3.addEventListener('click', viewDialog);
 
 const plusButton = getNode('.plus-button');
 const minusButton = getNode('.minus-button');
+const addCart = getNode('.add-cart');
 const count = getNode('.count');
 const sum = getNode('.sum-value');
 
-function plusCount() {
-  let number = count.innerText;
-  if (number <= 2) {
-    number = parseInt(number) + 1;
-    console.log(number);
-    let sumvalue = sum.innerText;
-    sumvalue = parseInt(sumvalue) + parseInt(sumvalue);
-    count.innerText = number;
-    sum.innerText = sumvalue + '원';
+function plusCount(e) {
+  if (e.target.matches('.plus-button')) {
+    console.log('참');
+    let number = count.innerText;
+    if (number <= 2) {
+      number = parseInt(number) + 1;
+      console.log(number);
+      let sumvalue = sum.innerText;
+      sumvalue = parseInt(sumvalue) + parseInt(sumvalue);
+      count.innerText = number;
+      sum.innerText = sumvalue + '원';
+    }
   }
 }
 
@@ -370,5 +377,5 @@ function minusCount() {
   }
 }
 
-plusButton.addEventListener('click', plusCount);
-minusButton.addEventListener('click', minusCount);
+addCart.addEventListener('click', plusCount);
+addCart.addEventListener('click', minusCount);
