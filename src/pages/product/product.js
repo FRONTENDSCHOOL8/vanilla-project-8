@@ -10,8 +10,6 @@ import {
 } from '/src/lib';
 import defaultAuthData from '/src/api/defaultAuthData';
 
-// import gsap from 'gsap';
-
 setDocumentTitle('검색 - 컬리');
 
 async function renderProduct() {
@@ -28,7 +26,11 @@ async function renderProduct() {
     const ratio = item.price * (item.discount * 0.01);
     const template = /* html */ `
             <li class="product-each">
-              <a href="/">
+            <a href="${
+              !isAuth
+                ? '/src/pages/login/'
+                : `/src/pages/detail/index.html#${item.id}`
+            }">
                 <figure>
                   <img
                     class="product-img"
@@ -60,8 +62,6 @@ async function renderProduct() {
             `;
     insertLast('.product-list', template);
   });
-
-  // gsap.from('.product-item', { y: 30, opacity: 0, stagger: 0.1 });
 }
 
 renderProduct();
