@@ -71,6 +71,33 @@ const todaySwiper = new Swiper('.swiper2', {
   },
 });
 
+const todaySwiper2 = new Swiper('.swiper3', {
+  direction: 'horizontal',
+  loop: true,
+
+  slidesPerView: 4,
+
+  slidesPerGroup: 4,
+
+  pagination: {
+    el: '.swiper-pagination2',
+    // type: "fraction",
+  },
+
+  keyboard: {
+    enabled: true, // 키보드 이벤트 활성화
+  },
+
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+  scrollbar: {
+    el: '.swiper-scrollbar',
+  },
+});
+
 // db 연동
 let arr = [];
 
@@ -83,7 +110,7 @@ async function renderProduct(slicea, sliceb, insert) {
 
   const firstUserData = userData.slice(slicea, sliceb);
 
-  firstUserData.forEach((item) => {
+  firstUserData.forEach((item, index) => {
     const ratio = item.price * (item.discount * 0.01);
 
     const discountTemplate =
@@ -109,7 +136,9 @@ async function renderProduct(slicea, sliceb, insert) {
                         src="${getPbImageURL(item)}"
                         alt="${item.description}"
                       />
-                      <input type="button" class="shop-button2 hidden-button" />
+                      <input type="button" class="shop-button2 hidden-button" data-index = ${
+                        index + slicea
+                      } />
                     </div>
                   </figure>
 
@@ -123,16 +152,14 @@ async function renderProduct(slicea, sliceb, insert) {
               </a>
           </div>
   `;
-    const shopButton = getNode('.shop-button2');
-    shopButton.addEventListener('click', showModal(item));
     insertLast(insert, template);
 
     arr.push(item);
     // 이벤트 리스너를 추가합니다.
-    shopButton.addEventListener('click', (e) => {
-      e.preventDefault(); // a 태그의 기본 이동을 방지합니다.
-      showModal(item); // 현재 상품의 데이터를 모달창 함수에 전달합니다.
-    });
+    // shopButton.addEventListener('click', (e) => {
+    //   e.preventDefault(); // a 태그의 기본 이동을 방지합니다.
+    //   showModal(item); // 현재 상품의 데이터를 모달창 함수에 전달합니다.
+    // });
 
     // 생성된 요소를 DOM에 삽입합니다.
   });
@@ -143,62 +170,62 @@ async function renderProduct(slicea, sliceb, insert) {
 renderProduct(0, 12, '.swiper3 > .swiper-wrapper');
 renderProduct(13, 25, '.swiper2 > .swiper-wrapper');
 
-function showModal(item) {
-  const ratio = item.price * (item.discount * 0.01);
+// function showModal(item) {
+//   const ratio = item.price * (item.discount * 0.01);
 
-  const modal = getNode('.add-cart');
-  console.log('모달창', arr);
-  modal.innerHTML = `
-  <p>가격: ${comma(item.price)}</p>
+//   const modal = getNode('.add-cart');
+//   console.log('모달창', arr);
+//   modal.innerHTML = `
+//   <p>가격: ${comma(item.price)}</p>
 
-        <div>
-          <span class="add-cart-name"
-            >${item.brand}</span
-          >
-        </div>
+//         <div>
+//           <span class="add-cart-name"
+//             >${item.brand}</span
+//           >
+//         </div>
 
-        <div class="add-cart-sum">
-          <div class="price-list">
-            <span class="cart-price">${comma(item.price - ratio)}원</span>
-            <span class="cart-realprice">${item.price}원</span>
-          </div>
-          <div class="count-button-list">
-            <button
-              type="button"
-              aria-label="수량 감소"
-              class="minus-button hidden-button"
-            ></button>
-            <span class="count">1</span>
-            <button
-              type="button"
-              aria-label="수량 증가"
-              class="plus-button hidden-button"
-            ></button>
-          </div>
-        </div>
+//         <div class="add-cart-sum">
+//           <div class="price-list">
+//             <span class="cart-price">${comma(item.price - ratio)}원</span>
+//             <span class="cart-realprice">${item.price}원</span>
+//           </div>
+//           <div class="count-button-list">
+//             <button
+//               type="button"
+//               aria-label="수량 감소"
+//               class="minus-button hidden-button"
+//             ></button>
+//             <span class="count">1</span>
+//             <button
+//               type="button"
+//               aria-label="수량 증가"
+//               class="plus-button hidden-button"
+//             ></button>
+//           </div>
+//         </div>
 
-        <div class="sum">
-          <span class="sum-name">합계</span>
-          <span class="sum-value">${item.price - ratio}원</span>
-        </div>
+//         <div class="sum">
+//           <span class="sum-name">합계</span>
+//           <span class="sum-value">${item.price - ratio}원</span>
+//         </div>
 
+//         <div class="point">
+//           <div class="point-badge">적립</div>
+//           <span class="point-text">구매 시 5원 적립</span>
+//         </div>
 
-        <div class="point">
-          <div class="point-badge">적립</div>
-          <span class="point-text">구매 시 5원 적립</span>
-        </div>
+//         <div class="cart-button-list">
+//           <button type="button" class="cart-button-cancel" value="cancel">
+//             취소
+//           </button>
+//           <button type="button" class="cart-button-add">장바구니 담기</button>
+//         </div>
+//     </div>
+//   `;
 
-        <div class="cart-button-list">
-          <button type="button" class="cart-button-cancel" value="cancel">
-            취소
-          </button>
-          <button type="button" class="cart-button-add">장바구니 담기</button>
-        </div>
-    </div>
-  `;
+//   modal.style.display = 'flex';
+// });
 
-  modal.style.display = 'flex';
-}
 // document.addEventListener("keydown", function (e) {
 //   // 첫 번째 Swiper에 대한 키보드 이벤트 처리
 //   if (document.activeElement === document.body) {
@@ -241,9 +268,61 @@ let cartBtn = document.querySelectorAll('.shop-button2');
 function viewDialog(e) {
   e.preventDefault();
 
+  const addCart = getNode('.add-cart');
+
   if (e.target.matches('.shop-button2')) {
     dialogClose.style.display = 'flex';
     const dialogBtn = e.target.currentTarget;
+    const itemList = arr[0];
+
+    const ratio = itemList.price * (itemList.discount * 0.01);
+
+    addCart.innerHTML =
+      /* html */
+      `
+    <div>
+    <span class="add-cart-name"
+      >${itemList.brand}</span
+    >
+  </div>
+
+  <div class="add-cart-sum">
+    <div class="price-list">
+      <span class="cart-price">${itemList.price - ratio}원</span>
+      <span class="cart-realprice">${itemList.price}원</span>
+    </div>
+    <div class="count-button-list">
+      <button
+        type="button"
+        aria-label="수량 감소"
+        class="minus-button hidden-button"
+      ></button>
+      <span class="count">1</span>
+      <button
+        type="button"
+        aria-label="수량 증가"
+        class="plus-button hidden-button"
+      ></button>
+    </div>
+  </div>
+
+  <div class="sum">
+    <span class="sum-name">합계</span>
+    <span class="sum-value">${itemList.price - ratio}원</span>
+  </div>
+
+  <div class="point">
+    <div class="point-badge">적립</div>
+    <span class="point-text">구매 시 5원 적립</span>
+  </div>
+
+  <div class="cart-button-list">
+    <button type="button" class="cart-button-cancel" value="cancel">
+      취소
+    </button>
+    <button type="button" class="cart-button-add">장바구니 담기</button>
+  </div>
+    `;
     // console.log(dialogBtn);
   }
 }

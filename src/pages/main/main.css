@@ -281,7 +281,7 @@ text-decoration: line-through;
 .add-cart {
   
   width: 356px;
-  height: 244px;
+  height: auto;
 
   display: none;
   padding: 24px 20px;
