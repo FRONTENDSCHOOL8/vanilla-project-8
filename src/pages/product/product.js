@@ -37,7 +37,7 @@ async function renderProduct() {
                   />
                   <img
                     class="cart-img"
-                    src="/public/images/product/cart-img.svg"
+                    src="/images/product/cart-img.svg"
                     alt=""
                   />
                 </figure>
