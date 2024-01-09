@@ -1,7 +1,7 @@
 .product-info-container {
   display: flex;
   width: 1050px;
-  height: 1055px;
+  height: 1200px;
   justify-content: space-between;
   margin: 0 auto;
   padding-top: 40px;
@@ -465,8 +465,12 @@
 .arrow-button-container {
   display: flex;
   justify-content: center;
-  margin: 16px 0px 92px;
+  margin: 16px 0px 72px;
   gap: 16px;
+
+  &.qa-button {
+    margin-bottom: 92px;
+  }
 
   & button {
     width: 48px;
