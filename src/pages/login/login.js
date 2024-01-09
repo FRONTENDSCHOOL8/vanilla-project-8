@@ -13,22 +13,53 @@ import {
 setDocumentTitle('로그인 - 컬리');
 
 //이메일, 패스워드, 로그인 버튼에 각각 클래스와 아이디 찾아서 변수 선언
-const id = getNode('#email').value;
-const pw = getNode('#password').value;
+
+const emailInput = getNode('#email');
+const passwordInput = getNode('#password');
+
+let emailValue = '';
+emailValue = emailInput.value;
+let passwordValue = '';
+passwordValue = passwordInput.value;
+
+emailInput.addEventListener('input', () => {
+  emailValue = emailInput.value;
+});
+
+passwordInput.addEventListener('input', () => {
+  passwordValue = passwordInput.value;
+});
+
 const login = getNode('.btn-login');
-const login2 = getNode('.btn-login-wrapper');
+
 //모달창 변수들
 const closeBtn = getNode('.button-close');
 const modal = getNode('.modal-bg');
 
-function handleLogin1(e) {
-  e.preventDefault();
-  // 이메일 입력조건과 비밀번호 입력조건중  둘다 만족한 경우 로그인 성공
-  emailReg(id) && pwReg(pw) ? handleLogin2() : showModal();
+//모달창 함수
+function showModal() {
+  modal.classList.remove('hidden');
+  modal.classList.add('visible');
 }
 
-async function handleLogin2(e) {
+function closeModal() {
+  modal.classList.add('hidden');
+  modal.classList.remove('visible');
+}
+
+//유효성 검사와 등록된 id,pw 로 로그인 하기
+login.addEventListener('click', (e) => {
   e.preventDefault();
+  if (emailReg(emailValue) && pwReg(passwordValue)) {
+    handleLogin2();
+  } else {
+    showModal();
+  }
+});
+
+async function handleLogin2() {
+  const id = emailInput.value;
+  const pw = passwordInput.value;
   try {
     const userData = await pb.collection('users').authWithPassword(id, pw);
     // dayeong@naver.com 비번 다영123!@
@@ -49,19 +80,5 @@ async function handleLogin2(e) {
   }
 }
 
-//모달창 함수
-function showModal() {
-  modal.classList.remove('hidden');
-  modal.classList.add('visible');
-}
-
-function closeModal() {
-  modal.classList.add('hidden');
-  modal.classList.remove('visible');
-}
-
-//유효성 검사와 등록된 id,pw 로 로그인 하기
-login2.addEventListener('click', handleLogin1);
 //모달창 나타나기, 없애기
-login.addEventListener('click', showModal);
 closeBtn.addEventListener('click', closeModal);
