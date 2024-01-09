@@ -4,13 +4,14 @@
 }
 
 .logout{
+  background: transparent;
   padding: 8px;
-  border: 1px solid black;
-  transition: all .2s;
+  border: 0;
   font-size: 12px;
 }
 
 .logout:hover{
-  background:black;
-  color: white
+  background: purple;
+  color: white;
+  border-radius: 3px;
 }

@@ -14,7 +14,7 @@ if (localStorage.getItem('auth')) {
 
   if (isAuth) {
     const template = /* html */ `
-      <div class="userName">${user.name}님 반갑습니다 😘</div>
+      <div class="userName">웰컴 ${user.name}님😘</div>
       <button class="logout" type="button">로그아웃</button>
     `;
     insertLast('.header-right', template);

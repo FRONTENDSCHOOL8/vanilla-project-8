@@ -12,7 +12,7 @@
       href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css"
     />
     <link rel="stylesheet" href="/src/pages/main/main.css" />
-    <!-- <link rel="stylesheet" href="../../components/css/style.css" /> -->
+    <script type="module" src="/src/components/include.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -20,11 +20,7 @@
     <title>Main 페이지</title>
   </head>
   <body>
-    <header>
-      <div class="header-bar">
-        지금 가입하고, <b>1만원 할인 쿠폰</b> 받아가세요
-      </div>
-    </header>
+    <header data-include-path="/src/components/header/index.html"></header>
 
     <main class="main-box">
       <div class="swiper swiper1">
@@ -547,5 +543,6 @@
         <img src="/public/images/main/resent/resent-down.png" alt="" />
       </button>
     </div>
+    <footer data-include-path="/src/components/footer/index.html"></footer>
   </body>
 </html>

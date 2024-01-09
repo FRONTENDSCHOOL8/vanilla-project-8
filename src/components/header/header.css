@@ -342,6 +342,8 @@
   background-color: transparent;
   color: var(--content, #333);
   font-size: 12px;
+  text-decoration-line: none;
+  cursor: default;
 }
 
 .package b{
