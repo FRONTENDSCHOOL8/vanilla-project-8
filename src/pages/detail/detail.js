@@ -1,8 +1,11 @@
 import {
   setDocumentTitle,
   insertFirst,
+  insertAfter,
   getNode,
   getPbImageURL,
+  getPbImageURL_2,
+  getPbImageURL_3,
   comma,
 } from '/src/lib';
 import '/src/pages/detail/detail.css';
@@ -28,11 +31,13 @@ async function renderProductData() {
     <span class="delivery">샛별배송</span><br />
     <span class="desc-1">${brand}</span><br />
     <span class="desc-2">${description}</span><br />
+    <span class="real">
     <span class="discount">${discount}%</span>
     <span class="real-price">${comma(
       price - price * (discount * 0.01)
-    )}원</span> <br />
-    <span class="price">${price}</span><br />
+    )}</span>원
+    </span>
+    <span class="price">${comma(price)}원</span><br />
     <span class="accumulate">로그인 후, 적립 혜택이 제공됩니다.</span>
 
     <div class="detail-info-container">
@@ -130,41 +135,37 @@ async function renderProductData() {
           `;
   insertFirst('.product-info-container', template);
 
-  const priceInput = getNode('#price');
-  const discountInput = getNode('#discount');
+  const template_2 = /* html */ `
+  <img
+  class="product-explain-container"
+  src = "${getPbImageURL_2(productData)}";
+  alt="상품설명"
+  />
+<div class="explain-description">
+  <small>${description}</small>
+  <h3>${brand}</h3>
+  <p>
+    쫄면의 진가는 매콤새콤한 양념과 탱탱한 면발에서 찾을 수 있지요.
+    풀무원은 이 맛을 더 부담 없이 즐길 수 있도록 튀기지 않고 만든
+    탱탱쫄면을 선보입니다. 밀가루와 감자 전분을 적절히 배합해 탄력이
+    좋고, 입에 넣었을 때는 찰지게 씹히죠. 고추장을 넣어 숙성한
+    비빔장은 자연스럽고 깊은 맛을 냅니다. 간단하게 조리해 마지막 한
+    가닥까지 탱탱한 식감을 즐겨보세요. 취향에 따라 다양한 고명을 올려
+    드셔도 좋아요.
+  </p>
+</div>
 
-  function handleDiscount() {
-    let newPrice = price;
-    let newDiscount = discount;
+  `;
+  insertAfter('.board-navigation', template_2);
 
-    newPrice = priceInput.value;
-    newDiscount = discountInput.value;
-
-    const ratio = newPrice * (newDiscount * 0.01);
-    const realPrice = newPrice - ratio;
-
-    getNode('.real-price').textContent = comma(realPrice) + '원';
-  }
-
-  function handleModify() {
-    pb.collection('products')
-      .update(hash, {
-        brand: getNode('#brand').value,
-        price: getNode('#price').value,
-        discount: getNode('#discount').value,
-        description: getNode('#description').value,
-      })
-      .then(() => {
-        // history.back()
-        location.href = '/src/pages/product/';
-      })
-      .catch(() => {});
-  }
-
-  // modify.addEventListener('click', handleModify);
-  // cancel.addEventListener('click', () => history.back());
-  // discountInput.addEventListener('input', handleDiscount);
-  // priceInput.addEventListener('input', handleDiscount);
+  const template_3 = /* html */ `
+  <img
+  class="product-explain-container"
+  src = "${getPbImageURL_3(productData)}";
+  alt="상품설명"
+  />
+  `;
+  insertAfter('.product-point', template_3);
 }
 
 renderProductData();

@@ -19,12 +19,12 @@
 
   & span {
     display: inline-block;
-    margin-bottom: 16px;
   }
 
   & .delivery {
     font-size: 18px;
     color: #6B6B6B;
+    margin-bottom: 6px;
   }
 
   & .desc-1 {
@@ -33,28 +33,38 @@
 
   & .desc-2 {
     color: #898989;
-    margin-bottom: 25px;
+    padding: 5px 0px 20px;
   }
 
-  & .discount {
-    font-size: 28px;
-    color: #FA622F;
-    padding-right: 7px;
-  }
+  & .real {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 700;
 
-  & .real-price {
-    font-size: 28px;
-    font-weight: bold;
+    & .discount {
+      font-size: 28px;
+      color: #FA622F;
+      padding-right: 9px;
+    }
+
+    & .real-price {
+      font-size: 28px;
+      padding-right: 4px;
+    }
   }
 
   & .price {
     color: #898989;
     text-decoration: line-through;
+    margin-top: 8px;
+    font-size: 18px;
+    line-height: 18.4px;
   }
 
   & .accumulate {
     color: #5F0080;
-    margin: 20px 0px;
+    margin: 16px 0px 20px;
   }
 }
 
@@ -170,7 +180,8 @@
       background: #FA622F;
       color: white;
       font-size: 10px;
-      padding: 7px 8px;
+      line-height: 1.6;
+      padding: 4px 8px;
       border-radius: 15px;
       margin: 0px 6px 2px 0px;
     }
@@ -179,16 +190,17 @@
 
 .button-container {
   display: flex;
-  height: 54px;
-  padding-bottom: 48px;
+  width: 100%;
+  height: 56px;
 
   & button {
-    width: 48px;
-    height: 48px;
+    width: 56px;
     background-color: transparent;
     border: 1px solid #E1E1E1;
     border-radius: 4px;
-    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly
   }
 
   & button:first-child {
@@ -196,22 +208,20 @@
     & img {
       width: 36px;
       height: 36px;
-      padding-top: 2px;
     }
   }
 
   & button:nth-child(2) {
-    margin: 0px 10px;
+    margin: 0px 12px;
 
     & img {
       width: 24.5px;
       height: 26px;
-      padding: 7px;
     }
   }
 
   & button:last-child {
-    width: 455px;
+    width: 434px;
     background: #5F0080;
     border: 1px solid #5F0080;
     color: #FFFFFF;
@@ -249,6 +259,10 @@
   }
 }
 
+.product-img-large {
+  width: 100%
+}
+
 .explain-description {
   display: flex;
   flex-direction: column;
@@ -275,6 +289,7 @@
 
 .product-point {
   text-align: center;
+  margin-bottom: 96px;
 
   & span {
     display: inline-block;
@@ -301,6 +316,7 @@
   text-align: center;
   font-size: 28px;
   font-weight: 700;
+  margin: 72px 0px 35px;
 }
 
 .why-karly-container {
