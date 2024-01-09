@@ -175,6 +175,10 @@
   position: relative;
 }
 
+.beauty:hover{
+  color: var(--primary, #5F0080);
+}
+
 .beauty img{
   position: absolute;
   right: -5px;
@@ -233,7 +237,7 @@
     z-index: 10;
   }
 
-.navigation{
+.navigation, .navigation2{
   position: relative;
   display: flex;
   align-items: center;
@@ -243,13 +247,13 @@
   width: 1050px;
 }
 
-.nav-menu{
+.nav-menu , .nav-menu2{
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.nav-menu ul li a{
+.nav-menu ul li a, .nav-menu2 ul li a{
   font-family: Pretendard;
   font-size: 16px;
   font-style: normal;
@@ -259,18 +263,18 @@
   text-decoration-line: none;
 }
 
-.nav-menu-ul{
+.nav-menu-ul, .nav-menu-ul2 {
   padding: 24px 16px;
   cursor: pointer;
   font-size: 16px;
 }
 
-.nav-menu-ul li{
+.nav-menu-ul li, .nav-menu-ul2 li{
   display: flex;
   align-items: center;
 }
 
-.nav-menu-ul:hover{
+.nav-menu-ul:hover, .nav-menu-ul2:hover{
   color: var(--primary, #5F0080);
 }
 
@@ -284,6 +288,7 @@
   top: 50px;
   left: 30px;
   width: 250px;
+  z-index: 10;
 }
 
 .nav-menu-hide1 li:hover{
@@ -301,7 +306,7 @@
 
 .nav-menu-hide2{
   position: absolute;
-  opacity: 0;
+  display: none;
   transition: all ease 0.5s;
   background: var(--white,#fff);
   border: 1px solid var(--content, #333);
@@ -325,7 +330,7 @@
   padding: 8px 12px;
 }
 
-.nav-menu-ul img{
+.nav-menu-ul img, .nav-menu-ul2 img{
   margin: 0 8px 3px 0;
 }
 

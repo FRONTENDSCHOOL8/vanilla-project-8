@@ -1,63 +1,67 @@
-import './login.css';
-import { setDocumentTitle, getNode } from '/src/lib/index.js';
-// import gsap from 'gsap';
+// import './login.css';
+import PocketBase from 'pocketbase';
+import pb from '/src/api/pocketbase.js';
+import {
+  setDocumentTitle,
+  getNode,
+  getStorage,
+  setStorage,
+  emailReg,
+  pwReg,
+} from '/src/lib/index.js';
 
 setDocumentTitle('로그인 - 컬리');
 
-const user = {
-  id: 'asd@naver.com',
-  pw: 'spdlqj123!@',
-  //예시임 데이터 베이스 불러 와야함
-};
-
-function emailReg(text) {
-  // 이메일 형식에 맞게 입력했는지 체크
-  const re =
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-  return re.test(String(text).toLowerCase()); // 형식에 맞는 경우에만 true 리턴
-}
-
-function pwReg(text) {
-  const re = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{6,16}$/;
-  return re.test(String(text).toLowerCase());
-}
-
 //이메일, 패스워드, 로그인 버튼에 각각 클래스와 아이디 찾아서 변수 선언
-const email = getNode('#email');
-const pw = getNode('#password');
-const login = getNode('#btn-login');
+const id = getNode('#email').value;
+const pw = getNode('#password').value;
+const login = getNode('.btn-login');
+const login2 = getNode('.btn-login-wrapper');
 //모달창 변수들
 const closeBtn = getNode('.button-close');
 const modal = getNode('.modal-bg');
 
-function handleLogin(e) {
+function handleLogin1(e) {
   e.preventDefault();
   // 이메일 입력조건과 비밀번호 입력조건중  둘다 만족한 경우 로그인 성공
-  emailReg(email.value) && pwReg(pw.value) ? userLogin() : showModal();
+  emailReg(id) && pwReg(pw) ? handleLogin2() : showModal();
 }
 
-function userLogin() {
-  email.value === user.id && pw.value === user.pw
-    ? alert('로그인 성공')
-    : //(window.location.href = '/') //로그인 후 메인 html로 돌아와야함
-      showModal();
+async function handleLogin2(e) {
+  e.preventDefault();
+  try {
+    const userData = await pb.collection('users').authWithPassword(id, pw);
+    // dayeong@naver.com 비번 다영123!@
+    const { model, token } = await getStorage('pocketbase_auth');
+
+    setStorage('auth', {
+      isAuth: !!model,
+      //!!token이어도 상관없음
+      user: model,
+      token,
+    });
+
+    alert('로그인 완료! 메인페이지로 이동합니다.');
+
+    window.location.href = '/index.html';
+  } catch {
+    alert('인증된 사용자가 아닙니다.');
+  }
 }
 
 //모달창 함수
-function showModal(e) {
-  e.preventDefault();
+function showModal() {
   modal.classList.remove('hidden');
   modal.classList.add('visible');
 }
 
-function closeModal(e) {
-  e.preventDefault();
+function closeModal() {
   modal.classList.add('hidden');
   modal.classList.remove('visible');
 }
 
-// login.addEventListener('click', handleLogin);
+//유효성 검사와 등록된 id,pw 로 로그인 하기
+login2.addEventListener('click', handleLogin1);
 //모달창 나타나기, 없애기
-// login.addEventListener('click', showModal);
-// closeBtn.addEventListener('click', closeModal);
+login.addEventListener('click', showModal);
+closeBtn.addEventListener('click', closeModal);

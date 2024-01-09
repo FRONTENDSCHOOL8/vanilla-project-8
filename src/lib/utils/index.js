@@ -7,5 +7,6 @@ export * from './delay.js';
 export * from './typeOf.js';
 export * from './storage.js';
 export * from './comma.js';
+export * from './validation.js';
 export * from './getPbImageURL.js';
 export * from './setDocumentTitle.js';

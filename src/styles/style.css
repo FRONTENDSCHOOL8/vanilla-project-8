@@ -1,0 +1,16 @@
+.userName{
+  padding: 8px;
+  font-size: 12px;
+}
+
+.logout{
+  padding: 8px;
+  border: 1px solid black;
+  transition: all .2s;
+  font-size: 12px;
+}
+
+.logout:hover{
+  background:black;
+  color: white
+}
