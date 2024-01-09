@@ -19,6 +19,7 @@ async function renderProduct() {
     `${import.meta.env.VITE_PB_API}/collections/products/records`
   );
 
+  console.log(response);
   const userData = response.data.items;
 
   const { isAuth } = await getStorage('auth');
@@ -30,6 +31,7 @@ async function renderProduct() {
               <a href="/">
                 <figure>
                   <img
+                    class="product-img"
                     src="${getPbImageURL(item)}"
                     alt=""
                   />
@@ -56,7 +58,7 @@ async function renderProduct() {
               </a>
             </li>
             `;
-    insertLast('.container > .product-list', template);
+    insertLast('.product-list', template);
   });
 
   // gsap.from('.product-item', { y: 30, opacity: 0, stagger: 0.1 });
