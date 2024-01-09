@@ -516,6 +516,8 @@ text-decoration: line-through;
   right: 10px;
   top: 193px;
 
+  z-index: 10;
+
   background: #fff;
 
   & .recent-text {

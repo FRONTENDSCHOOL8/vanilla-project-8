@@ -1,6 +1,21 @@
 import '/src/pages/main/main.css';
 import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs';
-import { getNode, getNodes, comma } from '/src/lib/index.js';
+import {
+  getNode,
+  getNodes,
+  comma,
+  tiger,
+  insertLast,
+  getStorage,
+  setStorage,
+  setDocumentTitle,
+  getPbImageURL,
+} from '/src/lib/index.js';
+import defaultAuthData from '/src/api/defaultAuthData';
+
+setDocumentTitle('메인 페이지');
+
+// swiper 기능 구현
 
 const swiper = new Swiper('.swiper1', {
   // Optional parameters
@@ -55,6 +70,64 @@ const todaySwiper = new Swiper('.swiper2', {
     el: '.swiper-scrollbar',
   },
 });
+
+// db 연동
+
+async function renderProduct(slicea, sliceb, insert) {
+  const response = await tiger.get(
+    `${import.meta.env.VITE_PB_API}/collections/products/records`
+  );
+
+  const userData = response.data.items;
+
+  const firstUserData = userData.slice(slicea, sliceb);
+
+  firstUserData.forEach((item) => {
+    const ratio = item.price * (item.discount * 0.01);
+
+    const discountTemplate =
+      item.discount > 0
+        ? `<div>
+        <span class="discount">${item.discount}%</span>
+        <span class="price">${comma(item.price - ratio)}원</span>
+        </div>
+        <span class="real-price">${item.price}원</span>
+
+        `
+        : `<span class="price">${comma(item.price)}원</span>`;
+
+    const template =
+      /* html */
+      `
+      <div class="swiper-slide">
+                <div class="today-card">
+                  <figure>
+                    <div class="card-shop">
+                      <img
+                        src="${getPbImageURL(item)}"
+                        alt="${item.description}"
+                      />
+                      <input type="button" class="shop-button2 hidden-button" />
+                    </div>
+                  </figure>
+
+                  <div>
+                    <span class="brand">${item.brand}</span>
+                    <span class="desc"></span>
+                  </div>
+                  <span class="discount">${discountTemplate}</span>
+                  
+                                  </div>
+              </div>
+  `;
+    insertLast(insert, template);
+  });
+  console.log('가져온 값', response);
+  console.log('내용물', userData);
+}
+
+renderProduct(0, 12, '.swiper3 > .swiper-wrapper');
+// renderProduct(13, 25, '.swiper2 > .swiper-wrapper');
 
 // document.addEventListener("keydown", function (e) {
 //   // 첫 번째 Swiper에 대한 키보드 이벤트 처리
