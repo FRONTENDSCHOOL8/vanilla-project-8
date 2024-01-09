@@ -6,22 +6,11 @@ import {
   getNode,
   getStorage,
   setStorage,
+  emailReg,
+  pwReg,
 } from '/src/lib/index.js';
 
 setDocumentTitle('로그인 - 컬리');
-
-function emailReg(text) {
-  // 이메일 형식에 맞게 입력했는지 체크
-  const re =
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-  return re.test(String(text)); // 형식에 맞는 경우에만 true 리턴
-}
-
-function pwReg(text) {
-  const re = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{6,16}$/;
-  return re.test(String(text));
-}
 
 //이메일, 패스워드, 로그인 버튼에 각각 클래스와 아이디 찾아서 변수 선언
 const id = getNode('#email').value;
