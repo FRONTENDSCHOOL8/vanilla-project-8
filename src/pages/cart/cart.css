@@ -13,6 +13,7 @@
 }
 
 .cart-container {
+  height: 709px;
   display: flex;
   justify-content: space-between;
 
