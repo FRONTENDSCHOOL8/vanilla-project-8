@@ -1,5 +1,5 @@
 import { headerjs } from '/src/components/header/header.js';
-
+import { mainjs } from '/main.js';
 function includeHTML(element, onSuccess) {
   const { includePath } = element.dataset;
   if (includePath) {
@@ -29,6 +29,7 @@ const header = () => {
   // const ul = document.querySelector('ul');
   // ul.insertAdjacentHTML('beforeend',`${state ? '<li>login</li>' : '<li>logout</li>'}`)
   headerjs();
+  mainjs();
 };
 
 window.addEventListener('load', loadIncludedHTML);

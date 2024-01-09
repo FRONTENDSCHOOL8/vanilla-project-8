@@ -18,17 +18,14 @@ const emailInput = getNode('#email');
 const passwordInput = getNode('#password');
 
 let emailValue = '';
-emailValue = emailInput.value;
 let passwordValue = '';
-passwordValue = passwordInput.value;
 
-emailInput.addEventListener('input', () => {
-  emailValue = emailInput.value;
-});
+emailInput.addEventListener('input', () => (emailValue = emailInput.value));
 
-passwordInput.addEventListener('input', () => {
-  passwordValue = passwordInput.value;
-});
+passwordInput.addEventListener(
+  'input',
+  () => (passwordValue = passwordInput.value)
+);
 
 const login = getNode('.btn-login');
 
@@ -50,6 +47,8 @@ function closeModal() {
 //유효성 검사와 등록된 id,pw 로 로그인 하기
 login.addEventListener('click', (e) => {
   e.preventDefault();
+  console.log(emailValue, passwordValue);
+
   if (emailReg(emailValue) && pwReg(passwordValue)) {
     handleLogin2();
   } else {
