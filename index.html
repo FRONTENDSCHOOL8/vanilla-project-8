@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="/src/pages/main/main.css" />
     <script type="module" src="/src/pages/main/main.js"></script>
     <!-- 메인 페이지 css js 연결주소 설정 -->
+    <script type="module" src="./main.js"></script>
+    <link rel="stylesheet" href="./src/styles/style.css" />
+    <!-- 로그인하면 추가될 css js -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
@@ -38,11 +41,11 @@
   <body>
     <header class="header">
       <div class="fixed2">
-        <div class="navigation">
+        <div class="navigation2">
           <nav>
-            <div class="nav-menu">
-              <ul class="nav-menu-ul">
-                <li class="nav-category">
+            <div class="nav-menu2">
+              <ul class="nav-menu-ul2">
+                <li class="nav-category2">
                   <img src="/images/header/hamberger.svg" alt="카테고리 목록" />
                   카테고리
                 </li>
@@ -249,13 +252,13 @@
               </div>
 
               <div class="ect-menu">
-                <a href=""
+                <a href="/"
                   ><img src="/images/header/Group.svg" alt="배송지 등록"
                 /></a>
-                <a href=""
+                <a href="/"
                   ><img src="/images/header/ic-heart.svg" alt="찜하기"
                 /></a>
-                <a href=""
+                <a href="/src/pages/cart/index.html"
                   ><img src="/images/header/cart.svg" alt="장바구니"
                 /></a>
               </div>
@@ -273,26 +276,22 @@
             </span>
           </a>
           <button class="header-ad-btn" type="button">
-            <img src="/images/header/ico_close_fff_84x84 1.png" alt="창닫기" />
+            <img src="/images/header/x-button.png" alt="창닫기" />
           </button>
         </div>
       </div>
       <div class="header-wrapper">
         <ul class="header-right">
-          <li>
-            <a class="register" href="/src/pages/register/index.html"
-              >회원가입</a
-            >
-          </li>
+          <li><a class="register" href="/">회원가입</a></li>
           <li>
             <span class="divider" aria-hidden="true">|</span>
-            <a class="login-btn" href="/src/pages/login/index.html">로그인</a>
+            <a class="login-btn" href="/">로그인</a>
           </li>
           <li>
             <span class="divider" aria-hidden="true">|</span>
             <a class="information" href="/"
               >고객센터
-              <img src="/images/header/Icon_down 1.png" alt="" />
+              <img src="/images/header/Icon_down.png" alt="" />
             </a>
           </li>
         </ul>
@@ -300,7 +299,7 @@
           <div class="search-main">
             <h1 class="logo">
               <!-- 메인페이지로 이동하는 주소 입력 -->
-              <a href="./index.html">
+              <a href="/">
                 <picture>
                   <img src="/images/header/logo.svg" alt="마켓칼리" />
                 </picture>
@@ -310,7 +309,7 @@
             <span class="divider" aria-hidden="true">|</span>
             <button class="beauty">
               뷰티칼리<img
-                src="/images/header/new 1.svg"
+                src="/images/header/new.svg"
                 alt="new 뷰티칼리소식"
               />
             </button>
@@ -335,9 +334,7 @@
             <a href=""
               ><img src="/images/header/ic-heart.svg" alt="찜하기"
             /></a>
-            <a href="/src/pages/cart/index.html"
-              ><img src="/images/header/cart.svg" alt="장바구니"
-            /></a>
+            <a href=""><img src="/images/header/cart.svg" alt="장바구니" /></a>
           </div>
         </div>
       </div>
@@ -530,10 +527,10 @@
                 </li>
               </ul>
               <ul class="header-center">
-                <li><a href="/src/pages/detail/index.html">신상품</a></li>
-                <li><a href="/src/pages/product/index.html">베스트</a></li>
-                <li><a href="/">알뜰쇼핑</a></li>
-                <li><a href="/">특가/혜택</a></li>
+                <li><a href="">신상품</a></li>
+                <li><a href="">베스트</a></li>
+                <li><a href="">알뜰쇼핑</a></li>
+                <li><a href="">특가/혜택</a></li>
               </ul>
             </div>
           </nav>
