@@ -1,25 +1,59 @@
 import {
   setDocumentTitle,
   insertFirst,
+  insertAfter,
   getNode,
   getPbImageURL,
+  getPbImageURL_2,
+  getPbImageURL_3,
+  getStorage,
+  setStorage,
   comma,
 } from '/src/lib';
 import '/src/pages/detail/detail.css';
 import pb from '/src/api/pocketbase';
+import defaultAuthData from '../../api/defaultAuthData';
+import defaultCartData from '../../api/defaultCartData';
 
 setDocumentTitle('제품명 - 컬리');
 
-async function renderProductData() {
-  const cancel = getNode('.cancel');
-  const modify = getNode('.modify');
+if (!localStorage.getItem('auth')) {
+  setStorage('auth', defaultAuthData);
+}
 
+if (!localStorage.getItem('cart')) {
+  setStorage('cart', defaultCartData);
+}
+
+async function renderProductData() {
   const hash = window.location.hash.slice(1);
 
   const productData = await pb.collection('products').getOne(hash);
 
-  const { brand, price, description, discount, storage } = productData;
+  const {
+    brand,
+    price,
+    description,
+    discount,
+    storage,
+    sales_unit,
+    weight,
+    allergy_info,
+    detail_desc,
+  } = productData;
 
+  const { isAuth } = await getStorage('auth');
+  const { isExist } = await getStorage('cart');
+
+  const cart = getNode('.cart');
+
+  function sendToCart() {
+    setStorage('cart', productData);
+  }
+
+  cart.addEventListener('click', sendToCart);
+
+  /* 메인 정보 */
   const template = /* html */ `
   <img class="product-img" src="${getPbImageURL(
     productData
@@ -28,11 +62,13 @@ async function renderProductData() {
     <span class="delivery">샛별배송</span><br />
     <span class="desc-1">${brand}</span><br />
     <span class="desc-2">${description}</span><br />
+    <span class="real">
     <span class="discount">${discount}%</span>
     <span class="real-price">${comma(
       price - price * (discount * 0.01)
-    )}원</span> <br />
-    <span class="price">${price}</span><br />
+    )}</span>원
+    </span>
+    <span class="price">${comma(price)}원</span><br />
     <span class="accumulate">로그인 후, 적립 혜택이 제공됩니다.</span>
 
     <div class="detail-info-container">
@@ -61,11 +97,11 @@ async function renderProductData() {
       </p>
       <p class="sales-unit">
         <span>판매단위</span>
-        <span>1봉</span>
+        <span>${sales_unit}</span>
       </p>
       <p class="weight">
         <span>중량/용량</span>
-        <span>123g*4봉</span>
+        <span>${weight}</span>
       </p>
       <p class="country-of-origin">
         <span>원산지</span>
@@ -74,10 +110,7 @@ async function renderProductData() {
       <p class="allergy-info">
         <span>알레르기정보</span>
         <span class="detail">
-          -대두, 밀, 쇠고기 함유<br />
-          -계란, 우유, 메밀, 땅콩, 고등어, 게, 돼지고기, 새우, 복숭아,
-          토마토, 아황산류, 호두, 잣, 닭고기, 오징어, 조개류(굴, 전복,
-          홍합 포함)를 사용한 제품과 같은 제조시설에서 제조</span
+          ${allergy_info}</span
         >
       </p>
       <p class="select-product">
@@ -114,57 +147,34 @@ async function renderProductData() {
         <b class="label">적립</b>로그인 후, 적립 혜택 제공
       </div>
     </div>
-    <div class="button-container">
-      <button class="like">
-        <img src="/public/images/detail/heart.svg" alt="찜하기 버튼" />
-      </button>
-      <button class="restock-alarm">
-        <img
-          src="/public/images/detail/alarm.svg"
-          alt="재입고 알림 버튼"
-        />
-      </button>
-      <button class="cart">장바구니 담기</button>
-    </div>
   </div>
           `;
   insertFirst('.product-info-container', template);
 
-  const priceInput = getNode('#price');
-  const discountInput = getNode('#discount');
+  /* 상세 정보 */
+  const template_2 = /* html */ `
+  <img
+  class="product-explain-container"
+  src = "${getPbImageURL_2(productData)}";
+  alt="상품설명"
+  />
+<div class="explain-description">
+  <small>${description}</small>
+  <h3>${brand}</h3>
+  <p>${detail_desc}</p>
+</div>
 
-  function handleDiscount() {
-    let newPrice = price;
-    let newDiscount = discount;
+  `;
+  insertAfter('.board-navigation', template_2);
 
-    newPrice = priceInput.value;
-    newDiscount = discountInput.value;
-
-    const ratio = newPrice * (newDiscount * 0.01);
-    const realPrice = newPrice - ratio;
-
-    getNode('.real-price').textContent = comma(realPrice) + '원';
-  }
-
-  function handleModify() {
-    pb.collection('products')
-      .update(hash, {
-        brand: getNode('#brand').value,
-        price: getNode('#price').value,
-        discount: getNode('#discount').value,
-        description: getNode('#description').value,
-      })
-      .then(() => {
-        // history.back()
-        location.href = '/src/pages/product/';
-      })
-      .catch(() => {});
-  }
-
-  // modify.addEventListener('click', handleModify);
-  // cancel.addEventListener('click', () => history.back());
-  // discountInput.addEventListener('input', handleDiscount);
-  // priceInput.addEventListener('input', handleDiscount);
+  /* 영양 정보 */
+  const template_3 = /* html */ `
+  <img
+  src = "${getPbImageURL_3(productData)}";
+  alt="영양정보"
+  />
+  `;
+  insertAfter('.product-point', template_3);
 }
 
 renderProductData();
