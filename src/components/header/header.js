@@ -50,4 +50,17 @@ export function headerjs() {
       category2.style.display = 'none';
     }
   };
+
+  const addPackage = getNode('.ect-menu-add-package');
+  const bubble = getNode('.drop-bubble');
+
+  function showBubble() {
+    bubble.style.opacity = 1;
+  }
+  function closeBubble() {
+    bubble.style.opacity = 0;
+  }
+
+  addPackage.addEventListener('mouseover', showBubble);
+  addPackage.addEventListener('mouseout', closeBubble);
 }
