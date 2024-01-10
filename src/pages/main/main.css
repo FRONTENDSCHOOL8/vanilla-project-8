@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities; */
 
+:root {
+  --swiper-navigation-size: 80px;
+}
 
 a {
   text-decoration-line: none;
@@ -69,7 +72,7 @@ figure {
 .swiper1 .swiper-slide img {
   /* width: 120; */
   height: 370px;
-  /* object-fit: contain; */
+  object-fit: cover;
 
 }
 
