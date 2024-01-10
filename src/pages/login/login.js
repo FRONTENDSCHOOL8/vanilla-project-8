@@ -47,7 +47,6 @@ function closeModal() {
 //유효성 검사와 등록된 id,pw 로 로그인 하기
 login.addEventListener('click', (e) => {
   e.preventDefault();
-  console.log(emailValue, passwordValue);
 
   if (emailReg(emailValue) && pwReg(passwordValue)) {
     handleLogin2();
