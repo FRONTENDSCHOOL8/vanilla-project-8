@@ -24,6 +24,7 @@
     display: flex;
     align-items: center;
     border-bottom: 1px solid black;
+    box-sizing: content-box;
 
     &.bottom {
       border-bottom: none;
@@ -79,6 +80,8 @@
       line-height: 1.5;
       padding: 20px;
       border-bottom: 1px solid #E1E1E1;
+      box-sizing: content-box;
+
     }
 
     & .address-container {
