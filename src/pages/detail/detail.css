@@ -1,7 +1,7 @@
 .product-info-container {
   display: flex;
   width: 1050px;
-  height: 1200px;
+  height: 1100px;
   justify-content: space-between;
   margin: 0 auto;
   padding-top: 40px;
@@ -190,8 +190,11 @@
 
 .button-container {
   display: flex;
-  width: 100%;
+  justify-content: end;
+  width: 1050px;
   height: 56px;
+  margin: 0 auto 48px;
+
 
   & button {
     width: 56px;
@@ -204,6 +207,7 @@
   }
 
   & button:first-child {
+    cursor: pointer;
 
     & img {
       width: 36px;
@@ -221,6 +225,7 @@
   }
 
   & button:last-child {
+    cursor: pointer;
     width: 434px;
     background: #5F0080;
     border: 1px solid #5F0080;
@@ -272,18 +277,25 @@
 
   & small {
     font-size: 28px;
-    font-weight: 500;
+    font-weight: 600;
+    line-height: 1.5;
+
   }
 
   & h3 {
     font-size: 50px;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 36px;
+    line-height: 1.6;
+
   }
 
   & p {
     border-top: 1px solid #E1E1E1;
     padding-top: 28px;
+    color: #333333;
+    font-weight: 400;
+    line-height: 1.6;
   }
 }
 

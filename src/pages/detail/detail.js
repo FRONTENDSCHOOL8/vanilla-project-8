@@ -6,23 +6,54 @@ import {
   getPbImageURL,
   getPbImageURL_2,
   getPbImageURL_3,
+  getStorage,
+  setStorage,
   comma,
 } from '/src/lib';
 import '/src/pages/detail/detail.css';
 import pb from '/src/api/pocketbase';
+import defaultAuthData from '../../api/defaultAuthData';
+import defaultCartData from '../../api/defaultCartData';
 
 setDocumentTitle('제품명 - 컬리');
 
-async function renderProductData() {
-  const cancel = getNode('.cancel');
-  const modify = getNode('.modify');
+if (!localStorage.getItem('auth')) {
+  setStorage('auth', defaultAuthData);
+}
 
+if (!localStorage.getItem('cart')) {
+  setStorage('cart', defaultCartData);
+}
+
+async function renderProductData() {
   const hash = window.location.hash.slice(1);
 
   const productData = await pb.collection('products').getOne(hash);
 
-  const { brand, price, description, discount, storage } = productData;
+  const {
+    brand,
+    price,
+    description,
+    discount,
+    storage,
+    sales_unit,
+    weight,
+    allergy_info,
+    detail_desc,
+  } = productData;
 
+  const { isAuth } = await getStorage('auth');
+  const { isExist } = await getStorage('cart');
+
+  const cart = getNode('.cart');
+
+  function sendToCart() {
+    setStorage('cart', productData);
+  }
+
+  cart.addEventListener('click', sendToCart);
+
+  /* 메인 정보 */
   const template = /* html */ `
   <img class="product-img" src="${getPbImageURL(
     productData
@@ -66,11 +97,11 @@ async function renderProductData() {
       </p>
       <p class="sales-unit">
         <span>판매단위</span>
-        <span>1봉</span>
+        <span>${sales_unit}</span>
       </p>
       <p class="weight">
         <span>중량/용량</span>
-        <span>123g*4봉</span>
+        <span>${weight}</span>
       </p>
       <p class="country-of-origin">
         <span>원산지</span>
@@ -79,10 +110,7 @@ async function renderProductData() {
       <p class="allergy-info">
         <span>알레르기정보</span>
         <span class="detail">
-          -대두, 밀, 쇠고기 함유<br />
-          -계란, 우유, 메밀, 땅콩, 고등어, 게, 돼지고기, 새우, 복숭아,
-          토마토, 아황산류, 호두, 잣, 닭고기, 오징어, 조개류(굴, 전복,
-          홍합 포함)를 사용한 제품과 같은 제조시설에서 제조</span
+          ${allergy_info}</span
         >
       </p>
       <p class="select-product">
@@ -119,22 +147,11 @@ async function renderProductData() {
         <b class="label">적립</b>로그인 후, 적립 혜택 제공
       </div>
     </div>
-    <div class="button-container">
-      <button class="like">
-        <img src="/public/images/detail/heart.svg" alt="찜하기 버튼" />
-      </button>
-      <button class="restock-alarm">
-        <img
-          src="/public/images/detail/alarm.svg"
-          alt="재입고 알림 버튼"
-        />
-      </button>
-      <button class="cart">장바구니 담기</button>
-    </div>
   </div>
           `;
   insertFirst('.product-info-container', template);
 
+  /* 상세 정보 */
   const template_2 = /* html */ `
   <img
   class="product-explain-container"
@@ -144,25 +161,17 @@ async function renderProductData() {
 <div class="explain-description">
   <small>${description}</small>
   <h3>${brand}</h3>
-  <p>
-    쫄면의 진가는 매콤새콤한 양념과 탱탱한 면발에서 찾을 수 있지요.
-    풀무원은 이 맛을 더 부담 없이 즐길 수 있도록 튀기지 않고 만든
-    탱탱쫄면을 선보입니다. 밀가루와 감자 전분을 적절히 배합해 탄력이
-    좋고, 입에 넣었을 때는 찰지게 씹히죠. 고추장을 넣어 숙성한
-    비빔장은 자연스럽고 깊은 맛을 냅니다. 간단하게 조리해 마지막 한
-    가닥까지 탱탱한 식감을 즐겨보세요. 취향에 따라 다양한 고명을 올려
-    드셔도 좋아요.
-  </p>
+  <p>${detail_desc}</p>
 </div>
 
   `;
   insertAfter('.board-navigation', template_2);
 
+  /* 영양 정보 */
   const template_3 = /* html */ `
   <img
-  class="product-explain-container"
   src = "${getPbImageURL_3(productData)}";
-  alt="상품설명"
+  alt="영양정보"
   />
   `;
   insertAfter('.product-point', template_3);
