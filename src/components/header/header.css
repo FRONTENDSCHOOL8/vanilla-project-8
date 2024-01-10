@@ -498,3 +498,60 @@
   color: white;
   border-radius: 3px;
 }
+
+
+/* 모달창 연습 */
+.modal-bg {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal{
+  background-color: #fefefe;
+  margin: 15% auto;
+  width: 30%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.hidden {
+  background-color: white;
+  visibility: hidden;
+}
+
+
+.button-wrapper{
+  border-top: 1px solid var(--gray-200, #C8C8C8);
+  width: 100%;
+}
+
+.modal-text{
+  padding: 40px 30px;
+}
+
+.button-close{
+  color: var(--primary, #5F0080);;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 20px 30px;
+}
