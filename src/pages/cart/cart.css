@@ -194,3 +194,76 @@
   font-weight: 600;
   line-height: 1.5;
 }
+
+
+.add-product {
+  position: relative;
+
+  & label {
+    width: 36px;
+  }
+
+  & li {
+    width: 742px;
+    height: 118px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 0px;
+  }
+
+  & input {
+    position: absolute;
+  }
+
+  & .thumbnail {
+    width: 60px;
+    height: 78px;
+    margin-right: 20px;
+  }
+
+  & a {
+    width: 420px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+  }
+
+  & .count-box {
+    width: 90px;
+    border: 1px solid #E1E1E1;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-weight: 600;
+
+    & span {
+      padding: 0px 3px;
+    }
+
+    & button {
+      border: none;
+      background: transparent;
+
+      & img {
+        width: 28px;
+        height: 28px;
+      }
+    }
+  }
+
+  & .price {
+    width: 127px;
+    text-align: end;
+    margin-top: 5px;
+  }
+
+  & .delete {
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    color: #333333;
+  }
+}

@@ -12,10 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="/src/pages/cart/cart.js"></script>
     <script type="module" src="/src/components/include.js"></script>
-    <!-- 헤더 푸터 css js 추가 -->
-    <link rel="stylesheet" href="/src/components/css/components.css" />
-    <script type="module" src="/src/components/header/header.js"></script>
   </head>
+
   <body>
     <header data-include-path="/src/components/header/index.html"></header>
 
@@ -33,8 +31,8 @@
               <div class="bar"></div>
               <button class="delete-selection">선택삭제</button>
             </div>
-            <div class="cart-left product">
-              <button class="fridge">
+            <div class="cart-left product fridge">
+              <button>
                 <img src="/public/images/cart/fridge.svg" alt="냉장 식품" />
                 냉장 식품
               </button>
@@ -42,8 +40,8 @@
                 <img src="/public/images/cart/fold-arrow.svg" alt="더보기" />
               </button>
             </div>
-            <div class="cart-left product">
-              <button class="freeze">
+            <div class="cart-left product freeze">
+              <button>
                 <img src="/public/images/cart/freeze.svg" alt="냉동 식품" />
                 냉동 식품
               </button>
@@ -51,8 +49,11 @@
                 <img src="/public/images/cart/fold-arrow.svg" alt="더보기" />
               </button>
             </div>
-            <div class="cart-left product">
-              <button class="fridge">
+
+            <ul class="add-product"></ul>
+
+            <div class="cart-left product ordinary">
+              <button>
                 <img src="/public/images/cart/ordinary.svg" alt="상온 식품" />
                 상온 식품
               </button>
