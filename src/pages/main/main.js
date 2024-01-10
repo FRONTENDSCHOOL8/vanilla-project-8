@@ -100,7 +100,7 @@ const todaySwiper2 = new Swiper('.swiper3', {
 
 // db 연동
 let arr = [];
-
+let imgArr = [];
 async function renderProduct(slicea, sliceb, insert) {
   const response = await tiger.get(
     `${import.meta.env.VITE_PB_API}/collections/products/records`
@@ -117,7 +117,7 @@ async function renderProduct(slicea, sliceb, insert) {
       item.discount > 0
         ? `<div>
         <span class="discount">${item.discount}%</span>
-        <span class="price">${comma(item.price - ratio)}원</span>
+        <span class="price">${Math.floor(Number(item.price - ratio))}원</span>
         </div>
         <span class="real-price">${item.price}원</span>
 
@@ -155,6 +155,7 @@ async function renderProduct(slicea, sliceb, insert) {
     insertLast(insert, template);
 
     arr.push(item);
+    imgArr.push(getPbImageURL(item));
     // 이벤트 리스너를 추가합니다.
     // shopButton.addEventListener('click', (e) => {
     //   e.preventDefault(); // a 태그의 기본 이동을 방지합니다.
@@ -168,7 +169,7 @@ async function renderProduct(slicea, sliceb, insert) {
 }
 
 renderProduct(0, 12, '.swiper3 > .swiper-wrapper');
-renderProduct(12, 25, '.swiper2 > .swiper-wrapper');
+renderProduct(0, 12, '.swiper2 > .swiper-wrapper');
 
 // function showModal(item) {
 //   const ratio = item.price * (item.discount * 0.01);
@@ -276,6 +277,7 @@ function viewDialog(e) {
     const itemList = arr[buttonIndex];
 
     console.log(buttonIndex, itemList);
+    console.log('현재 arr', arr);
     const dialogBtn = e.target.currentTarget;
 
     const ratio = itemList.price * (itemList.discount * 0.01);
@@ -291,7 +293,9 @@ function viewDialog(e) {
 
   <div class="add-cart-sum">
     <div class="price-list">
-      <span class="cart-price">${itemList.price - ratio}원</span>
+      <span class="cart-price">${Math.floor(
+        Number(itemList.price - ratio)
+      )}원</span>
       <span class="cart-realprice">${itemList.price}원</span>
     </div>
     <div class="count-button-list">
@@ -311,7 +315,9 @@ function viewDialog(e) {
 
   <div class="sum">
     <span class="sum-name">합계</span>
-    <span class="sum-value">${itemList.price - ratio}원</span>
+    <span class="sum-value">${Math.floor(
+      Number(itemList.price - ratio)
+    )}원</span>
   </div>
 
   <div class="point">
@@ -343,17 +349,22 @@ swiperBtntest3.addEventListener('click', viewDialog);
 const plusButton = getNode('.plus-button');
 const minusButton = getNode('.minus-button');
 const addCart = getNode('.add-cart');
-const count = getNode('.count');
-const sum = getNode('.sum-value');
+// const count = getNode('.count');
+// const sum = getNode('.sum-value');
 
 function plusCount(e) {
+  const count = e.target.closest('.add-cart').querySelector('.count');
+  const sum = e.target.closest('.add-cart').querySelector('.sum-value');
+
   if (e.target.matches('.plus-button')) {
     console.log('참');
     let number = count.innerText;
-    if (number <= 2) {
+    if (number < 2) {
       number = parseInt(number) + 1;
       console.log(number);
       let sumvalue = sum.innerText;
+      let sumvalues = parseInt(sumvalue);
+      // dP
       sumvalue = parseInt(sumvalue) + parseInt(sumvalue);
       count.innerText = number;
       sum.innerText = sumvalue + '원';
@@ -361,21 +372,50 @@ function plusCount(e) {
   }
 }
 
-function minusCount() {
-  let number = count.innerText;
-  if (number > 1) {
-    number = parseInt(number) - 1;
-    console.log(number);
-    let sumvalue = sum.innerText;
-    if (number !== 1) {
-      sumvalue = parseInt(sumvalue) / number;
-    } else {
-      sumvalue = parseInt(sumvalue) - parseInt(sumvalue) / 2;
+function minusCount(e) {
+  const count = e.target.closest('.add-cart').querySelector('.count');
+  const sum = e.target.closest('.add-cart').querySelector('.sum-value');
+  if (e.target.matches('.minus-button')) {
+    console.log('거짓');
+    let number = count.innerText;
+    if (number > 1) {
+      number = parseInt(number) - 1;
+      console.log(number);
+      let sumvalue = sum.innerText;
+      let sumvalues = parseInt(sumvalue);
+      if (number !== 1) {
+        sumvalue = parseInt(sumvalue) / number;
+      } else {
+        sumvalue = parseInt(sumvalue) - sumvalues / 2;
+      }
+      count.innerText = number;
+      sum.innerText = sumvalue + '원';
     }
-    count.innerText = number;
-    sum.innerText = sumvalue + '원';
   }
 }
 
 addCart.addEventListener('click', plusCount);
 addCart.addEventListener('click', minusCount);
+
+// function a() {
+//   let recentAdd = JSON.parse(localStorage.getItem('recent')) || [];
+//   recentAdd.push({ img: arr[0].photo, url: '/src/pages/detail/index.html' });
+//   let result = [...new Set(recentAdd)];
+
+//   localStorage.setItem('recent', JSON.stringify(result));
+// }
+
+// a();
+
+function addRecentProduct() {
+  if (!localStorage.getItem('recent')) {
+    setStorage('auth', defaultAuthData);
+  }
+
+  // let products = JSON.parse(localStorage.getItem('recent')) || [];
+
+  // console.log('arr 이미지', );
+}
+
+// 함수 호출
+addRecentProduct();
