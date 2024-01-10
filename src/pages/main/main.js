@@ -357,11 +357,11 @@ function plusCount(e) {
   const sum = e.target.closest('.add-cart').querySelector('.sum-value');
 
   if (e.target.matches('.plus-button')) {
-    console.log('참');
+    // console.log('참');
     let number = count.innerText;
     if (number < 2) {
       number = parseInt(number) + 1;
-      console.log(number);
+      // console.log(number);
       let sumvalue = sum.innerText;
       let sumvalues = parseInt(sumvalue);
       // dP
@@ -376,11 +376,11 @@ function minusCount(e) {
   const count = e.target.closest('.add-cart').querySelector('.count');
   const sum = e.target.closest('.add-cart').querySelector('.sum-value');
   if (e.target.matches('.minus-button')) {
-    console.log('거짓');
+    // console.log('거짓');
     let number = count.innerText;
     if (number > 1) {
       number = parseInt(number) - 1;
-      console.log(number);
+      // console.log(number);
       let sumvalue = sum.innerText;
       let sumvalues = parseInt(sumvalue);
       if (number !== 1) {
@@ -419,3 +419,29 @@ function addRecentProduct() {
 
 // 함수 호출
 addRecentProduct();
+
+// 버튼 이벤트 등록
+const hideToday = getNode('.popup-button-today');
+
+hideToday.addEventListener('click', function () {
+  // 현재 날짜를 로컬 스토리지에 저장
+  let today = new Date();
+  localStorage.setItem('hidePopup', today.toDateString());
+  hidePopup();
+});
+
+function hidePopup() {
+  // 팝업 요소를 숨김
+  popup.style.display = 'none';
+}
+
+// 페이지 로드 시 팝업 확인
+window.onload = function () {
+  let hideDate = localStorage.getItem('hidePopup');
+  let today = new Date();
+
+  // 로컬 스토리지의 날짜와 오늘의 날짜가 같으면 팝업을 숨김
+  if (hideDate === today.toDateString()) {
+    hidePopup();
+  }
+};
