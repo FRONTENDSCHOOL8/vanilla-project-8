@@ -117,7 +117,6 @@
   line-height: 160%; 
 }
 
-
 .header-right a{
   text-decoration-line: none;
   padding: 8px 0 8px 8px;
@@ -133,9 +132,34 @@
 .information{
   display: flex;
   align-items: center;
+  position: relative;
+  padding: 0;
 }
 
 
+.information-ul{
+  position: absolute;
+  top:80px;
+  right: 120px;
+  padding: 5px;
+  border: 1px solid var(--content, #333);
+  color: var(--content, #333);
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  width: 150px;
+  height: 100px;
+  background: white;
+  line-height: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.information-ul li a{
+  padding: 0;
+}
 
 .search-wrapper{
   display: flex;
