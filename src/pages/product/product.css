@@ -37,6 +37,12 @@
   font-size: 15px;
   padding-bottom: 20px;
 
+  & .bar {
+    width: 1px;
+    height: 10px;
+    background: #A6A6A6;
+  }
+
   & ul {
     display: flex;
     align-items: center;
@@ -44,21 +50,15 @@
 
     & li {
       padding: 0px 8px;
-      border-left: 1px solid #A6A6A6;
     }
 
     & li:first-child {
-      border: none;
-      padding-right: 4px;
+      padding: 0px 5px;
       color: #000
     }
 
-    & span:hover {
-      content: "";
-    }
-
     & img {
-      width: 14px;
+      width: 16px;
       height: 20px;
       padding-right: 4px;
     }
@@ -74,6 +74,18 @@
 }
 
 .product-each {
+  position: relative;
+
+  & .cart {
+    position: absolute;
+    right: 0;
+    margin: 255px 15px 17px 0px;
+    border: none;
+    background: url("/public/images/product/cart-img.svg");
+    width: 45px;
+    height: 45px;
+    z-index: 1;
+  }
 
   & a {
     text-decoration: none;
@@ -83,21 +95,7 @@
   & .product-img {
     width: 249px;
     height: 320px;
-  }
-
-  & figure {
-    position: relative;
     margin-bottom: 16px;
-  }
-
-  & .cart-img {
-    position: absolute;
-    width: 45px;
-    height: 45px;
-    z-index: 1;
-    right: 0;
-    bottom: 0;
-    margin: 17px;
   }
 }
 
@@ -153,6 +151,16 @@
   & .karly-only {
     color: #5F0080;
     font-weight: 600;
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  & .limited {
+    &.hidden {
+      display: none;
+    }
   }
 }
 
