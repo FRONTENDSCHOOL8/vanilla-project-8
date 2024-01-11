@@ -28,8 +28,8 @@ const header = () => {
   // let state = false;
   // const ul = document.querySelector('ul');
   // ul.insertAdjacentHTML('beforeend',`${state ? '<li>login</li>' : '<li>logout</li>'}`)
-  headerjs();
   mainjs();
+  headerjs();
 };
 
 window.addEventListener('load', loadIncludedHTML);

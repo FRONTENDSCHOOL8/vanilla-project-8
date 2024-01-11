@@ -50,4 +50,39 @@ export function headerjs() {
       category2.style.display = 'none';
     }
   };
+
+  const addPackage = getNode('.ect-menu-add-package');
+  const bubble = getNode('.drop-bubble');
+
+  function showBubble() {
+    bubble.style.opacity = 1;
+  }
+  function closeBubble() {
+    bubble.style.opacity = 0;
+  }
+
+  addPackage.addEventListener('mouseover', showBubble);
+  addPackage.addEventListener('mouseout', closeBubble);
+
+  //모달창 변수들
+  const closeBtn = getNode('.button-close');
+  const modal = getNode('.modal-bg');
+  const heart = getNode('.heart');
+
+  //모달창 함수
+  function showModal(e) {
+    e.preventDefault();
+    modal.classList.remove('hidden');
+    modal.classList.add('visible');
+  }
+
+  function closeModal() {
+    modal.classList.add('hidden');
+    modal.classList.remove('visible');
+    window.location.href = '/src/pages/login/index.html';
+  }
+
+  //모달창 나타나기, 없애기
+  heart.addEventListener('click', showModal);
+  closeBtn.addEventListener('click', closeModal);
 }

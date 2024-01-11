@@ -12,14 +12,12 @@ import {
 export async function mainjs() {
   if (localStorage.getItem('auth')) {
     const { isAuth, user } = await getStorage('auth');
-    console.log(isAuth, user);
     if (isAuth) {
       const template = /* html */ `
       <div class="userName">웰컴 ${user.name}님😘</div>
       <button class="logout" type="button">로그아웃</button>
     `;
       const headerRight = getNode('.header-right');
-      console.log(headerRight);
       headerRight.insertAdjacentHTML('beforeend', template);
     }
   }

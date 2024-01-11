@@ -47,7 +47,6 @@ function closeModal() {
 //유효성 검사와 등록된 id,pw 로 로그인 하기
 login.addEventListener('click', (e) => {
   e.preventDefault();
-  console.log(emailValue, passwordValue);
 
   if (emailReg(emailValue) && pwReg(passwordValue)) {
     handleLogin2();
@@ -81,13 +80,3 @@ async function handleLogin2() {
 
 //모달창 나타나기, 없애기
 closeBtn.addEventListener('click', closeModal);
-
-const addPackage = getNode('.add-package');
-const bubble = getNode('.drop-bubble');
-
-function showBubble() {
-  bubble.style.opacity = 1;
-}
-
-addPackage.addEventListener('mouseover', showBubble);
-//뭐가 틀렸지? 안 나타난다...
