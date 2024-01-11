@@ -1,6 +1,7 @@
 .container {
   padding: 80px 0px;
   width: 1050px;
+  height: auto;
   margin: 0 auto;
 }
 
@@ -13,9 +14,14 @@
 }
 
 .cart-container {
-  height: 709px;
   display: flex;
   justify-content: space-between;
+
+  & .bottom-bar {
+    width: 742px;
+    height: 1px;
+    background: #333333;
+  }
 
   & .cart-left {
     width: 742px;
@@ -23,12 +29,10 @@
     padding: 16px 0px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid black;
+    /* border-bottom: 1px solid black; */
     box-sizing: content-box;
 
-    &.bottom {
-      border-bottom: none;
-    }
+
 
     & button {
       display: flex;
