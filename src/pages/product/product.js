@@ -3,14 +3,10 @@ import {
   tiger,
   insertLast,
   comma,
-  getNode,
   getPbImageURL,
-  getStorage,
-  setStorage,
   setDocumentTitle,
 } from '/src/lib';
 import pb from '/src/api/pocketbase';
-import defaultCartData from '../../api/defaultCartData';
 
 setDocumentTitle('검색 - 컬리');
 
@@ -20,19 +16,23 @@ async function renderProduct() {
   );
   const userData = response.data.items;
 
+  console.log(userData);
+
   userData.forEach((item) => {
     const ratio = item.price * (item.discount * 0.01);
     const template = /* html */ `
             <li class="product-each">
-              <button class="cart" type="button"></button>
+              <button class="add-cart" id="${item.id}"></button>
               <a href="${`/src/pages/detail/index.html#${item.id}`}">
                   <img
                     class="product-img"
                     src="${getPbImageURL(item)}"
-                    alt=""
+                    alt
                   />
                 <div class="product-info">
-                  <span class="delivery">샛별배송</span><br />
+                  <span class="delivery">${
+                    item.dawn_package ? '샛별배송' : '판매자배송'
+                  }</span><br />
                   <span class="desc-1">${item.brand}</span><br />
                   <span class="discount">${item.discount}%</span>
                   <span class="real-price">${comma(
@@ -51,38 +51,54 @@ async function renderProduct() {
                 </div>
               </a>
             </li>
-
-            <script>
-              const karlyOnly = getNode('karly-only');
-              if (item.karly_only === false) {
-              karlyOnly.classList.add('hidden')}
-            </script>
             `;
 
     insertLast('.product-list', template);
   });
 
-  //
-
-  //
+  /* 장바구니 담기 */
 
   if (!localStorage.getItem('cart')) {
-    setStorage('cart', defaultCartData);
+    localStorage.setItem('cart', JSON.stringify([]));
   }
 
-  const hash = window.location.hash.slice(1);
+  const cart = document.querySelectorAll('.add-cart');
 
-  const productData = await pb.collection('products').getOne(hash);
-  console.log(productData);
+  function sendToCart(event) {
+    const clickedButtonId = event.currentTarget.id;
+    const clickedProduct = userData.find((item) => item.id === clickedButtonId);
 
-  const cart = getNode('.cart');
-
-  function sendToCart() {
-    setStorage('cart', productData);
-    console.log('꽁꽁');
+    let cartData = JSON.parse(localStorage.getItem('cart'));
+    if (!Array.isArray(cartData)) {
+      cartData = [];
+    }
+    cartData.push(clickedProduct);
+    localStorage.setItem('cart', JSON.stringify(cartData));
   }
 
-  cart.addEventListener('click', sendToCart);
+  cart.forEach((cart) => {
+    cart.addEventListener('click', sendToCart);
+  });
 }
 
 renderProduct();
+
+/* 장바구니 담기 */
+
+async function renderProductData() {
+  const hash = window.location.hash.slice(1);
+
+  const productData = await pb.collection('products').getOne(hash);
+
+  const {
+    brand,
+    price,
+    description,
+    discount,
+    storage,
+    sales_unit,
+    weight,
+    allergy_info,
+    detail_desc,
+  } = productData;
+}
