@@ -2,28 +2,15 @@ import {
   setDocumentTitle,
   insertFirst,
   insertAfter,
-  getNode,
   getPbImageURL,
   getPbImageURL_2,
   getPbImageURL_3,
-  getStorage,
-  setStorage,
   comma,
 } from '/src/lib';
 import '/src/pages/detail/detail.css';
 import pb from '/src/api/pocketbase';
-import defaultAuthData from '../../api/defaultAuthData';
-import defaultCartData from '../../api/defaultCartData';
 
 setDocumentTitle('제품명 - 컬리');
-
-// if (!localStorage.getItem('auth')) {
-//   setStorage('auth', defaultAuthData);
-// }
-
-if (!localStorage.getItem('cart')) {
-  setStorage('cart', defaultCartData);
-}
 
 async function renderProductData() {
   const hash = window.location.hash.slice(1);
@@ -42,13 +29,19 @@ async function renderProductData() {
     detail_desc,
   } = productData;
 
-  const { isAuth } = await getStorage('auth');
-  const { isExist } = await getStorage('cart');
+  if (!localStorage.getItem('cart')) {
+    localStorage.setItem('cart', JSON.stringify([]));
+  }
 
-  const cart = getNode('.cart');
+  const cart = document.querySelector('.add-cart');
 
   function sendToCart() {
-    setStorage('cart', productData);
+    let cartData = JSON.parse(localStorage.getItem('cart'));
+    if (!Array.isArray(cartData)) {
+      cartData = [];
+    }
+    cartData.push(productData);
+    localStorage.setItem('cart', JSON.stringify(cartData));
   }
 
   cart.addEventListener('click', sendToCart);
