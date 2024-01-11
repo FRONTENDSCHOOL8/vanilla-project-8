@@ -17,9 +17,9 @@ import defaultCartData from '../../api/defaultCartData';
 
 setDocumentTitle('제품명 - 컬리');
 
-if (!localStorage.getItem('auth')) {
-  setStorage('auth', defaultAuthData);
-}
+// if (!localStorage.getItem('auth')) {
+//   setStorage('auth', defaultAuthData);
+// }
 
 if (!localStorage.getItem('cart')) {
   setStorage('cart', defaultCartData);
