@@ -220,6 +220,10 @@
   margin-bottom: 25px;
 }
 
+.add-package2:hover{
+  background-image: url('/images/header/map-hover.svg');
+}
+
 .ect-menu-add-package{
   position: relative;
 }
@@ -324,6 +328,14 @@
 .drop {
   position: fixed;}
   
+
+  .heart-img:hover{
+    background-image: url('/images/header/heart-hover.svg');
+  }
+
+  .cart-img:hover{
+    background-image: url('/images/header/cart-hover.svg');
+  }
 
   .fixed{
   width: 100%;
