@@ -491,6 +491,7 @@
   font-size: 12px;
   border: 1px solid purple;
   border-radius: 3px;
+  margin-left: 10px;
 }
 
 .logout:hover{
