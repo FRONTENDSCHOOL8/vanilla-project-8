@@ -294,12 +294,14 @@
   text-align: center;
   color: var(--primary, #5F0080);
   padding: 4px 0;
+  text-decoration-line: none;
 }
 
 .bubble-login a{
   margin: 0;
   text-align: center;
   padding: 5px 0;
+  text-decoration-line: none;
 }
 
 .bubble-search{
