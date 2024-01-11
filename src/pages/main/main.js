@@ -250,7 +250,7 @@ function hideDialog(e) {
   if (dialogBtn === 'cancel') {
     // popup.style.display = 'none';
     dialog.style.display = 'none';
-    console.log(dialog);
+    // console.log(dialog);
   }
 }
 
@@ -409,11 +409,9 @@ addCart.addEventListener('click', minusCount);
 
 function addRecentProduct() {
   if (!localStorage.getItem('recent')) {
-    setStorage('auth', defaultAuthData);
+    setStorage('recent', defaultAuthData);
   }
-
   // let products = JSON.parse(localStorage.getItem('recent')) || [];
-
   // console.log('arr 이미지', );
 }
 
