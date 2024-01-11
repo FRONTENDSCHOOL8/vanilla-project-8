@@ -97,7 +97,7 @@
   & .allergy-info {
 
     & span:first-child {
-      width: 250px;
+      width: 128px;
     }
 
     & .detail {
@@ -206,7 +206,7 @@
     justify-content: space-evenly
   }
 
-  & button:first-child {
+  & .like {
     cursor: pointer;
 
     & img {
@@ -215,7 +215,7 @@
     }
   }
 
-  & button:nth-child(2) {
+  & .restock-alarm {
     margin: 0px 12px;
 
     & img {
@@ -224,7 +224,7 @@
     }
   }
 
-  & button:last-child {
+  & .add-cart {
     cursor: pointer;
     width: 434px;
     background: #5F0080;
