@@ -43,7 +43,7 @@ export async function mainjs() {
   }
 
   const logout = getNode('.logout');
-
+  const heart = getNode('.heart');
   if (logout) {
     logout.addEventListener('click', () => {
       pb.authStore.clear();
@@ -52,6 +52,9 @@ export async function mainjs() {
       setStorage('auth', defaultAuthData);
       //리액트에서는 부분적으로 리로드를 명령어 없이도 자동실행해준다
       window.location.reload();
-    });
+    }),
+      heart.addEventListener('click', () => {
+        window.location.href = 'https://www.kurly.com/mypage/pick/list';
+      });
   }
 }
