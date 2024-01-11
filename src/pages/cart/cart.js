@@ -11,8 +11,8 @@ import '/src/pages/cart/cart.css';
 setDocumentTitle('장바구니 - 컬리');
 
 const productData = await getStorage('cart');
-console.log(productData);
 
+/* 보관 유형별 상품 분류 */
 productData.forEach((item) => {
   if (item.storage === '냉장 (종이포장)') {
     const template = /* html */ `
@@ -166,3 +166,48 @@ productData.forEach((item) => {
     insertLast('.add-ordinary', template);
   }
 });
+
+/* 합계 금액 */
+let priceEach = 0;
+let discountEach = 0;
+let priceTotal = 0;
+let discountTotal = 0;
+
+productData.forEach(({ price, discount }) => {
+  priceEach = price;
+  discountEach = discount;
+  priceTotal += price;
+
+  const discountPrice = priceEach * (discountEach * 0.01);
+  discountTotal += parseInt(discountPrice);
+  console.log(discountTotal);
+});
+
+let deliveryFee = priceTotal - discountTotal >= 50000 ? 0 : 3000;
+
+const priceTemplate = /* html */ `
+<div class="total">
+  <div class="price">
+   <span>상품금액</span>
+   <span>${comma(priceTotal)}원</span>
+  </div>
+  <div class="dicount">
+   <span>상품 할인 금액</span>
+   <span>-${comma(parseInt(discountTotal))}원</span>
+  </div>
+  <div class="delivery-fee">
+    <span>배송비</span>
+    <span>+${comma(deliveryFee)}원</span>
+  </div>
+</div>
+<div class="total-price">
+  <div class="amount">
+    <span>결제예정금액</span>
+    <span><b>${comma(parseInt(priceTotal - discountTotal))}</b>원</span>
+  </div>
+  <span class="accumulation">
+  <span class="label">적립</span>
+  최대 36원 적립 일반 0.1%</span>
+</div>
+`;
+insertLast('.price-container', priceTemplate);
