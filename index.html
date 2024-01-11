@@ -27,7 +27,7 @@
     <script type="module" src="./main.js"></script>
     <link rel="stylesheet" href="./src/styles/style.css" />
     <!-- 로그인하면 추가될 css js -->
-
+    <link rel="stylesheet" href="/src/pages/main/main.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
@@ -430,50 +430,47 @@
       <a href="/home/index.html">서브 페이지</a>
     </main>
 
-    <div class="shop-list">
-      <div role="dialog" class="add-cart" aria-label="장바구니 버튼 클릭">
-        <div>
-          <span class="add-cart-name"
-            >[홍대주꾸미] 주꾸미 볶음 300g (냉동)</span
-          >
-        </div>
+    <div class="shop-list"></div>
+    <div role="dialog" class="add-cart" aria-label="장바구니 버튼 클릭">
+      <div>
+        <span class="add-cart-name">[홍대주꾸미] 주꾸미 볶음 300g (냉동)</span>
+      </div>
 
-        <div class="add-cart-sum">
-          <div class="price-list">
-            <span class="cart-price">5244원</span>
-            <span class="cart-realprice">6900원</span>
-          </div>
-          <div class="count-button-list">
-            <button
-              type="button"
-              aria-label="수량 감소"
-              class="minus-button hidden-button"
-            ></button>
-            <span class="count">1</span>
-            <button
-              type="button"
-              aria-label="수량 증가"
-              class="plus-button hidden-button"
-            ></button>
-          </div>
+      <div class="add-cart-sum">
+        <div class="price-list">
+          <span class="cart-price">5244원</span>
+          <span class="cart-realprice">6900원</span>
         </div>
+        <div class="count-button-list">
+          <button
+            type="button"
+            aria-label="수량 감소"
+            class="minus-button hidden-button"
+          ></button>
+          <span class="count">1</span>
+          <button
+            type="button"
+            aria-label="수량 증가"
+            class="plus-button hidden-button"
+          ></button>
+        </div>
+      </div>
 
-        <div class="sum">
-          <span class="sum-name">합계</span>
-          <span class="sum-value">6800원</span>
-        </div>
+      <div class="sum">
+        <span class="sum-name">합계</span>
+        <span class="sum-value">6800원</span>
+      </div>
 
-        <div class="point">
-          <div class="point-badge">적립</div>
-          <span class="point-text">구매 시 5원 적립</span>
-        </div>
+      <div class="point">
+        <div class="point-badge">적립</div>
+        <span class="point-text">구매 시 5원 적립</span>
+      </div>
 
-        <div class="cart-button-list">
-          <button type="button" class="cart-button-cancel" value="cancel">
-            취소
-          </button>
-          <button type="button" class="cart-button-add">장바구니 담기</button>
-        </div>
+      <div class="cart-button-list">
+        <button type="button" class="cart-button-cancel" value="cancel">
+          취소
+        </button>
+        <button type="button" class="cart-button-add">장바구니 담기</button>
       </div>
     </div>
 
@@ -508,8 +505,21 @@
       <div class="recent-text">최근 본 상품</div>
       <div class="recent-list">
         <ul>
-          <li>1</li>
-          <li>2</li>
+          <li>
+            <a href="/src/pages/detail/index.html#dloetqn3o0emx04">
+              <img
+                src="https://ryujin.pockethost.io/api/files/cc88g0djhldqbxm/dloetqn3o0emx04/b82195c9_24f5_4b27_a742_d8f0757e68b5_VkSpQFwDcq.jpg"
+              />
+            </a>
+          </li>
+          <li>
+            <a href="/src/pages/detail/index.html#wl50wvn01nlp3tg">
+              <img
+                src="https://ryujin.pockethost.io/api/files/cc88g0djhldqbxm/wl50wvn01nlp3tg/1650763983935l0_jzbJAvONTd.jpg"
+                alt=""
+              />
+            </a>
+          </li>
           <li>4</li>
         </ul>
       </div>

@@ -12,6 +12,7 @@ import {
   getPbImageURL,
 } from '/src/lib/index.js';
 import defaultAuthData from '/src/api/defaultAuthData';
+import defaultImgData from '/src/api/defaultImgData';
 
 setDocumentTitle('메인 페이지');
 
@@ -128,7 +129,7 @@ async function renderProduct(slicea, sliceb, insert) {
       /* html */
       `
       <div class="swiper-slide">
-              <a href="/src/pages/detail/index.html">
+              <a href="/src/pages/detail/index.html#${item.id}">
                 <div class="today-card">
                   <figure>
                     <div class="card-shop">
@@ -242,6 +243,7 @@ let popupClose = getNode('.popup-button-close');
 const popup = getNode('.popup-modal');
 
 // 다이얼로그 버튼 이벤트 구현
+let modal = document.querySelector('.shop-list');
 
 function hideDialog(e) {
   const dialogBtn = e.target.value;
@@ -250,7 +252,15 @@ function hideDialog(e) {
   if (dialogBtn === 'cancel') {
     // popup.style.display = 'none';
     dialog.style.display = 'none';
-    // console.log(dialog);
+    // modal.style.position = 'none';
+    modal.style.display = 'none';
+
+    console.log('테스트', dialog);
+  }
+
+  if (e.target.matches('.cart-button-add')) {
+    console.log('테스트');
+    addRecentProduct();
   }
 }
 
@@ -272,12 +282,14 @@ function viewDialog(e) {
     e.preventDefault();
 
     dialogClose.style.display = 'flex';
+    modal.style.position = 'fixed';
+    modal.style.display = 'block';
 
     const buttonIndex = e.target.dataset.index;
     const itemList = arr[buttonIndex];
 
     console.log(buttonIndex, itemList);
-    console.log('현재 arr', arr);
+    console.log(typeof buttonIndex, '현재 arr', arr);
     const dialogBtn = e.target.currentTarget;
 
     const ratio = itemList.price * (itemList.discount * 0.01);
@@ -408,15 +420,23 @@ addCart.addEventListener('click', minusCount);
 // a();
 
 function addRecentProduct() {
-  // if (!localStorage.getItem('recent')) {
-  //   setStorage('recent', defaultAuthData);
-  // }
+  if (!localStorage.getItem('recent')) {
+    setStorage('recent', defaultImgData);
+  }
+
+  // const newArr = [...imgArr];
+  // const firstURL = imgArr['0'];
+  console.log('id 테스트', arr['0'].id);
+  console.log('url :', imgArr['0']);
+  // const recnetList = localStorage.getItem('recent');
+  // recnetList.push({ img: firstURL, url: arr['0'].id });
+
+  // setStorage('recent', JSON.stringify(recnetList));
   // let products = JSON.parse(localStorage.getItem('recent')) || [];
   // console.log('arr 이미지', );
 }
 
 // 함수 호출
-addRecentProduct();
 
 // 버튼 이벤트 등록
 const hideToday = getNode('.popup-button-today');
@@ -443,3 +463,18 @@ window.onload = function () {
     hidePopup();
   }
 };
+
+// 모달창을 가져옵니다.
+// let modal = document.querySelector('.shop-list');
+
+// // 사용자가 모달창 외부를 클릭하면 모달창이 닫히지 않도록 합니다.
+// window.onclick = function (event) {
+//   if (event.target == modal) {
+//     event.stopPropagation();
+//   }
+// };
+
+// // "취소" 버튼을 클릭하면 모달창이 닫히도록 합니다.
+// document.querySelector('.cart-button-cancel').onclick = function () {
+//   modal.style.display = 'none';
+// };
