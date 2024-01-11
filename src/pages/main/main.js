@@ -408,9 +408,9 @@ addCart.addEventListener('click', minusCount);
 // a();
 
 function addRecentProduct() {
-  if (!localStorage.getItem('recent')) {
-    setStorage('recent', defaultAuthData);
-  }
+  // if (!localStorage.getItem('recent')) {
+  //   setStorage('recent', defaultAuthData);
+  // }
   // let products = JSON.parse(localStorage.getItem('recent')) || [];
   // console.log('arr 이미지', );
 }
