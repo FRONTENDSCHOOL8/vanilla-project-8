@@ -55,10 +55,10 @@ export function headerjs() {
   const bubble = getNode('.drop-bubble');
 
   function showBubble() {
-    bubble.style.opacity = 1;
+    bubble.style.display = 'block';
   }
   function closeBubble() {
-    bubble.style.opacity = 0;
+    bubble.style.display = 'none';
   }
 
   addPackage.addEventListener('mouseover', showBubble);
