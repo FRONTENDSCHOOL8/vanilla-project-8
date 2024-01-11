@@ -1,4 +1,4 @@
-// import '/src/components/header/header.css';
+import '/src/components/header/header.css';
 import { getNode } from '/src/lib/index.js';
 
 export function headerjs() {
@@ -85,4 +85,30 @@ export function headerjs() {
   //모달창 나타나기, 없애기
   heart.addEventListener('click', showModal);
   closeBtn.addEventListener('click', closeModal);
+
+  const info = getNode('.information');
+  const infoUl = getNode('.information-ul');
+
+  function showInformation() {
+    const template = /* html */ `
+        <ul class="information-ul">
+          <li><a href="">공지사항</a></li>
+          <li><a href="">자주하는 질문</a></li>
+          <li><a href="">1:1 문의</a></li>
+          <li><a href="">대량 주문문의</a></li>
+        </ul>
+      `;
+
+    info.insertAdjacentHTML('beforeend', template);
+  }
+
+  const infoWrap = getNode('.info-wrapper');
+
+  function closeInformation() {
+    if (infoUl) {
+      infoWrap.removeChild(infoUl);
+    }
+  }
+  info.addEventListener('mouseover', showInformation);
+  info.addEventListener('mouseout', closeInformation);
 }

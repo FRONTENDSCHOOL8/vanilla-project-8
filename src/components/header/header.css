@@ -139,22 +139,22 @@
 
 .information-ul{
   position: absolute;
-  top:80px;
-  right: 120px;
-  padding: 5px;
-  border: 1px solid var(--content, #333);
+  top: 30px;
+  right: 0;
+  padding: 10px;
+  border: 1px solid var(--gray-200, #C8C8C8);
   color: var(--content, #333);
   font-family: Pretendard;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  width: 150px;
+  width: 120px;
   height: 100px;
   background: white;
   line-height: 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 13px;
 }
 
 .information-ul li a{
