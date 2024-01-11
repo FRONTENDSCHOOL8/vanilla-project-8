@@ -225,7 +225,7 @@
 }
 
 .drop-bubble {
-  opacity: 0;
+  display: none;
   position: absolute;
   margin-top: 5px;
   background-color: #fff;
