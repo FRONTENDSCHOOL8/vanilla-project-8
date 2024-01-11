@@ -87,8 +87,6 @@ export function headerjs() {
   closeBtn.addEventListener('click', closeModal);
 
   const info = getNode('.information');
-  const infoUl = getNode('.information-ul');
-
   function showInformation() {
     const template = /* html */ `
         <ul class="information-ul">
@@ -102,13 +100,10 @@ export function headerjs() {
     info.insertAdjacentHTML('beforeend', template);
   }
 
-  const infoWrap = getNode('.info-wrapper');
-
   function closeInformation() {
-    if (infoUl) {
-      infoWrap.removeChild(infoUl);
-    }
+    const infoUl = getNode('.information-ul');
+    infoUl.remove();
   }
-  info.addEventListener('mouseover', showInformation);
-  info.addEventListener('mouseout', closeInformation);
+  info.addEventListener('mouseenter', showInformation);
+  info.addEventListener('mouseleave', closeInformation);
 }
