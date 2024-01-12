@@ -1,5 +1,5 @@
 import '/src/components/header/header.css';
-import { getNode, getStorage } from '/src/lib/index.js';
+import { getNode, getStorage, insertLast } from '/src/lib/index.js';
 
 export function headerjs() {
   function clearContents(node) {
@@ -62,19 +62,6 @@ export function headerjs() {
     }
   };
 
-  const addPackage = getNode('.ect-menu-add-package');
-  const bubble = getNode('.drop-bubble');
-
-  function showBubble() {
-    bubble.style.display = 'block';
-  }
-  function closeBubble() {
-    bubble.style.display = 'none';
-  }
-
-  addPackage.addEventListener('mouseover', showBubble);
-  addPackage.addEventListener('mouseout', closeBubble);
-
   //모달창 변수들
   const closeBtn = getNode('.button-close');
   const modal = getNode('.modal-bg');
@@ -118,6 +105,40 @@ export function headerjs() {
   info.addEventListener('mouseenter', showInformation);
   info.addEventListener('mouseleave', closeInformation);
 
+  const showBubble = async () => {
+    let template;
+    const address = JSON.parse(await getStorage('address'));
+
+    // 이 부분에서 로그인 기능 구현 이후 로그인했을 경우 주소를 가져오는 로직도 추가해야 한다.
+    if (!address) {
+      bubble.style.display = 'block';
+    } else {
+      clearContents(bubble);
+      bubble.style.display = 'block';
+      template = /* html */ `
+      <div class="bubble-text">
+      <p>${address['address']} ${address['detail-address']}</p>
+    <span class="bubble-text-package">샛별배송</span><br />
+      <button class="bubble-search-ad" type="button" >
+        배송지 변경
+      </button>
+  </div>
+  `;
+      bubble.insertAdjacentHTML('beforeend', template);
+      setSearchAddressEvent(getNode('.bubble-search-ad'));
+    }
+  };
+
+  const addPackage = getNode('.ect-menu-add-package');
+  const bubble = getNode('.drop-bubble');
+
+  function closeBubble() {
+    bubble.style.display = 'none';
+  }
+
+  addPackage.addEventListener('mouseenter', showBubble);
+  addPackage.addEventListener('mouseleave', closeBubble);
+
   const setSearchAddressEvent = (target, callback) => {
     target.addEventListener('click', handleSetAddress(callback));
   };
@@ -139,27 +160,4 @@ export function headerjs() {
   };
 
   setSearchAddressEvent(getNode('.bubble-search-ad'));
-
-  // function showAddress() {
-  //   if (bubble) {
-  //     const bubble = getNode('.drop-bubble');
-  //     const { address } = getStorage('address');
-  //     console.log(address);
-  //     if (address) {
-  //       clearContents(bubble);
-  //       const template = /* html */ `
-  //   <div class="bubble-text">
-  //   <div class="address-div">${address}</div>
-  //     <span>샛별배송</span><br />
-  //       <button class="bubble-search-ad">
-  //         배송지 변경
-  //       </button>
-  //   </div>
-  //     `;
-  //       bubble.insertAdjacentHTML('beforeend', template);
-  //     }
-  //   }
-  // }
-  // addPackage.addEventListener('mouseenter', showAddress);
-  //어떤 기준을 잡아야 뿌려지는지 모르겠다.
 }
