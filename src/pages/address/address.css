@@ -106,6 +106,7 @@ body{
   width: 100%;
   color: white;
   border: 0;
+  cursor: pointer;
 }
 
 .address-footer{
