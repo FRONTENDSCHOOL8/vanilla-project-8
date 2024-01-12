@@ -564,3 +564,12 @@ text-decoration: line-through;
 .swiper-pagination-fraction {
   width: 55px;
 }
+
+.recent-list {
+
+  & ul {
+    display: flex;
+    flex-flow: column;
+    gap: 5px;
+  }
+}

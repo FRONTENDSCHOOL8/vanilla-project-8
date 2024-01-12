@@ -1,8 +1,8 @@
-const defaultImgData = {
-  isTrue: false,
-  img: null,
-  id: '',
-  token: '',
-};
+const defaultImgData = [
+  {
+    id: '',
+    img: null,
+  },
+];
 
 export default defaultImgData;

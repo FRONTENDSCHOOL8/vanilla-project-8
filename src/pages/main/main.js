@@ -129,10 +129,12 @@ async function renderProduct(slicea, sliceb, insert) {
       /* html */
       `
       <div class="swiper-slide">
-              <a href="/src/pages/detail/index.html#${item.id}">
+              <a href="/src/pages/detail/index.html#${
+                item.id
+              }" class = "swiper-link" >
                 <div class="today-card">
                   <figure>
-                    <div class="card-shop">
+                    <div class="card-shop" data-id = ${index}>
                       <img
                         src="${getPbImageURL(item)}"
                         alt="${item.description}"
@@ -259,7 +261,7 @@ function hideDialog(e) {
   }
 
   if (e.target.matches('.cart-button-add')) {
-    console.log('테스트');
+    console.log('장바구니 테스트');
     addRecentProduct();
   }
 }
@@ -419,23 +421,6 @@ addCart.addEventListener('click', minusCount);
 
 // a();
 
-function addRecentProduct() {
-  if (!localStorage.getItem('recent')) {
-    setStorage('recent', defaultImgData);
-  }
-
-  // const newArr = [...imgArr];
-  // const firstURL = imgArr['0'];
-  console.log('id 테스트', arr['0'].id);
-  console.log('url :', imgArr['0']);
-  // const recnetList = localStorage.getItem('recent');
-  // recnetList.push({ img: firstURL, url: arr['0'].id });
-
-  // setStorage('recent', JSON.stringify(recnetList));
-  // let products = JSON.parse(localStorage.getItem('recent')) || [];
-  // console.log('arr 이미지', );
-}
-
 // 함수 호출
 
 // 버튼 이벤트 등록
@@ -463,6 +448,96 @@ window.onload = function () {
     hidePopup();
   }
 };
+
+let arrs = [];
+function addRecentProduct(e) {
+  if (!localStorage.getItem('recent')) {
+    setStorage('recent', defaultImgData);
+  }
+  if (!e.target.matches('.shop-button2')) {
+    // e.preventDefault();
+    const buttonId = e.target.parentNode.dataset.id;
+
+    console.log(arr[buttonId].id, imgArr[buttonId]);
+
+    // console.log('id 테스트', arr['1'].id);
+    // console.log('url :', imgArr['1']);
+    // setStorage('recent', JSON.stringify(defaultImgData));
+
+    // console.log(recnetList);
+
+    arrs.push({ id: arr[buttonId].id, img: imgArr[buttonId] });
+
+    // recentList.push();
+
+    setStorage('recent', JSON.stringify(arrs));
+    let recentList = JSON.parse(localStorage.getItem('recent'));
+
+    recentList = JSON.parse(recentList);
+    let recentLength = recentList.length - 1;
+    console.log(recentList.lenght);
+    console.log(recentLength);
+    console.log('테스트', recentList[recentLength].id);
+
+    // 뽑아와서 그 값을 통해 a 태그 생성
+
+    const templateLink =
+      /* html */
+      `
+    <li>
+      <a href="/src/pages/detail/index.html#${recentList[recentLength].id}">
+          <img
+            src="${recentList[recentLength].img}"
+          />
+      </a>
+    </li>
+    `;
+
+    // alt="${arr[buttonId].brand}"
+    insertLast('.recent-list > ul', templateLink);
+  }
+  // const recentList = JSON.parse(localStorage.getItem('recent'));
+  // console.log(recentList);
+}
+
+function loadRecentProducts() {
+  let recentList = JSON.parse(localStorage.getItem('recent') || '[]');
+  console.log(recentList);
+  console.log(typeof recentList);
+  recentList = JSON.parse(recentList);
+
+  recentList.forEach((product) => {
+    const templateLink = `
+      <li>
+        <a href="/src/pages/detail/index.html#${product.id}">
+          <img src="${product.img}" alt="상품 이미지" />
+        </a>
+      </li>
+    `;
+    insertLast('.recent-list > ul', templateLink);
+  });
+}
+
+// 페이지 로드 완료 시 loadRecentProducts 함수 호출
+document.addEventListener('DOMContentLoaded', loadRecentProducts);
+// function addRecentProduct(e) {
+//   let recentList;
+
+//   if (!localStorage.getItem('recent')) {
+//     setStorage('recent', JSON.stringify(defaultImgData));
+//     recentList = defaultImgData;
+//   } else {
+//     recentList = JSON.parse(localStorage.getItem('recent'));
+//   }
+
+//   recentList.push({ img: imgArr['0'], id: arr['0'].id });
+//   setStorage('recent', JSON.stringify(recentList));
+// }
+
+const swiperLink = document.querySelector('.swiper2');
+const swiperLink2 = document.querySelector('.swiper3');
+swiperLink.addEventListener('click', addRecentProduct);
+swiperLink2.addEventListener('click', addRecentProduct);
 
 // 모달창을 가져옵니다.
 // let modal = document.querySelector('.shop-list');
