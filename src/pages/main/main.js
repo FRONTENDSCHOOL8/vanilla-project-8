@@ -470,6 +470,9 @@ function addRecentProduct(e) {
 
     recentList.push({ id: arr[buttonId].id, img: imgArr[buttonId] });
 
+    if (recentList.length > 3) {
+      recentList.shift(); // 배열의 첫 번째 요소 제거
+    }
     // recentList.push();
 
     setStorage('recent', JSON.stringify(recentList));
