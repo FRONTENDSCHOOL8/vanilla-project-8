@@ -3,17 +3,18 @@
   <head>
     <title>Vite</title>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="icon"
       type="image/svg+xml"
       href="https://res.kurly.com/favicon.ico"
     />
     <link rel="stylesheet" href="/src/styles/reset.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="/src/pages/product/product.js"></script>
-    <!-- 헤더 푸터 css js 추가 -->
+    <script type="module" src="/src/components/include.js"></script>
     <link rel="stylesheet" href="/src/components/css/style.css" />
-    <script type="module" src="/src/components/header/header.js"></script>
+
+    
   </head>
   <body>
     <header class="header">
@@ -564,17 +565,17 @@
               <span>총 284건</span>
               <ul>
                 <li><a>추천순</a></li>
-                <span
-                  ><img src="/images/product/info.svg" alt="추천순 설명"
-                /></span>
-                <li><a>신상품순</a></li>
-                <li><a>판매량순</a></li>
-                <li><a>혜택순</a></li>
-                <li><a>낮은 가격순</a></li>
+                <img src="/images/product/info.svg" alt="추천순 설명"/><div class="bar"></div>
+                <li><a>신상품순</a></li><div class="bar"></div>
+                <li><a>판매량순</a></li><div class="bar"></div>
+                <li><a>혜택순</a></li><div class="bar"></div>
+                <li><a>낮은 가격순</a></li><div class="bar"></div>
                 <li><a>높은 가격순</a></li>
               </ul>
             </nav>
+
             <ul class="product-list"></ul>
+            
             <div class="page-controller">
               <a href="/"
                 ><img src="/images/product/double-left-arrow.png" alt=""
@@ -593,6 +594,7 @@
               /></a>
             </div>
           </section>
+        </div>
     </main>
 
     <footer class="footer">
