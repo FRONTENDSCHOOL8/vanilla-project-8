@@ -29,11 +29,13 @@ async function renderProductData() {
     detail_desc,
   } = productData;
 
+  const totalPrice = parseInt((price - price * (discount * 0.01)) / 100) * 100;
+
+  const cart = document.querySelector('.add-cart');
+
   if (!localStorage.getItem('cart')) {
     localStorage.setItem('cart', JSON.stringify([]));
   }
-
-  const cart = document.querySelector('.add-cart');
 
   /* localstorage 장바구니에 담기 */
   function sendToCart() {
@@ -117,17 +119,13 @@ async function renderProductData() {
             <button class="plus-button"></button>
           </span>
 
-          <span class="total-price">${comma(
-            parseInt((price - price * (discount * 0.01)) / 100) * 100
-          )}원</span>
+          <span class="total-price">${comma(totalPrice)}원</span>
         </span>
       </p>
     </div>
 
     <div class="total-container">
-      <div class="total-price">총 상품금액: <b>${comma(
-        parseInt((price - price * (discount * 0.01)) / 100) * 100
-      )}원</b></div>
+      <div class="total-price">총 상품금액: <b>${comma(totalPrice)}원</b></div>
       <div class="total-accumulate">
         <b class="label">적립</b>로그인 후, 적립 혜택 제공
       </div>
@@ -174,6 +172,25 @@ async function renderProductData() {
       let count = e.target.parentElement.querySelector('.count');
       let currentCount = parseInt(count.textContent);
       count.textContent = currentCount + 1;
+    }
+  });
+
+  /* 수량 x 단가 */
+  function calculateTotalPrice() {
+    const countElement = document.querySelector('.count');
+    const count = parseInt(countElement.textContent);
+
+    const totalPrice =
+      parseInt((price - price * (discount * 0.01)) / 100) * 100 * count;
+
+    const totalPriceElement = document.querySelector('.total-price b');
+    totalPriceElement.textContent = `${comma(totalPrice)}원`;
+  }
+
+  document.addEventListener('DOMContentLoaded', calculateTotalPrice);
+  countBox.addEventListener('click', function (e) {
+    if (e.target.matches('.minus-button') || e.target.matches('.plus-button')) {
+      calculateTotalPrice();
     }
   });
 }
