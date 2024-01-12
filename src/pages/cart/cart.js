@@ -16,7 +16,7 @@ const productData = await getStorage('cart');
 productData.forEach((item, index) => {
   if (item.storage === '냉장 (종이포장)') {
     const template = /* html */ `
-    <li>
+      <li>
     <input type="checkbox" id="productSelect${index}" class="product-checkbox" checked />
     <label class="product-select" for="productSelect${index}"></label>
       <a href="/">
@@ -43,7 +43,7 @@ productData.forEach((item, index) => {
         </button>
       </span>
       <span class="price">${comma(item.price)}원</span>
-      <button class="delete">
+      <button class="delete" id="${item.id}">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="30"
@@ -91,7 +91,7 @@ productData.forEach((item, index) => {
         </button>
       </span>
       <span class="price">${comma(item.price)}원</span>
-      <button class="delete">
+      <button class="delete" id="${item.id}">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="30"
@@ -139,7 +139,7 @@ productData.forEach((item, index) => {
         </button>
       </span>
       <span class="price">${comma(item.price)}원</span>
-      <button class="delete">
+      <button class="delete" id="${item.id}">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="30"
@@ -183,6 +183,30 @@ selectAllTop.addEventListener('change', () => {
 selectAllBottom.addEventListener('change', () => {
   selectAllTop.checked = selectAllBottom.checked;
 });
+
+/* 상품 삭제 */
+const deleteButtons = document.querySelectorAll('.delete');
+
+function deleteProduct(event) {
+  const clickedButtonId = event.currentTarget.id;
+  const clickedProduct = productData.find((item) => item.id == clickedButtonId);
+
+  let cartData = JSON.parse(localStorage.getItem('cart'));
+  if (!Array.isArray(cartData)) {
+    cartData = [];
+  }
+
+  let filteredData = cartData;
+  if (clickedProduct) {
+    filteredData = cartData.filter((item) => item.id !== clickedProduct.id);
+  }
+  localStorage.setItem('cart', JSON.stringify(filteredData));
+}
+deleteButtons.forEach((button) => {
+  button.addEventListener('click', deleteProduct);
+});
+
+/* 상품 목록 재렌더링 */
 
 /* 합계 금액 */
 let priceEach = 0;
