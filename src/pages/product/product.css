@@ -119,6 +119,7 @@
   & .discount {
     font-size: 19px;
     color: #FA622F;
+    margin-right: 3px;
   }
 
   & .real-price {
