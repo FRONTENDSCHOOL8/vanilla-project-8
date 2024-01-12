@@ -13,9 +13,17 @@ setDocumentTitle('장바구니 - 컬리');
 const productData = await getStorage('cart');
 
 /* 보관 유형별 상품 분류 */
-productData.forEach((item, index) => {
-  if (item.storage === '냉장 (종이포장)') {
-    const template = /* html */ `
+function renderProduct() {
+  const productContainer = document.querySelectorAll('.add-product');
+  let productData = JSON.parse(localStorage.getItem('cart'));
+
+  productContainer.forEach((container) => {
+    container.innerHTML = '';
+  });
+
+  productData.forEach((item, index) => {
+    if (item.storage === '냉장 (종이포장)') {
+      const template = /* html */ `
       <li>
     <input type="checkbox" id="productSelect${index}" class="product-checkbox" checked />
     <label class="product-select" for="productSelect${index}"></label>
@@ -61,9 +69,9 @@ productData.forEach((item, index) => {
       </button>
     </li>
    `;
-    insertLast('.add-fridge', template);
-  } else if (item.storage === '냉동 (종이포장)') {
-    const template = /* html */ `
+      insertLast('.add-fridge', template);
+    } else if (item.storage === '냉동 (종이포장)') {
+      const template = /* html */ `
     <li>
     <input type="checkbox" id="productSelect${index}" class="product-checkbox" checked />
     <label class="product-select" for="productSelect${index}"></label>
@@ -109,9 +117,9 @@ productData.forEach((item, index) => {
       </button>
     </li>
    `;
-    insertLast('.add-freeze', template);
-  } else if (item.storage === '상온 (종이포장)') {
-    const template = /* html */ `
+      insertLast('.add-freeze', template);
+    } else if (item.storage === '상온 (종이포장)') {
+      const template = /* html */ `
     <li>
     <input type="checkbox" id="productSelect${index}" class="product-checkbox" checked />
     <label class="product-select" for="productSelect${index}"></label>
@@ -157,9 +165,11 @@ productData.forEach((item, index) => {
       </button>
     </li>
    `;
-    insertLast('.add-ordinary', template);
-  }
-});
+      insertLast('.add-ordinary', template);
+    }
+  });
+}
+renderProduct();
 
 const selectAllTop = document.getElementById('selectAllTop');
 const selectAllBottom = document.getElementById('selectAllBottom');
@@ -185,28 +195,30 @@ selectAllBottom.addEventListener('change', () => {
 });
 
 /* 상품 삭제 */
-const deleteButtons = document.querySelectorAll('.delete');
+const cartContainer = document.querySelector('.cart-container');
 
-function deleteProduct(event) {
-  const clickedButtonId = event.currentTarget.id;
-  const clickedProduct = productData.find((item) => item.id == clickedButtonId);
+cartContainer.addEventListener('click', function (event) {
+  if (event.target.closest('.delete')) {
+    const clickedButtonId = event.target.closest('.delete').id;
+    deleteProduct(clickedButtonId);
+  }
+});
 
+function deleteProduct(clickedButtonId) {
   let cartData = JSON.parse(localStorage.getItem('cart'));
   if (!Array.isArray(cartData)) {
     cartData = [];
   }
+  const clickedProduct = cartData.find((item) => item.id === clickedButtonId);
+  const filteredData = cartData.filter((item) => item.id !== clickedButtonId);
 
-  let filteredData = cartData;
   if (clickedProduct) {
-    filteredData = cartData.filter((item) => item.id !== clickedProduct.id);
-  }
-  localStorage.setItem('cart', JSON.stringify(filteredData));
-}
-deleteButtons.forEach((button) => {
-  button.addEventListener('click', deleteProduct);
-});
+    localStorage.setItem('cart', JSON.stringify(filteredData));
 
-/* 상품 목록 재렌더링 */
+    cartData = JSON.parse(localStorage.getItem('cart'));
+    renderProduct(cartData);
+  }
+}
 
 /* 합계 금액 */
 let priceEach = 0;
