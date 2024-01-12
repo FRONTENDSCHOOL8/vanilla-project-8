@@ -460,18 +460,19 @@ function addRecentProduct(e) {
 
     console.log(arr[buttonId].id, imgArr[buttonId]);
 
+    let recentList = JSON.parse(localStorage.getItem('recent'));
+    recentList = JSON.parse(recentList);
     // console.log('id 테스트', arr['1'].id);
     // console.log('url :', imgArr['1']);
     // setStorage('recent', JSON.stringify(defaultImgData));
 
     // console.log(recnetList);
 
-    arrs.push({ id: arr[buttonId].id, img: imgArr[buttonId] });
+    recentList.push({ id: arr[buttonId].id, img: imgArr[buttonId] });
 
     // recentList.push();
 
-    setStorage('recent', JSON.stringify(arrs));
-    let recentList = JSON.parse(localStorage.getItem('recent'));
+    setStorage('recent', JSON.stringify(recentList));
 
     recentList = JSON.parse(recentList);
     let recentLength = recentList.length - 1;
