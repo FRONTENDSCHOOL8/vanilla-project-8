@@ -47,10 +47,7 @@ export async function mainjs() {
   if (logout) {
     logout.addEventListener('click', () => {
       pb.authStore.clear();
-      //왜 콜백함수로 가져왔었죠?
-      // deleteStorage("auth");
       setStorage('auth', defaultAuthData);
-      //리액트에서는 부분적으로 리로드를 명령어 없이도 자동실행해준다
       window.location.reload();
     }),
       heart.addEventListener('click', () => {
