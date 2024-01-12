@@ -13,14 +13,12 @@ setDocumentTitle('장바구니 - 컬리');
 const productData = await getStorage('cart');
 
 /* 보관 유형별 상품 분류 */
-productData.forEach((item) => {
+productData.forEach((item, index) => {
   if (item.storage === '냉장 (종이포장)') {
     const template = /* html */ `
     <li>
-      <label>
-        <input type="checkbox" checked />
-        <img src="/public/images/cart/check.svg" alt="상품 선택" />
-      </label>
+    <input type="checkbox" id="productSelect${index}" class="product-checkbox" checked />
+    <label class="product-select" for="productSelect${index}"></label>
       <a href="/">
         <img
           class="thumbnail"
@@ -67,10 +65,8 @@ productData.forEach((item) => {
   } else if (item.storage === '냉동 (종이포장)') {
     const template = /* html */ `
     <li>
-      <label>
-        <input type="checkbox" checked />
-        <img src="/public/images/cart/check.svg" alt="상품 선택" />
-      </label>
+    <input type="checkbox" id="productSelect${index}" class="product-checkbox" checked />
+    <label class="product-select" for="productSelect${index}"></label>
       <a href="/">
         <img
           class="thumbnail"
@@ -117,10 +113,8 @@ productData.forEach((item) => {
   } else if (item.storage === '상온 (종이포장)') {
     const template = /* html */ `
     <li>
-      <label>
-        <input type="checkbox" checked />
-        <img src="/public/images/cart/check.svg" alt="상품 선택" />
-      </label>
+    <input type="checkbox" id="productSelect${index}" class="product-checkbox" checked />
+    <label class="product-select" for="productSelect${index}"></label>
       <a href="/">
         <img
           class="thumbnail"
@@ -167,6 +161,29 @@ productData.forEach((item) => {
   }
 });
 
+const selectAllTop = document.getElementById('selectAllTop');
+const selectAllBottom = document.getElementById('selectAllBottom');
+const productCheckboxes = document.querySelectorAll('.product-checkbox');
+
+function synchronizeCheckboxes() {
+  productCheckboxes.forEach((checkbox) => {
+    checkbox.checked = this.checked;
+  });
+}
+
+/* 전체선택 체크 시 상품 전체 체크 */
+selectAllTop.addEventListener('change', synchronizeCheckboxes);
+selectAllBottom.addEventListener('change', synchronizeCheckboxes);
+
+/* 상하단 전체선택 체크 동기화 */
+selectAllTop.addEventListener('change', () => {
+  selectAllBottom.checked = selectAllTop.checked;
+});
+
+selectAllBottom.addEventListener('change', () => {
+  selectAllTop.checked = selectAllBottom.checked;
+});
+
 /* 합계 금액 */
 let priceEach = 0;
 let discountEach = 0;
@@ -180,7 +197,6 @@ productData.forEach(({ price, discount }) => {
 
   const discountPrice = priceEach * (discountEach * 0.01);
   discountTotal += parseInt(discountPrice);
-  console.log(discountTotal);
 });
 
 let deliveryFee = priceTotal - discountTotal >= 50000 ? 0 : 3000;
