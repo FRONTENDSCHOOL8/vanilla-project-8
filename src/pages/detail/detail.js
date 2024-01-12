@@ -110,21 +110,13 @@ async function renderProductData() {
         <span>상품선택</span>
         <span class="amount-box">
         ${brand}<br />
+
           <span class="count-box">
-            <button class="minus">
-              <img
-                src="/public/images/detail/minus.svg"
-                alt="수량내리기"
-              />
-            </button>
-            <span>1</span>
-            <button class="plus">
-              <img
-                src="/public/images/detail/plus.svg"
-                alt="수량올리기"
-              />
-            </button>
+            <button class="minus-button"></button>
+            <span class="count">1</span>
+            <button class="plus-button"></button>
           </span>
+
           <span class="total-price">${comma(
             parseInt((price - price * (discount * 0.01)) / 100) * 100
           )}원</span>
@@ -168,6 +160,22 @@ async function renderProductData() {
   />
   `;
   insertAfter('.product-point', template_3);
+
+  /* 수량 버튼 */
+  const countBox = document.querySelector('.count-box');
+  countBox.addEventListener('click', function (e) {
+    if (e.target.matches('.minus-button')) {
+      let count = e.target.parentElement.querySelector('.count');
+      let currentCount = parseInt(count.textContent);
+      if (currentCount > 1) {
+        count.textContent = currentCount - 1;
+      }
+    } else if (e.target.matches('.plus-button')) {
+      let count = e.target.parentElement.querySelector('.count');
+      let currentCount = parseInt(count.textContent);
+      count.textContent = currentCount + 1;
+    }
+  });
 }
 renderProductData();
 

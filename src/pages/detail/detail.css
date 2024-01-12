@@ -139,18 +139,22 @@ html {
         margin-top: 12px;
         font-weight: 600;
 
-        & span {
-          padding: 0px 3px;
+        & button {
+          width: 30px;
+          height: 30px;
+          border: none;
         }
 
-        & button {
-          border: none;
-          background: transparent;
+        & .minus-button {
+          background: url("/public/images/detail/minus.svg") no-repeat center;
+        }
 
-          & img {
-            width: 28px;
-            height: 28px;
-          }
+        & .count {
+          margin: 0px 4px;
+        }
+
+        & .plus-button {
+          background: url("/public/images/detail/plus.svg") no-repeat center;
         }
       }
     }
