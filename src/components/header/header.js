@@ -1,5 +1,5 @@
 import '/src/components/header/header.css';
-import { getNode } from '/src/lib/index.js';
+import { getNode, getStorage } from '/src/lib/index.js';
 
 export function headerjs() {
   const category = getNode('.nav-capture');
@@ -106,4 +106,36 @@ export function headerjs() {
   }
   info.addEventListener('mouseenter', showInformation);
   info.addEventListener('mouseleave', closeInformation);
+
+  const setSearchAddressEvent = (target, callback) => {
+    target.addEventListener('click', handleSetAddress(callback));
+  };
+
+  const handleSetAddress = (callback) => {
+    return () => {
+      const width = 502;
+      const height = 547;
+      const popupX = screen.width / 2 - width / 2;
+      const popupY = screen.height / 2 - height / 2;
+      window.open(
+        '/src/pages/address/',
+        '_blank',
+        `width=${width},height=${height},left=${popupX},top=${popupY}`
+      );
+
+      if (callback) callback();
+    };
+  };
+
+  setSearchAddressEvent(getNode('.bubble-search-ad'));
+
+  function showAddress() {
+    getStorage('address');
+    const template = /* html */ `
+    
+      `;
+
+    bubble.insertAdjacentHTML('beforeend', template);
+  }
+  addPackage.addEventListener('mouseenter', showAddress);
 }

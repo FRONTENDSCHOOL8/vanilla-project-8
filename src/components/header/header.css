@@ -333,17 +333,17 @@
   text-decoration-line: none;
 }
 
-.bubble-search{
+
+.bubble-search button{
+  background-color: var(--primary, #5F0080);
+  border-radius: 3px;
+  color: white;
+  width: 140px;
+  border: 0;
+  padding: 5px 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--primary, #5F0080);
-  border-radius: 3px;
-  width: 140px;
-  
-}
-.bubble-search a{
-  color: white;
 }
 
 .bubble-search img{
