@@ -35,6 +35,7 @@ async function renderProductData() {
 
   const cart = document.querySelector('.add-cart');
 
+  /* localstorage 장바구니에 담기 */
   function sendToCart() {
     let cartData = JSON.parse(localStorage.getItem('cart'));
     if (!Array.isArray(cartData)) {
@@ -43,7 +44,6 @@ async function renderProductData() {
     cartData.push(productData);
     localStorage.setItem('cart', JSON.stringify(cartData));
   }
-
   cart.addEventListener('click', sendToCart);
 
   /* 메인 정보 */
@@ -58,7 +58,7 @@ async function renderProductData() {
     <span class="real">
     <span class="discount">${discount}%</span>
     <span class="real-price">${comma(
-      price - price * (discount * 0.01)
+      parseInt((price - price * (discount * 0.01)) / 100) * 100
     )}</span>원
     </span>
     <span class="price">${comma(price)}원</span><br />
@@ -126,7 +126,7 @@ async function renderProductData() {
             </button>
           </span>
           <span class="total-price">${comma(
-            price - price * (discount * 0.01)
+            parseInt((price - price * (discount * 0.01)) / 100) * 100
           )}원</span>
         </span>
       </p>
@@ -134,7 +134,7 @@ async function renderProductData() {
 
     <div class="total-container">
       <div class="total-price">총 상품금액: <b>${comma(
-        price - price * (discount * 0.01)
+        parseInt((price - price * (discount * 0.01)) / 100) * 100
       )}원</b></div>
       <div class="total-accumulate">
         <b class="label">적립</b>로그인 후, 적립 혜택 제공
