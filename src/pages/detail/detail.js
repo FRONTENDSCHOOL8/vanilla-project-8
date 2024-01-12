@@ -169,5 +169,20 @@ async function renderProductData() {
   `;
   insertAfter('.product-point', template_3);
 }
-
 renderProductData();
+
+/* 게시판으로 스크롤 이동 */
+const reviewButton = document.querySelector('.review');
+const reviewBoard = document.querySelector('.review-board');
+const contactButton = document.querySelector('.contact');
+const qaBoard = document.querySelector('.qa-board');
+
+function goToReview() {
+  reviewBoard.scrollIntoView();
+}
+
+function goToQa() {
+  qaBoard.scrollIntoView();
+}
+reviewButton.addEventListener('click', goToReview);
+contactButton.addEventListener('click', goToQa);
