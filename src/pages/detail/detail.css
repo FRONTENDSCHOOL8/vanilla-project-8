@@ -194,11 +194,10 @@
   width: 1050px;
   height: 56px;
   margin: 0 auto 48px;
+  gap: 12px;
 
-
-  & button {
-    width: 56px;
-    background-color: transparent;
+  & button,
+  label {
     border: 1px solid #E1E1E1;
     border-radius: 4px;
     display: flex;
@@ -206,32 +205,38 @@
     justify-content: space-evenly
   }
 
-  & .like {
-    cursor: pointer;
-
-    & img {
-      width: 36px;
-      height: 36px;
-    }
-  }
-
-  & .restock-alarm {
-    margin: 0px 12px;
-
-    & img {
-      width: 24.5px;
-      height: 26px;
-    }
-  }
-
   & .add-cart {
-    cursor: pointer;
     width: 434px;
     background: #5F0080;
     border: 1px solid #5F0080;
     color: #FFFFFF;
-    font-size: 16px;
   }
+}
+
+/* 찜하기 버튼 */
+.like {
+  width: 56px;
+  height: 56px;
+  background: url("/public/images/detail/heart-uncheck.svg") no-repeat center;
+}
+
+#like-list:checked+.like {
+  background: url("/public/images/detail/heart-check.svg") no-repeat center;
+}
+
+/* 재입고 버튼 */
+.restock {
+  width: 56px;
+  height: 56px;
+  background: url("/public/images/detail/alarm-uncheck.svg") no-repeat center;
+}
+
+#restock-alarm:checked+.restock {
+  background: url("/public/images/detail/alarm-check.svg") no-repeat center;
+}
+
+input[type="checkbox"] {
+  display: none;
 }
 
 
