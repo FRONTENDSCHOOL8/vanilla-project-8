@@ -6,7 +6,6 @@ import {
   getPbImageURL,
   setDocumentTitle,
 } from '/src/lib';
-import pb from '/src/api/pocketbase';
 
 setDocumentTitle('검색 - 컬리');
 
@@ -16,10 +15,9 @@ async function renderProduct() {
   );
   const userData = response.data.items;
 
-  console.log(userData);
-
   userData.forEach((item) => {
-    const ratio = item.price * (item.discount * 0.01);
+    const totalPrice =
+      parseInt((item.price - item.price * (item.discount * 0.01)) / 100) * 100;
     const template = /* html */ `
             <li class="product-each">
               <button class="add-cart" id="${item.id}"></button>
@@ -34,11 +32,15 @@ async function renderProduct() {
                     item.dawn_package ? '샛별배송' : '판매자배송'
                   }</span><br />
                   <span class="desc-1">${item.brand}</span><br />
-                  <span class="discount">${item.discount}%</span>
+                  <span class="discount" data-id="${item.id}">${
+                    item.discount
+                  }%</span>
                   <span class="real-price">${comma(
-                    item.price - ratio
-                  )}원</span> <br />
-                  <span class="price">${comma(item.price)}</span><br />
+                    totalPrice
+                  )}원</span><br class="break" data-id="${item.id}" />
+                  <span class="price" data-id="${item.id}">${comma(
+                    item.price
+                  )}</span><br/>
                   <span class="desc-2">${item.description}</span><br />
                 </div>
                 <div class="label-container">
@@ -56,8 +58,22 @@ async function renderProduct() {
     insertLast('.product-list', template);
   });
 
-  /* 장바구니 담기 */
+  /* 할인율 0% 상품 태그 제거 */
+  const discountElements = document.querySelectorAll('.discount');
+  const priceElements = document.querySelectorAll('.price');
+  const breakElements = document.querySelectorAll('.break');
 
+  userData.forEach((item, index) => {
+    if (item.discount === 0) {
+      discountElements[index].remove();
+      priceElements[index].remove();
+      breakElements[index].remove();
+    } else {
+      discountElements[index].textContent = `${item.discount}%`;
+    }
+  });
+
+  /* 장바구니 담기 */
   if (!localStorage.getItem('cart')) {
     localStorage.setItem('cart', JSON.stringify([]));
   }
@@ -82,23 +98,3 @@ async function renderProduct() {
 }
 
 renderProduct();
-
-/* 장바구니 담기 */
-
-async function renderProductData() {
-  const hash = window.location.hash.slice(1);
-
-  const productData = await pb.collection('products').getOne(hash);
-
-  const {
-    brand,
-    price,
-    description,
-    discount,
-    storage,
-    sales_unit,
-    weight,
-    allergy_info,
-    detail_desc,
-  } = productData;
-}
