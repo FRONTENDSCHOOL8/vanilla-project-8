@@ -1,7 +1,18 @@
 import '/src/components/header/header.css';
-import { getNode } from '/src/lib/index.js';
+import { getNode, getStorage } from '/src/lib/index.js';
 
 export function headerjs() {
+  function clearContents(node) {
+    if (typeof node === 'string') node = getNode(node);
+
+    if (node.nodeName === 'INPUT' || node.nodeName === 'TEXTAREA') {
+      node.value = '';
+      return;
+    }
+
+    node.textContent = '';
+  }
+
   const category = getNode('.nav-capture');
   const category1 = getNode('.nav-capture2');
   const navMenu = getNode('.nav-menu-hide1');
@@ -106,4 +117,49 @@ export function headerjs() {
   }
   info.addEventListener('mouseenter', showInformation);
   info.addEventListener('mouseleave', closeInformation);
+
+  const setSearchAddressEvent = (target, callback) => {
+    target.addEventListener('click', handleSetAddress(callback));
+  };
+
+  const handleSetAddress = (callback) => {
+    return () => {
+      const width = 502;
+      const height = 547;
+      const popupX = screen.width / 2 - width / 2;
+      const popupY = screen.height / 2 - height / 2;
+      window.open(
+        '/src/pages/address/',
+        '_blank',
+        `width=${width},height=${height},left=${popupX},top=${popupY}`
+      );
+
+      if (callback) callback();
+    };
+  };
+
+  setSearchAddressEvent(getNode('.bubble-search-ad'));
+
+  // function showAddress() {
+  //   if (bubble) {
+  //     const bubble = getNode('.drop-bubble');
+  //     const { address } = getStorage('address');
+  //     console.log(address);
+  //     if (address) {
+  //       clearContents(bubble);
+  //       const template = /* html */ `
+  //   <div class="bubble-text">
+  //   <div class="address-div">${address}</div>
+  //     <span>샛별배송</span><br />
+  //       <button class="bubble-search-ad">
+  //         배송지 변경
+  //       </button>
+  //   </div>
+  //     `;
+  //       bubble.insertAdjacentHTML('beforeend', template);
+  //     }
+  //   }
+  // }
+  // addPackage.addEventListener('mouseenter', showAddress);
+  //어떤 기준을 잡아야 뿌려지는지 모르겠다.
 }
