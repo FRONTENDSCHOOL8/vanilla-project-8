@@ -33,22 +33,23 @@
 
 .header-ad{
   background-color: var(--primary, #5F0080);
-  padding: 0 52px;
+  padding: 0;
 }
 
 .header-ad-width{
   display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 0 auto;
+  width: 1350px;
 }
 
 
 .header-ad a{
-  padding: 14px;
+  padding: 14px 14px 14px 200px;
   color: #fff;
   text-decoration-line: none;
   text-align: center;
   margin: 0 auto;
+
 }
 
 .header-ad-btn{
