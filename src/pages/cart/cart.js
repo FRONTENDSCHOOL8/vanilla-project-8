@@ -30,7 +30,7 @@ function renderProduct() {
       item.id
     }" class="product-checkbox" checked />
     <label class="product-select" for="productSelect${index}" ></label>
-      <a href="/">
+      <a href="${`/src/pages/detail/index.html#${item.id}`}">
         <img
           class="thumbnail"
           src="${getPbImageURL(item)}"
@@ -80,7 +80,7 @@ function renderProduct() {
       item.id
     }" class="product-checkbox" checked />
     <label class="product-select" for="productSelect${index}"></label>
-      <a href="/">
+      <a href="${`/src/pages/detail/index.html#${item.id}`}">
         <img
           class="thumbnail"
           src="${getPbImageURL(item)}"
@@ -130,7 +130,7 @@ function renderProduct() {
       item.id
     }" class="product-checkbox" checked />
     <label class="product-select" for="productSelect${index}"></label>
-      <a href="/">
+      <a href="${`/src/pages/detail/index.html#${item.id}`}">
         <img
           class="thumbnail"
           src="${getPbImageURL(item)}"
