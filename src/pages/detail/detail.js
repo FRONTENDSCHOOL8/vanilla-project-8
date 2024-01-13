@@ -2,6 +2,7 @@ import {
   setDocumentTitle,
   insertFirst,
   insertAfter,
+  insertLast,
   getPbImageURL,
   getPbImageURL_2,
   getPbImageURL_3,
@@ -29,7 +30,7 @@ async function renderProductData() {
     detail_desc,
   } = productData;
 
-  const totalPrice = parseInt((price - price * (discount * 0.01)) / 100) * 100;
+  const realPrice = parseInt((price - price * (discount * 0.01)) / 100) * 100;
 
   const cart = document.querySelector('.add-cart');
 
@@ -40,10 +41,30 @@ async function renderProductData() {
   /* localstorage 장바구니에 담기 */
   function sendToCart() {
     let cartData = JSON.parse(localStorage.getItem('cart'));
+    const cartMessage = document.querySelector('.cart-message');
+
+    const product = /* html */ `
+  <div class="cart-message" role="dialog">
+    <div class="wrapper">
+      <img
+        class="product-img"
+        src="${getPbImageURL(productData)}"
+        alt
+      />
+      <div class="text">
+        <span>${brand}</span><br />
+        <span>장바구니에 상품을 담았습니다.</span>
+      </div>
+    </div>
+  </div>
+    `;
+    insertLast('.message-container', product);
+
     if (!Array.isArray(cartData)) {
       cartData = [];
     }
     cartData.push(productData);
+    cartMessage.style.display = 'block';
     localStorage.setItem('cart', JSON.stringify(cartData));
   }
   cart.addEventListener('click', sendToCart);
@@ -119,13 +140,13 @@ async function renderProductData() {
             <button class="plus-button"></button>
           </span>
 
-          <span class="total-price">${comma(totalPrice)}원</span>
+          <span class="real-price">${comma(realPrice)}원</span>
         </span>
       </p>
     </div>
 
     <div class="total-container">
-      <div class="total-price">총 상품금액: <b>${comma(totalPrice)}원</b></div>
+      <div class="total-price">총 상품금액: <b>${comma(realPrice)}원</b></div>
       <div class="total-accumulate">
         <b class="label">적립</b>로그인 후, 적립 혜택 제공
       </div>
@@ -177,11 +198,11 @@ async function renderProductData() {
 
   /* 수량 x 단가 */
   function calculateTotalPrice() {
-    const countElement = document.querySelector('.count');
-    const count = parseInt(countElement.textContent);
+    const count = document.querySelector('.count');
+    const amount = parseInt(count.textContent);
 
     const totalPrice =
-      parseInt((price - price * (discount * 0.01)) / 100) * 100 * count;
+      parseInt((price - price * (discount * 0.01)) / 100) * 100 * amount;
 
     const totalPriceElement = document.querySelector('.total-price b');
     totalPriceElement.textContent = `${comma(totalPrice)}원`;
