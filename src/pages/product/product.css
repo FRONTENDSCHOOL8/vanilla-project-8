@@ -190,3 +190,141 @@
     border-left: 1px solid #E1E1E1;
   }
 }
+
+
+.modal-wrapper {
+  /* display: none; */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-cart {
+  width: 396px;
+  height: auto;
+  padding: 24px 20px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0px 8px 36px 0px rgba(0, 0, 0, 0.20);
+}
+
+.modal-desc-1 {
+  color: #333333;
+  font-weight: 600;
+  line-height: 150%;
+}
+
+.price-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 0px 28px;
+
+  & .small-price {
+    font-weight: 600;
+    line-height: 1.5;
+
+    & .modal-price {
+      color: #898989;
+      font-weight: 400;
+      text-decoration: line-through;
+    }
+  }
+
+  & .count-box {
+    width: 90px;
+    border: 1px solid #E1E1E1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: 600;
+
+    & button {
+      width: 30px;
+      height: 30px;
+      border: none;
+    }
+
+    & .minus-button {
+      background: url("/public/images/detail/minus.svg") no-repeat center;
+    }
+
+    & .count {
+      margin: 0px 4px;
+    }
+
+    & .plus-button {
+      background: url("/public/images/detail/plus.svg") no-repeat center;
+    }
+  }
+}
+
+.modal-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & .total-name {
+    color: #000;
+    font-weight: 600;
+    line-height: 1.5
+  }
+
+  & .total-price {
+    color: #000;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+}
+
+.total-accumulate {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-bottom: 28px;
+
+  & .label {
+    background: #FA622F;
+    color: white;
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 2px 5px 0px 3px;
+    margin: 0px 6px 2px 0px;
+  }
+}
+
+.modal-button-container {
+  height: 54px;
+  display: flex;
+  font-weight: 600;
+  line-height: 1.5;
+  gap: 8px;
+
+  & .modal-cancel {
+    border-radius: 4px;
+    border: 1px solid #898989;
+    background: #fff;
+    color: #333333;
+    width: 340px;
+  }
+
+  & .add-cart {
+    border-radius: 4px;
+    border: 1px solid #5F0080;
+    background: #5F0080;
+    color: #FFF;
+    width: 340px;
+  }
+}
