@@ -5,6 +5,7 @@ import {
   getPbImageURL,
   getStorage,
   getNode,
+  getNode,
 } from '/src/lib';
 
 import '/src/pages/cart/cart.css';
@@ -177,6 +178,100 @@ function renderProduct() {
   });
 }
 renderProduct();
+
+const selectAllTop = document.getElementById('selectAllTop');
+const selectAllBottom = document.getElementById('selectAllBottom');
+const productCheckboxes = document.querySelectorAll('.product-checkbox');
+
+function synchronizeCheckboxes() {
+  productCheckboxes.forEach((checkbox) => {
+    checkbox.checked = this.checked;
+  });
+}
+
+/* 전체선택 체크 시 상품 전체 체크 */
+selectAllTop.addEventListener('change', synchronizeCheckboxes);
+selectAllBottom.addEventListener('change', synchronizeCheckboxes);
+
+/* 상하단 전체선택 체크 동기화 */
+selectAllTop.addEventListener('change', () => {
+  selectAllBottom.checked = selectAllTop.checked;
+});
+
+selectAllBottom.addEventListener('change', () => {
+  selectAllTop.checked = selectAllBottom.checked;
+});
+
+/* 상품 삭제 */
+const cartContainer = document.querySelector('.cart-container');
+
+cartContainer.addEventListener('click', function (event) {
+  if (event.target.closest('.delete')) {
+    const clickedButtonId = event.target.closest('.delete').id;
+    deleteProduct(clickedButtonId);
+  }
+});
+
+function deleteProduct(clickedButtonId) {
+  let cartData = JSON.parse(localStorage.getItem('cart'));
+  if (!Array.isArray(cartData)) {
+    cartData = [];
+  }
+  const clickedProduct = cartData.find((item) => item.id === clickedButtonId);
+  const filteredData = cartData.filter((item) => item.id !== clickedButtonId);
+
+  if (clickedProduct) {
+    localStorage.setItem('cart', JSON.stringify(filteredData));
+
+    cartData = JSON.parse(localStorage.getItem('cart'));
+    renderProduct(cartData);
+  }
+}
+
+//여기서부터 주소 코드
+const adButton = getNode('.edit-address');
+const body = getNode('body');
+
+const setSearchAddressEvent = (target, callback) => {
+  target.addEventListener('click', handleSetAddress(callback));
+};
+
+const handleSetAddress = (callback) => {
+  return () => {
+    const width = 502;
+    const height = 547;
+    const popupX = screen.width / 2 - width / 2;
+    const popupY = screen.height / 2 - height / 2;
+    window.open(
+      '/src/pages/address/',
+      '_blank',
+      `width=${width},height=${height},left=${popupX},top=${popupY}`
+    );
+
+    if (callback) {
+      callback();
+    }
+  };
+};
+
+const showAddress = async () => {
+  const address = JSON.parse(await getStorage('address'));
+  const addressP = getNode('.address-p');
+
+  // 기존 주소 템플릿 삭제
+  while (addressP.firstChild) {
+    addressP.firstChild.remove();
+  }
+
+  if (address) {
+    const template = document.createElement('span');
+    template.textContent = `${address['address']} ${address['detail-address']}`;
+    addressP.appendChild(template);
+  }
+};
+
+setSearchAddressEvent(adButton);
+body.addEventListener('mouseover', showAddress);
 
 /* 합계 금액 */
 function renderPrice(checkedProductList) {
