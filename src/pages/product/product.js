@@ -16,11 +16,11 @@ async function renderProduct() {
   const userData = response.data.items;
 
   userData.forEach((item) => {
-    const totalPrice =
-      parseInt((item.price - item.price * (item.discount * 0.01)) / 100) * 100;
+    const realPrice =
+      parseInt((item.price - item.price * (item.discount * 0.01)) / 10) * 10;
     const template = /* html */ `
             <li class="product-each">
-              <button class="add-cart" id="${item.id}"></button>
+              <button class="list-cart" id="${item.id}"></button>
               <a href="${`/src/pages/detail/index.html#${item.id}`}">
                   <img
                     class="product-img"
@@ -36,7 +36,7 @@ async function renderProduct() {
                     item.discount
                   }%</span>
                   <span class="real-price">${comma(
-                    totalPrice
+                    realPrice
                   )}원</span><br class="break" data-id="${item.id}" />
                   <span class="price" data-id="${item.id}">${comma(
                     item.price
@@ -54,7 +54,6 @@ async function renderProduct() {
               </a>
             </li>
             `;
-
     insertLast('.product-list', template);
   });
 
@@ -73,28 +72,131 @@ async function renderProduct() {
     }
   });
 
-  /* 장바구니 담기 */
+  /* 리스트에서 카트 모달 열기 */
   if (!localStorage.getItem('cart')) {
     localStorage.setItem('cart', JSON.stringify([]));
   }
 
+  const listCart = document.querySelectorAll('.list-cart');
   const cart = document.querySelectorAll('.add-cart');
+  const modalWrapper = document.querySelector('.modal-wrapper');
+  const modalContainer = document.querySelector('.modal-container');
 
-  function sendToCart(event) {
+  function showModal(event) {
     const clickedButtonId = event.currentTarget.id;
     const clickedProduct = userData.find((item) => item.id === clickedButtonId);
+    const realPrice =
+      parseInt(
+        (clickedProduct.price -
+          clickedProduct.price * (clickedProduct.discount * 0.01)) /
+          10
+      ) * 10;
 
-    let cartData = JSON.parse(localStorage.getItem('cart'));
-    if (!Array.isArray(cartData)) {
-      cartData = [];
+    const modalTemplate = /* html */ `
+    <div
+    class="modal-cart"
+    role="dialog"
+    aria-label="수량선택 후 장바구니 담기"
+  >
+    <span class="modal-desc-1"
+      >${clickedProduct.brand}</span
+    >
+    <div class="price-container">
+      <div class="small-price">
+        <span class="modal-real-price">${comma(realPrice)}원</span>
+        <span class="modal-price">${comma(clickedProduct.price)}</span>
+      </div>
+      <span class="count-box">
+        <button class="minus-button"></button>
+        <span class="count">1</span>
+        <button class="plus-button"></button>
+      </span>
+    </div>
+    <div class="modal-total">
+      <span class="total-name">합계</span>
+      <span class="total-price">${comma(realPrice)}원</span>
+    </div>
+    <div class="total-accumulate">
+      <span class="label">적립</span>로그인 후, 적립 혜택 제공
+    </div>
+    <div class="modal-button-container">
+      <button class="modal-cancel">취소</button>
+      <button class="add-cart">장바구니 담기</button>
+    </div>
+  </div>
+    `;
+    insertLast('.modal-container', modalTemplate);
+
+    modalContainer.innerHTML = modalTemplate;
+    modalWrapper.style.display = 'block';
+
+    /* 수량 버튼 */
+    const countBox = document.querySelector('.count-box');
+    countBox.addEventListener('click', (event) => {
+      if (event.target.matches('.minus-button')) {
+        let count = event.target.parentElement.querySelector('.count');
+        let currentCount = parseInt(count.textContent);
+        if (currentCount > 1) {
+          count.textContent = currentCount - 1;
+        }
+      } else if (event.target.matches('.plus-button')) {
+        let count = event.target.parentElement.querySelector('.count');
+        let currentCount = parseInt(count.textContent);
+        count.textContent = currentCount + 1;
+      }
+    });
+
+    /* 수량 x 단가 */
+    function calculateTotalPrice() {
+      const count = document.querySelector('.count');
+      const amount = parseInt(count.textContent);
+
+      const totalPrice = realPrice * amount;
+
+      const totalPriceElement = document.querySelector('.total-price');
+      totalPriceElement.textContent = `${comma(totalPrice)}원`;
     }
-    cartData.push(clickedProduct);
-    localStorage.setItem('cart', JSON.stringify(cartData));
+
+    countBox.addEventListener('DOMContentLoaded', calculateTotalPrice);
+    countBox.addEventListener('click', (event) => {
+      if (
+        event.target.matches('.minus-button') ||
+        event.target.matches('.plus-button')
+      ) {
+        calculateTotalPrice();
+      }
+    });
+
+    /* 장바구니 담기 */
+    function sendToCart() {
+      let cartData = JSON.parse(localStorage.getItem('cart'));
+      if (!Array.isArray(cartData)) {
+        cartData = [];
+      }
+      cartData.push(clickedProduct);
+      localStorage.setItem('cart', JSON.stringify(cartData));
+    }
+
+    /* 모달 버튼 이벤트 리스너 */
+    modalContainer.addEventListener('click', (event) => {
+      if (event.target.classList.contains('modal-cancel')) {
+        modalWrapper.style.display = 'none';
+      } else if (event.target.classList.contains('add-cart')) {
+        sendToCart();
+      }
+    });
   }
 
-  cart.forEach((cart) => {
-    cart.addEventListener('click', sendToCart);
+  listCart.forEach((listCart) => {
+    listCart.addEventListener('click', showModal);
   });
+
+  /* 모달 영역 외부 클릭해서 닫기 */
+  window.onclick = (event) => {
+    if (event.target == modalContainer) {
+      modalWrapper.style.display = 'none';
+    }
+  };
 }
 
 renderProduct();
