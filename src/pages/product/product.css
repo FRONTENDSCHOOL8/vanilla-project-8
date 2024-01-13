@@ -76,7 +76,7 @@
 .product-each {
   position: relative;
 
-  & .add-cart {
+  & .list-cart {
     position: absolute;
     right: 0;
     margin: 255px 15px 17px 0px;
@@ -193,7 +193,7 @@
 
 
 .modal-wrapper {
-  /* display: none; */
+  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -237,6 +237,7 @@
 
     & .modal-price {
       color: #898989;
+      font-size: 14px;
       font-weight: 400;
       text-decoration: line-through;
     }
@@ -317,7 +318,7 @@
     border: 1px solid #898989;
     background: #fff;
     color: #333333;
-    width: 340px;
+    width: 178px;
   }
 
   & .add-cart {
@@ -325,6 +326,6 @@
     border: 1px solid #5F0080;
     background: #5F0080;
     color: #FFF;
-    width: 340px;
+    width: 178px;
   }
 }
