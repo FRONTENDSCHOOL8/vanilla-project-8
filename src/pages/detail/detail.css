@@ -121,7 +121,7 @@ html {
       border: 1px solid #E1E1E1;
       padding: 16px;
 
-      & .total-price {
+      & .real-price {
         position: absolute;
         right: 0;
         bottom: 0;
@@ -168,15 +168,17 @@ html {
   padding: 28px 0px;
 
   & .total-price {
+    height: 42px;
     display: flex;
     align-items: center;
     margin-bottom: 8px;
 
     & b {
+      width: 125px;
+      text-align: end;
       font-size: 28px;
       font-weight: 600;
       line-height: 1.5;
-      margin-left: 17px;
     }
   }
 
@@ -571,5 +573,52 @@ input[type="checkbox"] {
 
   & .complete {
     color: #5F0080;
+  }
+}
+
+
+.message-container {
+  display: flex;
+  justify-content: end;
+  margin-right: 253px;
+
+  & .cart-message {
+    /* display: none; */
+    width: 344px;
+    height: 100px;
+    padding: 20px;
+    border: 1px solid #dbdbdb;
+    text-align: left;
+    right: 0px;
+
+    & .wrapper {
+      display: flex;
+
+      & img {
+        width: 46px;
+        height: 60px;
+      }
+
+      & .text {
+        padding: 5px 0px 0px 15px;
+        width: 90%;
+
+        & span:first-child {
+          color: #898989;
+          display: inline-block;
+          width: 100%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        & span:last-child {
+          color: #333333;
+          display: block;
+          margin-top: -3px;
+        }
+      }
+    }
+
   }
 }
