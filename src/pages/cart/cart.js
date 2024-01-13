@@ -4,6 +4,7 @@ import {
   insertLast,
   getPbImageURL,
   getStorage,
+  getNode,
 } from '/src/lib';
 
 import '/src/pages/cart/cart.css';
@@ -219,6 +220,51 @@ function deleteProduct(clickedButtonId) {
     renderProduct(cartData);
   }
 }
+
+//여기서부터 주소 코드
+const adButton = getNode('.edit-address');
+const body = getNode('body');
+
+const setSearchAddressEvent = (target, callback) => {
+  target.addEventListener('click', handleSetAddress(callback));
+};
+
+const handleSetAddress = (callback) => {
+  return () => {
+    const width = 502;
+    const height = 547;
+    const popupX = screen.width / 2 - width / 2;
+    const popupY = screen.height / 2 - height / 2;
+    window.open(
+      '/src/pages/address/',
+      '_blank',
+      `width=${width},height=${height},left=${popupX},top=${popupY}`
+    );
+
+    if (callback) {
+      callback();
+    }
+  };
+};
+
+const showAddress = async () => {
+  const address = JSON.parse(await getStorage('address'));
+  const addressP = getNode('.address-p');
+
+  // 기존 주소 템플릿 삭제
+  while (addressP.firstChild) {
+    addressP.firstChild.remove();
+  }
+
+  if (address) {
+    const template = document.createElement('span');
+    template.textContent = `${address['address']} ${address['detail-address']}`;
+    addressP.appendChild(template);
+  }
+};
+
+setSearchAddressEvent(adButton);
+body.addEventListener('mouseover', showAddress);
 
 /* 합계 금액 */
 let priceEach = 0;
