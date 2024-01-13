@@ -26,8 +26,10 @@ function renderProduct() {
     if (item.storage === '냉장 (종이포장)') {
       const template = /* html */ `
       <li>
-    <input type="checkbox" id="productSelect${index}" class="product-checkbox" checked />
-    <label class="product-select" for="productSelect${index}"></label>
+    <input type="checkbox" id="productSelect${index}" data-id="${
+      item.id
+    }" class="product-checkbox" checked />
+    <label class="product-select" for="productSelect${index}" ></label>
       <a href="/">
         <img
           class="thumbnail"
@@ -74,7 +76,9 @@ function renderProduct() {
     } else if (item.storage === '냉동 (종이포장)') {
       const template = /* html */ `
     <li>
-    <input type="checkbox" id="productSelect${index}" class="product-checkbox" checked />
+    <input type="checkbox" id="productSelect${index}" data-id="${
+      item.id
+    }" class="product-checkbox" checked />
     <label class="product-select" for="productSelect${index}"></label>
       <a href="/">
         <img
@@ -122,7 +126,9 @@ function renderProduct() {
     } else if (item.storage === '상온 (종이포장)') {
       const template = /* html */ `
     <li>
-    <input type="checkbox" id="productSelect${index}" class="product-checkbox" checked />
+    <input type="checkbox" id="productSelect${index}" data-id="${
+      item.id
+    }" class="product-checkbox" checked />
     <label class="product-select" for="productSelect${index}"></label>
       <a href="/">
         <img
@@ -172,17 +178,64 @@ function renderProduct() {
 }
 renderProduct();
 
+/* 합계 금액 */
+function renderPrice(checkedProductList) {
+  let priceEach = 0;
+  let discountEach = 0;
+  let priceTotal = 0;
+  let discountTotal = 0;
+
+  checkedProductList.forEach(({ price, discount }) => {
+    priceEach = price;
+    discountEach = discount;
+    priceTotal += price;
+
+    const discountPrice = priceEach * (discountEach * 0.01);
+    discountTotal += parseInt(discountPrice);
+  });
+
+  let deliveryFee = priceTotal - discountTotal >= 50000 ? 0 : 3000;
+
+  const priceTemplate = /* html */ `
+    <div class="total">
+      <div class="price">
+       <span>상품금액</span>
+       <span>${comma(priceTotal)}원</span>
+      </div>
+      <div class="dicount">
+       <span>상품 할인 금액</span>
+       <span>-${comma(parseInt(discountTotal))}원</span>
+      </div>
+      <div class="delivery-fee">
+        <span>배송비</span>
+       <span>+${comma(deliveryFee)}원</span>
+      </div>
+    </div>
+    <div class="total-price">
+      <div class="amount">
+        <span>결제예정금액</span>
+        <span><b>${comma(parseInt(priceTotal - discountTotal))}</b>원</span>
+      </div>
+      <span class="accumulation">
+      <span class="label">적립</span>
+      최대 36원 적립 일반 0.1%</span>
+    </div>
+`;
+  document.querySelector('.price-container').innerHTML = priceTemplate;
+}
+//   insertLast('.price-container', priceTemplate);
+// }
+
 const selectAllTop = document.getElementById('selectAllTop');
 const selectAllBottom = document.getElementById('selectAllBottom');
 const productCheckboxes = document.querySelectorAll('.product-checkbox');
 
+/* 전체선택 체크 시 상품 전체 체크 */
 function synchronizeCheckboxes() {
   productCheckboxes.forEach((checkbox) => {
     checkbox.checked = this.checked;
   });
 }
-
-/* 전체선택 체크 시 상품 전체 체크 */
 selectAllTop.addEventListener('change', synchronizeCheckboxes);
 selectAllBottom.addEventListener('change', synchronizeCheckboxes);
 
@@ -195,10 +248,32 @@ selectAllBottom.addEventListener('change', () => {
   selectAllTop.checked = selectAllBottom.checked;
 });
 
-/* 상품 삭제 */
+/* 선택 상품만 금액 렌더링 */
 const cartContainer = document.querySelector('.cart-container');
+const checkedProductList = [...productData];
 
-cartContainer.addEventListener('click', function (event) {
+renderPrice(checkedProductList);
+
+cartContainer.addEventListener('change', (event) => {
+  if (event.target.classList.contains('product-checkbox')) {
+    const checkbox = event.target;
+    const productId = checkbox.dataset.id;
+    const isCheckedProduct = productData.find((item) => item.id === productId);
+
+    if (checkbox.checked) {
+      checkedProductList.push(isCheckedProduct);
+    } else {
+      const index = checkedProductList.findIndex(
+        (item) => item.id === isCheckedProduct.id
+      );
+      checkedProductList.splice(index, 1);
+    }
+    renderPrice(checkedProductList);
+  }
+});
+
+/* 상품 삭제 */
+cartContainer.addEventListener('click', (event) => {
   if (event.target.closest('.delete')) {
     const clickedButtonId = event.target.closest('.delete').id;
     deleteProduct(clickedButtonId);
@@ -221,7 +296,7 @@ function deleteProduct(clickedButtonId) {
   }
 }
 
-//여기서부터 주소 코드
+/* 배송지 */
 const adButton = getNode('.edit-address');
 const body = getNode('body');
 
@@ -265,47 +340,3 @@ const showAddress = async () => {
 
 setSearchAddressEvent(adButton);
 body.addEventListener('mouseover', showAddress);
-
-/* 합계 금액 */
-let priceEach = 0;
-let discountEach = 0;
-let priceTotal = 0;
-let discountTotal = 0;
-
-productData.forEach(({ price, discount }) => {
-  priceEach = price;
-  discountEach = discount;
-  priceTotal += price;
-
-  const discountPrice = priceEach * (discountEach * 0.01);
-  discountTotal += parseInt(discountPrice);
-});
-
-let deliveryFee = priceTotal - discountTotal >= 50000 ? 0 : 3000;
-
-const priceTemplate = /* html */ `
-<div class="total">
-  <div class="price">
-   <span>상품금액</span>
-   <span>${comma(priceTotal)}원</span>
-  </div>
-  <div class="dicount">
-   <span>상품 할인 금액</span>
-   <span>-${comma(parseInt(discountTotal))}원</span>
-  </div>
-  <div class="delivery-fee">
-    <span>배송비</span>
-    <span>+${comma(deliveryFee)}원</span>
-  </div>
-</div>
-<div class="total-price">
-  <div class="amount">
-    <span>결제예정금액</span>
-    <span><b>${comma(parseInt(priceTotal - discountTotal))}</b>원</span>
-  </div>
-  <span class="accumulation">
-  <span class="label">적립</span>
-  최대 36원 적립 일반 0.1%</span>
-</div>
-`;
-insertLast('.price-container', priceTemplate);
