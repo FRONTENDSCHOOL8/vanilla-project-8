@@ -80,3 +80,20 @@ async function handleLogin2() {
 
 //모달창 나타나기, 없애기
 closeBtn.addEventListener('click', closeModal);
+
+//엔터키로 로그인 할 수 있게 하는 코드
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+
+    // 여기에서는 로그인 버튼이 활성화되어 있는지 체크합니다.
+    if (!login.disabled) {
+      // 유효성 검사와 등록된 id, pw로 로그인하기
+      if (emailReg(emailValue) && pwReg(passwordValue)) {
+        handleLogin2();
+      } else {
+        showModal();
+      }
+    }
+  }
+});

@@ -265,7 +265,6 @@
   z-index: 10;
   top: 65px;
 }
-
 .drop-bubble :after {
   content: '';
   position: absolute;
@@ -297,6 +296,70 @@
   padding: 20px 20px 15px 20px;
   font-size: 14px;
   line-height: 22px;
+}
+
+.drop-bubble2 {
+  position: absolute;
+  margin-top: 5px;
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  font-size: 16px;
+  text-align: left;
+  right: 0;
+  z-index: 10;
+  top: 65px;
+}
+
+.drop-bubble2 :after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 0 7px 8px 7px;
+  border-color: #FFFFFF transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+  top: -6px;
+  left: 220px;
+}
+
+.drop-bubble2 :before {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 0 7px 8px 7px;
+  border-color: #dbdbdb transparent;
+  display: block;
+  width: 0;
+  z-index: 0;
+  top: -8px;
+  left: 220px;
+}
+
+
+.bubble-text2{
+  display: flex;
+  width: 250px;
+  padding: 15px;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.bubble-text2 img{
+  padding-right: 10px;
+}
+
+.bubble-text2 span{
+  color: black;
+  padding-top: 5px;
+}
+.bubble-text2 p{
+  color: #9a9a9a;
+  width: 170px;
+  height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space:nowrap;
 }
 
 .bubble-text span{

@@ -1,7 +1,7 @@
 // import "/src/style/style.css";
 import pb from '/src/api/pocketbase.js';
 import defaultAuthData from '/src/api/defaultAuthData';
-import { getNode, getStorage, setStorage } from '/src/lib/';
+import { getNode, getStorage, setStorage, getPbImageURL } from '/src/lib/';
 
 function clearContents(node) {
   if (typeof node === 'string') node = getNode(node);

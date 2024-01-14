@@ -7,6 +7,7 @@ import {
   getPbImageURL_2,
   getPbImageURL_3,
   comma,
+  getNode,
 } from '/src/lib';
 import '/src/pages/detail/detail.css';
 import pb from '/src/api/pocketbase';
@@ -49,23 +50,19 @@ async function renderProductData() {
       (product) => product.id === productData.id
     );
 
-    const cartMessage = document.querySelector('.cart-message');
+    const bubble2 = getNode('.drop-bubble2');
     const product = /* html */ `
-  <div class="cart-message">
-    <div class="wrapper">
-      <img
-        class="product-img"
-        src="${getPbImageURL(productData)}"
-        alt
-      />
-      <div class="text">
-        <span>${brand}</span><br />
-        <span>장바구니에 상품을 담았습니다.</span>
-      </div>
+    <div class="bubble-text2">
+    <img width="40" height="45" src="${getPbImageURL(
+      productData
+    )}" alt="상품이미지" />
+    <div class="bubble-text2-text">
+      <p>${brand}</p>
+      <span>장바구니에 상품을 담았습니다.</span>
     </div>
   </div>
     `;
-    insertLast('.message-container', product);
+    insertLast('.drop-bubble2', product);
 
     if (!Array.isArray(cartData)) {
       cartData = [];
@@ -80,9 +77,9 @@ async function renderProductData() {
 
       cartData.push(newProduct);
     }
-    cartMessage.style.display = 'block';
+    bubble2.style.display = 'block';
     setTimeout(() => {
-      cartMessage.style.display = 'none';
+      bubble2.style.display = 'none';
     }, 3000);
     localStorage.setItem('cart', JSON.stringify(cartData));
   }
