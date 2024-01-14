@@ -1,7 +1,11 @@
+html {
+  scroll-padding-top: 50px;
+}
+
 .product-info-container {
   display: flex;
   width: 1050px;
-  height: 1100px;
+  height: auto;
   justify-content: space-between;
   margin: 0 auto;
   padding-top: 40px;
@@ -15,7 +19,7 @@
 /* 상품 메인 정보  */
 .product-info {
   width: 570px;
-  height: 1021px;
+  height: auto;
 
   & span {
     display: inline-block;
@@ -117,7 +121,7 @@
       border: 1px solid #E1E1E1;
       padding: 16px;
 
-      & .total-price {
+      & .real-price {
         position: absolute;
         right: 0;
         bottom: 0;
@@ -135,18 +139,22 @@
         margin-top: 12px;
         font-weight: 600;
 
-        & span {
-          padding: 0px 3px;
+        & button {
+          width: 30px;
+          height: 30px;
+          border: none;
         }
 
-        & button {
-          border: none;
-          background: transparent;
+        & .minus-button {
+          background: url("/public/images/detail/minus.svg") no-repeat center;
+        }
 
-          & img {
-            width: 28px;
-            height: 28px;
-          }
+        & .count {
+          margin: 0px 4px;
+        }
+
+        & .plus-button {
+          background: url("/public/images/detail/plus.svg") no-repeat center;
         }
       }
     }
@@ -160,15 +168,17 @@
   padding: 28px 0px;
 
   & .total-price {
+    height: 42px;
     display: flex;
     align-items: center;
     margin-bottom: 8px;
 
     & b {
+      width: 125px;
+      text-align: end;
       font-size: 28px;
       font-weight: 600;
       line-height: 1.5;
-      margin-left: 17px;
     }
   }
 
@@ -194,11 +204,10 @@
   width: 1050px;
   height: 56px;
   margin: 0 auto 48px;
+  gap: 12px;
 
-
-  & button {
-    width: 56px;
-    background-color: transparent;
+  & button,
+  label {
     border: 1px solid #E1E1E1;
     border-radius: 4px;
     display: flex;
@@ -206,32 +215,38 @@
     justify-content: space-evenly
   }
 
-  & .like {
-    cursor: pointer;
-
-    & img {
-      width: 36px;
-      height: 36px;
-    }
-  }
-
-  & .restock-alarm {
-    margin: 0px 12px;
-
-    & img {
-      width: 24.5px;
-      height: 26px;
-    }
-  }
-
   & .add-cart {
-    cursor: pointer;
     width: 434px;
     background: #5F0080;
     border: 1px solid #5F0080;
     color: #FFFFFF;
-    font-size: 16px;
   }
+}
+
+/* 찜하기 버튼 */
+.like {
+  width: 56px;
+  height: 56px;
+  background: url("/public/images/detail/heart-uncheck.svg") no-repeat center;
+}
+
+#like-list:checked+.like {
+  background: url("/public/images/detail/heart-check.svg") no-repeat center;
+}
+
+/* 재입고 버튼 */
+.restock {
+  width: 56px;
+  height: 56px;
+  background: url("/public/images/detail/alarm-uncheck.svg") no-repeat center;
+}
+
+#restock-alarm:checked+.restock {
+  background: url("/public/images/detail/alarm-check.svg") no-repeat center;
+}
+
+input[type="checkbox"] {
+  display: none;
 }
 
 
@@ -419,6 +434,12 @@
   padding: 56px 0px 16px 0px;
   border-bottom: 1px solid black;
 
+  & .bar {
+    width: 1px;
+    height: 10px;
+    background: #A6A6A6;
+  }
+
   & ul {
     display: flex;
     align-items: center;
@@ -426,7 +447,6 @@
 
     & li {
       padding: 0px 8px;
-      border-left: 1px solid #A6A6A6;
       font-size: 16px;
     }
 
@@ -553,5 +573,55 @@
 
   & .complete {
     color: #5F0080;
+  }
+}
+
+.message-container {
+  background: #fff;
+  display: flex;
+  margin-right: 253px;
+  position: fixed;
+  right: 0;
+  top: 72px;
+  z-index: 1;
+
+  & .cart-message {
+    display: none;
+    width: 344px;
+    height: 100px;
+    padding: 20px;
+    border: 1px solid #dbdbdb;
+    text-align: left;
+    right: 0px;
+
+    & .wrapper {
+      display: flex;
+
+      & img {
+        width: 46px;
+        height: 60px;
+      }
+
+      & .text {
+        padding: 5px 0px 0px 15px;
+        width: 90%;
+
+        & span:first-child {
+          color: #898989;
+          display: inline-block;
+          width: 100%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        & span:last-child {
+          color: #333333;
+          display: block;
+          margin-top: -3px;
+        }
+      }
+    }
+
   }
 }

@@ -2,6 +2,7 @@ import {
   setDocumentTitle,
   insertFirst,
   insertAfter,
+  insertLast,
   getPbImageURL,
   getPbImageURL_2,
   getPbImageURL_3,
@@ -29,21 +30,62 @@ async function renderProductData() {
     detail_desc,
   } = productData;
 
+  const realPrice = parseInt((price - price * (discount * 0.01)) / 10) * 10;
+
+  const cart = document.querySelector('.add-cart');
+
   if (!localStorage.getItem('cart')) {
     localStorage.setItem('cart', JSON.stringify([]));
   }
 
-  const cart = document.querySelector('.add-cart');
-
+  /* localstorage 장바구니에 담기 */
   function sendToCart() {
     let cartData = JSON.parse(localStorage.getItem('cart'));
+
+    const count = document.querySelector('.count');
+    const quantity = parseInt(count.textContent);
+
+    const existingProductIndex = cartData.findIndex(
+      (product) => product.id === productData.id
+    );
+
+    const cartMessage = document.querySelector('.cart-message');
+    const product = /* html */ `
+  <div class="cart-message">
+    <div class="wrapper">
+      <img
+        class="product-img"
+        src="${getPbImageURL(productData)}"
+        alt
+      />
+      <div class="text">
+        <span>${brand}</span><br />
+        <span>장바구니에 상품을 담았습니다.</span>
+      </div>
+    </div>
+  </div>
+    `;
+    insertLast('.message-container', product);
+
     if (!Array.isArray(cartData)) {
       cartData = [];
     }
-    cartData.push(productData);
+
+    if (existingProductIndex !== -1) {
+      cartData[existingProductIndex].quantity += quantity;
+    } else {
+      const newProduct = Object.assign({}, productData, {
+        quantity: quantity,
+      });
+
+      cartData.push(newProduct);
+    }
+    cartMessage.style.display = 'block';
+    setTimeout(() => {
+      cartMessage.style.display = 'none';
+    }, 3000);
     localStorage.setItem('cart', JSON.stringify(cartData));
   }
-
   cart.addEventListener('click', sendToCart);
 
   /* 메인 정보 */
@@ -57,9 +99,7 @@ async function renderProductData() {
     <span class="desc-2">${description}</span><br />
     <span class="real">
     <span class="discount">${discount}%</span>
-    <span class="real-price">${comma(
-      price - price * (discount * 0.01)
-    )}</span>원
+    <span class="real-price">${comma(realPrice)}</span>원
     </span>
     <span class="price">${comma(price)}원</span><br />
     <span class="accumulate">로그인 후, 적립 혜택이 제공됩니다.</span>
@@ -110,32 +150,20 @@ async function renderProductData() {
         <span>상품선택</span>
         <span class="amount-box">
         ${brand}<br />
+
           <span class="count-box">
-            <button class="minus">
-              <img
-                src="/public/images/detail/minus.svg"
-                alt="수량내리기"
-              />
-            </button>
-            <span>1</span>
-            <button class="plus">
-              <img
-                src="/public/images/detail/plus.svg"
-                alt="수량올리기"
-              />
-            </button>
+            <button class="minus-button"></button>
+            <span class="count">1</span>
+            <button class="plus-button"></button>
           </span>
-          <span class="total-price">${comma(
-            price - price * (discount * 0.01)
-          )}원</span>
+
+          <span class="real-price">${comma(realPrice)}원</span>
         </span>
       </p>
     </div>
 
     <div class="total-container">
-      <div class="total-price">총 상품금액: <b>${comma(
-        price - price * (discount * 0.01)
-      )}원</b></div>
+      <div class="total-price">총 상품금액: <b>${comma(realPrice)}원</b></div>
       <div class="total-accumulate">
         <b class="label">적립</b>로그인 후, 적립 혜택 제공
       </div>
@@ -168,6 +196,55 @@ async function renderProductData() {
   />
   `;
   insertAfter('.product-point', template_3);
+
+  /* 수량 버튼 */
+  const countBox = document.querySelector('.count-box');
+  countBox.addEventListener('click', function (e) {
+    if (e.target.matches('.minus-button')) {
+      let count = e.target.parentElement.querySelector('.count');
+      let currentCount = parseInt(count.textContent);
+      if (currentCount > 1) {
+        count.textContent = currentCount - 1;
+      }
+    } else if (e.target.matches('.plus-button')) {
+      let count = e.target.parentElement.querySelector('.count');
+      let currentCount = parseInt(count.textContent);
+      count.textContent = currentCount + 1;
+    }
+  });
+
+  /* 수량 x 단가 */
+  function calculateTotalPrice() {
+    const count = document.querySelector('.count');
+    const amount = parseInt(count.textContent);
+
+    const totalPrice = realPrice * amount;
+
+    const totalPriceElement = document.querySelector('.total-price b');
+    totalPriceElement.textContent = `${comma(totalPrice)}원`;
+  }
+
+  document.addEventListener('DOMContentLoaded', calculateTotalPrice);
+  countBox.addEventListener('click', function (e) {
+    if (e.target.matches('.minus-button') || e.target.matches('.plus-button')) {
+      calculateTotalPrice();
+    }
+  });
+}
+renderProductData();
+
+/* 게시판으로 스크롤 이동 */
+const reviewButton = document.querySelector('.review');
+const reviewBoard = document.querySelector('.review-board');
+const contactButton = document.querySelector('.contact');
+const qaBoard = document.querySelector('.qa-board');
+
+function goToReview() {
+  reviewBoard.scrollIntoView();
 }
 
-renderProductData();
+function goToQa() {
+  qaBoard.scrollIntoView();
+}
+reviewButton.addEventListener('click', goToReview);
+contactButton.addEventListener('click', goToQa);
