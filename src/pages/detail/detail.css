@@ -576,14 +576,17 @@ input[type="checkbox"] {
   }
 }
 
-
 .message-container {
+  background: #fff;
   display: flex;
-  justify-content: end;
   margin-right: 253px;
+  position: fixed;
+  right: 0;
+  top: 72px;
+  z-index: 1;
 
   & .cart-message {
-    /* display: none; */
+    display: none;
     width: 344px;
     height: 100px;
     padding: 20px;

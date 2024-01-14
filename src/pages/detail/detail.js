@@ -65,6 +65,9 @@ async function renderProductData() {
     }
     cartData.push(productData);
     cartMessage.style.display = 'block';
+    setTimeout(() => {
+      cartMessage.style.display = 'none';
+    }, 3000);
     localStorage.setItem('cart', JSON.stringify(cartData));
   }
   cart.addEventListener('click', sendToCart);
