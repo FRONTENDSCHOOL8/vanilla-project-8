@@ -129,6 +129,7 @@ async function renderProduct() {
 
     modalContainer.innerHTML = modalTemplate;
     modalWrapper.style.display = 'block';
+    document.body.style.overflow = 'hidden';
 
     /* 수량 버튼 */
     const countBox = document.querySelector('.count-box');
@@ -198,9 +199,11 @@ async function renderProduct() {
   function handleModalClick(event) {
     if (event.target.classList.contains('modal-cancel')) {
       modalWrapper.style.display = 'none';
+      document.body.style.overflow = 'auto';
     } else if (event.target.classList.contains('add-cart')) {
       sendToCart();
       modalWrapper.style.display = 'none';
+      document.body.style.overflow = 'auto';
     }
   }
 
@@ -208,6 +211,7 @@ async function renderProduct() {
   window.onclick = (event) => {
     if (event.target == modalContainer) {
       modalWrapper.style.display = 'none';
+      document.body.style.overflow = 'auto';
     }
   };
 
