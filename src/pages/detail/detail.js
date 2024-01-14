@@ -30,7 +30,7 @@ async function renderProductData() {
     detail_desc,
   } = productData;
 
-  const realPrice = parseInt((price - price * (discount * 0.01)) / 100) * 100;
+  const realPrice = parseInt((price - price * (discount * 0.01)) / 10) * 10;
 
   const cart = document.querySelector('.add-cart');
 
@@ -41,10 +41,17 @@ async function renderProductData() {
   /* localstorage 장바구니에 담기 */
   function sendToCart() {
     let cartData = JSON.parse(localStorage.getItem('cart'));
-    const cartMessage = document.querySelector('.cart-message');
 
+    const count = document.querySelector('.count');
+    const quantity = parseInt(count.textContent);
+
+    const existingProductIndex = cartData.findIndex(
+      (product) => product.id === productData.id
+    );
+
+    const cartMessage = document.querySelector('.cart-message');
     const product = /* html */ `
-  <div class="cart-message" role="dialog">
+  <div class="cart-message">
     <div class="wrapper">
       <img
         class="product-img"
@@ -63,7 +70,16 @@ async function renderProductData() {
     if (!Array.isArray(cartData)) {
       cartData = [];
     }
-    cartData.push(productData);
+
+    if (existingProductIndex !== -1) {
+      cartData[existingProductIndex].quantity += quantity;
+    } else {
+      const newProduct = Object.assign({}, productData, {
+        quantity: quantity,
+      });
+
+      cartData.push(newProduct);
+    }
     cartMessage.style.display = 'block';
     setTimeout(() => {
       cartMessage.style.display = 'none';
@@ -83,9 +99,7 @@ async function renderProductData() {
     <span class="desc-2">${description}</span><br />
     <span class="real">
     <span class="discount">${discount}%</span>
-    <span class="real-price">${comma(
-      parseInt((price - price * (discount * 0.01)) / 100) * 100
-    )}</span>원
+    <span class="real-price">${comma(realPrice)}</span>원
     </span>
     <span class="price">${comma(price)}원</span><br />
     <span class="accumulate">로그인 후, 적립 혜택이 제공됩니다.</span>
@@ -204,8 +218,7 @@ async function renderProductData() {
     const count = document.querySelector('.count');
     const amount = parseInt(count.textContent);
 
-    const totalPrice =
-      parseInt((price - price * (discount * 0.01)) / 100) * 100 * amount;
+    const totalPrice = realPrice * amount;
 
     const totalPriceElement = document.querySelector('.total-price b');
     totalPriceElement.textContent = `${comma(totalPrice)}원`;
