@@ -14,7 +14,9 @@ import {
 import defaultAuthData from '/src/api/defaultAuthData';
 import defaultImgData from '/src/api/defaultImgData';
 
-setDocumentTitle('메인 페이지');
+import pb from '/src/api/pocketbase';
+
+// setDocumentTitle('메인 페이지');
 
 // swiper 기능 구현
 
@@ -167,80 +169,13 @@ async function renderProduct(slicea, sliceb, insert) {
 
     // 생성된 요소를 DOM에 삽입합니다.
   });
-  console.log('가져온 값', response);
-  console.log('내용물', userData);
+  // console.log('가져온 값', response);
+  // console.log('내용물', userData);
 }
 
 renderProduct(0, 12, '.swiper3 > .swiper-wrapper');
 renderProduct(0, 12, '.swiper2 > .swiper-wrapper');
 
-// function showModal(item) {
-//   const ratio = item.price * (item.discount * 0.01);
-
-//   const modal = getNode('.add-cart');
-//   console.log('모달창', arr);
-//   modal.innerHTML = `
-//   <p>가격: ${comma(item.price)}</p>
-
-//         <div>
-//           <span class="add-cart-name"
-//             >${item.brand}</span
-//           >
-//         </div>
-
-//         <div class="add-cart-sum">
-//           <div class="price-list">
-//             <span class="cart-price">${comma(item.price - ratio)}원</span>
-//             <span class="cart-realprice">${item.price}원</span>
-//           </div>
-//           <div class="count-button-list">
-//             <button
-//               type="button"
-//               aria-label="수량 감소"
-//               class="minus-button hidden-button"
-//             ></button>
-//             <span class="count">1</span>
-//             <button
-//               type="button"
-//               aria-label="수량 증가"
-//               class="plus-button hidden-button"
-//             ></button>
-//           </div>
-//         </div>
-
-//         <div class="sum">
-//           <span class="sum-name">합계</span>
-//           <span class="sum-value">${item.price - ratio}원</span>
-//         </div>
-
-//         <div class="point">
-//           <div class="point-badge">적립</div>
-//           <span class="point-text">구매 시 5원 적립</span>
-//         </div>
-
-//         <div class="cart-button-list">
-//           <button type="button" class="cart-button-cancel" value="cancel">
-//             취소
-//           </button>
-//           <button type="button" class="cart-button-add">장바구니 담기</button>
-//         </div>
-//     </div>
-//   `;
-
-//   modal.style.display = 'flex';
-// });
-
-// document.addEventListener("keydown", function (e) {
-//   // 첫 번째 Swiper에 대한 키보드 이벤트 처리
-//   if (document.activeElement === document.body) {
-//     swiper1.keyboard.handleKeyboard(e);
-//   }
-
-//   // 두 번째 Swiper에 대한 키보드 이벤트 처리
-//   if (document.activeElement === document.body) {
-//     swiper2.keyboard.handleKeyboard(e);
-//   }
-// });
 let popupClose = getNode('.popup-button-close');
 const popup = getNode('.popup-modal');
 
@@ -257,12 +192,19 @@ function hideDialog(e) {
     // modal.style.position = 'none';
     modal.style.display = 'none';
 
-    console.log('테스트', dialog);
+    // console.log('테스트', dialog);
   }
 
   if (e.target.matches('.cart-button-add')) {
-    console.log('장바구니 테스트');
-    addRecentProduct();
+    // console.log('장바구니 테스트');
+    // addRecentProduct();
+    const cartIndex = e.target.dataset.index;
+    const cartId = arr[cartIndex].id;
+    console.log(cartId);
+    // const a = arr[0].id;
+    renderProductData(cartId);
+    dialog.style.display = 'none';
+    modal.style.display = 'none';
   }
 }
 
@@ -290,8 +232,8 @@ function viewDialog(e) {
     const buttonIndex = e.target.dataset.index;
     const itemList = arr[buttonIndex];
 
-    console.log(buttonIndex, itemList);
-    console.log(typeof buttonIndex, '현재 arr', arr);
+    // console.log(buttonIndex, itemList);
+    // console.log(typeof buttonIndex, '현재 arr', arr);
     const dialogBtn = e.target.currentTarget;
 
     const ratio = itemList.price * (itemList.discount * 0.01);
@@ -343,7 +285,7 @@ function viewDialog(e) {
     <button type="button" class="cart-button-cancel" value="cancel">
       취소
     </button>
-    <button type="button" class="cart-button-add">장바구니 담기</button>
+    <button type="button" class="cart-button-add" data-index = ${buttonIndex}>장바구니 담기</button>
   </div>
     `;
     // console.log(dialogBtn);
@@ -363,8 +305,6 @@ swiperBtntest3.addEventListener('click', viewDialog);
 const plusButton = getNode('.plus-button');
 const minusButton = getNode('.minus-button');
 const addCart = getNode('.add-cart');
-// const count = getNode('.count');
-// const sum = getNode('.sum-value');
 
 function plusCount(e) {
   const count = e.target.closest('.add-cart').querySelector('.count');
@@ -411,18 +351,6 @@ function minusCount(e) {
 addCart.addEventListener('click', plusCount);
 addCart.addEventListener('click', minusCount);
 
-// function a() {
-//   let recentAdd = JSON.parse(localStorage.getItem('recent')) || [];
-//   recentAdd.push({ img: arr[0].photo, url: '/src/pages/detail/index.html' });
-//   let result = [...new Set(recentAdd)];
-
-//   localStorage.setItem('recent', JSON.stringify(result));
-// }
-
-// a();
-
-// 함수 호출
-
 // 버튼 이벤트 등록
 const hideToday = getNode('.popup-button-today');
 
@@ -452,13 +380,14 @@ window.onload = function () {
 let arrs = [];
 function addRecentProduct(e) {
   if (!localStorage.getItem('recent')) {
-    setStorage('recent', defaultImgData);
+    // setStorage('recent', defaultImgData);
+    setStorage('recent', JSON.stringify([]));
   }
   if (!e.target.matches('.shop-button2')) {
     // e.preventDefault();
     const buttonId = e.target.parentNode.dataset.id;
 
-    console.log(arr[buttonId].id, imgArr[buttonId]);
+    // console.log(arr[buttonId].id, imgArr[buttonId]);
 
     let recentList = JSON.parse(localStorage.getItem('recent'));
     recentList = JSON.parse(recentList);
@@ -479,9 +408,9 @@ function addRecentProduct(e) {
 
     recentList = JSON.parse(recentList);
     let recentLength = recentList.length - 1;
-    console.log(recentList.lenght);
-    console.log(recentLength);
-    console.log('테스트', recentList[recentLength].id);
+    // console.log(recentList.lenght);
+    // console.log(recentLength);
+    // console.log('테스트', recentList[recentLength].id);
 
     // 뽑아와서 그 값을 통해 a 태그 생성
 
@@ -506,8 +435,8 @@ function addRecentProduct(e) {
 
 function loadRecentProducts() {
   let recentList = JSON.parse(localStorage.getItem('recent') || '[]');
-  console.log(recentList);
-  console.log(typeof recentList);
+  // console.log(recentList);
+  // console.log(typeof recentList);
   recentList = JSON.parse(recentList);
 
   recentList.forEach((product) => {
@@ -524,36 +453,24 @@ function loadRecentProducts() {
 
 // 페이지 로드 완료 시 loadRecentProducts 함수 호출
 document.addEventListener('DOMContentLoaded', loadRecentProducts);
-// function addRecentProduct(e) {
-//   let recentList;
-
-//   if (!localStorage.getItem('recent')) {
-//     setStorage('recent', JSON.stringify(defaultImgData));
-//     recentList = defaultImgData;
-//   } else {
-//     recentList = JSON.parse(localStorage.getItem('recent'));
-//   }
-
-//   recentList.push({ img: imgArr['0'], id: arr['0'].id });
-//   setStorage('recent', JSON.stringify(recentList));
-// }
 
 const swiperLink = document.querySelector('.swiper2');
 const swiperLink2 = document.querySelector('.swiper3');
 swiperLink.addEventListener('click', addRecentProduct);
 swiperLink2.addEventListener('click', addRecentProduct);
 
-// 모달창을 가져옵니다.
-// let modal = document.querySelector('.shop-list');
-
-// // 사용자가 모달창 외부를 클릭하면 모달창이 닫히지 않도록 합니다.
-// window.onclick = function (event) {
-//   if (event.target == modal) {
-//     event.stopPropagation();
-//   }
-// };
-
-// // "취소" 버튼을 클릭하면 모달창이 닫히도록 합니다.
-// document.querySelector('.cart-button-cancel').onclick = function () {
-//   modal.style.display = 'none';
-// };
+async function renderProductData(item) {
+  const productData = await pb.collection('products').getOne(item);
+  console.log(productData);
+  if (!localStorage.getItem('cart')) {
+    localStorage.setItem('cart', JSON.stringify([]));
+  }
+  // function sendToCart() {
+  let cartData = JSON.parse(localStorage.getItem('cart'));
+  if (!Array.isArray(cartData)) {
+    cartData = [];
+  }
+  cartData.push(productData);
+  localStorage.setItem('cart', JSON.stringify(cartData));
+  // }
+}
