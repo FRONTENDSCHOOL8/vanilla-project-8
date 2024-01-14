@@ -68,7 +68,6 @@ export async function mainjs() {
         // cartInfo의 마지막 요소를 가져옵니다.
         const lastItem = cartInfo[cartInfo.length - 1];
         const { brand } = lastItem;
-        console.log(lastItem);
 
         const bubbleText = getNode('.bubble-text2');
         if (bubbleText) {
