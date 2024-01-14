@@ -78,13 +78,13 @@ async function renderProduct() {
   }
 
   const listCart = document.querySelectorAll('.list-cart');
-  const cart = document.querySelectorAll('.add-cart');
   const modalWrapper = document.querySelector('.modal-wrapper');
   const modalContainer = document.querySelector('.modal-container');
+  let clickedProduct = null;
 
   function showModal(event) {
     const clickedButtonId = event.currentTarget.id;
-    const clickedProduct = userData.find((item) => item.id === clickedButtonId);
+    clickedProduct = userData.find((item) => item.id === clickedButtonId);
     const realPrice =
       parseInt(
         (clickedProduct.price -
@@ -152,7 +152,6 @@ async function renderProduct() {
       const amount = parseInt(count.textContent);
 
       const totalPrice = realPrice * amount;
-
       const totalPriceElement = document.querySelector('.total-price');
       totalPriceElement.textContent = `${comma(totalPrice)}원`;
     }
@@ -166,37 +165,56 @@ async function renderProduct() {
         calculateTotalPrice();
       }
     });
-
-    /* 장바구니 담기 */
-    function sendToCart() {
-      let cartData = JSON.parse(localStorage.getItem('cart'));
-      if (!Array.isArray(cartData)) {
-        cartData = [];
-      }
-      cartData.push(clickedProduct);
-      localStorage.setItem('cart', JSON.stringify(cartData));
-    }
-
-    /* 모달 버튼 이벤트 리스너 */
-    modalContainer.addEventListener('click', (event) => {
-      if (event.target.classList.contains('modal-cancel')) {
-        modalWrapper.style.display = 'none';
-      } else if (event.target.classList.contains('add-cart')) {
-        sendToCart();
-      }
-    });
+    modalContainer.addEventListener('click', handleModalClick);
   }
 
-  listCart.forEach((listCart) => {
-    listCart.addEventListener('click', showModal);
-  });
+  /* 장바구니 담기 */
+  function sendToCart() {
+    let cartData = JSON.parse(localStorage.getItem('cart'));
+    if (!Array.isArray(cartData)) {
+      cartData = [];
+    }
 
-  /* 모달 영역 외부 클릭해서 닫기 */
+    const count = document.querySelector('.count');
+    const quantity = parseInt(count.textContent);
+
+    const existingProductIndex = cartData.findIndex(
+      (product) => product.id === clickedProduct.id
+    );
+
+    if (existingProductIndex !== -1) {
+      cartData[existingProductIndex].quantity += quantity;
+    } else {
+      const newProduct = Object.assign({}, clickedProduct, {
+        quantity: quantity,
+      });
+      cartData.push(newProduct);
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cartData));
+  }
+
+  /* 모달 내부 취소, 장바구니 담기 버튼 눌러서 닫기 */
+  function handleModalClick(event) {
+    if (event.target.classList.contains('modal-cancel')) {
+      modalWrapper.style.display = 'none';
+    } else if (event.target.classList.contains('add-cart')) {
+      sendToCart();
+      modalWrapper.style.display = 'none';
+    }
+  }
+
+  /* 모달 외부 클릭해서 닫기 */
   window.onclick = (event) => {
     if (event.target == modalContainer) {
       modalWrapper.style.display = 'none';
     }
   };
+
+  /* 리스트 카트 아이콘 이벤트 리스너 */
+  listCart.forEach((listCart) => {
+    listCart.addEventListener('click', showModal);
+  });
 }
 
 renderProduct();
