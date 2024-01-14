@@ -20,18 +20,18 @@
   <body>
     <header data-include-path="/src/components/header/index.html"></header>
 
+    <div class="message-container"></div>
+
     <!-- 메인 -->
     <main>
       <div class="container">
         <section class="product-info-container"></section>
 
         <div class="button-container">
-          <button class="like">
-            <img src="/public/images/detail/heart.svg" alt="찜하기 버튼" />
-          </button>
-          <button class="restock-alarm">
-            <img src="/public/images/detail/alarm.svg" alt="재입고 알림 버튼" />
-          </button>
+          <input type="checkbox" id="like-list" checked />
+          <label class="like" for="like-list"></label>
+          <input type="checkbox" id="restock-alarm" checked />
+          <label class="restock" for="restock-alarm"></label>
           <button class="add-cart">장바구니 담기</button>
         </div>
 
@@ -147,6 +147,7 @@
             <span>총 2개</span>
             <ul>
               <li><a>추천순</a></li>
+              <div class="bar"></div>
               <li><a>최근 등록순</a></li>
             </ul>
           </nav>
