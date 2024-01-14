@@ -67,8 +67,6 @@ async function renderProduct() {
       discountElements[index].remove();
       priceElements[index].remove();
       breakElements[index].remove();
-    } else {
-      discountElements[index].textContent = `${item.discount}%`;
     }
   });
 
@@ -93,14 +91,11 @@ async function renderProduct() {
       ) * 10;
 
     const modalTemplate = /* html */ `
-    <div
-    class="modal-cart"
-    role="dialog"
-    aria-label="수량선택 후 장바구니 담기"
-  >
-    <span class="modal-desc-1"
-      >${clickedProduct.brand}</span
-    >
+  <div
+   class="modal-cart"
+   role="dialog"
+   aria-label="수량선택 후 장바구니 담기">
+    <span class="modal-desc-1">${clickedProduct.brand}</span>
     <div class="price-container">
       <div class="small-price">
         <span class="modal-real-price">${comma(realPrice)}원</span>
@@ -133,15 +128,14 @@ async function renderProduct() {
 
     /* 수량 버튼 */
     const countBox = document.querySelector('.count-box');
+    let count = document.querySelector('.count');
     countBox.addEventListener('click', (event) => {
       if (event.target.matches('.minus-button')) {
-        let count = event.target.parentElement.querySelector('.count');
         let currentCount = parseInt(count.textContent);
         if (currentCount > 1) {
           count.textContent = currentCount - 1;
         }
       } else if (event.target.matches('.plus-button')) {
-        let count = event.target.parentElement.querySelector('.count');
         let currentCount = parseInt(count.textContent);
         count.textContent = currentCount + 1;
       }
@@ -150,14 +144,13 @@ async function renderProduct() {
     /* 수량 x 단가 */
     function calculateTotalPrice() {
       const count = document.querySelector('.count');
-      const amount = parseInt(count.textContent);
+      const currentCount = parseInt(count.textContent);
 
-      const totalPrice = realPrice * amount;
+      const totalPrice = realPrice * currentCount;
       const totalPriceElement = document.querySelector('.total-price');
       totalPriceElement.textContent = `${comma(totalPrice)}원`;
     }
 
-    countBox.addEventListener('DOMContentLoaded', calculateTotalPrice);
     countBox.addEventListener('click', (event) => {
       if (
         event.target.matches('.minus-button') ||
@@ -166,7 +159,7 @@ async function renderProduct() {
         calculateTotalPrice();
       }
     });
-    modalContainer.addEventListener('click', handleModalClick);
+    modalContainer.addEventListener('click', closeModal);
   }
 
   /* 장바구니 담기 */
@@ -180,7 +173,7 @@ async function renderProduct() {
     const quantity = parseInt(count.textContent);
 
     const existingProductIndex = cartData.findIndex(
-      (product) => product.id === clickedProduct.id
+      (item) => item.id === clickedProduct.id
     );
 
     if (existingProductIndex !== -1) {
@@ -196,7 +189,7 @@ async function renderProduct() {
   }
 
   /* 모달 내부 취소, 장바구니 담기 버튼 눌러서 닫기 */
-  function handleModalClick(event) {
+  function closeModal(event) {
     if (event.target.classList.contains('modal-cancel')) {
       modalWrapper.style.display = 'none';
       document.body.style.overflow = 'auto';
