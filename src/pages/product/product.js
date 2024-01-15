@@ -3,7 +3,6 @@ import {
   tiger,
   insertLast,
   comma,
-  getNode,
   getPbImageURL,
   setDocumentTitle,
 } from '/src/lib';
@@ -70,6 +69,7 @@ async function renderProduct() {
       breakElements[index].remove();
     }
   });
+
   /* 리스트에서 카트 모달 열기 */
   if (!localStorage.getItem('cart')) {
     localStorage.setItem('cart', JSON.stringify([]));
@@ -150,6 +150,7 @@ async function renderProduct() {
       const totalPriceElement = document.querySelector('.total-price');
       totalPriceElement.textContent = `${comma(totalPrice)}원`;
     }
+
     countBox.addEventListener('click', (event) => {
       if (
         event.target.matches('.minus-button') ||
@@ -167,7 +168,7 @@ async function renderProduct() {
     if (!Array.isArray(cartData)) {
       cartData = [];
     }
-    
+
     const count = document.querySelector('.count');
     const quantity = parseInt(count.textContent);
 
