@@ -39,14 +39,14 @@ function renderProduct() {
       <span class="count-box">
         <button class="minus">
           <img
-            src="/public/images/detail/minus.svg"
+            src="/images/detail/minus.svg"
             alt="수량내리기"
           />
         </button>
         <span>1</span>
         <button class="plus">
           <img
-            src="/public/images/detail/plus.svg"
+            src="/images/detail/plus.svg"
             alt="수량올리기"
           />
         </button>
@@ -87,14 +87,14 @@ function renderProduct() {
       <span class="count-box">
         <button class="minus">
           <img
-            src="/public/images/detail/minus.svg"
+            src="/images/detail/minus.svg"
             alt="수량내리기"
           />
         </button>
         <span>1</span>
         <button class="plus">
           <img
-            src="/public/images/detail/plus.svg"
+            src="/images/detail/plus.svg"
             alt="수량올리기"
           />
         </button>
@@ -135,14 +135,14 @@ function renderProduct() {
       <span class="count-box">
         <button class="minus">
           <img
-            src="/public/images/detail/minus.svg"
+            src="/images/detail/minus.svg"
             alt="수량내리기"
           />
         </button>
         <span>1</span>
         <button class="plus">
           <img
-            src="/public/images/detail/plus.svg"
+            src="/images/detail/plus.svg"
             alt="수량올리기"
           />
         </button>
