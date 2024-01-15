@@ -175,7 +175,7 @@ figure {
   /* padding: 40px 0; */
   justify-content: center;
   align-items: center;
-  background-image: url("/public/images/main/line-banner.jpg");
+  background-image: url("/images/main/line-banner.jpg");
   width: 1050px;
   height: 140px;
   margin: 40px auto;
@@ -274,7 +274,7 @@ text-decoration: line-through;
 
   & .shop-button2{
     position: absolute;
-  background-image: url("/public/images/main/shop.svg");
+  background-image: url("/images/main/shop.svg");
   width: 45px;
   height: 45px;
   bottom: 25px;
@@ -362,14 +362,14 @@ text-decoration: line-through;
 }
 
 .plus-button {
-  background-image: url("/public/images/main/cart-button/plus-button.svg");
+  background-image: url("/images/main/cart-button/plus-button.svg");
   width: 30px;
   height: 30px;
 }
 
 
 .minus-button {
-  background-image: url("/public/images/main/cart-button/minus-button.svg");
+  background-image: url("/images/main/cart-button/minus-button.svg");
   width: 30px;
   height: 30px;
 }
@@ -481,7 +481,7 @@ text-decoration: line-through;
 
   & .popup-modal-image {
     display: block;
-    background-image: url("/public/images/main/popup-image.jpg");
+    background-image: url("/images/main/popup-image.jpg");
     width: 440px;
     height: 500px;
   }
