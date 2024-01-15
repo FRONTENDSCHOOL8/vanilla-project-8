@@ -13,11 +13,12 @@ export function headerjs() {
     node.textContent = '';
   }
 
+  //각 네비게이션 메뉴 mouseover, mouseout 시에 나타나게 하는 함수
   const category = getNode('.nav-capture');
   const category1 = getNode('.nav-capture2');
   const navMenu = getNode('.nav-menu-hide1');
   const navMenu2 = getNode('.nav-menu-hide2');
-
+  //맨 위에 있는 보라색 쿠폰 사라지게 하는 함수
   const button = getNode('.header-ad-btn');
   const ad = getNode('.header-ad');
 
@@ -46,7 +47,6 @@ export function headerjs() {
   button.addEventListener('click', closeAd);
 
   // 아래는 스크롤에 따라 내려가면 카테고리 변화하는 코드
-
   const header = getNode('.header');
   const category2 = getNode('.fixed2');
   let headerHeight = header.offsetHeight;
@@ -62,7 +62,7 @@ export function headerjs() {
     }
   };
 
-  //모달창 변수들
+  //로그인 실패시, 찜하기 눌렀을 경우, 모달창 변수들
   const closeBtn = getNode('.button-close');
   const modal = getNode('.modal-bg');
   const heart = getNode('.heart');
@@ -84,6 +84,7 @@ export function headerjs() {
   heart.addEventListener('click', showModal);
   closeBtn.addEventListener('click', closeModal);
 
+  //고객센터 쪽 아래 ul 메뉴 나타내기
   const info = getNode('.information');
   function showInformation() {
     const template = /* html */ `
@@ -105,11 +106,11 @@ export function headerjs() {
   info.addEventListener('mouseenter', showInformation);
   info.addEventListener('mouseleave', closeInformation);
 
+  //주소 버블 보이게 하기
   const showBubble = async () => {
     let template;
     const address = JSON.parse(await getStorage('address'));
 
-    // 이 부분에서 로그인 기능 구현 이후 로그인했을 경우 주소를 가져오는 로직도 추가해야 한다.
     if (!address) {
       bubble.style.display = 'block';
     } else {
@@ -132,6 +133,7 @@ export function headerjs() {
   const addPackage = getNode('.ect-menu-add-package');
   const bubble = getNode('.drop-bubble');
 
+  //mouseleave시에 주소 버블 닫게 하기
   function closeBubble() {
     bubble.style.display = 'none';
   }
@@ -143,6 +145,7 @@ export function headerjs() {
     target.addEventListener('click', handleSetAddress(callback));
   };
 
+  // 주소지 검색 작은 창에서 검색할 수 있도록 만들기
   const handleSetAddress = (callback) => {
     return () => {
       const width = 502;

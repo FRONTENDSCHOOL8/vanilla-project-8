@@ -11,7 +11,7 @@ import '/src/pages/cart/cart.css';
 
 setDocumentTitle('장바구니 - 컬리');
 
-const productData = await getStorage('cart');
+const productData = getStorage('cart');
 
 /* 보관 유형별 상품 분류 */
 function renderProduct() {
@@ -39,14 +39,14 @@ function renderProduct() {
       <span class="count-box">
         <button class="minus">
           <img
-            src="/public/images/detail/minus.svg"
+            src="/images/detail/minus.svg"
             alt="수량내리기"
           />
         </button>
         <span>1</span>
         <button class="plus">
           <img
-            src="/public/images/detail/plus.svg"
+            src="/images/detail/plus.svg"
             alt="수량올리기"
           />
         </button>
@@ -87,14 +87,14 @@ function renderProduct() {
       <span class="count-box">
         <button class="minus">
           <img
-            src="/public/images/detail/minus.svg"
+            src="/images/detail/minus.svg"
             alt="수량내리기"
           />
         </button>
         <span>1</span>
         <button class="plus">
           <img
-            src="/public/images/detail/plus.svg"
+            src="/images/detail/plus.svg"
             alt="수량올리기"
           />
         </button>
@@ -135,14 +135,14 @@ function renderProduct() {
       <span class="count-box">
         <button class="minus">
           <img
-            src="/public/images/detail/minus.svg"
+            src="/images/detail/minus.svg"
             alt="수량내리기"
           />
         </button>
         <span>1</span>
         <button class="plus">
           <img
-            src="/public/images/detail/plus.svg"
+            src="/images/detail/plus.svg"
             alt="수량올리기"
           />
         </button>

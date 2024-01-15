@@ -263,11 +263,11 @@
   width: 24px;
   height: 24px;
   margin-bottom: 3px;
-  background-image: url("/public/images/cart/unCheck.svg");
+  background-image: url("/images/cart/unCheck.svg");
 }
 
 input[type="checkbox"]:checked+label {
-  background: url("/public/images/cart/check.svg");
+  background: url("/images/cart/check.svg");
 }
 
 input[type="checkbox"] {

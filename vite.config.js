@@ -14,6 +14,8 @@ export default defineConfig({
         cart: resolve(__dirname, 'src/pages/cart/index.html'),
         detail: resolve(__dirname, 'src/pages/detail/index.html'),
         address: resolve(__dirname, 'src/pages/address/index.html'),
+        header: resolve(__dirname, 'src/components/header/index.html'),
+        footer: resolve(__dirname, 'src/components/footer/index.html'),
       },
     },
   },
