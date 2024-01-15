@@ -15,6 +15,7 @@ function clearContents(node) {
 }
 
 export async function mainjs() {
+  //로그인 시 보여지는 함수, 로컬스토리지에 연결
   if (localStorage.getItem('auth')) {
     const { isAuth, user } = await getStorage('auth');
     if (isAuth) {
@@ -41,7 +42,7 @@ export async function mainjs() {
       headerRight.insertAdjacentHTML('beforeend', template);
     }
   }
-
+  // 로그아웃 함수, 로그인시 찜하기 클릭하면 실제 마켓컬리의 찜하기 페이지로 이동
   const logout = getNode('.logout');
   const heart = getNode('.heart');
   if (logout) {
