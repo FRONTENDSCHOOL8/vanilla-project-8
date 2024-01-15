@@ -40,6 +40,7 @@ function renderProduct() {
         />
         ${item.brand}
       </a>
+
       <span class="count-box" 
         data-price="${item.price}" 
         data-discount="${item.discount}">
