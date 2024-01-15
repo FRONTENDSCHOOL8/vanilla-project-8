@@ -1,0 +1,132 @@
+body{
+  padding: 0 30px;
+  margin: 0;
+}
+.post_wrapper{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh !important;
+  width: 100vw !important; 
+}
+
+.address-header{
+  margin: 0 auto;
+  text-align: center;
+  padding: 40px 0 34px;
+}
+
+.address-header h1, .address-header h3{
+  margin: 0;
+}
+
+.address-header h1{
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.address-header h3{
+  display: block;
+  padding-top: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  color: rgb(102, 102, 102);
+}
+
+.address-header strong{
+  color: var(--primary, #5F0080);
+}
+
+.delete-address-info{
+  padding: 16px 0;
+}
+
+.delete-address-info span{
+  font-size: 12px;
+  color: rgb(153, 153, 153);
+}
+
+.address-result{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+#selected-address{
+  display: inline-flex;
+  overflow: hidden;
+  flex: 1 1 0%;
+  margin-right: 10px;
+  padding: 0px 12px;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 3px;
+  background-color: rgb(250, 250, 250);
+  font-size: 14px;
+  line-height: 42px;
+  color: rgb(153, 153, 153);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+.address-detail{
+  width: 100%;
+  height: 44px;
+  padding: 0px 11px 1px 15px;
+  border-radius: 4px;
+  border: 1px solid rgb(221, 221, 221);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 42px;
+  color: rgb(51, 51, 51);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.address-research{
+  border: 1px solid var(--primary, #5F0080);
+  border-radius: 3px;
+  width: 120px;
+  padding: 0 10px;
+  height: 44px;
+  text-align: center;
+  color: var(--primary, #5F0080);
+  padding: 4px 0;
+  background-color: transparent;
+}
+
+
+
+
+.address-save{
+  background-color: var(--primary, #5F0080);
+  border-radius: 3px;
+  height: 44px;
+  width: 100%;
+  color: white;
+  border: 0;
+  cursor: pointer;
+}
+
+.address-footer{
+  margin-top: 16px;
+  padding: 20px 0;
+}
+.address-footer p{
+  margin: 0;
+}
+
+.address-information{
+  font-size: 14px;
+  line-height: 15px;
+  font-weight: 400;
+  color: rgb(240, 63, 64);
+}
+
+.address-cannot-list{
+  font-size: 14px;
+  color: rgb(102, 102, 102);
+  line-height: 20px;
+  padding: 4px 0 0 20px;
+}

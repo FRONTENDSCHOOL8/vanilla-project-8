@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https://res.kurly.com/favicon.ico"
+    />
+    <link rel="stylesheet" href="/src/styles/reset.css" />
+    <link rel="stylesheet" href="/src/components/css/style.css" />
+    <script type="module" src="/src/components/include.js"></script>
+    <!-- 헤더 푸터 로그인 css js 연결주소 설정 -->
+    <link rel="stylesheet" href="/src/pages/register/register.css" />
+    <!-- 회원가입 css 연결주소 설정 -->
+    <link rel="stylesheet" href="/src/pages/cart/cart.css" />
+    <!-- 장바구니 css 연결주소 설정 -->
+    <link rel="stylesheet" href="/src/pages/detail/detail.css" />
+    <!-- 디테일 페이지 css  연결주소 설정 -->
+    <link rel="stylesheet" href="/src/pages/product/product.css" />
+    <!-- 상품 페이지 css 연결주소 설정 -->
+    <link rel="stylesheet" href="/src/pages/main/main.css" />
+    <script type="module" src="/src/pages/main/main.js"></script>
+    <!-- 메인 페이지 css js 연결주소 설정 -->
+    <script type="module" src="./main.js"></script>
+    <link rel="stylesheet" href="/src/styles/style.css" />
+    <!-- 로그인하면 추가될 css js -->
+    <link rel="stylesheet" href="/src/pages/main/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <title>karly - main page</title>
+  </head>
+  <body>
+    <header data-include-path="/src/components/header/index.html"></header>
+
+    <main class="main-box">
+      <div class="swiper swiper1">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="/images/main/main-swiper/mainbanner1.svg" alt="" />
+          </div>
+
+          <div class="swiper-slide">
+            <img src="/images/main/main-swiper/mainbanner2.svg" alt="" />
+          </div>
+
+          <div class="swiper-slide">
+            <img src="/images/main/main-swiper/mainbanner3.svg" alt="" />
+          </div>
+
+          <div class="swiper-slide">
+            <img src="/images/main/main-swiper/mainbanner4.svg" alt="" />
+          </div>
+        </div>
+
+        <div class="swiper-pagination"></div>
+
+        <div class="swiper-button-prev">
+          <img src="/images/main/swiper-button1.svg" alt="" />
+        </div>
+        <div class="swiper-button-next">
+          <img src="/images/main/swiper-button1-right.svg" alt="" />
+        </div>
+      </div>
+
+      <div class="today-products">
+        <div class="today-products-title">이 상품 어때요?</div>
+        <div class="today-products-list">
+          <div class="swiper2 swiper">
+            <div class="swiper-wrapper"></div>
+
+            <div class="swiper-button-prev swiper-button-prev2">
+              <img src="/images/main/swiper-button2.svg" alt="" />
+            </div>
+            <div class="swiper-button-next swiper-button-next2">
+              <img src="/images/main/swiper-button2-right.svg" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <article class="line-banner">
+        <span class="sr-only">더 풍성해진 10월의 퍼클위크</span>
+        <a href="/"> </a>
+      </article>
+
+      <div class="today-products">
+        <div class="today-products-title">놓치면 후회할 가격</div>
+        <div class="today-products-list">
+          <div class="swiper3 swiper">
+            <div class="swiper-wrapper"></div>
+
+            <div class="swiper-button-prev swiper-button-prev2">
+              <img src="/images/main/swiper-button2.svg" alt="" />
+            </div>
+            <div class="swiper-button-next swiper-button-next2">
+              <img src="/images/main/swiper-button2-right.svg" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="shop-list"></div>
+    <div role="dialog" class="add-cart" aria-label="장바구니 버튼 클릭"></div>
+
+    <div
+      class="popup-modal"
+      role="dialog"
+      aria-label="뷰티칼리 광고 모달창이 열렸습니다"
+    >
+      <a href="/" aria-label="뷰티칼리로 이동" class="popup-modal-image">
+        <span class="sr-only">뷰티칼리 광고 모달창이 열렸습니다</span>
+      </a>
+      <div class="popup-modal-button">
+        <button
+          type="button"
+          class="popup-button-today hidden-button"
+          value="1"
+        >
+          오늘 하루 안보기
+        </button>
+        <button
+          type="button"
+          class="popup-button-close hidden-button"
+          value="cancel"
+        >
+          닫기
+        </button>
+      </div>
+    </div>
+
+    <div class="recent">
+      <button type="button" class="recent-up hidden-button">
+        <img src="/images/main/resent/resent-up.png" alt="" />
+      </button>
+      <div class="recent-text">최근 본 상품</div>
+      <div class="recent-list">
+        <ul></ul>
+      </div>
+      <button type="button" class="recent-down hidden-button">
+        <img src="/images/main/resent/resent-down.png" alt="" />
+      </button>
+    </div>
+
+    <footer data-include-path="/src/components/footer/index.html"></footer>
+  </body>
+</html>

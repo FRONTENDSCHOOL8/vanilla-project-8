@@ -1,0 +1,281 @@
+.container {
+  padding: 80px 0px;
+  width: 1050px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.cart {
+  text-align: center;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 44px;
+}
+
+.cart-container {
+  display: flex;
+  justify-content: space-between;
+
+  & .bottom-bar {
+    width: 742px;
+    height: 1px;
+    background: #333333;
+  }
+
+  & .cart-left {
+    width: 742px;
+    height: 24px;
+    padding: 16px 0px;
+    display: flex;
+    align-items: center;
+    box-sizing: content-box;
+
+    & button {
+      display: flex;
+      align-items: center;
+      height: 40px;
+      padding: 0;
+      border: none;
+      background: transparent;
+
+      & img {
+        margin-right: 8px;
+      }
+    }
+
+    & span {
+      margin-left: 10px;
+    }
+
+    & .bar {
+      width: 1px;
+      height: 10px;
+      background: #333333;
+      margin: 0px 10px
+    }
+  }
+
+  & .product {
+    justify-content: space-between;
+    font-size: 17px;
+  }
+
+
+  & .cart-right-container {
+    width: 284px;
+  }
+
+  & .cart-right {
+    height: auto;
+    border: 1px solid #E1E1E1;
+
+    & .address {
+      height: 182px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-weight: 600;
+      line-height: 1.5;
+      padding: 20px;
+      border-bottom: 1px solid #E1E1E1;
+      box-sizing: content-box;
+    }
+
+    & .address-container {
+      display: flex;
+      align-items: center;
+    }
+
+    & img {
+      width: 36px;
+      height: 36px;
+    }
+
+    & p {
+      line-height: 1.5;
+    }
+
+    & .delivery {
+      font-size: 12px;
+      color: #5F0080;
+    }
+
+    & .edit-address {
+      height: 44px;
+      background: transparent;
+      color: #5F0080;
+      border: 1px solid #5F0080;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  }
+}
+
+
+.total {
+  background: #f9f9f9;
+  color: #333333;
+  padding: 20px;
+  font-weight: 400;
+  line-height: 1.6;
+  border-bottom: 1px solid #E1E1E1;
+
+  & div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+    &.delivery-fee {
+      margin-bottom: 4px;
+    }
+  }
+}
+
+.total-price {
+  background: #f9f9f9;
+  padding: 20px;
+
+  & .pay-amount {
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 4px 0px 11px;
+
+    & b {
+      font-size: 28px;
+      font-weight: 700;
+      margin-right: 4px;
+    }
+
+    & span {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  & .accumulation {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: #333333;
+    gap: 8px;
+
+
+    & .label {
+      background: #FA622F;
+      color: white;
+      font-size: 12px;
+      padding: 2px 8px 0px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.purchase {
+  width: 100%;
+  height: 44px;
+  background: #5F0080;
+  color: #fff;
+  border: 1px solid #5F0080;
+  border-radius: 4px;
+  margin: 16px 0px;
+}
+
+.description {
+  color: #898989;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* 보관 유형별 상품 */
+.add-product {
+  position: relative;
+
+  & li {
+    width: 742px;
+    height: 118px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 0px;
+  }
+
+  & .thumbnail {
+    width: 60px;
+    height: 78px;
+    margin-right: 20px;
+  }
+
+  & a {
+    width: 420px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+  }
+
+  & .price {
+    width: 127px;
+    text-align: end;
+    margin-top: 5px;
+  }
+
+  & .delete {
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    color: #333333;
+  }
+}
+
+.product-select {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-bottom: 3px;
+  background-image: url("/images/cart/unCheck.svg");
+}
+
+input[type="checkbox"]:checked+label {
+  background: url("/images/cart/check.svg");
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.count-box {
+  width: 90px;
+  border: 1px solid #E1E1E1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 12px;
+  font-weight: 600;
+
+  & button {
+    width: 30px;
+    height: 30px;
+    border: none;
+  }
+
+  & .minus-button {
+    background: url("/images/cart/minus.svg") no-repeat center;
+  }
+
+  & .count {
+    margin: 0px 6px;
+  }
+
+  & .plus-button {
+    background: url("/images/cart/plus.svg") no-repeat center;
+  }
+}

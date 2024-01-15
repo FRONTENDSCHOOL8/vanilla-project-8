@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https://res.kurly.com/favicon.ico"
+    />
+    <link rel="stylesheet" href="/src/components/css/reset.css" />
+    <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="/src/components/css/components.css" />
+    <script type="module" src="/src/pages/login/login.js"></script>
+    <script type="module" src="/src/components/include.js"></script>
+    <!-- 헤더 푸터 css 연결주소 설정 -->
+    <title>login page</title>
+  </head>
+  <body>
+    <header data-include-path="/src/components/header/index.html"></header>
+    <main>
+      <div class="login">
+        <span>로그인</span>
+        <form>
+          <label for="email"></label>
+          <input type="email" id="email" placeholder="아이디를 입력해주세요" />
+          <label for="password"></label>
+          <input
+            type="password"
+            id="password"
+            placeholder="비밀번호를 입력해주세요"
+          />
+        </form>
+        <div class="find">
+          <a href="https://www.kurly.com/member/find/id">아이디 찾기</a>
+          <span class="divider" aria-hidden="true">|</span>
+          <a href="https://www.kurly.com/member/find/password">비밀번호 찾기</a>
+        </div>
+        <div class="login-register">
+          <button class="btn-login">로그인</button>
+
+          <a class="login-register-a" href="/src/pages/register/index.html"
+            >회원가입</a
+          >
+        </div>
+      </div>
+      <!-- 모달창 연습 -->
+      <div class="modal-bg hidden">
+        <div class="modal">
+          <p class="modal-text">아이디 또는 비밀번호를 올바르게 입력해주세요</p>
+          <div class="button-wrapper"></div>
+          <button class="button-close">확인</button>
+        </div>
+      </div>
+    </main>
+    <footer data-include-path="/src/components/footer/index.html"></footer>
+  </body>
+</html>

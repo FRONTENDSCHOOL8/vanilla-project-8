@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <title>Vite</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https://res.kurly.com/favicon.ico"
+    />
+    <link rel="stylesheet" href="/src/styles/reset.css" />
+    <script type="module" src="/src/pages/product/product.js"></script>
+    <script type="module" src="/src/components/include.js"></script>
+    <link rel="stylesheet" href="/src/components/css/style.css" />
+  </head>
+
+  <body>
+    <header data-include-path="/src/components/header/index.html"></header>
+    <main>
+      <h2 class="best">베스트</h2>
+      <div class="section-container">
+        <section class="filter">
+          <ul>
+            <li class="filter-list">
+              필터
+              <span>초기화</span>
+            </li>
+            <li class="filter-category">
+              카테고리
+              <img src="/images/product/filter-arrow.svg" alt="" />
+            </li>
+            <li class="filter-brand">
+              브랜드
+              <img src="/images/product/filter-arrow.svg" alt="" />
+            </li>
+            <li class="filter-price">
+              가격
+              <img src="/images/product/filter-arrow.svg" alt="" />
+            </li>
+            <li class="filter-benefit">
+              혜택
+              <img src="/images/product/filter-arrow.svg" alt="" />
+            </li>
+            <li class="filter-type">
+              유형
+              <img src="/images/product/filter-arrow.svg" alt="" />
+            </li>
+            <li class="filter-exeption">
+              특정상품 제외
+              <img src="/images/product/filter-arrow.svg" alt="" />
+            </li>
+          </ul>
+        </section>
+        <section class="product">
+          <nav class="sort">
+            <span>총 284건</span>
+            <ul>
+              <li><a>추천순</a></li>
+              <img src="/images/product/info.svg" alt="추천순 설명" />
+              <div class="bar"></div>
+              <li><a>신상품순</a></li>
+              <div class="bar"></div>
+              <li><a>판매량순</a></li>
+              <div class="bar"></div>
+              <li><a>혜택순</a></li>
+              <div class="bar"></div>
+              <li><a>낮은 가격순</a></li>
+              <div class="bar"></div>
+              <li><a>높은 가격순</a></li>
+            </ul>
+          </nav>
+
+          <ul class="product-list"></ul>
+
+          <div class="page-controller">
+            <a href="/"
+              ><img src="/images/product/double-left-arrow.png" alt=""
+            /></a>
+            <a href="/"><img src="/images/product/left-arrow.png" alt="" /></a>
+            <a href="/">1</a>
+            <a href="/">2</a>
+            <a href="/">3</a>
+            <a href="/"><img src="/images/product/right-arrow.png" alt="" /></a>
+            <a href="/"
+              ><img src="/images/product/double-right-arrow.png" alt=""
+            /></a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <div class="modal-wrapper">
+      <div class="modal-container"></div>
+    </div>
+
+    <footer data-include-path="/src/components/footer/index.html"></footer>
+  </body>
+</html>

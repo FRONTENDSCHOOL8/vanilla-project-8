@@ -1,0 +1,153 @@
+.footer{
+  margin: 0 auto;
+  line-height: 1.5; 
+  border-top: 1px solid var(--gray-200, #C8C8C8);
+  white-space: nowrap;
+}
+
+.footer em, address{
+  font-style: initial;
+}
+
+.footer a{
+  text-decoration-line: none;
+  color:#333333;
+}
+
+.footer-section1{
+  display: flex;
+  margin: 0 66px;
+  padding: 28px 0 32px 0;
+  justify-content: space-evenly;
+}
+
+  .happy{
+    font-size: 21px
+  }
+
+  .footer-wrapper1 p {
+    display: block;
+    font-size: 16px;
+  }
+  .footer-wrapper1 strong {
+    font-size: 38px;
+    padding-right: 10px;
+  }
+
+.question{
+  margin-top: 30px;
+  color: var(--content, #333);
+}
+
+
+  .question, .question-one, .question-order{
+    display: flex;
+  }
+  
+  .question a, .question-one a, .question-order a{
+  width: 140px;
+  height: 40px;
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+  background-color: transparent;
+  line-height: 39px;
+  text-align: center;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  }
+
+  .question-p, .question-one-p, .question-order-p {
+    color: var(--content, #333);
+    letter-spacing: -0.5px;
+    line-height: 17px;
+  }
+
+
+  .question-ect{
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+  }
+  
+  .question-ect a{
+    color: #5F0080;
+  }
+
+
+  .footer-wrapper2 {
+    color: var(--content, #333);
+  }
+  .footer-wrapper2 ul{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .footer button{
+    display: block;
+    width: 140px;
+    height: 40px;
+    border: 1px solid #e2e2e2;
+    border-radius: 3px;
+    background-color: transparent;
+    line-height: 39px;
+    text-align: center;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    
+  }
+
+  .footer-wrapper2 .address{
+    margin: 28px 0;
+    font-size: 12px;
+    padding-right: 70px;
+  }
+  
+  .address a{
+    color: #5F0080;
+  }
+
+.footer-sns{
+  display: flex;
+  align-items: flex-start;
+  gap:20px;
+}
+
+.footer-wrapper3{
+  display: flex;
+  padding: 24px 0 32px 0;
+  line-height: 1.5; 
+  font-size: 10px;
+  color: var(--content, #333);
+  gap: 20px;
+}
+
+.footer-section2{
+  border-top: 1px solid var(--gray-200, #C8C8C8);
+  width: 1050px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.footer-wrapper3 a{
+  display: flex;
+}
+
+.footer-section3{
+  background: var(--gray-50, #F9F9F9);
+  display: flex;
+  padding: 20px 4px 32px 4px;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+}
+
+.footer-wrapper3 img{
+  margin-right: 8px;
+}
+
+.footer-section3 p{
+  text-align: center;
+  color: var(--gray-400, #898989);
+  font-size: 10px;
+}

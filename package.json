@@ -1,0 +1,18 @@
+{
+  "name": "vite-css",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "pocketbase": ".\\pocketbase\\pocketbase serve"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "pocketbase": "^0.20.1",
+    "prettier": "^3.1.1",
+    "vite": "^5.0.8"
+  }
+}

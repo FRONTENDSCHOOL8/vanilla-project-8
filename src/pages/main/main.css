@@ -1,0 +1,587 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+:root {
+  --swiper-navigation-size: 80px;
+}
+
+a {
+  text-decoration-line: none;
+/*   text-decoration-line: underline; */
+/*   text-decoration-line: overline; */
+/*   text-decoration-line: line-through; */
+/*   text-decoration-line: underline line-through overline; */
+  color: #000;
+}
+
+/* header 스타일 */
+
+/* 메인 시작 */
+
+/* 투명 처리 */
+
+.hidden-button {
+  background-color: transparent; /* 버튼 배경색을 투명하게 만듭니다 */
+  border: none; /* 테두리를 제거합니다 */
+  cursor: pointer; /* 마우스 커서가 버튼 위에 올라갔을 때 포인터 모양으로 보이게 합니다 */
+  overflow: hidden; /* 이미지가 버튼의 크기를 넘어갈 경우 숨깁니다 */
+  padding: 0; /* 버튼 내부의 공간을 제거합니다 */
+}
+
+
+.header-bar {
+  background: purple;
+  text-align: center;
+  color: white;
+}
+
+.main-box{
+  
+}
+
+
+figure {
+  margin: 0;
+}
+/* 메인 swiper 스타일 */
+
+.swiper1 {
+  width: auto;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.swiper2 {
+  /* width: auto; */
+  transition: all 0.2s;
+}
+
+.swiper-slide {
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* text-align: flex-start; */
+  /* width: 250px; */
+  
+}
+
+.swiper1 .swiper-slide img {
+  /* width: 120; */
+  height: 370px;
+  object-fit: cover;
+
+}
+
+.swiper1 .swiper-wrapper  {
+  height: auto;
+}
+
+.swiper2 .swiper-slide img {
+  /* width: 120rem; */
+  width: 250px;
+  height: 320px;
+  /* object-fit: contain; */
+}
+
+
+
+
+
+.swiper-button-prev {
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  color: white;
+  
+}
+
+
+.swiper-button-next {
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  color: white;
+}
+
+.swiper-pagination {
+  background-color: gray;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.7;
+  color: white;
+
+  width: 58px;
+  /* width: auto; */
+  left: 70%;
+
+}
+
+
+
+/* today-product 부분 */
+
+
+
+.today-products {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* background: skyblue; */
+  padding-top: 2.5rem;
+  padding-bottom: 60px;
+}
+
+.today-products-list {
+  
+  width: 1024px;
+  top: 0;
+  left: 0;
+}
+
+.today-products-title {
+  color: var(--content, #333);
+  margin-top: 52px;
+  margin-bottom: 40px;
+  /* Heading/XL */
+  font-family: Pretendard;
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%; 
+  /* 39.802px */
+}
+
+
+
+
+/* swiper 기본 스타일 제거 */
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
+}
+
+/* banner 스타일 */
+
+.line-banner {
+  display: block;
+  /* padding: 40px 0; */
+  justify-content: center;
+  align-items: center;
+  background-image: url("/images/main/line-banner.jpg");
+  width: 1050px;
+  height: 140px;
+  margin: 40px auto;
+}
+
+
+/* 상품 card 스타일 */
+
+
+.today-card {
+  display: flex;
+  width: 250px;
+  flex-direction: column;
+  justify-content: center;
+
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.brnad {
+  color: var(--content, #333);
+
+/* Paragraph/Medium */
+font-family: Pretendard;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 160%; /* 25.6px */
+}
+
+.desc {
+  color: var(--content, #333);
+
+/* Paragraph/Medium */
+font-family: Pretendard;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 160%; /* 25.6px */
+}
+
+.discount {
+  color: var(--accent-yellow, #FA622F);
+
+/* Label/Large */
+font-family: Pretendard;
+font-size: 21.328px;
+font-style: normal;
+font-weight: 600;
+line-height: 150%; /* 31.992px */
+}
+
+.price {
+  color: var(--content, #333);
+
+/* Label/Large */
+font-family: Pretendard;
+font-size: 21.328px;
+font-style: normal;
+font-weight: 600;
+line-height: 150%; /* 31.992px */
+}
+
+.real-price {
+  /* color: var(--gray-400, #898989);
+
+font-family: Pretendard;
+font-size: 12.003px;
+font-style: normal;
+font-weight: 400;
+line-height: 160%; */
+
+color: var(--content, #898989);
+
+font-size: 0.875rem;
+font-style: normal;
+font-weight: 300;
+line-height: 150%;
+text-decoration: line-through;
+}
+
+/* 장바구니 버튼 스타일 */
+
+.shop-button {
+  /* display: hidden; */
+  /* width: 45px;
+  height: 100px; */
+}
+
+.swiper-slide .shop-button2 {
+  
+}
+
+.card-shop {
+  position: relative;
+
+  & .shop-button2{
+    position: absolute;
+  background-image: url("/images/main/shop.svg");
+  width: 45px;
+  height: 45px;
+  bottom: 25px;
+  right: 15px;
+  }
+}
+
+/* cart 클릭시 나오는 모달창 스타일 */
+
+.add-cart {
+  
+  width: 356px;
+  height: auto;
+
+  display: none;
+  padding: 24px 20px;
+  flex-direction: column;
+  /* align-items: center; */
+
+  position: fixed;
+  top: 20%;
+  left: 35%;
+  
+  /* 나중에 js를 통해 따로 수정예정 */
+  /* box-shadow : rgba(0,0,0,0.5) 0 0 0 9999px; */
+
+  z-index : 99;
+
+  gap: 20px;
+
+
+  
+
+  border-radius: 16px;
+  background: var(--white, #FFF);
+/* Below/Medium */
+  box-shadow: 0px 8px 36px 0px rgba(0, 0, 0, 0.20);
+}
+
+.add-cart-name {
+  color: var(--content, #333);
+
+/* Label/Medium */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 24px */
+}
+
+.add-cart-sum {
+  display: flex;
+  flex-flow: row;
+  justify-content:space-between;
+}
+
+.cart-price {
+  color: var(--black, #000);
+
+/* Label/Medium */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 24px */
+}
+
+.cart-realprice {
+  color: var(--content, #898989);
+
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 150%;
+  text-decoration: line-through;
+  
+}
+
+
+.count-button-list {
+  border: 1px solid var(--gray-200, #C4C4C4);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.plus-button {
+  background-image: url("/images/main/cart-button/plus-button.svg");
+  width: 30px;
+  height: 30px;
+}
+
+
+.minus-button {
+  background-image: url("/images/main/cart-button/minus-button.svg");
+  width: 30px;
+  height: 30px;
+}
+
+.sum {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+
+  & .sum-name {
+    color: var(--black, #000);
+
+  /* Label/Medium */
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 24px */
+  }
+
+  & .sum-value {
+    color: #000;
+
+/* Heading/XL */
+    font-family: Pretendard;
+    font-size: 28.43px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; /* 39.802px */
+  }
+}
+
+.point {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-end;
+  gap: 8px;
+
+  & .point-badge {
+    background: var(--accent-yellow, #FA622F);
+    display: block;
+    padding: 5px 6px;
+    border-radius: 1px;
+    color: white;
+    font-size: 12.003px;
+  }
+
+  & .point-text {
+    color: #000;
+
+/* Label/Medium */
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 24px */
+  }
+}
+
+.cart-button-list {
+  display: flex;
+  flex-flow: row;
+  gap: 8px;
+
+  & .cart-button-cancel {
+      border: 1px solid #000;
+      background: #fff;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: 600;
+      height: 54px;
+      line-height: 150%;
+      width: 340px;
+      color: #000;
+  }
+
+  & .cart-button-add{
+      background: var(--primary, #5F0080);
+      /* border: 1px solid #000; */
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: 600;
+      height: 54px;
+      line-height: 150%;
+      width: 340px;
+      color: #FFF;
+  }
+}
+
+
+/* 팝업 광고창 스타일 */
+
+.popup-modal {
+
+  width: 440px;
+
+  display: block;
+  position: fixed;
+  top: 20%;
+  left: 35%;
+  
+  /* 나중에 js를 통해 따로 수정예정 */
+  /* box-shadow : rgba(0,0,0,0.5) 0 0 0 9999px; */
+
+  z-index : 100;
+
+  box-shadow: 0px 8px 36px 0px rgba(0, 0, 0, 0.20);
+
+
+  & .popup-modal-image {
+    display: block;
+    background-image: url("/images/main/popup-image.jpg");
+    width: 440px;
+    height: 500px;
+  }
+
+
+  
+
+  & .popup-modal-button {
+    display: flex;
+    flex-flow: row;
+
+    & button {
+
+      width: 220px;
+      height: 86px;
+
+      background: #fff;
+      border-right: 1px solid var(--gray-100, #E1E1E1);
+      justify-content: center;
+      align-items: center;
+      align-self: stretch;
+
+      color: var(--content, #333);
+
+      /* Paragraph/Medium */
+      font-family: Pretendard;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 160%; /* 25.6px */
+    }
+  }
+}
+
+/* 최근 본 상품 스타일 */
+
+.recent {
+  display: flex;
+  padding: 8px;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--gray-200, #C4C4C4);
+  width: 65px;
+
+  position: fixed;
+  right: 10px;
+  top: 193px;
+
+  z-index: 10;
+
+  background: #fff;
+
+  & .recent-text {
+    color: var(--black, #000);
+
+    /* Label/Small */
+    font-family: Pretendard;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 18.005px */
+  }
+}
+
+
+.shop-list {
+  position: none;
+  display: none;
+  z-index: 15; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+
+.swiper-pagination-fraction {
+  width: 55px;
+}
+
+.recent-list {
+
+  & ul {
+    display: flex;
+    flex-flow: column;
+    gap: 5px;
+  }
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	border: 0;
+	clip: rect(0 0 0 0);
+}
