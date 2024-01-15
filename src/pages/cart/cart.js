@@ -5,14 +5,13 @@ import {
   getPbImageURL,
   getStorage,
   getNode,
-  getNode,
 } from '/src/lib';
 
 import '/src/pages/cart/cart.css';
 
 setDocumentTitle('장바구니 - 컬리');
 
-const productData = getStorage('cart');
+const productData = await getStorage('cart');
 
 /* 보관 유형별 상품 분류 */
 function renderProduct() {
@@ -42,8 +41,7 @@ function renderProduct() {
       </a>
 
       <span class="count-box" 
-        data-price="${item.price}" 
-        data-discount="${item.discount}">
+        data-price="${item.price}">
         <button class="minus-button"></button>
         <span class="count">${item.quantity}</span>
         <button class="plus-button"></button>
@@ -84,8 +82,7 @@ function renderProduct() {
         ${item.brand}
       </a>
       <span class="count-box" 
-        data-price="${item.price}" 
-        data-discount="${item.discount}">
+        data-price="${item.price}"> 
         <button class="minus-button"></button>
         <span class="count">${item.quantity}</span>
         <button class="plus-button"></button>
@@ -126,8 +123,7 @@ function renderProduct() {
         ${item.brand}
       </a>
       <span class="count-box" 
-        data-price="${item.price}" 
-        data-discount="${item.discount}">
+        data-price="${item.price}">
         <button class="minus-button"></button>
         <span class="count">${item.quantity}</span>
         <button class="plus-button"></button>
@@ -156,100 +152,6 @@ function renderProduct() {
   });
 }
 renderProduct();
-
-const selectAllTop = document.getElementById('selectAllTop');
-const selectAllBottom = document.getElementById('selectAllBottom');
-const productCheckboxes = document.querySelectorAll('.product-checkbox');
-
-function synchronizeCheckboxes() {
-  productCheckboxes.forEach((checkbox) => {
-    checkbox.checked = this.checked;
-  });
-}
-
-/* 전체선택 체크 시 상품 전체 체크 */
-selectAllTop.addEventListener('change', synchronizeCheckboxes);
-selectAllBottom.addEventListener('change', synchronizeCheckboxes);
-
-/* 상하단 전체선택 체크 동기화 */
-selectAllTop.addEventListener('change', () => {
-  selectAllBottom.checked = selectAllTop.checked;
-});
-
-selectAllBottom.addEventListener('change', () => {
-  selectAllTop.checked = selectAllBottom.checked;
-});
-
-/* 상품 삭제 */
-const cartContainer = document.querySelector('.cart-container');
-
-cartContainer.addEventListener('click', function (event) {
-  if (event.target.closest('.delete')) {
-    const clickedButtonId = event.target.closest('.delete').id;
-    deleteProduct(clickedButtonId);
-  }
-});
-
-function deleteProduct(clickedButtonId) {
-  let cartData = JSON.parse(localStorage.getItem('cart'));
-  if (!Array.isArray(cartData)) {
-    cartData = [];
-  }
-  const clickedProduct = cartData.find((item) => item.id === clickedButtonId);
-  const filteredData = cartData.filter((item) => item.id !== clickedButtonId);
-
-  if (clickedProduct) {
-    localStorage.setItem('cart', JSON.stringify(filteredData));
-
-    cartData = JSON.parse(localStorage.getItem('cart'));
-    renderProduct(cartData);
-  }
-}
-
-//여기서부터 주소 코드
-const adButton = getNode('.edit-address');
-const body = getNode('body');
-
-const setSearchAddressEvent = (target, callback) => {
-  target.addEventListener('click', handleSetAddress(callback));
-};
-
-const handleSetAddress = (callback) => {
-  return () => {
-    const width = 502;
-    const height = 547;
-    const popupX = screen.width / 2 - width / 2;
-    const popupY = screen.height / 2 - height / 2;
-    window.open(
-      '/src/pages/address/',
-      '_blank',
-      `width=${width},height=${height},left=${popupX},top=${popupY}`
-    );
-
-    if (callback) {
-      callback();
-    }
-  };
-};
-
-const showAddress = async () => {
-  const address = JSON.parse(await getStorage('address'));
-  const addressP = getNode('.address-p');
-
-  // 기존 주소 템플릿 삭제
-  while (addressP.firstChild) {
-    addressP.firstChild.remove();
-  }
-
-  if (address) {
-    const template = document.createElement('span');
-    template.textContent = `${address['address']} ${address['detail-address']}`;
-    addressP.appendChild(template);
-  }
-};
-
-setSearchAddressEvent(adButton);
-body.addEventListener('mouseover', showAddress);
 
 /* 합계 금액 */
 function renderPrice(checkedProductList) {
@@ -389,15 +291,12 @@ function deleteProduct(clickedButtonId) {
 
 /* 수량 버튼 */
 const countBoxes = document.querySelectorAll('.count-box');
-let prices = [];
-let discounts = [];
 
 countBoxes.forEach((countBox) => {
   countBox.addEventListener('click', (event) => {
     let count = event.target.parentElement.querySelector('.count');
     let currentCount = parseInt(count.textContent);
     let pricePerItem = parseInt(countBox.getAttribute('data-price'));
-    let discountPerItem = parseInt(countBox.getAttribute('data-discount'));
 
     if (event.target.matches('.minus-button')) {
       if (currentCount > 1) {
@@ -408,14 +307,9 @@ countBoxes.forEach((countBox) => {
     }
 
     /* 수량 x 단가 */
-    let calculatedAmount = pricePerItem * parseInt(count.textContent);
-    let calculatedDiscount = discountPerItem * parseInt(count.textContent);
-
-    prices[countBox.dataset.index] = calculatedAmount;
-    discounts[countBox.dataset.index] = calculatedDiscount;
-
-    let price = document.querySelector('.price');
-    price.textContent = comma(calculatedAmount) + '원';
+    let total = pricePerItem * parseInt(count.textContent);
+    let priceElement = countBox.nextElementSibling; // 가정: 'price' 클래스가 'count-box' 다음에 위치
+    priceElement.textContent = comma(total) + '원';
   });
 });
 
