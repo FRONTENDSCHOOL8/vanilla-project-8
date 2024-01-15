@@ -16,14 +16,15 @@ const productData = getStorage('cart');
 
 /* 보관 유형별 상품 분류 */
 function renderProduct() {
-  const productContainer = document.querySelectorAll('.add-product');
   let productData = JSON.parse(localStorage.getItem('cart'));
+  const productContainer = document.querySelectorAll('.add-product');
 
   productContainer.forEach((container) => {
     container.innerHTML = '';
   });
 
   productData.forEach((item, index) => {
+    const applyQuantityPrice = item.price * item.quantity;
     if (item.storage === '냉장 (종이포장)') {
       const template = /* html */ `
       <li>
@@ -39,22 +40,14 @@ function renderProduct() {
         />
         ${item.brand}
       </a>
-      <span class="count-box">
-        <button class="minus">
-          <img
-            src="/images/detail/minus.svg"
-            alt="수량내리기"
-          />
-        </button>
-        <span>1</span>
-        <button class="plus">
-          <img
-            src="/images/detail/plus.svg"
-            alt="수량올리기"
-          />
-        </button>
+      <span class="count-box" 
+        data-price="${item.price}" 
+        data-discount="${item.discount}">
+        <button class="minus-button"></button>
+        <span class="count">${item.quantity}</span>
+        <button class="plus-button"></button>
       </span>
-      <span class="price">${comma(item.price)}원</span>
+      <span class="price">${comma(applyQuantityPrice)}원</span>
       <button class="delete" id="${item.id}">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -89,22 +82,14 @@ function renderProduct() {
         />
         ${item.brand}
       </a>
-      <span class="count-box">
-        <button class="minus">
-          <img
-            src="/images/detail/minus.svg"
-            alt="수량내리기"
-          />
-        </button>
-        <span>1</span>
-        <button class="plus">
-          <img
-            src="/images/detail/plus.svg"
-            alt="수량올리기"
-          />
-        </button>
+      <span class="count-box" 
+        data-price="${item.price}" 
+        data-discount="${item.discount}">
+        <button class="minus-button"></button>
+        <span class="count">${item.quantity}</span>
+        <button class="plus-button"></button>
       </span>
-      <span class="price">${comma(item.price)}원</span>
+      <span class="price">${comma(applyQuantityPrice)}원</span>
       <button class="delete" id="${item.id}">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -139,22 +124,14 @@ function renderProduct() {
         />
         ${item.brand}
       </a>
-      <span class="count-box">
-        <button class="minus">
-          <img
-            src="/images/detail/minus.svg"
-            alt="수량내리기"
-          />
-        </button>
-        <span>1</span>
-        <button class="plus">
-          <img
-            src="/images/detail/plus.svg"
-            alt="수량올리기"
-          />
-        </button>
+      <span class="count-box" 
+        data-price="${item.price}" 
+        data-discount="${item.discount}">
+        <button class="minus-button"></button>
+        <span class="count">${item.quantity}</span>
+        <button class="plus-button"></button>
       </span>
-      <span class="price">${comma(item.price)}원</span>
+      <span class="price">${comma(applyQuantityPrice)}원</span>
       <button class="delete" id="${item.id}">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -293,11 +270,11 @@ function renderPrice(checkedProductList) {
 
   const priceTemplate = /* html */ `
     <div class="total">
-      <div class="price">
+      <div class="price-total">
        <span>상품금액</span>
        <span>${comma(priceTotal)}원</span>
       </div>
-      <div class="dicount">
+      <div class="dicount-total">
        <span>상품 할인 금액</span>
        <span>-${comma(parseInt(discountTotal))}원</span>
       </div>
@@ -307,7 +284,7 @@ function renderPrice(checkedProductList) {
       </div>
     </div>
     <div class="total-price">
-      <div class="amount">
+      <div class="pay-amount">
         <span>결제예정금액</span>
         <span><b>${comma(parseInt(priceTotal - discountTotal))}</b>원</span>
       </div>
@@ -318,56 +295,73 @@ function renderPrice(checkedProductList) {
 `;
   document.querySelector('.price-container').innerHTML = priceTemplate;
 }
-//   insertLast('.price-container', priceTemplate);
-// }
 
-const selectAllTop = document.getElementById('selectAllTop');
-const selectAllBottom = document.getElementById('selectAllBottom');
-const productCheckboxes = document.querySelectorAll('.product-checkbox');
-
-/* 전체선택 체크 시 상품 전체 체크 */
-function synchronizeCheckboxes() {
-  productCheckboxes.forEach((checkbox) => {
-    checkbox.checked = this.checked;
-  });
-}
-selectAllTop.addEventListener('change', synchronizeCheckboxes);
-selectAllBottom.addEventListener('change', synchronizeCheckboxes);
-
-/* 상하단 전체선택 체크 동기화 */
-selectAllTop.addEventListener('change', () => {
-  selectAllBottom.checked = selectAllTop.checked;
+/* 금액 초기 렌더링 */
+productData.forEach((product) => {
+  product.checked = true;
 });
 
-selectAllBottom.addEventListener('change', () => {
-  selectAllTop.checked = selectAllBottom.checked;
-});
+const checkedProductList = productData.filter((product) => product.checked);
+
+renderPrice(checkedProductList);
 
 /* 선택 상품만 금액 렌더링 */
 const cartContainer = document.querySelector('.cart-container');
-const checkedProductList = [...productData];
-
-renderPrice(checkedProductList);
 
 cartContainer.addEventListener('change', (event) => {
   if (event.target.classList.contains('product-checkbox')) {
     const checkbox = event.target;
     const productId = checkbox.dataset.id;
-    const isCheckedProduct = productData.find((item) => item.id === productId);
+    const product = productData.find((item) => item.id === productId);
 
-    if (checkbox.checked) {
-      checkedProductList.push(isCheckedProduct);
-    } else {
-      const index = checkedProductList.findIndex(
-        (item) => item.id === isCheckedProduct.id
-      );
-      checkedProductList.splice(index, 1);
-    }
-    renderPrice(checkedProductList);
+    product.checked = checkbox.checked;
   }
+  const checkedProductList = productData.filter((product) => product.checked);
+
+  renderPrice(checkedProductList);
 });
 
-/* 상품 삭제 */
+/* 개별 상품 체크 해제 시 전체선택 체크 해제 */
+const selectAllTop = document.getElementById('selectAllTop');
+const selectAllBottom = document.getElementById('selectAllBottom');
+const productCheckboxes = document.querySelectorAll('.product-checkbox');
+
+function updateSelectAll() {
+  const allChecked = Array.from(productCheckboxes).every(
+    (checkbox) => checkbox.checked
+  );
+  const anyUnchecked = Array.from(productCheckboxes).some(
+    (checkbox) => !checkbox.checked
+  );
+
+  if (allChecked) {
+    selectAllTop.checked = selectAllBottom.checked = true;
+  } else if (anyUnchecked) {
+    selectAllTop.checked = selectAllBottom.checked = false;
+  }
+}
+productCheckboxes.forEach((checkbox) => {
+  checkbox.addEventListener('change', updateSelectAll);
+});
+
+/* 전체선택 체크 시 상품 전체 체크 */
+function synchronizeCheckboxes() {
+  const selectAll = this.checked;
+
+  productCheckboxes.forEach((checkbox) => {
+    checkbox.checked = selectAll;
+  });
+  productData.forEach((product) => {
+    product.checked = selectAll;
+  });
+
+  /* 상하단 전체선택 체크 동기화 */
+  selectAllTop.checked = selectAllBottom.checked = selectAll;
+}
+selectAllTop.addEventListener('change', synchronizeCheckboxes);
+selectAllBottom.addEventListener('change', synchronizeCheckboxes);
+
+/* 상품 개별 삭제 */
 cartContainer.addEventListener('click', (event) => {
   if (event.target.closest('.delete')) {
     const clickedButtonId = event.target.closest('.delete').id;
@@ -388,8 +382,41 @@ function deleteProduct(clickedButtonId) {
 
     cartData = JSON.parse(localStorage.getItem('cart'));
     renderProduct(cartData);
+    renderPrice(cartData);
   }
 }
+
+/* 수량 버튼 */
+const countBoxes = document.querySelectorAll('.count-box');
+let prices = [];
+let discounts = [];
+
+countBoxes.forEach((countBox) => {
+  countBox.addEventListener('click', (event) => {
+    let count = event.target.parentElement.querySelector('.count');
+    let currentCount = parseInt(count.textContent);
+    let pricePerItem = parseInt(countBox.getAttribute('data-price'));
+    let discountPerItem = parseInt(countBox.getAttribute('data-discount'));
+
+    if (event.target.matches('.minus-button')) {
+      if (currentCount > 1) {
+        count.textContent = currentCount - 1;
+      }
+    } else if (event.target.matches('.plus-button')) {
+      count.textContent = currentCount + 1;
+    }
+
+    /* 수량 x 단가 */
+    let calculatedAmount = pricePerItem * parseInt(count.textContent);
+    let calculatedDiscount = discountPerItem * parseInt(count.textContent);
+
+    prices[countBox.dataset.index] = calculatedAmount;
+    discounts[countBox.dataset.index] = calculatedDiscount;
+
+    let price = document.querySelector('.price');
+    price.textContent = comma(calculatedAmount) + '원';
+  });
+});
 
 /* 배송지 */
 const adButton = getNode('.edit-address');
