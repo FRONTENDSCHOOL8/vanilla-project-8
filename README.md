@@ -151,6 +151,20 @@
 </pre>
 </details>
 
+<details>
+ <summary>
+  <h3> 🛠 헤더, 푸터 페이지 </h3> 
+ </summary>
+
+ <img src="https://github.com/FRONTENDSCHOOL8/vanilla-project-8/assets/80308340/40fac564-d273-4b65-b041-43ac691ea608" />
+ <img src="https://github.com/FRONTENDSCHOOL8/vanilla-project-8/assets/80308340/39218d4a-ef19-4e52-a56b-474b60525f94" />
+<pre>
+ 1. 테스트
+ 2. 테스트2
+ 3. 테스트3
+</pre>
+</details>
+
 
 
 <br>
