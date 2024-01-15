@@ -41,8 +41,7 @@ async function renderProductData() {
 
   /* localstorage 장바구니에 담기 */
   function sendToCart() {
-    let cartData = JSON.parse(localStorage.getItem('cart'));
-
+    let cartData = JSON.parse(localStorage.getItem('cart')) || [];
     const count = document.querySelector('.count');
     const quantity = parseInt(count.textContent);
 
@@ -51,36 +50,59 @@ async function renderProductData() {
     );
 
     const bubble2 = getNode('.drop-bubble2');
-    const product = /* html */ `
-    <div class="bubble-text2">
-    <img width="40" height="45" src="${getPbImageURL(
-      productData
-    )}" alt="상품이미지" />
-    <div class="bubble-text2-text">
-      <p>${brand}</p>
-      <span>장바구니에 상품을 담았습니다.</span>
-    </div>
-  </div>
-    `;
-    insertLast('.drop-bubble2', product);
 
     if (!Array.isArray(cartData)) {
       cartData = [];
     }
 
+    let productBubble;
+
     if (existingProductIndex !== -1) {
       cartData[existingProductIndex].quantity += quantity;
+      // 기존 상품의 메시지를 업데이트합니다.
+      productBubble = /* html */ `
+        <div class="bubble-text2" data-id="${productData.id}">
+          <img width="40" height="45" src="${getPbImageURL(
+            productData
+          )}" alt="상품이미지" />
+          <div class="bubble-text2-text">
+            <p>${brand}</p>
+            <span>장바구니에 상품을 담았습니다.</span>
+            <span>이미 담은 상품의 수량을 추가 했습니다.</span>
+          </div>
+        </div>`;
     } else {
-      const newProduct = Object.assign({}, productData, {
-        quantity: quantity,
-      });
-
+      const newProduct = Object.assign({}, productData, { quantity: quantity });
       cartData.push(newProduct);
+      // 새로운 상품의 메시지를 생성합니다.
+      productBubble = /* html */ `
+        <div class="bubble-text2" data-id="${productData.id}">
+          <img width="40" height="45" src="${getPbImageURL(
+            productData
+          )}" alt="상품이미지" />
+          <div class="bubble-text2-text">
+            <p>${brand}</p>
+            <span>장바구니에 상품을 담았습니다.</span>
+          </div>
+        </div>`;
     }
+
+    // 이전 상품 메시지를 제거합니다.
+    const existingBubble = bubble2.querySelector(
+      `.bubble-text2[data-id="${productData.id}"]`
+    );
+    if (existingBubble) {
+      bubble2.removeChild(existingBubble);
+    }
+
+    // 수정된 상품 메시지를 렌더링합니다.
+    bubble2.insertAdjacentHTML('beforeend', productBubble);
+
     bubble2.style.display = 'block';
     setTimeout(() => {
       bubble2.style.display = 'none';
     }, 3000);
+
     localStorage.setItem('cart', JSON.stringify(cartData));
   }
   cart.addEventListener('click', sendToCart);
