@@ -146,7 +146,7 @@ html {
         }
 
         & .minus-button {
-          background: url("/public/images/detail/minus.svg") no-repeat center;
+          background: url("/images/detail/minus.svg") no-repeat center;
         }
 
         & .count {
@@ -154,7 +154,7 @@ html {
         }
 
         & .plus-button {
-          background: url("/public/images/detail/plus.svg") no-repeat center;
+          background: url("/images/detail/plus.svg") no-repeat center;
         }
       }
     }
@@ -227,22 +227,22 @@ html {
 .like {
   width: 56px;
   height: 56px;
-  background: url("/public/images/detail/heart-uncheck.svg") no-repeat center;
+  background: url("/images/detail/heart-uncheck.svg") no-repeat center;
 }
 
 #like-list:checked+.like {
-  background: url("/public/images/detail/heart-check.svg") no-repeat center;
+  background: url("/images/detail/heart-check.svg") no-repeat center;
 }
 
 /* 재입고 버튼 */
 .restock {
   width: 56px;
   height: 56px;
-  background: url("/public/images/detail/alarm-uncheck.svg") no-repeat center;
+  background: url("/images/detail/alarm-uncheck.svg") no-repeat center;
 }
 
 #restock-alarm:checked+.restock {
-  background: url("/public/images/detail/alarm-check.svg") no-repeat center;
+  background: url("/images/detail/alarm-check.svg") no-repeat center;
 }
 
 input[type="checkbox"] {
