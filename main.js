@@ -55,47 +55,4 @@ export async function mainjs() {
         window.location.href = 'https://www.kurly.com/mypage/pick/list';
       });
   }
-
-  //여기서부터 장바구니 구현
-  function renderProductData2() {
-    const bubble2 = getNode('.drop-bubble2');
-    const cart = getNode('.add-cart');
-
-    const showBubble2 = async () => {
-      let template;
-      const cartInfo = JSON.parse(localStorage.getItem('cart'));
-
-      if (cartInfo) {
-        // cartInfo의 마지막 요소를 가져옵니다.
-        const lastItem = cartInfo[cartInfo.length - 1];
-        const { brand } = lastItem;
-        console.log(lastItem);
-
-        const bubbleText = getNode('.bubble-text2');
-        if (bubbleText) {
-          clearContents(bubbleText);
-        }
-
-        template = /* html */ `
-  <div class="bubble-text2">
-    <img width="40" height="45" src="${getPbImageURL(
-      lastItem
-    )}" alt="상품이미지" />
-    <div class="bubble-text2-text">
-      <p>${brand}</p>
-      <span>장바구니에 상품을 담았습니다.</span>
-    </div>
-  </div>
-  `;
-        bubble2.insertAdjacentHTML('beforeend', template);
-
-        // 3초 후에 bubbleText를 제거합니다.
-        setTimeout(() => {
-          if (bubbleText) bubble2.removeChild(bubbleText);
-        }, 3000);
-      }
-    };
-    cart.addEventListener('click', showBubble2);
-  }
-  renderProductData2();
 }
