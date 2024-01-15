@@ -62,12 +62,12 @@ async function renderProductData() {
       // 기존 상품의 메시지를 업데이트합니다.
       productBubble = /* html */ `
         <div class="bubble-text2" data-id="${productData.id}">
-          <img width="40" height="45" src="${getPbImageURL(
+          <img width="50" height="58" src="${getPbImageURL(
             productData
           )}" alt="상품이미지" />
           <div class="bubble-text2-text">
             <p>${brand}</p>
-            <span>장바구니에 상품을 담았습니다.</span>
+            <span>장바구니에 상품을 담았습니다.</span><br />
             <span>이미 담은 상품의 수량을 추가 했습니다.</span>
           </div>
         </div>`;
