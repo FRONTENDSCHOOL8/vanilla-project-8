@@ -13,11 +13,11 @@
     <link rel="stylesheet" href="/src//pages/register/register.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="/src/pages/register/register.js"></script>
-    <script type="module" src="/src/components/include.js"></script>
+    <!-- <script type="module" src="/src/components/include.js"></script> -->
     <!-- 헤더 푸터 css 연결주소 설정 -->
-    <link rel="stylesheet" href="/src/styles/reset.css" />
+    <!-- <link rel="stylesheet" href="/src/styles/reset.css" />
     <link rel="stylesheet" href="/src/components/css/style.css" />
-    <script type="module" src="/src/components/header/header.js"></script>
+    <script type="module" src="/src/components/header/header.js"></script> -->
   </head>
 
   <body>
@@ -38,6 +38,7 @@
                   id="id"
                   placeholder="아이디를 입력해주세요."
                 />
+                <p class="message format">6자 이상 16자 이하의 영문 혹은 영문과 숫자를 조합</p>
               </div>
               <div class="right">
                 <button class="check-availability">중복확인</button>
@@ -53,8 +54,10 @@
                   id="pwd"
                   placeholder="비밀번호를 입력해주세요."
                 />
+                <p class="message length">최소 10자 이상 입력</p>
+                <p class="message format">영문/숫자/특수문자(공백 제외)만 허용하며, 2개 이상 조합</p>
               </div>
-              <div class="right"></div>
+              <!-- <div class="right"></div> -->
             </div>
             <div class="wrapper pwd-again">
               <div class="left">
@@ -68,8 +71,10 @@
                   id="pwd-again"
                   placeholder="비밀번호를 한 번 더 입력해주세요."
                 />
+                <p class="message fill">비밀번호를 한 번 더 입력해주세요.</p>
+                <p class="message format">동일한 비밀번호를 입력해주세요.</p>
               </div>
-              <div class="right"></div>
+              <!-- <div class="right"></div> -->
             </div>
             <div class="wrapper name">
               <div class="left">
@@ -81,8 +86,9 @@
                   id="name"
                   placeholder="이름을 입력해주세요."
                 />
+                <p class="message fill">이름을 입력해주세요.</p>
               </div>
-              <div class="right"></div>
+              <!-- <div class="right"></div> -->
             </div>
             <div class="wrapper email">
               <div class="left">
@@ -94,6 +100,8 @@
                   id="email"
                   placeholder="예: marketkurly@kurly.com"
                 />
+                <p class="message format">이메일 형식으로 입력해주세요.</p>
+                <p class="message fill">이메일을 입력해주세요.</p>
               </div>
               <div class="right">
                 <button class="check-availability">중복확인</button>
@@ -105,10 +113,13 @@
               </div>
               <div class="middle">
                 <input
-                  type="number"
+                  type="text"
                   id="phone"
                   placeholder="숫자만 입력해주세요."
+                  maxlength="11"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
                 />
+                <p class="message fill">휴대폰 번호를 입력해주세요.</p>
               </div>
               <div class="right">
                 <button class="get-code">인증번호 받기</button>
@@ -120,7 +131,7 @@
                 <button class="search-address">주소 검색</button>
                 <p>배송지에 따라 상품 정보가 달라질 수 있습니다.</p>
               </div>
-              <div class="right"></div>
+              <!-- <div class="right"></div> -->
             </div>
             <div class="wrapper gender">
               <div class="left">
@@ -128,35 +139,44 @@
               </div>
               <div class="middle">
                 <label for="male" class="male">
-                  <input type="radio" id="male" />
-                  <div class="radio-outer"><div class="radio-inner"></div></div>
+                  <input type="radio" id="male" name="gender"/>
+                  <span class="radio"></span>
                   <span>남자</span>
                 </label>
                 <label for="female" class="female">
-                  <input type="radio" id="female" />
-                  <div class="radio-outer"><div class="radio-inner"></div></div>
+                  <input type="radio" id="female" name="gender"/>
+                  <span class="radio"></span>
                   <span>여자</span>
                 </label>
                 <label for="do-not-choose" class="do-not-choose">
-                  <input type="radio" id="do-not-choose" />
-                  <div class="radio-outer"><div class="radio-inner"></div></div>
+                  <input type="radio" id="do-not-choose" name="gender"/>
+                  <span class="radio"></span>
                   <span>선택안함</span>
                 </label>
               </div>
-              <div class="right"></div>
+              <!-- <div class="right"></div> -->
             </div>
             <div class="wrapper birth">
               <div class="left">
                 <span>생년월일</span>
               </div>
               <div class="middle">
-                <input type="text" id="year" placeholder="YYYY" maxlength="4" />
-                <span>/</span>
-                <input type="text" id="month" placeholder="MM" maxlength="2" />
-                <span>/</span>
-                <input type="text" id="day" placeholder="DD" maxlength="2" />
+                <div class="input-wrapper">
+                  <input type="text" id="year" placeholder="YYYY" maxlength="4"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"/>
+                  <span>/</span>
+                  <input type="text" id="month" placeholder="MM" maxlength="2"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"/>
+                  <span>/</span>
+                  <input type="text" id="day" placeholder="DD" maxlength="2"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"/>
+                </div>
+                <p class="message year format">태어난 연도를 다시 확인해주세요.</p>
+                <p class="message month format">태어난 월을 다시 확인해주세요.</p>
+                <p class="message day format">태어난 일을 다시 확인해주세요.</p>
+                <p class="message fill">태어난 년도, 월, 일을 모두 채워주세요.</p>
               </div>
-              <div class="right"></div>
+              <!-- <div class="right"></div> -->
             </div>
             <div class="wrapper additional">
               <div class="left">
@@ -164,17 +184,17 @@
               </div>
               <div class="middle">
                 <label for="referral-id" class="referral-id">
-                  <input type="radio" id="referral-id" />
-                  <div class="radio-outer"><div class="radio-inner"></div></div>
+                  <input type="radio" id="referral-id" name="add"/>
+                  <span class="radio"></span>
                   <span>친구초대 추천인 아이디</span>
                 </label>
                 <label for="event-name" class="event-name">
-                  <input type="radio" id="event-name" />
-                  <div class="radio-outer"><div class="radio-inner"></div></div>
+                  <input type="radio" id="event-name" name="add"/>
+                  <span class="radio"></span>
                   <span>참여 이벤트명</span>
                 </label>
               </div>
-              <div class="right"></div>
+              <!-- <div class="right"></div> -->
             </div>
           </div>
           <div class="wrapper agree">
@@ -183,35 +203,7 @@
               <div class="wrapper agree-all">
                 <label for="agree-all">
                   <input type="checkbox" id="agree-all" />
-                  <div class="checkbox">
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      ;
-                      <g clip-path="url(#clip0_42_2299)">
-                        <path
-                          d="M12 23.5C18.3513 23.5 23.5 18.3513 23.5 12C23.5 5.64873 18.3513 0.5 12 0.5C5.64873 0.5 0.5 5.64873 0.5 12C0.5 18.3513 5.64873 23.5 12 23.5Z"
-                          stroke="#C4C4C4"
-                        />
-                        <path
-                          d="M7 12.667L10.385 16L18 8.5"
-                          stroke="#C4C4C4"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_42_2299">
-                          <rect width="24" height="24" fill="white" />
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </div>
+                  <span class="checkbox"></span>
                   <span>전체 동의합니다.</span>
                 </label>
                 <p>
@@ -222,151 +214,39 @@
               <div class="wrapper agree-use">
                 <label for="agree-use">
                   <input type="checkbox" id="agree-use" />
-                  <div class="checkbox">
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      ;
-                      <g clip-path="url(#clip0_42_2299)">
-                        <path
-                          d="M12 23.5C18.3513 23.5 23.5 18.3513 23.5 12C23.5 5.64873 18.3513 0.5 12 0.5C5.64873 0.5 0.5 5.64873 0.5 12C0.5 18.3513 5.64873 23.5 12 23.5Z"
-                          stroke="#C4C4C4"
-                        />
-                        <path
-                          d="M7 12.667L10.385 16L18 8.5"
-                          stroke="#C4C4C4"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_42_2299">
-                          <rect width="24" height="24" fill="white" />
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </div>
+                  <span class="checkbox"></span>
                   <span>이용약관 동의</span><em>&nbsp;(필수)</em>
                 </label>
-                <a class="view-terms"> 약관보기&nbsp; </a>
+                <a href="" class="view-terms"> 약관보기&nbsp; </a>
               </div>
               <div class="wrapper agree-personal">
                 <label for="agree-personal">
                   <input type="checkbox" id="agree-personal" />
-                  <div class="checkbox">
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      ;
-                      <g clip-path="url(#clip0_42_2299)">
-                        <path
-                          d="M12 23.5C18.3513 23.5 23.5 18.3513 23.5 12C23.5 5.64873 18.3513 0.5 12 0.5C5.64873 0.5 0.5 5.64873 0.5 12C0.5 18.3513 5.64873 23.5 12 23.5Z"
-                          stroke="#C4C4C4"
-                        />
-                        <path
-                          d="M7 12.667L10.385 16L18 8.5"
-                          stroke="#C4C4C4"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_42_2299">
-                          <rect width="24" height="24" fill="white" />
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </div>
+                  <span class="checkbox"></span>
                   <span>개인정보 수집 · 이용 동의</span><em>&nbsp;(필수)</em>
                 </label>
-                <a class="view-terms"> 약관보기&nbsp; </a>
+                <a href="" class="view-terms"> 약관보기&nbsp; </a>
               </div>
               <div class="wrapper agree-benefits">
                 <label for="agree-benefits">
                   <input type="checkbox" id="agree-benefits" />
-                  <div class="checkbox">
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      ;
-                      <g clip-path="url(#clip0_42_2299)">
-                        <path
-                          d="M12 23.5C18.3513 23.5 23.5 18.3513 23.5 12C23.5 5.64873 18.3513 0.5 12 0.5C5.64873 0.5 0.5 5.64873 0.5 12C0.5 18.3513 5.64873 23.5 12 23.5Z"
-                          stroke="#C4C4C4"
-                        />
-                        <path
-                          d="M7 12.667L10.385 16L18 8.5"
-                          stroke="#C4C4C4"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_42_2299">
-                          <rect width="24" height="24" fill="white" />
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </div>
+                  <span class="checkbox"></span>
                   <span>무료배송, 할인쿠폰 등 혜택/정보 수신 동의</span
                   ><em>&nbsp;(선택)</em>
                 </label>
-                <a class="view-terms"> 약관보기&nbsp; </a>
+                <a href="" class="view-terms"> 약관보기&nbsp; </a>
               </div>
               <div class="wrapper agree-age">
                 <label for="agree-age">
                   <input type="checkbox" id="agree-age" />
-                  <div class="checkbox">
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      ;
-                      <g clip-path="url(#clip0_42_2299)">
-                        <path
-                          d="M12 23.5C18.3513 23.5 23.5 18.3513 23.5 12C23.5 5.64873 18.3513 0.5 12 0.5C5.64873 0.5 0.5 5.64873 0.5 12C0.5 18.3513 5.64873 23.5 12 23.5Z"
-                          stroke="#C4C4C4"
-                        />
-                        <path
-                          d="M7 12.667L10.385 16L18 8.5"
-                          stroke="#C4C4C4"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_42_2299">
-                          <rect width="24" height="24" fill="white" />
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </div>
+                  <span class="checkbox"></span>
                   <span>본인은 만 14세 이상입니다.</span><em>&nbsp;(필수)</em>
                 </label>
-                <a class="view-terms"> 약관보기&nbsp; </a>
+                <a href="" class="view-terms"> 약관보기&nbsp; </a>
               </div>
             </div>
           </div>
-          <button class="register" type="submit">가입하기</button>
+          <button onclick="location.href=''" class="register" type="submit">가입하기</button>
         </div>
       </div>
     </main>
