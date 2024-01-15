@@ -162,10 +162,6 @@ async function renderProduct(slicea, sliceb, insert) {
     arr.push(item);
     imgArr.push(getPbImageURL(item));
     // 이벤트 리스너를 추가합니다.
-    // shopButton.addEventListener('click', (e) => {
-    //   e.preventDefault(); // a 태그의 기본 이동을 방지합니다.
-    //   showModal(item); // 현재 상품의 데이터를 모달창 함수에 전달합니다.
-    // });
 
     // 생성된 요소를 DOM에 삽입합니다.
   });
@@ -176,7 +172,6 @@ async function renderProduct(slicea, sliceb, insert) {
 renderProduct(0, 12, '.swiper3 > .swiper-wrapper');
 renderProduct(0, 12, '.swiper2 > .swiper-wrapper');
 
-let popupClose = getNode('.popup-button-close');
 const popup = getNode('.popup-modal');
 
 // 다이얼로그 버튼 이벤트 구현
@@ -187,9 +182,7 @@ function hideDialog(e) {
   const dialog = e.currentTarget;
 
   if (dialogBtn === 'cancel') {
-    // popup.style.display = 'none';
     dialog.style.display = 'none';
-    // modal.style.position = 'none';
     modal.style.display = 'none';
 
     // console.log('테스트', dialog);
@@ -232,13 +225,10 @@ function viewDialog(e) {
     const buttonIndex = e.target.dataset.index;
     const itemList = arr[buttonIndex];
 
-    // console.log(buttonIndex, itemList);
-    // console.log(typeof buttonIndex, '현재 arr', arr);
-    const dialogBtn = e.target.currentTarget;
-
     const ratio = itemList.price * (itemList.discount * 0.01);
 
-    addCart.innerHTML =
+    addCart.innerHTML = '';
+    const htmlAddCart =
       /* html */
       `
     <div>
@@ -289,6 +279,7 @@ function viewDialog(e) {
   </div>
     `;
     // console.log(dialogBtn);
+    addCart.insertAdjacentHTML('beforeend', htmlAddCart);
   }
 }
 
@@ -302,8 +293,6 @@ let swiperBtntest3 = getNode('.swiper3');
 swiperBtntest2.addEventListener('click', viewDialog);
 swiperBtntest3.addEventListener('click', viewDialog);
 
-const plusButton = getNode('.plus-button');
-const minusButton = getNode('.minus-button');
 const addCart = getNode('.add-cart');
 
 function plusCount(e) {
@@ -378,61 +367,41 @@ window.onload = function () {
 };
 
 let arrs = [];
+
+// 최근 본 상품
+
 function addRecentProduct(e) {
   if (!localStorage.getItem('recent')) {
-    // setStorage('recent', defaultImgData);
     setStorage('recent', JSON.stringify([]));
   }
   if (!e.target.matches('.shop-button2')) {
     // e.preventDefault();
     const buttonId = e.target.parentNode.dataset.id;
 
-    // console.log(arr[buttonId].id, imgArr[buttonId]);
-
     let recentList = JSON.parse(localStorage.getItem('recent'));
     recentList = JSON.parse(recentList);
-    // console.log('id 테스트', arr['1'].id);
-    // console.log('url :', imgArr['1']);
-    // setStorage('recent', JSON.stringify(defaultImgData));
-
-    // console.log(recnetList);
 
     recentList.push({ id: arr[buttonId].id, img: imgArr[buttonId] });
 
     if (recentList.length > 3) {
       recentList.shift(); // 배열의 첫 번째 요소 제거
     }
-    // recentList.push();
 
     setStorage('recent', JSON.stringify(recentList));
 
     recentList = JSON.parse(recentList);
     let recentLength = recentList.length - 1;
-    // console.log(recentList.lenght);
-    // console.log(recentLength);
-    // console.log('테스트', recentList[recentLength].id);
 
     // 뽑아와서 그 값을 통해 a 태그 생성
-
-    const templateLink =
-      /* html */
-      `
-    <li>
-      <a href="/src/pages/detail/index.html#${recentList[recentLength].id}">
-          <img
-            src="${recentList[recentLength].img}"
-          />
-      </a>
-    </li>
-    `;
-
-    // alt="${arr[buttonId].brand}"
-    insertLast('.recent-list > ul', templateLink);
   }
-  // const recentList = JSON.parse(localStorage.getItem('recent'));
-  // console.log(recentList);
 }
 
+const swiperLink = document.querySelector('.swiper2');
+const swiperLink2 = document.querySelector('.swiper3');
+swiperLink.addEventListener('click', addRecentProduct);
+swiperLink2.addEventListener('click', addRecentProduct);
+
+// localStorage 저장소의 내용을 통해 최근 본 상품 불러오기
 function loadRecentProducts() {
   let recentList = JSON.parse(localStorage.getItem('recent') || '[]');
   // console.log(recentList);
@@ -453,11 +422,6 @@ function loadRecentProducts() {
 
 // 페이지 로드 완료 시 loadRecentProducts 함수 호출
 document.addEventListener('DOMContentLoaded', loadRecentProducts);
-
-const swiperLink = document.querySelector('.swiper2');
-const swiperLink2 = document.querySelector('.swiper3');
-swiperLink.addEventListener('click', addRecentProduct);
-swiperLink2.addEventListener('click', addRecentProduct);
 
 async function renderProductData(item) {
   const productData = await pb.collection('products').getOne(item);
