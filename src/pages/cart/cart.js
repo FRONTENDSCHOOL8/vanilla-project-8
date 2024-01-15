@@ -11,11 +11,12 @@ import '/src/pages/cart/cart.css';
 
 setDocumentTitle('장바구니 - 컬리');
 
-const productData = await getStorage('cart');
+// const productData = getStorage('cart');
+let productData = JSON.parse(localStorage.getItem('cart'));
 
 /* 보관 유형별 상품 분류 */
 function renderProduct() {
-  let productData = JSON.parse(localStorage.getItem('cart'));
+  // let productData = JSON.parse(localStorage.getItem('cart'));
   const productContainer = document.querySelectorAll('.add-product');
 
   productContainer.forEach((container) => {
@@ -153,6 +154,15 @@ function renderProduct() {
 }
 renderProduct();
 
+/* 금액 초기 렌더링 */
+
+productData.forEach((product) => {
+  product.checked = true;
+});
+
+const checkedProductList = productData.filter((product) => product.checked);
+renderPrice(checkedProductList);
+
 /* 합계 금액 */
 function renderPrice(checkedProductList) {
   let priceEach = 0;
@@ -198,15 +208,6 @@ function renderPrice(checkedProductList) {
 `;
   document.querySelector('.price-container').innerHTML = priceTemplate;
 }
-
-/* 금액 초기 렌더링 */
-productData.forEach((product) => {
-  product.checked = true;
-});
-
-const checkedProductList = productData.filter((product) => product.checked);
-
-renderPrice(checkedProductList);
 
 /* 선택 상품만 금액 렌더링 */
 const cartContainer = document.querySelector('.cart-container');
@@ -284,8 +285,8 @@ function deleteProduct(clickedButtonId) {
     localStorage.setItem('cart', JSON.stringify(filteredData));
 
     cartData = JSON.parse(localStorage.getItem('cart'));
-    renderProduct(cartData);
-    renderPrice(cartData);
+    renderProduct(filteredData);
+    renderPrice(filteredData);
   }
 }
 
