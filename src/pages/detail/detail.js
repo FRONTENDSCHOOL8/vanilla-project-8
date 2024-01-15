@@ -23,6 +23,7 @@ async function renderProductData() {
   const {
     brand,
     price,
+    id,
     description,
     discount,
     storage,
@@ -107,10 +108,11 @@ async function renderProductData() {
     <span class="desc-1">${brand}</span><br />
     <span class="desc-2">${description}</span><br />
     <span class="real">
-    <span class="discount">${discount}%</span>
+    <span class="discount" data-id="${id}">${discount}%</span>
     <span class="real-price">${comma(realPrice)}</span>원
     </span>
-    <span class="price">${comma(price)}원</span><br />
+    <span class="price" data-id="${id}">${comma(price)}원</span>
+    <br class="break" data-id="${id}"/>
     <span class="accumulate">로그인 후, 적립 혜택이 제공됩니다.</span>
 
     <div class="detail-info-container">
@@ -205,6 +207,23 @@ async function renderProductData() {
   />
   `;
   insertAfter('.product-point', template_3);
+
+  /* 할인율 0% 상품 태그 제거 */
+  if (productData.discount === 0) {
+    const discountElement = document.querySelector(
+      `.discount[data-id="${productData.id}"]`
+    );
+    const priceElement = document.querySelector(
+      `.price[data-id="${productData.id}"]`
+    );
+    const breakElement = document.querySelector(
+      `.break[data-id="${productData.id}"]`
+    );
+
+    if (discountElement) discountElement.remove();
+    if (priceElement) priceElement.remove();
+    if (breakElement) breakElement.remove();
+  }
 
   /* 수량 버튼 */
   const countBox = document.querySelector('.count-box');

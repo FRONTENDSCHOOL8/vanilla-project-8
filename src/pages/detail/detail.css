@@ -306,6 +306,7 @@ input[type="checkbox"] {
   }
 
   & p {
+    width: 100%;
     border-top: 1px solid #E1E1E1;
     padding-top: 28px;
     color: #333333;
