@@ -11,7 +11,7 @@ import '/src/pages/cart/cart.css';
 
 setDocumentTitle('장바구니 - 컬리');
 
-const productData = await getStorage('cart');
+const productData = getStorage('cart');
 
 /* 보관 유형별 상품 분류 */
 function renderProduct() {
