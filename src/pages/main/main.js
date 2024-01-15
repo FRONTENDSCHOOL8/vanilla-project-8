@@ -11,8 +11,6 @@ import {
   setDocumentTitle,
   getPbImageURL,
 } from '/src/lib/index.js';
-import defaultAuthData from '/src/api/defaultAuthData';
-import defaultImgData from '/src/api/defaultImgData';
 
 import pb from '/src/api/pocketbase';
 
@@ -101,7 +99,7 @@ const todaySwiper2 = new Swiper('.swiper3', {
   },
 });
 
-// db 연동
+// db 데이터를 가져와 동적 렌더링 실행
 let arr = [];
 let imgArr = [];
 async function renderProduct(slicea, sliceb, insert) {
@@ -165,8 +163,6 @@ async function renderProduct(slicea, sliceb, insert) {
 
     // 생성된 요소를 DOM에 삽입합니다.
   });
-  // console.log('가져온 값', response);
-  // console.log('내용물', userData);
 }
 
 renderProduct(0, 12, '.swiper3 > .swiper-wrapper');
@@ -184,17 +180,12 @@ function hideDialog(e) {
   if (dialogBtn === 'cancel') {
     dialog.style.display = 'none';
     modal.style.display = 'none';
-
-    // console.log('테스트', dialog);
   }
 
   if (e.target.matches('.cart-button-add')) {
-    // console.log('장바구니 테스트');
-    // addRecentProduct();
     const cartIndex = e.target.dataset.index;
     const cartId = arr[cartIndex].id;
     console.log(cartId);
-    // const a = arr[0].id;
     renderProductData(cartId);
     dialog.style.display = 'none';
     modal.style.display = 'none';
@@ -213,6 +204,7 @@ dialogClose.addEventListener('click', hideDialog);
 
 let cartBtn = document.querySelectorAll('.shop-button2');
 
+// 장바구니 다이얼로그 동적 렌더링
 function viewDialog(e) {
   const addCart = getNode('.add-cart');
   if (e.target.matches('.shop-button2')) {
@@ -300,7 +292,6 @@ function plusCount(e) {
   const sum = e.target.closest('.add-cart').querySelector('.sum-value');
 
   if (e.target.matches('.plus-button')) {
-    // console.log('참');
     let number = count.innerText;
     if (number < 2) {
       number = parseInt(number) + 1;
@@ -368,7 +359,7 @@ window.onload = function () {
 
 let arrs = [];
 
-// 최근 본 상품
+// 최근 본 상품 렌더링
 
 function addRecentProduct(e) {
   if (!localStorage.getItem('recent')) {
@@ -404,8 +395,7 @@ swiperLink2.addEventListener('click', addRecentProduct);
 // localStorage 저장소의 내용을 통해 최근 본 상품 불러오기
 function loadRecentProducts() {
   let recentList = JSON.parse(localStorage.getItem('recent') || '[]');
-  // console.log(recentList);
-  // console.log(typeof recentList);
+
   recentList = JSON.parse(recentList);
 
   recentList.forEach((product) => {
