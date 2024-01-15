@@ -320,7 +320,7 @@
   width: 0;
   z-index: 1;
   top: -6px;
-  left: 220px;
+  left: 270px;
 }
 
 .drop-bubble2 :before {
@@ -333,13 +333,13 @@
   width: 0;
   z-index: 0;
   top: -8px;
-  left: 220px;
+  left: 270px;
 }
 
 
 .bubble-text2{
   display: flex;
-  width: 250px;
+  width: 300px;
   padding: 15px;
   font-size: 14px;
   line-height: 22px;
