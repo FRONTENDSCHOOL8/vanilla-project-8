@@ -207,12 +207,12 @@ button.search-address{
   width: 24px;
   height: 24px;
   margin: 0;
-  background: url(/images/register/isSelected=false.svg) no-repeat;
+  background: url(/images/register/isSelectedFalse.svg) no-repeat;
 }
 
 .info .gender.wrapper .middle label input:checked + .radio,
 .info .additional.wrapper .middle label input:checked + .radio{
-  background: url(/images/register/isSelected=true.svg) no-repeat;
+  background: url(/images/register/isSelectedTrue.svg) no-repeat;
 }
 
 /* focus : 마우스 포커스와 키보드 포커스 모두 포함 */
@@ -374,11 +374,11 @@ button.search-address{
   width: 24px;
   height: 24px;
   margin-right: 10px;
-  background: url(/images/register/isChecked=false.svg) no-repeat;
+  background: url(/images/register/isCheckedFalse.svg) no-repeat;
 }
 
 .agree .right .wrapper label input:checked + .checkbox {
-  background: url(/images/register/isChecked=true.svg) no-repeat;
+  background: url(/images/register/isCheckedTrue.svg) no-repeat;
 }
 
 .agree .right .wrapper a{
@@ -389,7 +389,7 @@ button.search-address{
 
 .agree .right .wrapper a::after{
   content: '';
-  background: url(/images/register/greater-than.svg) no-repeat;
+  background: url(/images/register/greaterThan.svg) no-repeat;
   display: inline-block;
   width: 6px;
   height: 10px;
