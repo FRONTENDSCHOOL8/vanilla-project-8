@@ -1,3 +1,4 @@
+
 <!-- ![header](https://capsule-render.vercel.app/api?text=Market%20Karly&fontAlign=70&=Desc&descAlign=20) -->
 ![header](https://capsule-render.vercel.app/api?type=waving&color=0:5F0080,100:FFFFFF)
 <div align="center"><img src="https://user-images.githubusercontent.com/112063987/233669862-47a68263-8187-465d-bcd5-c3c94568818a.png" width="400"></div>
@@ -8,6 +9,7 @@
  <h4> 노션 페이지 : <a href="https://www.notion.so/8-E-ba768f7fe0fe4815a17d183153ca9f51">notion</a></h4>
 
 <br>
+
 
 ## 💜 프로젝트 소개
 ![image](https://github.com/FRONTENDSCHOOL8/vanilla-project-8/assets/80308340/c74e1fe3-5100-4cfe-b548-d06baf889c04)
@@ -42,6 +44,7 @@
 |<img width="150px" alt="셀카" src="https://github.com/FRONTENDSCHOOL8/vanilla-project-8/assets/146301783/ab9062ef-bcf4-48c5-ad65-57123ea34db5">|<img width="150px" alt="노션 자기소개에 있는 사진" src="https://github.com/FRONTENDSCHOOL8/vanilla-project-8/assets/118330822/b58afcfc-edfe-451d-9313-1bd3a978208e">|<img width="150px" alt="대신넣을사진2" src="https://github.com/FRONTENDSCHOOL8/vanilla-project-8/assets/126847944/fb713de2-2163-4f69-9025-0c6303a6198e">|<img width="150px" alt="대신넣을사진33" src="https://github.com/FRONTENDSCHOOL8/vanilla-project-8/assets/80308340/54a1f5d5-7f2d-4a84-b6a9-fccb5c10b220">|
 
 <br><br>
+
 
 
 ## ✨ 요구 사항
@@ -277,6 +280,7 @@
 ```
 npm install
 ```
+
 
 ### 로컬 환경 실행
 ```

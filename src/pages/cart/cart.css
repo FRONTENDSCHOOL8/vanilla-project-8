@@ -58,6 +58,7 @@
 
   & .product {
     justify-content: space-between;
+    font-size: 17px;
   }
 
 
@@ -135,7 +136,7 @@
   background: #f9f9f9;
   padding: 20px;
 
-  & .amount {
+  & .pay-amount {
     height: 40px;
     display: flex;
     justify-content: space-between;
@@ -220,29 +221,6 @@
     color: #000;
   }
 
-  & .count-box {
-    width: 90px;
-    border: 1px solid #E1E1E1;
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-    font-weight: 600;
-
-    & span {
-      padding: 0px 3px;
-    }
-
-    & button {
-      border: none;
-      background: transparent;
-
-      & img {
-        width: 28px;
-        height: 28px;
-      }
-    }
-  }
-
   & .price {
     width: 127px;
     text-align: end;
@@ -272,4 +250,32 @@ input[type="checkbox"]:checked+label {
 
 input[type="checkbox"] {
   display: none;
+}
+
+.count-box {
+  width: 90px;
+  border: 1px solid #E1E1E1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 12px;
+  font-weight: 600;
+
+  & button {
+    width: 30px;
+    height: 30px;
+    border: none;
+  }
+
+  & .minus-button {
+    background: url("/images/cart/minus.svg") no-repeat center;
+  }
+
+  & .count {
+    margin: 0px 6px;
+  }
+
+  & .plus-button {
+    background: url("/images/cart/plus.svg") no-repeat center;
+  }
 }
