@@ -3,9 +3,11 @@ import {
   tiger,
   insertLast,
   comma,
+  getNode,
   getPbImageURL,
   setDocumentTitle,
 } from '/src/lib';
+import pb from '/src/api/pocketbase';
 
 setDocumentTitle('검색 - 컬리');
 
@@ -163,7 +165,11 @@ async function renderProduct() {
   }
 
   /* 장바구니 담기 */
-  function sendToCart() {
+
+  /* -------------------------------------------------------------------------- */
+  /*                              장바구니 담기에 메시지창 이식                              */
+  /* -------------------------------------------------------------------------- */
+  async function sendToCart() {
     let cartData = JSON.parse(localStorage.getItem('cart'));
     if (!Array.isArray(cartData)) {
       cartData = [];
@@ -171,22 +177,69 @@ async function renderProduct() {
 
     const count = document.querySelector('.count');
     const quantity = parseInt(count.textContent);
+    const bubble2 = getNode('.drop-bubble2');
+    const hash = window.location.hash.slice(1);
+    const productData = await pb.collection('products').getOne(hash);
 
     const existingProductIndex = cartData.findIndex(
-      (item) => item.id === clickedProduct.id
+      (item) => item.id === productData.id
     );
+
+    const { brand } = productData;
+    let productBubble = '';
 
     if (existingProductIndex !== -1) {
       cartData[existingProductIndex].quantity += quantity;
+      productBubble = /* html */ `
+      <div class="bubble-text2" data-id="${productData.id}">
+        <img width="50" height="58" src="${getPbImageURL(
+          productData
+        )}" alt="상품이미지" />
+        <div class="bubble-text2-text">
+          <p>${brand}</p>
+          <span>장바구니에 상품을 담았습니다.</span><br />
+          <span>이미 담은 상품의 수량을 추가 했습니다.</span>
+        </div>
+      </div>`;
     } else {
-      const newProduct = Object.assign({}, clickedProduct, {
+      const newProduct = Object.assign({}, productData, {
         quantity: quantity,
       });
       cartData.push(newProduct);
+      productBubble = /* html */ `
+      <div class="bubble-text2" data-id="${productData.id}">
+        <img width="40" height="45" src="${getPbImageURL(
+          productData
+        )}" alt="상품이미지" />
+        <div class="bubble-text2-text">
+          <p>${brand}</p>
+          <span>장바구니에 상품을 담았습니다.</span>
+        </div>
+      </div>`;
     }
 
     localStorage.setItem('cart', JSON.stringify(cartData));
+    const existingBubble = bubble2.querySelector(
+      `.bubble-text2[data-id="${productData.id}"]`
+    );
+    if (existingBubble) {
+      bubble2.removeChild(existingBubble);
+    }
+
+    bubble2.insertAdjacentHTML('beforeend', productBubble);
+
+    bubble2.style.display = 'block';
+    setTimeout(() => {
+      bubble2.style.display = 'none';
+    }, 3000);
+
+    localStorage.setItem('cart', JSON.stringify(cartData));
   }
+  modalContainer.addEventListener('click', function (event) {
+    if (event.target.classList.contains('add-cart')) {
+      sendToCart();
+    }
+  });
 
   /* 모달 내부 취소, 장바구니 담기 버튼 눌러서 닫기 */
   function closeModal(event) {
