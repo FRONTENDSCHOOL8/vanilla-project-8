@@ -18,9 +18,6 @@ export function headerjs() {
   const category1 = getNode('.nav-capture2');
   const navMenu = getNode('.nav-menu-hide1');
   const navMenu2 = getNode('.nav-menu-hide2');
-  //맨 위에 있는 보라색 쿠폰 사라지게 하는 함수
-  const button = getNode('.header-ad-btn');
-  const ad = getNode('.header-ad');
 
   function showNavMenu() {
     navMenu.style.display = 'block';
@@ -36,15 +33,33 @@ export function headerjs() {
     navMenu2.style.display = 'none';
   }
 
-  function closeAd() {
-    ad.style.display = 'none';
-  }
-
   category.addEventListener('mouseover', showNavMenu);
   category.addEventListener('mouseout', closeNavMenu);
   category1.addEventListener('mouseover', showNavMenu2);
   category1.addEventListener('mouseout', closeNavMenu2);
+
+  //맨 위에 있는 보라색 쿠폰 사라지게 하는 함수
+  const button = getNode('.header-ad-btn');
+  const ad = getNode('.header-ad');
+
+  function closeAd() {
+    ad.style.display = 'none';
+    // 광고가 닫혔다는 정보를 localStorage에 저장합니다.
+    localStorage.setItem('adClosed', 'true');
+  }
+
+  function checkAdStatus() {
+    // 페이지 로딩 시 광고 닫힘 상태를 확인합니다.
+    const isAdClosed = localStorage.getItem('adClosed');
+    if (isAdClosed === 'true') {
+      ad.style.display = 'none';
+    }
+  }
+
   button.addEventListener('click', closeAd);
+
+  // 페이지 로딩 시 광고 상태를 확인합니다.
+  checkAdStatus();
 
   // 아래는 스크롤에 따라 내려가면 카테고리 변화하는 코드
   const header = getNode('.header');
