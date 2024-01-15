@@ -85,9 +85,9 @@ const todaySwiper2 = new Swiper('.swiper3', {
     // type: "fraction",
   },
 
-  keyboard: {
-    enabled: true, // 키보드 이벤트 활성화
-  },
+  // keyboard: {
+  //   enabled: true,
+  // },
 
   navigation: {
     nextEl: '.swiper-button-next',
@@ -270,7 +270,6 @@ function viewDialog(e) {
     <button type="button" class="cart-button-add" data-index = ${buttonIndex}>장바구니 담기</button>
   </div>
     `;
-    // console.log(dialogBtn);
     addCart.insertAdjacentHTML('beforeend', htmlAddCart);
   }
 }
@@ -295,7 +294,6 @@ function plusCount(e) {
     let number = count.innerText;
     if (number < 2) {
       number = parseInt(number) + 1;
-      // console.log(number);
       let sumvalue = sum.innerText;
       let sumvalues = parseInt(sumvalue);
       // dP
@@ -356,8 +354,6 @@ window.onload = function () {
     hidePopup();
   }
 };
-
-let arrs = [];
 
 // 최근 본 상품 렌더링
 

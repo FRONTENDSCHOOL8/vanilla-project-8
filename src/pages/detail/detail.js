@@ -8,7 +8,6 @@ import {
   getPbImageURL_3,
   comma,
   getNode,
-  getNode,
 } from '/src/lib';
 import '/src/pages/detail/detail.css';
 import pb from '/src/api/pocketbase';
