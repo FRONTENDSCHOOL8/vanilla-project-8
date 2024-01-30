@@ -14,23 +14,13 @@ setDocumentTitle('장바구니 - 컬리');
 // const productData = getStorage('cart');
 let productData = JSON.parse(localStorage.getItem('cart'));
 
-/* 보관 유형별 상품 분류 */
-function renderProduct() {
-  // let productData = JSON.parse(localStorage.getItem('cart'));
-  const productContainer = document.querySelectorAll('.add-product');
-
-  productContainer.forEach((container) => {
-    container.innerHTML = '';
-  });
-
-  productData.forEach((item, index) => {
-    const applyQuantityPrice = item.price * item.quantity;
-    if (item.storage === '냉장 (종이포장)') {
-      const template = /* html */ `
+function render냉장_종이포장(item, index) {
+  const applyQuantityPrice = item.price * item.quantity;
+  const template = /* html */ `
       <li>
     <input type="checkbox" id="productSelect${index}" data-id="${
       item.id
-    }" class="product-checkbox" checked />
+  }" class="product-checkbox" checked />
     <label class="product-select" for="productSelect${index}" ></label>
       <a href="${`/src/pages/detail/index.html#${item.id}`}">
         <img
@@ -66,13 +56,16 @@ function renderProduct() {
       </button>
     </li>
    `;
-      insertLast('.add-fridge', template);
-    } else if (item.storage === '냉동 (종이포장)') {
-      const template = /* html */ `
+  insertLast('.add-fridge', template);
+}
+
+function render냉동_종이포장(item, index) {
+  const applyQuantityPrice = item.price * item.quantity;
+  const template = /* html */ `
     <li>
     <input type="checkbox" id="productSelect${index}" data-id="${
       item.id
-    }" class="product-checkbox" checked />
+  }" class="product-checkbox" checked />
     <label class="product-select" for="productSelect${index}"></label>
       <a href="${`/src/pages/detail/index.html#${item.id}`}">
         <img
@@ -107,13 +100,16 @@ function renderProduct() {
       </button>
     </li>
    `;
-      insertLast('.add-freeze', template);
-    } else if (item.storage === '상온 (종이포장)') {
-      const template = /* html */ `
+  insertLast('.add-freeze', template);
+}
+
+function render상온_종이포장(item, index) {
+  const applyQuantityPrice = item.price * item.quantity;
+  const template = /* html */ `
     <li>
     <input type="checkbox" id="productSelect${index}" data-id="${
       item.id
-    }" class="product-checkbox" checked />
+  }" class="product-checkbox" checked />
     <label class="product-select" for="productSelect${index}"></label>
       <a href="${`/src/pages/detail/index.html#${item.id}`}">
         <img
@@ -148,7 +144,36 @@ function renderProduct() {
       </button>
     </li>
    `;
-      insertLast('.add-ordinary', template);
+  insertLast('.add-ordinary', template);
+}
+
+/**
+ * TODO: 아무도 지도를 그릴 때 골목길까지 모두 그리지 않습니다.
+ * renderProduct 함수는 골목길까지 모두 그려서 지도를 만들려고 시도하고 있습니다.
+ * 의미있는 단위를 함수로 분리하면, 지도를 줌 아웃하는 효과를 볼 수 있습니다.
+ * 저는 이것을 추상화라고 부릅니다.
+ * 다른 사람들은 이것을 가독성 향상이라 부르기도 합니다.
+ */
+
+/* 보관 유형별 상품 분류 */
+function renderProduct() {
+  // let productData = JSON.parse(localStorage.getItem('cart'));
+  const productContainer = document.querySelectorAll('.add-product');
+
+  productContainer.forEach((container) => {
+    container.innerHTML = '';
+  });
+
+  productData.forEach((item, index) => {
+    if (item.storage === '냉장 (종이포장)') {
+      render냉장_종이포장(item, index);
+    }
+    // TODO: else 사용은 피하는 것이 좋습니다. 함수가 2가지 이상의 일을 하게 만듭니다.
+    if (item.storage === '냉동 (종이포장)') {
+      render냉동_종이포장(item, index);
+    }
+    if (item.storage === '상온 (종이포장)') {
+      render상온_종이포장(item, index);
     }
   });
 }

@@ -55,6 +55,10 @@ login.addEventListener('click', (e) => {
   }
 });
 
+/**
+ * TODO: 이 코드는 form 태그의 submit 이벤트에 추가되면 최고의 성능을 발휘합니다.
+ * 가능하다면 2월 3일에 한번 설명을 드리고 싶군요.
+ */
 async function handleLogin2() {
   const id = emailInput.value;
   const pw = passwordInput.value;
@@ -81,6 +85,10 @@ async function handleLogin2() {
 //모달창 나타나기, 없애기
 closeBtn.addEventListener('click', closeModal);
 
+/**
+ * TODO: 폼 태그에 내장된 기능을 활용하면 이 코드가 필요 없게 됩니다.
+ * 가능하다면 2월 3일에 한번 설명을 드리고 싶군요.
+ */
 //엔터키로 로그인 할 수 있게 하는 코드
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Enter') {
